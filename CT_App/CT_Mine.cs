@@ -156,8 +156,87 @@ namespace CT_App
             this.label113.Text = "";
             this.label111.Text = "";
             this.label108.Text = "";
+            this.textBox43.Text = "";
+            this.textBox48.Text = "";
+            this.textBox49.Text = "";
+            this.textBox51.Text = "";
+            this.textBox52.Text = "";
+            this.textBox53.Text = "";
         }
-       
+        private void BalankFldMarMem()
+        {
+            this.textBox2.Text = "";
+            this.textBox3.Text = "";
+            this.textBox4.Text = "";
+            this.textBox5.Text = "";
+            this.textBox6.Text = "";
+            this.textBox7.Text = "";
+            this.textBox8.Text = "";
+            this.textBox9.Text = "";
+            this.textBox10.Text = "";
+            this.textBox11.Text = "";
+            this.textBox12.Text = "";
+            this.textBox13.Text = "";
+            this.textBox14.Text = "";
+            this.textBox15.Text = "";
+            this.textBox16.Text = "";
+            this.textBox17.Text = "";
+            this.textBox18.Text = "";
+            this.textBox19.Text = "";
+            this.textBox20.Text = "";
+            this.textBox21.Text = "";
+            this.textBox22.Text = "";
+            this.textBox23.Text = "";
+            this.textBox24.Text = "";
+            this.textBox25.Text = "";
+            this.textBox26.Text = "";
+            this.textBox27.Text = "";
+            this.textBox28.Text = "";
+            this.textBox29.Text = "";
+            this.textBox30.Text = "";
+            this.textBox31.Text = "";
+            this.textBox54.Text = "";
+            this.textBox38.Text = "";
+
+            this.label9.Text  = "0";
+            this.label13.Text = "0";
+            this.label17.Text = "0";
+            this.label24.Text = "0";
+            this.label28.Text = "0";
+            this.label32.Text = "0";
+            this.label36.Text = "0";
+            this.label40.Text = "0";
+            this.label44.Text = "0";
+            this.label48.Text = "0";
+            this.label52.Text = "0";
+            this.label56.Text = "0";
+            this.label60.Text = "0";
+            this.label64.Text = "0";
+            this.label68.Text = "0";
+            this.label76.Text = "0";
+
+            this.textBox56.Text = "";
+            this.textBox57.Text = "";
+            this.textBox58.Text = "";
+            this.textBox59.Text = "";
+            this.textBox60.Text = "";
+            this.textBox61.Text = "";
+            this.textBox62.Text = "";
+            this.textBox63.Text = "";
+            this.textBox64.Text = "";
+            this.textBox65.Text = "";
+            this.textBox66.Text = "";
+            this.textBox67.Text = "";
+            this.textBox68.Text = "";
+            this.textBox69.Text = "";
+            this.textBox70.Text = "";
+            this.textBox71.Text = "";
+            this.textBox72.Text = "";
+
+            this.textBox55.Text = "";
+            this.label147.Text  = "0";
+        }
+
 
         //---------------------------------------------------------------------------
         //------------------------------All Button Work------------------------------
@@ -166,6 +245,16 @@ namespace CT_App
         {
             this.textBox1.Text = "";
             this.button1.Text = "Add";
+        }
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //Code Here
+
+
+
+
+
+            this.BalankFldMarMem();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -367,7 +456,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE CREDIT SET DT_V='DDV' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE CREDIT SET DT_V='DDV', DT_V_Date= '" + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss") + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [" , this.label117.Text + "] "));                
@@ -598,6 +687,8 @@ namespace CT_App
             this.textBox39.ReadOnly = false;
             this.comboBox1.Enabled = true;
             this.textBox34.ReadOnly = false;
-        }        
+        }
+
+        
     }
 }
