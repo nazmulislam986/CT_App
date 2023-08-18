@@ -17,7 +17,6 @@ namespace CT_App
         OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
         private string DltDate;
         #endregion
-
         public CT_Mine()
         {
             InitializeComponent();
@@ -29,6 +28,7 @@ namespace CT_App
             this.AmtDataView();
             this.fillGivenData();
             this.AmtCrDataView();
+            this.fillDailyData();
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
             this.comboBox1.Enabled = false;
@@ -38,8 +38,8 @@ namespace CT_App
             this.radioButton1.Enabled = false;
             this.radioButton2.Enabled = false;
             this.button7.Visible = false;
+            this.textBox37.ReadOnly = true;
         }
-
 
         //-----------------------------------------------------------------------
         //------------------------------All Classes------------------------------
@@ -53,8 +53,9 @@ namespace CT_App
                 odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
                 dataGridView1.DataSource = dataTabledltAmt.DefaultView;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                //MessageBox.Show(ex.Message);
             }
         }
         private void AmtDataView()
@@ -73,8 +74,9 @@ namespace CT_App
                     this.label5.Text = "0";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                //MessageBox.Show(ex.Message);
             }
         }
         private void AmtCrDataView()
@@ -119,6 +121,20 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT ID,Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDate],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDate],ThroughBy as [Through],Saving_Amount as [STK],Unrated_Amount as [UTK] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterGivenAmt.Fill(dataTableGivenAmt);
                 dataGridView3.DataSource = dataTableGivenAmt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+        private void fillDailyData()
+        {
+            try
+            {
+                DataTable dataTableDaiAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,D_Date as [Date],D_FPAmount as [DFPAmt],D_SPAmount as [DSPAmt],NotTaken,D_Total as [Total] FROM Daily WHERE [D_Data]='TKN' ORDER BY [ID] DESC "), this.conn);
+                odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
+                dataGridView5.DataSource = dataTableDaiAmt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -177,8 +193,9 @@ namespace CT_App
                     this.button1.Text = "Add";
 
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
             else if (this.button1.Text == "Save")
@@ -195,14 +212,14 @@ namespace CT_App
                     this.textBox1.Text = "";
                     this.button1.Text = "Add";
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
         }
         private void button6_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if (this.button6.Text == "New")
             {
                 this.textBox39.ReadOnly = false;
@@ -233,8 +250,9 @@ namespace CT_App
                         this.fillGivenData();
                         this.button6.Text = "New";
                     }
-                    catch (Exception exception)
+                    catch (Exception ex)
                     {
+                        //MessageBox.Show(ex.Message);
                     }
                 }
                 else
@@ -249,8 +267,9 @@ namespace CT_App
                         this.fillGivenData();
                         this.button6.Text = "New";
                     }
-                    catch (Exception exception)
+                    catch (Exception ex)
                     {
+                        //MessageBox.Show(ex.Message);
                     }
                 }
 
@@ -301,8 +320,9 @@ namespace CT_App
                         
                     }
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
             else if (this.button6.Text == "Sav")
@@ -318,8 +338,9 @@ namespace CT_App
                     this.AmtCrDataView();
                     this.button6.Text = "New";
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
             else if (this.button6.Text == "Unr")
@@ -335,8 +356,9 @@ namespace CT_App
                     this.AmtCrDataView();
                     this.button6.Text = "New";
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -356,9 +378,27 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (this.button10.Text == "Add") 
+            {
+                this.textBox37.ReadOnly = false;
+                this.textBox37.Focus();
+                this.button10.Text = "Save";
+            }
+            else if (this.button10.Text == "Save") 
+            { 
+
+            }
+            else if (this.button10.Text == "Updt") 
+            {
+
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
@@ -400,8 +440,9 @@ namespace CT_App
                 this.textBox39.Focus();
                 this.button6.Text = "Updt";
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
+                //MessageBox.Show(ex.Message);
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -419,8 +460,9 @@ namespace CT_App
                 this.textBox1.Focus();
                 this.button1.Text = "Updt";
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
+                //MessageBox.Show(ex.Message);
             }
         }
 
@@ -491,9 +533,7 @@ namespace CT_App
                 else
                 {
                     this.textBox34.Focus();
-                }
-
-                
+                }                
             }
         }
         private void textBox34_KeyPress(object sender, KeyPressEventArgs e)
