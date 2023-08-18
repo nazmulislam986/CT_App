@@ -8,3 +8,13 @@ C:\Users\Administrator\source\repos\CT_App\CT_App\obj\Debug\CT_App.csproj.CoreCo
 C:\Users\Administrator\source\repos\CT_App\CT_App\obj\Debug\CT_App.exe
 C:\Users\Administrator\source\repos\CT_App\CT_App\obj\Debug\CT_App.pdb
 C:\Users\Administrator\source\repos\CT_App\CT_App\obj\Debug\CT_App.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\CT_App\bin\Debug\CT_App.exe.config
+C:\Users\Administrator\source\repos\CT_App\bin\Debug\CT_App.exe
+C:\Users\Administrator\source\repos\CT_App\bin\Debug\CT_App.pdb
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.CT_Mine.resources
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.Properties.Resources.resources
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.csproj.GenerateResource.cache
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.exe
+C:\Users\Administrator\source\repos\CT_App\obj\Debug\CT_App.pdb
