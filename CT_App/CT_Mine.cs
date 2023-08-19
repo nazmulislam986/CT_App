@@ -251,7 +251,7 @@ namespace CT_App
 
             this.textBox55.Text = "";
             this.label147.Text  = "0";
-            this.label148.Text  = "0";
+            this.textBox90.Text  = "";
         }
         private void AllItemAdd()
         {
@@ -278,40 +278,44 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-            }
-            
+            }            
         }
         private void AllIinvAdd()
         {
-            int num1 = Convert.ToInt32(this.textBox56.Text.Trim());
-            int num2 = Convert.ToInt32(this.textBox57.Text.Trim());
-            int num3 = num1 + num2;
-            this.label148.Text = num3.ToString();
-
-
-
-            //int totalInvSum;
-
-            //string num21 = (this.textBox56.Text.Trim());
-            //string num22 = (this.textBox57.Text.Trim());
-            //string num23 = (this.textBox58.Text.Trim());
-            //string num24 = (this.textBox59.Text.Trim());
-            //string num25 = (this.textBox60.Text.Trim());
-            //string num26 = (this.textBox61.Text.Trim());
-            //string num27 = (this.textBox62.Text.Trim());
-            //string num28 = (this.textBox63.Text.Trim());
-            //string num29 = (this.textBox64.Text.Trim());
-            //string num30 = (this.textBox65.Text.Trim());
-            //string num31 = (this.textBox66.Text.Trim());
-            //string num32 = (this.textBox67.Text.Trim());
-            //string num33 = (this.textBox68.Text.Trim());
-            //string num34 = (this.textBox69.Text.Trim());
-            //string num35 = (this.textBox70.Text.Trim());
-            //string num36 = (this.textBox71.Text.Trim());
-            //string num37 = (this.textBox89.Text.Trim());
-            //totalInvSum = Convert.ToInt32(num21)  + Convert.ToInt32(num22) + Convert.ToInt32(num23) + Convert.ToInt32(num24) + Convert.ToInt32(num25) + Convert.ToInt32(num26) + Convert.ToInt32(num27) + Convert.ToInt32(num28) + Convert.ToInt32(num29) + Convert.ToInt32(num30) + Convert.ToInt32(num31) + Convert.ToInt32(num32) + Convert.ToInt32(num33) + Convert.ToInt32(num34) + Convert.ToInt32(num35) + Convert.ToInt32(num36) + Convert.ToInt32(num37);
-            //this.label148.Text = totalInvSum.ToString();
+            try
+            {
+                int num21 = Convert.ToInt32(this.label.Text.Trim());
+                int num22 = Convert.ToInt32(this.label.Text.Trim());
+                int num23 = Convert.ToInt32(this.label.Text.Trim());
+                int num24 = Convert.ToInt32(this.label.Text.Trim());
+                int num25 = Convert.ToInt32(this.label.Text.Trim());
+                int num26 = Convert.ToInt32(this.label.Text.Trim());
+                int num27 = Convert.ToInt32(this.label.Text.Trim());
+                int num28 = Convert.ToInt32(this.label.Text.Trim());
+                int num29 = Convert.ToInt32(this.label.Text.Trim());
+                int num30 = Convert.ToInt32(this.label.Text.Trim());
+                int num31 = Convert.ToInt32(this.label.Text.Trim());
+                int num32 = Convert.ToInt32(this.label.Text.Trim());
+                int num33 = Convert.ToInt32(this.label.Text.Trim());
+                int num34 = Convert.ToInt32(this.label.Text.Trim());
+                int num35 = Convert.ToInt32(this.label.Text.Trim());
+                int num36 = Convert.ToInt32(this.label.Text.Trim());
+                int num37 = Convert.ToInt32(this.label.Text.Trim());
+                int num38 = Convert.ToInt32(this.label.Text.Trim());
+                int num39 = Convert.ToInt32(this.label.Text.Trim());
+                int num40 = Convert.ToInt32(this.label.Text.Trim());
+                int num41 = Convert.ToInt32(this.label.Text.Trim());
+                int num42 = Convert.ToInt32(this.label.Text.Trim());
+                int num43 = Convert.ToInt32(this.label.Text.Trim());
+                int num44 = Convert.ToInt32(this.label.Text.Trim());
+                int sumNums = num21 + num22 + num23 + num24 + num25 + num26 + num27 + num28 + num29 + num30 + num31 + num32 + num33 + num34 + num35 + num36 + num37 + num38 + num39 + num40 + num41 + num42 + num43 + num44;
+                this.textBox90.Text = sumNums.ToString();
+            }
+            catch (Exception ex)
+            {
+            }            
         }
+
 
 
         //---------------------------------------------------------------------------
@@ -1714,6 +1718,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label179.Text = this.textBox56.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox57.Focus();
                     }
@@ -1734,11 +1739,13 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label172.Text = this.textBox57.Text.Trim();
+                        this.AllIinvAdd();
                         this.textBox58.Focus();
                     }
                 }
             }
-        }
+        }        
         private void textBox58_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keyChar = e.KeyChar;
@@ -1753,6 +1760,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox58.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox59.Focus();
                     }
@@ -1773,6 +1781,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox59.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox60.Focus();
                     }
@@ -1793,6 +1802,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox60.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox61.Focus();
                     }
@@ -1813,6 +1823,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox61.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox62.Focus();
                     }
@@ -1833,6 +1844,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox62.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox63.Focus();
                     }
@@ -1853,6 +1865,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox63.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox64.Focus();
                     }
@@ -1873,6 +1886,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox64.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox65.Focus();
                     }
@@ -1893,6 +1907,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox65.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox66.Focus();
                     }
@@ -1913,6 +1928,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox66.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox67.Focus();
                     }
@@ -1933,6 +1949,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox67.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox68.Focus();
                     }
@@ -1953,6 +1970,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox68.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox69.Focus();
                     }
@@ -1973,6 +1991,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox69.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox70.Focus();
                     }
@@ -1993,6 +2012,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox70.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox71.Focus();
                     }
@@ -2013,6 +2033,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox71.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox89.Focus();
                     }
@@ -2033,6 +2054,7 @@ namespace CT_App
                     }
                     else
                     {
+                        this.label.Text = this.textBox89.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox55.Focus();
                     }
