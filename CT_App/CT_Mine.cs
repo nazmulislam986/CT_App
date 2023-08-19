@@ -165,14 +165,31 @@ namespace CT_App
         }
         private void BalankFldMarMem()
         {
-            this.textBox2.Text = "";
-            this.textBox3.Text = "";
-            this.textBox4.Text = "";
-            this.textBox5.Text = "";
-            this.textBox6.Text = "";
-            this.textBox7.Text = "";
-            this.textBox8.Text = "";
-            this.textBox9.Text = "";
+            this.textBox72.Text  = "";
+            this.textBox73.Text  = "";
+            this.textBox78.Text  = "";
+            this.textBox75.Text  = "";
+            this.textBox76.Text  = "";
+            this.textBox77.Text  = "";
+            this.textBox79.Text  = "";
+            this.textBox80.Text  = "";
+            this.textBox81.Text  = "";
+            this.textBox82.Text  = "";
+            this.textBox83.Text  = "";
+            this.textBox84.Text  = "";
+            this.textBox85.Text  = "";
+            this.textBox86.Text  = "";
+            this.textBox87.Text  = "";
+            this.textBox88.Text  = "";
+
+            this.textBox2.Text  = "";
+            this.textBox3.Text  = "";
+            this.textBox4.Text  = "";
+            this.textBox5.Text  = "";
+            this.textBox6.Text  = "";
+            this.textBox7.Text  = "";
+            this.textBox8.Text  = "";
+            this.textBox9.Text  = "";
             this.textBox10.Text = "";
             this.textBox11.Text = "";
             this.textBox12.Text = "";
@@ -198,22 +215,22 @@ namespace CT_App
             this.textBox54.Text = "";
             this.textBox38.Text = "";
 
-            this.label9.Text  = "0";
-            this.label13.Text = "0";
-            this.label17.Text = "0";
-            this.label24.Text = "0";
-            this.label28.Text = "0";
-            this.label32.Text = "0";
-            this.label36.Text = "0";
-            this.label40.Text = "0";
-            this.label44.Text = "0";
-            this.label48.Text = "0";
-            this.label52.Text = "0";
-            this.label56.Text = "0";
-            this.label60.Text = "0";
-            this.label64.Text = "0";
-            this.label68.Text = "0";
-            this.label76.Text = "0";
+            this.label9.Text    = "0";
+            this.label13.Text   = "0";
+            this.label17.Text   = "0";
+            this.label24.Text   = "0";
+            this.label28.Text   = "0";
+            this.label32.Text   = "0";
+            this.label36.Text   = "0";
+            this.label40.Text   = "0";
+            this.label44.Text   = "0";
+            this.label48.Text   = "0";
+            this.label52.Text   = "0";
+            this.label56.Text   = "0";
+            this.label60.Text   = "0";
+            this.label64.Text   = "0";
+            this.label68.Text   = "0";
+            this.label76.Text   = "0";
 
             this.textBox56.Text = "";
             this.textBox57.Text = "";
@@ -231,10 +248,69 @@ namespace CT_App
             this.textBox69.Text = "";
             this.textBox70.Text = "";
             this.textBox71.Text = "";
-            this.textBox72.Text = "";
 
             this.textBox55.Text = "";
             this.label147.Text  = "0";
+            this.label148.Text  = "0";
+        }
+        private void AllItemAdd()
+        {
+            try
+            {
+                int num1 = Convert.ToInt32(this.label9.Text.Trim());
+                int num2 = Convert.ToInt32(this.label13.Text.Trim());
+                int num3 = Convert.ToInt32(this.label17.Text.Trim());
+                int num4 = Convert.ToInt32(this.label24.Text.Trim());
+                int num5 = Convert.ToInt32(this.label28.Text.Trim());
+                int num6 = Convert.ToInt32(this.label32.Text.Trim());
+                int num7 = Convert.ToInt32(this.label36.Text.Trim());
+                int num8 = Convert.ToInt32(this.label40.Text.Trim());
+                int num9 = Convert.ToInt32(this.label44.Text.Trim());
+                int num10 = Convert.ToInt32(this.label48.Text.Trim());
+                int num11 = Convert.ToInt32(this.label52.Text.Trim());
+                int num12 = Convert.ToInt32(this.label56.Text.Trim());
+                int num13 = Convert.ToInt32(this.label60.Text.Trim());
+                int num14 = Convert.ToInt32(this.label64.Text.Trim());
+                int num15 = Convert.ToInt32(this.label68.Text.Trim());
+                int num16 = Convert.ToInt32(this.label76.Text.Trim());
+                int totalItemSum = num1 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9 + num10 + num11 + num12 + num13 + num14 + num15 + num16;
+                this.label10.Text = totalItemSum.ToString();
+            }
+            catch (Exception ex)
+            {
+            }
+            
+        }
+        private void AllIinvAdd()
+        {
+            int num1 = Convert.ToInt32(this.textBox56.Text.Trim());
+            int num2 = Convert.ToInt32(this.textBox57.Text.Trim());
+            int num3 = num1 + num2;
+            this.label148.Text = num3.ToString();
+
+
+
+            //int totalInvSum;
+
+            //string num21 = (this.textBox56.Text.Trim());
+            //string num22 = (this.textBox57.Text.Trim());
+            //string num23 = (this.textBox58.Text.Trim());
+            //string num24 = (this.textBox59.Text.Trim());
+            //string num25 = (this.textBox60.Text.Trim());
+            //string num26 = (this.textBox61.Text.Trim());
+            //string num27 = (this.textBox62.Text.Trim());
+            //string num28 = (this.textBox63.Text.Trim());
+            //string num29 = (this.textBox64.Text.Trim());
+            //string num30 = (this.textBox65.Text.Trim());
+            //string num31 = (this.textBox66.Text.Trim());
+            //string num32 = (this.textBox67.Text.Trim());
+            //string num33 = (this.textBox68.Text.Trim());
+            //string num34 = (this.textBox69.Text.Trim());
+            //string num35 = (this.textBox70.Text.Trim());
+            //string num36 = (this.textBox71.Text.Trim());
+            //string num37 = (this.textBox89.Text.Trim());
+            //totalInvSum = Convert.ToInt32(num21)  + Convert.ToInt32(num22) + Convert.ToInt32(num23) + Convert.ToInt32(num24) + Convert.ToInt32(num25) + Convert.ToInt32(num26) + Convert.ToInt32(num27) + Convert.ToInt32(num28) + Convert.ToInt32(num29) + Convert.ToInt32(num30) + Convert.ToInt32(num31) + Convert.ToInt32(num32) + Convert.ToInt32(num33) + Convert.ToInt32(num34) + Convert.ToInt32(num35) + Convert.ToInt32(num36) + Convert.ToInt32(num37);
+            //this.label148.Text = totalInvSum.ToString();
         }
 
 
@@ -689,6 +765,1279 @@ namespace CT_App
             this.textBox34.ReadOnly = false;
         }
 
-        
+
+        private void textBox72_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox72.Text.Trim() != ""))
+                {
+                    this.textBox72.Focus();
+                }
+                else
+                {
+                    this.textBox3.Focus();
+                }
+            }
+        }
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox3.Text.Trim() != ""))
+                    {
+                        this.textBox3.Focus();
+                    }
+                    else
+                    {
+                        this.textBox2.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox2.Text.Trim() != ""))
+                    {
+                        this.textBox1.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox3.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox2.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label9.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox73.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox73_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox73.Text.Trim() != ""))
+                {
+                    this.textBox73.Focus();
+                }
+                else
+                {
+                    this.textBox5.Focus();
+                }
+            }
+        }
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox5.Text.Trim() != ""))
+                    {
+                        this.textBox5.Focus();
+                    }
+                    else
+                    {
+                        this.textBox4.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox4.Text.Trim() != ""))
+                    {
+                        this.textBox4.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox5.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox4.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label13.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox78.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox78_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox78.Text.Trim() != ""))
+                {
+                    this.textBox78.Focus();
+                }
+                else
+                {
+                    this.textBox7.Focus();
+                }
+            }
+        }
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox7.Text.Trim() != ""))
+                    {
+                        this.textBox7.Focus();
+                    }
+                    else
+                    {
+                        this.textBox6.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox6.Text.Trim() != ""))
+                    {
+                        this.textBox6.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox7.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox6.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label17.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox75.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox75_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox75.Text.Trim() != ""))
+                {
+                    this.textBox75.Focus();
+                }
+                else
+                {
+                    this.textBox9.Focus();
+                }
+            }
+        }
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox9.Text.Trim() != ""))
+                    {
+                        this.textBox9.Focus();
+                    }
+                    else
+                    {
+                        this.textBox8.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox8.Text.Trim() != ""))
+                    {
+                        this.textBox8.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox9.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox8.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label24.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox76.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox76_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox76.Text.Trim() != ""))
+                {
+                    this.textBox76.Focus();
+                }
+                else
+                {
+                    this.textBox11.Focus();
+                }
+            }
+        }
+        private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox11.Text.Trim() != ""))
+                    {
+                        this.textBox11.Focus();
+                    }
+                    else
+                    {
+                        this.textBox10.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox10_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox10.Text.Trim() != ""))
+                    {
+                        this.textBox10.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox11.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox10.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label28.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox77.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox77_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox77.Text.Trim() != ""))
+                {
+                    this.textBox77.Focus();
+                }
+                else
+                {
+                    this.textBox13.Focus();
+                }
+            }
+        }
+        private void textBox13_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox13.Text.Trim() != ""))
+                    {
+                        this.textBox13.Focus();
+                    }
+                    else
+                    {
+                        this.textBox12.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox12.Text.Trim() != ""))
+                    {
+                        this.textBox12.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox13.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox12.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label32.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox79.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox79_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox79.Text.Trim() != ""))
+                {
+                    this.textBox79.Focus();
+                }
+                else
+                {
+                    this.textBox15.Focus();
+                }
+            }
+        }
+        private void textBox15_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox15.Text.Trim() != ""))
+                    {
+                        this.textBox15.Focus();
+                    }
+                    else
+                    {
+                        this.textBox14.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox14_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox14.Text.Trim() != ""))
+                    {
+                        this.textBox14.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox15.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox14.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label36.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox80.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox80_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox80.Text.Trim() != ""))//work here after rest
+                {
+                    this.textBox80.Focus();
+                }
+                else
+                {
+                    this.textBox17.Focus();
+                }
+            }
+        }
+        private void textBox17_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox17.Text.Trim() != ""))
+                    {
+                        this.textBox17.Focus();
+                    }
+                    else
+                    {
+                        this.textBox16.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox16_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox16.Text.Trim() != ""))
+                    {
+                        this.textBox16.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox17.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox16.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label40.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox81.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox81_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox80.Text.Trim() != ""))
+                {
+                    this.textBox81.Focus();
+                }
+                else
+                {
+                    this.textBox19.Focus();
+                }
+            }
+        }
+        private void textBox19_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox19.Text.Trim() != ""))
+                    {
+                        this.textBox19.Focus();
+                    }
+                    else
+                    {
+                        this.textBox18.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox18_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox18.Text.Trim() != ""))
+                    {
+                        this.textBox18.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox19.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox18.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label44.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox82.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox82_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox82.Text.Trim() != ""))
+                {
+                    this.textBox82.Focus();
+                }
+                else
+                {
+                    this.textBox21.Focus();
+                }
+            }
+        }
+        private void textBox21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox21.Text.Trim() != ""))
+                    {
+                        this.textBox21.Focus();
+                    }
+                    else
+                    {
+                        this.textBox20.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox20.Text.Trim() != ""))
+                    {
+                        this.textBox20.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox21.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox20.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label48.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox83.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox83_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox83.Text.Trim() != ""))
+                {
+                    this.textBox83.Focus();
+                }
+                else
+                {
+                    this.textBox23.Focus();
+                }
+            }
+        }
+        private void textBox23_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox23.Text.Trim() != ""))
+                    {
+                        this.textBox23.Focus();
+                    }
+                    else
+                    {
+                        this.textBox22.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox22_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox22.Text.Trim() != ""))
+                    {
+                        this.textBox22.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox23.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox22.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label52.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox84.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox84_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox84.Text.Trim() != ""))
+                {
+                    this.textBox84.Focus();
+                }
+                else
+                {
+                    this.textBox25.Focus();
+                }
+            }
+        }
+        private void textBox25_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox25.Text.Trim() != ""))
+                    {
+                        this.textBox25.Focus();
+                    }
+                    else
+                    {
+                        this.textBox24.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox24_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox24.Text.Trim() != ""))
+                    {
+                        this.textBox24.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox25.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox24.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label56.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox85.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox85_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox85.Text.Trim() != ""))
+                {
+                    this.textBox85.Focus();
+                }
+                else
+                {
+                    this.textBox27.Focus();
+                }
+            }
+        }
+        private void textBox27_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox27.Text.Trim() != ""))
+                    {
+                        this.textBox27.Focus();
+                    }
+                    else
+                    {
+                        this.textBox26.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox26_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox26.Text.Trim() != ""))
+                    {
+                        this.textBox26.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox27.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox26.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label60.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox86.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox86_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox86.Text.Trim() != ""))
+                {
+                    this.textBox86.Focus();
+                }
+                else
+                {
+                    this.textBox29.Focus();
+                }
+            }
+        }
+        private void textBox29_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox29.Text.Trim() != ""))
+                    {
+                        this.textBox29.Focus();
+                    }
+                    else
+                    {
+                        this.textBox28.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox28_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox28.Text.Trim() != ""))
+                    {
+                        this.textBox28.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox29.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox28.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label64.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox87.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox87_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox87.Text.Trim() != ""))
+                {
+                    this.textBox87.Focus();
+                }
+                else
+                {
+                    this.textBox31.Focus();
+                }
+            }
+        }
+        private void textBox31_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox31.Text.Trim() != ""))
+                    {
+                        this.textBox31.Focus();
+                    }
+                    else
+                    {
+                        this.textBox30.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox30_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox30.Text.Trim() != ""))
+                    {
+                        this.textBox30.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox31.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox30.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label68.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.textBox88.Focus();
+                    }
+                }
+            }
+        }
+
+        private void textBox88_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.textBox88.Text.Trim() != ""))
+                {
+                    this.textBox88.Focus();
+                }
+                else
+                {
+                    this.textBox38.Focus();
+                }
+            }
+        }
+        private void textBox38_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox38.Text.Trim() != ""))
+                    {
+                        this.textBox38.Focus();
+                    }
+                    else
+                    {
+                        this.textBox54.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox54_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox54.Text.Trim() != ""))
+                    {
+                        this.textBox54.Focus();
+                    }
+                    else
+                    {
+                        int num1 = Convert.ToInt32(this.textBox38.Text.Trim());
+                        int num2 = Convert.ToInt32(this.textBox54.Text.Trim());
+                        int num3 = num1 * num2;
+                        this.label76.Text = num3.ToString();
+                        this.AllItemAdd();
+                        this.button13.Focus();
+                    }
+                }
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            this.BalankFldMarMem();
+            this.label10.Text = "0";
+        }
+
+        private void textBox56_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox56.Text.Trim() != ""))
+                    {
+                        this.textBox56.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox57.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox57_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox57.Text.Trim() != ""))
+                    {
+                        this.textBox57.Focus();
+                    }
+                    else
+                    {
+                        this.textBox58.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox58_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox58.Text.Trim() != ""))
+                    {
+                        this.textBox58.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox59.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox59_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox59.Text.Trim() != ""))
+                    {
+                        this.textBox59.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox60.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox60_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox60.Text.Trim() != ""))
+                    {
+                        this.textBox60.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox61.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox61_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox61.Text.Trim() != ""))
+                    {
+                        this.textBox61.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox62.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox62_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox62.Text.Trim() != ""))
+                    {
+                        this.textBox62.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox63.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox63_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox63.Text.Trim() != ""))
+                    {
+                        this.textBox63.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox64.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox64_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox64.Text.Trim() != ""))
+                    {
+                        this.textBox64.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox65.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox65_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox65.Text.Trim() != ""))
+                    {
+                        this.textBox65.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox66.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox66_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox66.Text.Trim() != ""))
+                    {
+                        this.textBox66.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox67.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox67_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox67.Text.Trim() != ""))
+                    {
+                        this.textBox67.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox68.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox68_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox68.Text.Trim() != ""))
+                    {
+                        this.textBox68.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox69.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox69_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox69.Text.Trim() != ""))
+                    {
+                        this.textBox69.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox70.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox70_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox70.Text.Trim() != ""))
+                    {
+                        this.textBox70.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox71.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox71_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox71.Text.Trim() != ""))
+                    {
+                        this.textBox71.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox89.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox89_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox89.Text.Trim() != ""))
+                    {
+                        this.textBox89.Focus();
+                    }
+                    else
+                    {
+                        this.AllIinvAdd();
+                        this.textBox55.Focus();
+                    }
+                }
+            }
+        }
     }
 }
