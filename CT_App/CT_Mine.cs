@@ -39,6 +39,7 @@ namespace CT_App
             this.radioButton2.Enabled = false;
             this.button7.Visible = false;
             this.textBox37.ReadOnly = true;
+            this.panel9.Visible = false;
         }
 
         //-----------------------------------------------------------------------
@@ -111,6 +112,7 @@ namespace CT_App
             }
             catch (Exception)
             {
+                //MessageBox.Show(ex.Message);
             }
         }
         private void fillGivenData()
@@ -138,7 +140,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
         private void BalankFld()
@@ -165,22 +167,22 @@ namespace CT_App
         }
         private void BalankFldMarMem()
         {
-            this.textBox72.Text  = "";
-            this.textBox73.Text  = "";
-            this.textBox78.Text  = "";
-            this.textBox75.Text  = "";
-            this.textBox76.Text  = "";
-            this.textBox77.Text  = "";
-            this.textBox79.Text  = "";
-            this.textBox80.Text  = "";
-            this.textBox81.Text  = "";
-            this.textBox82.Text  = "";
-            this.textBox83.Text  = "";
-            this.textBox84.Text  = "";
-            this.textBox85.Text  = "";
-            this.textBox86.Text  = "";
-            this.textBox87.Text  = "";
-            this.textBox88.Text  = "";
+            this.textBox72.Text = "";
+            this.textBox73.Text = "";
+            this.textBox78.Text = "";
+            this.textBox75.Text = "";
+            this.textBox76.Text = "";
+            this.textBox77.Text = "";
+            this.textBox79.Text = "";
+            this.textBox80.Text = "";
+            this.textBox81.Text = "";
+            this.textBox82.Text = "";
+            this.textBox83.Text = "";
+            this.textBox84.Text = "";
+            this.textBox85.Text = "";
+            this.textBox86.Text = "";
+            this.textBox87.Text = "";
+            this.textBox88.Text = "";
 
             this.textBox2.Text  = "";
             this.textBox3.Text  = "";
@@ -231,6 +233,7 @@ namespace CT_App
             this.label64.Text   = "0";
             this.label68.Text   = "0";
             this.label76.Text   = "0";
+            this.textBox90.Text = "0";
 
             this.textBox56.Text = "";
             this.textBox57.Text = "";
@@ -251,7 +254,31 @@ namespace CT_App
 
             this.textBox55.Text = "";
             this.label147.Text  = "0";
-            this.textBox90.Text  = "";
+
+            this.label179.Text  = "0";
+            this.label172.Text  = "0";
+            this.label171.Text  = "0";
+            this.label170.Text  = "0";
+            this.label165.Text  = "0";
+            this.label164.Text  = "0";
+            this.label163.Text  = "0";
+            this.label162.Text  = "0";
+            this.label157.Text  = "0";
+            this.label156.Text  = "0";
+            this.label155.Text  = "0";
+            this.label154.Text  = "0";
+            this.label169.Text  = "0";
+            this.label168.Text  = "0";
+            this.label167.Text  = "0";
+            this.label166.Text  = "0";
+            this.label161.Text  = "0";
+            this.label160.Text  = "0";
+            this.label159.Text  = "0";
+            this.label158.Text  = "0";
+            this.label153.Text  = "0";
+            this.label152.Text  = "0";
+            this.label151.Text  = "0";
+            this.label150.Text  = "0";
         }
         private void AllItemAdd()
         {
@@ -278,44 +305,45 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-            }            
+                //MessageBox.Show(ex.Message);
+            }
         }
         private void AllIinvAdd()
         {
             try
             {
-                int num21 = Convert.ToInt32(this.label.Text.Trim());
-                int num22 = Convert.ToInt32(this.label.Text.Trim());
-                int num23 = Convert.ToInt32(this.label.Text.Trim());
-                int num24 = Convert.ToInt32(this.label.Text.Trim());
-                int num25 = Convert.ToInt32(this.label.Text.Trim());
-                int num26 = Convert.ToInt32(this.label.Text.Trim());
-                int num27 = Convert.ToInt32(this.label.Text.Trim());
-                int num28 = Convert.ToInt32(this.label.Text.Trim());
-                int num29 = Convert.ToInt32(this.label.Text.Trim());
-                int num30 = Convert.ToInt32(this.label.Text.Trim());
-                int num31 = Convert.ToInt32(this.label.Text.Trim());
-                int num32 = Convert.ToInt32(this.label.Text.Trim());
-                int num33 = Convert.ToInt32(this.label.Text.Trim());
-                int num34 = Convert.ToInt32(this.label.Text.Trim());
-                int num35 = Convert.ToInt32(this.label.Text.Trim());
-                int num36 = Convert.ToInt32(this.label.Text.Trim());
-                int num37 = Convert.ToInt32(this.label.Text.Trim());
-                int num38 = Convert.ToInt32(this.label.Text.Trim());
-                int num39 = Convert.ToInt32(this.label.Text.Trim());
-                int num40 = Convert.ToInt32(this.label.Text.Trim());
-                int num41 = Convert.ToInt32(this.label.Text.Trim());
-                int num42 = Convert.ToInt32(this.label.Text.Trim());
-                int num43 = Convert.ToInt32(this.label.Text.Trim());
-                int num44 = Convert.ToInt32(this.label.Text.Trim());
+                int num21 = Convert.ToInt32(this.label179.Text.Trim());
+                int num22 = Convert.ToInt32(this.label172.Text.Trim());
+                int num23 = Convert.ToInt32(this.label171.Text.Trim());
+                int num24 = Convert.ToInt32(this.label170.Text.Trim());
+                int num25 = Convert.ToInt32(this.label169.Text.Trim());
+                int num26 = Convert.ToInt32(this.label168.Text.Trim());
+                int num27 = Convert.ToInt32(this.label167.Text.Trim());
+                int num28 = Convert.ToInt32(this.label166.Text.Trim());
+                int num29 = Convert.ToInt32(this.label165.Text.Trim());
+                int num30 = Convert.ToInt32(this.label164.Text.Trim());
+                int num31 = Convert.ToInt32(this.label163.Text.Trim());
+                int num32 = Convert.ToInt32(this.label162.Text.Trim());
+                int num33 = Convert.ToInt32(this.label161.Text.Trim());
+                int num34 = Convert.ToInt32(this.label160.Text.Trim());
+                int num35 = Convert.ToInt32(this.label159.Text.Trim());
+                int num36 = Convert.ToInt32(this.label158.Text.Trim());
+                int num37 = Convert.ToInt32(this.label157.Text.Trim());
+                int num38 = Convert.ToInt32(this.label156.Text.Trim());
+                int num39 = Convert.ToInt32(this.label155.Text.Trim());
+                int num40 = Convert.ToInt32(this.label154.Text.Trim());
+                int num41 = Convert.ToInt32(this.label153.Text.Trim());
+                int num42 = Convert.ToInt32(this.label152.Text.Trim());
+                int num43 = Convert.ToInt32(this.label151.Text.Trim());
+                int num44 = Convert.ToInt32(this.label150.Text.Trim());
                 int sumNums = num21 + num22 + num23 + num24 + num25 + num26 + num27 + num28 + num29 + num30 + num31 + num32 + num33 + num34 + num35 + num36 + num37 + num38 + num39 + num40 + num41 + num42 + num43 + num44;
                 this.textBox90.Text = sumNums.ToString();
             }
             catch (Exception ex)
             {
-            }            
+                //MessageBox.Show(ex.Message);
+            }
         }
-
 
 
         //---------------------------------------------------------------------------
@@ -326,15 +354,11 @@ namespace CT_App
             this.textBox1.Text = "";
             this.button1.Text = "Add";
         }
-        private void button13_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
-            //Code Here
-
-
-
-
-
             this.BalankFldMarMem();
+            this.label10.Text = "0";
+            this.button1.Text = "Add";
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -379,6 +403,23 @@ namespace CT_App
                     this.fillData();
                     this.textBox1.ReadOnly = true;
                     this.textBox1.Text = "";
+                    this.button1.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
+            else if (this.button1.Text == "U to M")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_Date,Amount) VALUES('" + this.DltDate + "','" + this.label10.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Memo Amount Added"));
+                    this.fillData();
                     this.button1.Text = "Add";
                 }
                 catch (Exception ex)
@@ -769,7 +810,6 @@ namespace CT_App
             this.textBox34.ReadOnly = false;
         }
 
-
         private void textBox72_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -781,6 +821,7 @@ namespace CT_App
                 else
                 {
                     this.textBox3.Focus();
+                    this.button1.Text = "U to M";
                 }
             }
         }
@@ -813,7 +854,7 @@ namespace CT_App
                 {
                     if (!(this.textBox2.Text.Trim() != ""))
                     {
-                        this.textBox1.Focus();
+                        this.textBox2.Focus();
                     }
                     else
                     {
@@ -1692,16 +1733,9 @@ namespace CT_App
                         int num3 = num1 * num2;
                         this.label76.Text = num3.ToString();
                         this.AllItemAdd();
-                        this.button13.Focus();
                     }
                 }
             }
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            this.BalankFldMarMem();
-            this.label10.Text = "0";
         }
 
         private void textBox56_KeyPress(object sender, KeyPressEventArgs e)
@@ -1760,7 +1794,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox58.Text.Trim();
+                        this.label171.Text = this.textBox58.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox59.Focus();
                     }
@@ -1781,7 +1815,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox59.Text.Trim();
+                        this.label170.Text = this.textBox59.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox60.Focus();
                     }
@@ -1802,7 +1836,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox60.Text.Trim();
+                        this.label169.Text = this.textBox60.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox61.Focus();
                     }
@@ -1823,7 +1857,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox61.Text.Trim();
+                        this.label168.Text = this.textBox61.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox62.Focus();
                     }
@@ -1844,7 +1878,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox62.Text.Trim();
+                        this.label167.Text = this.textBox62.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox63.Focus();
                     }
@@ -1865,7 +1899,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox63.Text.Trim();
+                        this.label166.Text = this.textBox63.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox64.Focus();
                     }
@@ -1886,7 +1920,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox64.Text.Trim();
+                        this.label165.Text = this.textBox64.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox65.Focus();
                     }
@@ -1907,7 +1941,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox65.Text.Trim();
+                        this.label164.Text = this.textBox65.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox66.Focus();
                     }
@@ -1928,7 +1962,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox66.Text.Trim();
+                        this.label163.Text = this.textBox66.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox67.Focus();
                     }
@@ -1949,7 +1983,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox67.Text.Trim();
+                        this.label162.Text = this.textBox67.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox68.Focus();
                     }
@@ -1970,7 +2004,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox68.Text.Trim();
+                        this.label161.Text = this.textBox68.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox69.Focus();
                     }
@@ -1991,7 +2025,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox69.Text.Trim();
+                        this.label160.Text = this.textBox69.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox70.Focus();
                     }
@@ -2012,7 +2046,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox70.Text.Trim();
+                        this.label159.Text = this.textBox70.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox71.Focus();
                     }
@@ -2033,7 +2067,7 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox71.Text.Trim();
+                        this.label158.Text = this.textBox71.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox89.Focus();
                     }
@@ -2054,11 +2088,182 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label.Text = this.textBox89.Text.Trim();
+                        this.label157.Text = this.textBox89.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox91.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox91_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox91.Text.Trim() != ""))
+                    {
+                        this.textBox91.Focus();
+                    }
+                    else
+                    {
+                        this.label156.Text = this.textBox91.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox110.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox110_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox110.Text.Trim() != ""))
+                    {
+                        this.textBox110.Focus();
+                    }
+                    else
+                    {
+                        this.label155.Text = this.textBox110.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox111.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox111_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox111.Text.Trim() != ""))
+                    {
+                        this.textBox111.Focus();
+                    }
+                    else
+                    {
+                        this.label154.Text = this.textBox111.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox112.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox112_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox112.Text.Trim() != ""))
+                    {
+                        this.textBox112.Focus();
+                    }
+                    else
+                    {
+                        this.label153.Text = this.textBox112.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox113.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox113_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox113.Text.Trim() != ""))
+                    {
+                        this.textBox113.Focus();
+                    }
+                    else
+                    {
+                        this.label152.Text = this.textBox113.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox114.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox114_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox114.Text.Trim() != ""))
+                    {
+                        this.textBox114.Focus();
+                    }
+                    else
+                    {
+                        this.label151.Text = this.textBox114.Text.Trim();
+                        this.AllIinvAdd();
+                        this.textBox115.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox115_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox115.Text.Trim() != ""))
+                    {
+                        this.textBox115.Focus();
+                    }
+                    else
+                    {
+                        this.label151.Text = this.textBox114.Text.Trim();
                         this.AllIinvAdd();
                         this.textBox55.Focus();
                     }
                 }
+            }
+        }
+        private void textBox55_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.textBox55.Text.Trim() != "")
+                {
+                    double num = double.Parse(this.textBox55.Text.Trim());
+                    double num1 = double.Parse(this.textBox90.Text.Trim());
+                    double num3 = num1 - num;
+                    decimal num2 = Convert.ToDecimal(num3.ToString());
+                    Label str1 = this.label147;
+                    decimal num4 = Math.Round(num2, 4);
+                    num3 = double.Parse(num4.ToString());
+                    str1.Text = num3.ToString();
+                }
+                else
+                {
+                    this.label147.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
     }
