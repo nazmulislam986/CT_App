@@ -30,8 +30,11 @@ namespace CT_App
             this.AmtCrDataView();
             this.fillDailyData();
             this.totalDailyData();
+            this.fillInstData();
+            this.totalInstData();
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
+            this.textBox32.ReadOnly = true;
             this.comboBox1.Enabled = false;
             this.dateTimePicker3.Enabled = false;
             this.textBox34.ReadOnly = true;
@@ -43,6 +46,7 @@ namespace CT_App
             this.textBox37.ReadOnly = true;
             this.textBox50.ReadOnly = true;
             this.panel9.Visible = false;
+            //this.panel12.Visible = false;
             this.button12.Visible = false;
             this.panel10.Visible = false;
             this.panel11.Visible = false;
@@ -148,6 +152,25 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT ID,A_Date as [Date],A_Amount as [Amount] FROM Daily ORDER BY [ID] DESC "), this.conn);//D_FPAmount as [DFPAmt],D_SPAmount as [DSPAmt],
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
                 dataGridView4.DataSource = dataTableCutAmt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+        private void fillInstData()
+        {
+            try
+            {
+                DataTable dataTableDaiAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,InsPay_Date as [Date],InsPay as [PayAmt],I_ID as [UQID] FROM Installment ORDER BY [ID] DESC "), this.conn);
+                odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
+                dataGridView2.DataSource = dataTableDaiAmt.DefaultView;
+
+                DataTable dataTableTakeiAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterTakiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,I_Date as [Date],Take_Total as [Total],Take_Anot as [Anot],Take_Mine as [Mine] FROM Installment WHERE Take_Data='NPD' ORDER BY [ID] DESC "), this.conn);
+                odbcDataAdapterTakiAmt.Fill(dataTableTakeiAmt);
+                dataGridView6.DataSource = dataTableTakeiAmt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -367,6 +390,20 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterAmUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(A_Amount) FROM Daily"), this.conn);
                 dataAdapterAmUnr.Fill(dataTableDaiylAmt);
                 this.label121.Text = dataTableDaiylAmt.Rows[0][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+        private void totalInstData()
+        {
+            try
+            {
+                DataTable dataTableDailAmt = new DataTable();
+                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(InsPay) FROM Installment"), this.conn);
+                dataAdapterAmtUnr.Fill(dataTableDailAmt);
+                this.label211.Text = dataTableDailAmt.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
@@ -775,10 +812,169 @@ namespace CT_App
             this.label193.Text = "0";
             this.button14.Text = "Add";
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.button4.Text == "Add")
+            {
+                this.textBox32.ReadOnly = false;
+                this.textBox32.Focus();
+                this.button4.Text = "Save";
+            }
+            else if (this.button4.Text == "Save")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay) VALUES('" + this.textBox98.Text.Trim() + "','" + this.DltDate + "','" + this.textBox32.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    this.fillInstData();
+                    this.totalInstData();
+                    MessageBox.Show(string.Concat("Successfull Daily InstallPay Added"));
+                    this.textBox32.ReadOnly = true;
+                    this.textBox32.Text = "";
+                    this.button4.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
+            else if (this.button4.Text == "Updt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand command = new OleDbCommand("UPDATE Installment SET InsPay_Date = '" + this.dateTimePicker2.Text.Trim() + "' WHERE I_ID= '" + this.label201.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Update Instrallment Date"));
+                    this.fillInstData();
+                    this.textBox32.ReadOnly = true;
+                    this.textBox32.Text = "";
+                    this.button4.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (this.button13.Text == "Add")
+            {
+                this.textBox94.ReadOnly = false;
+                this.textBox94.Text = "";
+                this.textBox95.ReadOnly = false;
+                this.textBox95.Text = "";
+                this.textBox96.ReadOnly = false;
+                this.textBox96.Text = "";
+                this.textBox97.ReadOnly = false;
+                this.textBox97.Text = "";
+                this.label195.Text = "0";
+                TextBox textBox = this.textBox99;
+                string[] strArrays = new string[] { "IS", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button13.Text = "Insert";
+                this.textBox94.Focus();
+            }
+            else if (this.button13.Text == "Insert")
+            { 
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,InsPerMonth,PerMonthPay,Take_Data) VALUES('" + this.textBox99.Text.Trim() + "','" + this.DltDate + "','" + this.textBox94.Text.Trim() + "','" + this.textBox96.Text.Trim() + "','" + this.textBox97.Text.Trim() + "','" + this.textBox95.Text.Trim() + "','" + this.label195.Text.Trim() + "','" + this.label216.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    this.fillInstData();
+                    this.totalInstData();
+                    MessageBox.Show(string.Concat("Successfull Inserted"));
+                    this.textBox94.ReadOnly = false;
+                    this.textBox94.Text = "";
+                    this.textBox95.ReadOnly = false;
+                    this.textBox95.Text = "";
+                    this.textBox96.ReadOnly = false;
+                    this.textBox96.Text = "";
+                    this.textBox97.ReadOnly = false;
+                    this.textBox97.Text = "";
+                    this.label195.Text = "0";
+                    this.button13.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (this.button13.Text == "Dlt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand command = new OleDbCommand("UPDATE Installment SET [Take_Data]='TPD' WHERE I_ID= '" + this.label218.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Deleted - [", this.label218.Text + "] "));
+                    this.fillInstData();
+                    if (this.dataGridView6.RowCount > 0)
+                    {
+                        this.totalInstData();
+                    }
+                    else
+                    {
+                        this.label203.Text = "00";
+                        this.label72.Text  = "00";
+                        this.label206.Text = "00";
+                        this.label205.Text = "00";
+                    }
+                    this.button13.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.textBox32.ReadOnly = false;
+            this.textBox32.Text = "";
+            this.textBox94.ReadOnly = false;
+            this.textBox94.Text = "";
+            this.textBox95.ReadOnly = false;
+            this.textBox95.Text = "";
+            this.textBox96.ReadOnly = false;
+            this.textBox96.Text = "";
+            this.textBox97.ReadOnly = false;
+            this.textBox97.Text = "";
+            this.label195.Text = "0";
+            this.label201.Text = "0";
+            this.label212.Text = "0";
+            this.button4.Text = "Add";
+            this.button13.Text = "Add";
+        }
+        private void label217_DoubleClick(object sender, EventArgs e)
+        {
+            //code refresh for Due&Paid
+        }
+
+        //-----------------------------------------------------------------------
+        //------------------------------Time Event Work--------------------------
+        //-----------------------------------------------------------------------
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
         }
+
+        //-----------------------------------------------------------------------
+        //------------------------------All DataGrid Work------------------------
+        //-----------------------------------------------------------------------
         private void dataGridView3_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -867,6 +1063,27 @@ namespace CT_App
             this.label193.Text = dataTable.Rows[0][2].ToString();
             this.textBox50.ReadOnly = false;
             this.textBox50.Focus();
+        }
+        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.button4.Text = "Updt";
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,InsPay FROM Installment WHERE ID=", this.dataGridView2.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            oleDbData.Fill(dataTable);
+            this.label201.Text = dataTable.Rows[0][0].ToString();
+            this.label212.Text = dataTable.Rows[0][1].ToString();
+            this.textBox32.ReadOnly = false;
+            this.textBox32.Focus();
+        }
+        private void dataGridView6_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.button13.Text = "Dlt";
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,Take_Anot,Take_Mine FROM Installment WHERE ID=", this.dataGridView6.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            oleDbData.Fill(dataTable);
+            this.label218.Text = dataTable.Rows[0][0].ToString();
+            this.label199.Text = dataTable.Rows[0][1].ToString();
+            this.label198.Text = dataTable.Rows[0][2].ToString();
         }
 
         //-----------------------------------------------------------------------
@@ -2483,7 +2700,7 @@ namespace CT_App
                         strArrays[3] = month.ToString();
                         strArrays[4] = millis.ToString();
                         textBox.Text = string.Concat(strArrays);
-                        int dev = Convert.ToInt32(this.textBox37.Text) / 2;
+                        int dev = Convert.ToInt32(this.textBox37.Text.Trim()) / 2;
                         this.label194.Text = dev.ToString();
                         this.button10.Focus();
                     }
@@ -2519,8 +2736,133 @@ namespace CT_App
                 }
             }
         }
-        
+        private void textBox32_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox32.Text.Trim() != ""))
+                    {
+                        MessageBox.Show("Please Insert Amount.");
+                        this.textBox32.Focus();
+                    }
+                    else
+                    {
+                        TextBox textBox = this.textBox98;
+                        string[] strArrays = new string[] { "I", null, null, null, null };
+                        int date = DateTime.Now.Day;
+                        int month = DateTime.Now.Month;
+                        int millis = DateTime.Now.Millisecond;
+                        strArrays[2] = date.ToString();
+                        strArrays[3] = month.ToString();
+                        strArrays[4] = millis.ToString();
+                        textBox.Text = string.Concat(strArrays);
+                        this.button4.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox94_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox94.Text.Trim() != ""))
+                    {
+                        MessageBox.Show("Please Insert Amount.");
+                        this.textBox32.Focus();
+                    }
+                    else
+                    {
+                        this.textBox95.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox95_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox95.Text.Trim() != ""))
+                    {
+                        MessageBox.Show("Please Insert Amount.");
+                        this.textBox35.Focus();
+                    }
+                    else
+                    {
+                        this.textBox96.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox95_TextChanged(object sender, EventArgs e)
+        {
+            if (!(this.textBox95.Text.Trim() != ""))
+            {
+                MessageBox.Show("Please Insert Amount.");
+                this.textBox35.Focus();
+            }
+            else
+            {
+                int dev = Convert.ToInt32(this.textBox94.Text.Trim()) / Convert.ToInt32(this.textBox95.Text.Trim());
+                this.label195.Text = dev.ToString();
+            }
+        }
+        private void textBox96_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox96.Text.Trim() != ""))
+                    {
+                        MessageBox.Show("Please Insert Amount.");
+                        this.textBox96.Focus();
+                    }
+                    else
+                    {
+                        this.textBox97.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox97_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox97.Text.Trim() != ""))
+                    {
+                        MessageBox.Show("Please Insert Amount.");
+                        this.textBox97.Focus();
+                    }
+                    else
+                    {
+                        this.button13.Focus();
+                    }
+                }
+            }
+        }
+
+
+
         #endregion
 
+        
     }
 }
