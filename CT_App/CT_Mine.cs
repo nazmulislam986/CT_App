@@ -21,9 +21,6 @@ namespace CT_App
         {
             InitializeComponent();
             this.DltDate = DateTime.Now.ToString("MM/dd/yyyy");
-            this.textBox1.ReadOnly = true;
-            this.button1.Text = "Add";
-            this.dateTimePicker1.Visible = false;
             this.fillData();
             this.AmtDataView();
             this.fillGivenData();
@@ -32,6 +29,7 @@ namespace CT_App
             this.totalDailyData();
             this.fillInstData();
             this.totalInstData();
+            this.textBox1.ReadOnly = true;
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
             this.textBox32.ReadOnly = true;
@@ -48,8 +46,8 @@ namespace CT_App
             this.panel9.Visible = false;
             //this.panel12.Visible = false;
             this.button12.Visible = false;
-            this.panel10.Visible = false;
-            this.panel11.Visible = false;
+            //this.panel10.Visible = false;
+            //this.panel11.Visible = false;
         }
 
         //-----------------------------------------------------------------------
@@ -60,7 +58,7 @@ namespace CT_App
             try
             {
                 DataTable dataTabledltAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT ID,M_Date as [Date],Amount as [Amount] FROM Market ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT M_ID as [ID],M_Date as [Date],M_Amount as [Amount] FROM Market ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
                 dataGridView1.DataSource = dataTabledltAmt.DefaultView;
             }
@@ -74,7 +72,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableAmt = new DataTable();
-                OleDbDataAdapter dataAdapterdltAmtT = new OleDbDataAdapter(string.Concat(" SELECT SUM(Amount) FROM Market "), this.conn);
+                OleDbDataAdapter dataAdapterdltAmtT = new OleDbDataAdapter(string.Concat(" SELECT SUM(M_Amount) FROM Market "), this.conn);
                 dataAdapterdltAmtT.Fill(dataTableAmt);
                 if (dataTableAmt.Rows.Count > 0)
                 {
@@ -130,7 +128,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableGivenAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT ID,Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDate],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDate],ThroughBy as [Through],Saving_Amount as [STK],Unrated_Amount as [UTK] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDate],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDate],ThroughBy as [Through],Saving_Amount as [STK],Unrated_Amount as [UTK] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterGivenAmt.Fill(dataTableGivenAmt);
                 dataGridView3.DataSource = dataTableGivenAmt.DefaultView;
             }
@@ -144,12 +142,12 @@ namespace CT_App
             try
             {
                 DataTable dataTableDaiAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,D_Date as [Date],NotTaken FROM Daily WHERE [D_Data]='NKN' ORDER BY [ID] DESC "), this.conn);//D_FPAmount as [DFPAmt],D_SPAmount as [DSPAmt],
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT D_ID as [ID],D_Date as [Date],NotTaken FROM Daily WHERE [D_Data]='NTKN' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView5.DataSource = dataTableDaiAmt.DefaultView;
 
                 DataTable dataTableCutAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT ID,A_Date as [Date],A_Amount as [Amount] FROM Daily ORDER BY [ID] DESC "), this.conn);//D_FPAmount as [DFPAmt],D_SPAmount as [DSPAmt],
+                OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT D_ID as [ID],A_Date as [TDate],A_Amount as [TAmt],D_Date as [DDate],NotTaken as [NTAmt] FROM Daily ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
                 dataGridView4.DataSource = dataTableCutAmt.DefaultView;
             }
@@ -163,12 +161,12 @@ namespace CT_App
             try
             {
                 DataTable dataTableDaiAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,InsPay_Date as [Date],InsPay as [PayAmt],I_ID as [UQID] FROM Installment ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT I_ID as [ID],InsPay_Date as [Date],InsPay as [PayAmt] FROM Installment ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView2.DataSource = dataTableDaiAmt.DefaultView;
 
                 DataTable dataTableTakeiAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterTakiAmt = new OleDbDataAdapter(string.Concat("SELECT ID,I_Date as [Date],Take_Total as [Total],Take_Anot as [Anot],Take_Mine as [Mine] FROM Installment WHERE Take_Data='NPD' ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterTakiAmt = new OleDbDataAdapter(string.Concat("SELECT I_ID as [ID],I_Date as [Date],Take_Total as [Total],Take_Anot as [Anot],Take_Mine as [Mine] FROM Installment WHERE Take_Data='NPD' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterTakiAmt.Fill(dataTableTakeiAmt);
                 dataGridView6.DataSource = dataTableTakeiAmt.DefaultView;
             }
@@ -383,7 +381,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableDailAmt = new DataTable();
-                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken) FROM Daily WHERE [D_Data]='NKN' "), this.conn);
+                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken) FROM Daily WHERE [D_Data]='NTKN' "), this.conn);
                 dataAdapterAmtUnr.Fill(dataTableDailAmt);
                 this.label94.Text = dataTableDailAmt.Rows[0][0].ToString();
                 DataTable dataTableDaiylAmt = new DataTable();
@@ -431,14 +429,44 @@ namespace CT_App
             {
                 this.textBox1.ReadOnly = false;
                 this.textBox1.Focus();
+                TextBox textBox = this.textBox101;
+                string[] strArrays = new string[] { "M", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.button1.Text = "Save";
+                this.BalankFldMarMem();
+            }
+            else if (this.button1.Text == "Save")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.DltDate + "','" + this.textBox1.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Data Added"));
+                    this.fillData();
+                    this.textBox1.ReadOnly = true;
+                    this.textBox1.Text = "";
+                    this.button1.Text = "Add";
+                    this.BalankFldMarMem();
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
             }
             else if (this.button1.Text == "Updt")
             {
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Market SET Amount= '" + this.textBox1.Text.Trim() + "',M_Date= '" + this.dateTimePicker1.Text.Trim() + "' WHERE ID= " + this.label6.Text.Trim() + " ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Market SET M_Amount= '" + this.textBox1.Text.Trim() + "',M_Date= '" + this.dateTimePicker1.Text.Trim() + "' WHERE M_ID= '" + this.label6.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update - ", this.label6.Text));
@@ -447,28 +475,8 @@ namespace CT_App
                     this.textBox1.ReadOnly = true;
                     this.textBox1.Text = "";
                     this.label6.Text = "";
-                    this.dateTimePicker1.Visible = false;
                     this.button1.Text = "Add";
-
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show(ex.Message);
-                }
-            }
-            else if (this.button1.Text == "Save")
-            {
-                try
-                {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_Date,Amount) VALUES('" + this.DltDate + "','" + this.textBox1.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Data Added"));
-                    this.fillData();
-                    this.textBox1.ReadOnly = true;
-                    this.textBox1.Text = "";
-                    this.button1.Text = "Add";
+                    this.BalankFldMarMem();
                 }
                 catch (Exception ex)
                 {
@@ -480,12 +488,13 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_Date,Amount) VALUES('" + this.DltDate + "','" + this.label10.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.DltDate + "','" + this.label10.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Memo Amount Added"));
                     this.fillData();
                     this.button1.Text = "Add";
+                    this.BalankFldMarMem();
                 }
                 catch (Exception ex)
                 {
@@ -510,6 +519,15 @@ namespace CT_App
                 this.checkBox1.Enabled = true;
                 this.radioButton1.Enabled = true;
                 this.radioButton2.Enabled = true;
+                TextBox textBox = this.textBox35;
+                string[] strArrays = new string[] { "G", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
             }
             else if (this.button6.Text == "Save")
             {
@@ -518,7 +536,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Given_To],[Total_Given],[Given_Date],[Remarks_Given],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','" + this.label180.Text.Trim() + "')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Given_To],[Total_Given],[Given_Date],[Remarks_Given],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Given"));
@@ -535,7 +553,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Take_To],[Total_Take],[Take_Date],[Remarks_Take],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','" + this.label180.Text.Trim() + "')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Take_To],[Total_Take],[Take_Date],[Remarks_Take],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Taken"));
@@ -604,7 +622,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','" + this.label180.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Saving Amount"));
@@ -622,7 +640,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','" + this.label180.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Unrated Amount"));
@@ -635,6 +653,10 @@ namespace CT_App
                     //MessageBox.Show(ex.Message);
                 }
             }
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.button6.Text = "New";
         }
         private void button7_Click(object sender, EventArgs e)
         {
@@ -668,7 +690,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data) VALUES('" + this.textBox93.Text.Trim() + "','" + this.DltDate + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label181.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data) VALUES('" + this.textBox93.Text.Trim() + "','" + this.DltDate + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Daily Data Added"));
@@ -721,7 +743,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(A_Date,A_Amount,A_Data) VALUES('" + this.DltDate + "','" + this.textBox50.Text.Trim() + "','" + this.textBox92.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,A_Date,A_Amount,A_Data) VALUES('" + this.textBox92.Text.Trim() + "','" + this.DltDate + "','" + this.textBox50.Text.Trim() + "','" + this.textBox92.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Daily Cut Added"));
@@ -765,28 +787,37 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Daily SET [D_Data]='TKN',[TakenDate]='" + this.DltDate + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
-                command.ExecuteNonQuery();
+                OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO DailyX SELECT * FROM Daily WHERE D_ID = '" + this.label182.Text.Trim() + "' "), this.conn);
+                sendData.ExecuteNonQuery();
+                OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM Daily WHERE D_ID = '" + this.label182.Text.Trim() + "' "), this.conn);
+                sendDData.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [", this.label182.Text + "] "));
-                this.fillDailyData();
-                if (this.dataGridView5.RowCount > 0)
-                {
-                    this.totalDailyData();
-                }
-                else
-                {
-                    this.label94.Text = "00";
-                }
-                this.button12.Visible = false;
-                this.button10.Text = "Add";
-                this.textBox37.Text = "";
-                this.label182.Text = "0";
-                this.label185.Text = "0";
-                this.label187.Text = "0";
-                this.label189.Text = "0";
-                this.label191.Text = "0";
-                this.label193.Text = "0";
+
+
+                //this.conn.Open();
+                //OleDbCommand command = new OleDbCommand("UPDATE Daily SET [D_Data]='TKN',[TakenDate]='" + this.DltDate + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                //command.ExecuteNonQuery();
+                //this.conn.Close();
+                //MessageBox.Show(string.Concat("Successfull Deleted - [", this.label182.Text + "] "));
+                //this.fillDailyData();
+                //if (this.dataGridView5.RowCount > 0)
+                //{
+                //    this.totalDailyData();
+                //}
+                //else
+                //{
+                //    this.label94.Text = "00";
+                //}
+                //this.button12.Visible = false;
+                //this.button10.Text = "Add";
+                //this.textBox37.Text = "";
+                //this.label182.Text = "0";
+                //this.label185.Text = "0";
+                //this.label187.Text = "0";
+                //this.label189.Text = "0";
+                //this.label191.Text = "0";
+                //this.label193.Text = "0";
             }
             catch (Exception ex)
             {
@@ -818,6 +849,15 @@ namespace CT_App
             {
                 this.textBox32.ReadOnly = false;
                 this.textBox32.Focus();
+                TextBox textBox = this.textBox98;
+                string[] strArrays = new string[] { "I", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.button4.Text = "Save";
             }
             else if (this.button4.Text == "Save")
@@ -890,7 +930,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,InsPerMonth,PerMonthPay,Take_Data) VALUES('" + this.textBox99.Text.Trim() + "','" + this.DltDate + "','" + this.textBox94.Text.Trim() + "','" + this.textBox96.Text.Trim() + "','" + this.textBox97.Text.Trim() + "','" + this.textBox95.Text.Trim() + "','" + this.label195.Text.Trim() + "','" + this.label216.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,InsPerMonth,PerMonthPay,Take_Data) VALUES('" + this.textBox99.Text.Trim() + "','" + this.DltDate + "','" + this.textBox94.Text.Trim() + "','" + this.textBox96.Text.Trim() + "','" + this.textBox97.Text.Trim() + "','" + this.textBox95.Text.Trim() + "','" + this.label195.Text.Trim() + "','NPD')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     this.fillInstData();
@@ -983,7 +1023,7 @@ namespace CT_App
                 this.radioButton2.Enabled = false;
                 this.conn.Open();
                 DataTable dataTable = new DataTable();
-                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE ID=", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE InDel='", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
                 oleDbData.Fill(dataTable);
                 this.label102.Text  = dataTable.Rows[0][0].ToString();
                 this.label117.Text  = dataTable.Rows[0][1].ToString();
@@ -1017,20 +1057,21 @@ namespace CT_App
                 //MessageBox.Show(ex.Message);
             }
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 this.conn.Open();
                 DataTable dataTabledt = new DataTable();
-                OleDbDataAdapter oleDbDatadt = new OleDbDataAdapter(String.Concat("SELECT ID,Amount FROM Market WHERE ID=", this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+                OleDbDataAdapter oleDbDatadt = new OleDbDataAdapter(String.Concat("SELECT M_ID,M_Amount FROM Market WHERE M_ID='", this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
                 oleDbDatadt.Fill(dataTabledt);
-                this.label6.Text   = dataTabledt.Rows[0][0].ToString();
+                this.label6.Text = dataTabledt.Rows[0][0].ToString();
                 this.textBox1.Text = dataTabledt.Rows[0][1].ToString();
                 this.conn.Close();
                 this.textBox1.ReadOnly = false;
                 this.textBox1.Focus();
                 this.button1.Text = "Updt";
+                this.dateTimePicker1.Visible = true;
             }
             catch (Exception ex)
             {
@@ -1042,7 +1083,7 @@ namespace CT_App
             this.button12.Visible = true;
             this.button10.Text = "Updt";
             DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT [D_ID],[D_FPAmount],[D_SPAmount],[D_Data],[NotTaken] FROM Daily WHERE ID=", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,D_FPAmount,D_SPAmount,D_Data,NotTaken FROM Daily WHERE D_ID='", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
             oleDbData.Fill(dataTable);
             this.label182.Text  = dataTable.Rows[0][0].ToString();
             this.label185.Text  = dataTable.Rows[0][1].ToString();
@@ -1055,7 +1096,7 @@ namespace CT_App
         {
             this.button14.Text = "Updt";
             DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT [ID],[A_Amount],[A_Data] FROM Daily WHERE ID=", this.dataGridView4.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,A_Amount,A_Data FROM Daily WHERE D_ID='", this.dataGridView4.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
             oleDbData.Fill(dataTable);
             this.label182.Text  = dataTable.Rows[0][0].ToString();
             this.label191.Text  = dataTable.Rows[0][1].ToString();
@@ -1068,10 +1109,11 @@ namespace CT_App
         {
             this.button4.Text = "Updt";
             DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,InsPay FROM Installment WHERE ID=", this.dataGridView2.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,InsPay FROM Installment WHERE I_ID='", this.dataGridView2.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
             oleDbData.Fill(dataTable);
             this.label201.Text = dataTable.Rows[0][0].ToString();
             this.label212.Text = dataTable.Rows[0][1].ToString();
+            this.textBox32.Text = dataTable.Rows[0][1].ToString();
             this.textBox32.ReadOnly = false;
             this.textBox32.Focus();
         }
@@ -1079,7 +1121,7 @@ namespace CT_App
         {
             this.button13.Text = "Dlt";
             DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,Take_Anot,Take_Mine FROM Installment WHERE ID=", this.dataGridView6.SelectedRows[0].Cells[0].Value.ToString(), " "), this.conn);
+            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,Take_Anot,Take_Mine FROM Installment WHERE I_ID='", this.dataGridView6.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
             oleDbData.Fill(dataTable);
             this.label218.Text = dataTable.Rows[0][0].ToString();
             this.label199.Text = dataTable.Rows[0][1].ToString();
@@ -1112,15 +1154,6 @@ namespace CT_App
                         else
                         {
                             this.textBox33.Focus();
-                            TextBox textBox = this.textBox35;
-                            string[] strArrays = new string[] { "A", null, null, null, null };
-                            int date = DateTime.Now.Day;
-                            int month = DateTime.Now.Month;
-                            int millis = DateTime.Now.Millisecond;
-                            strArrays[2] = date.ToString();
-                            strArrays[3] = month.ToString();
-                            strArrays[4] = millis.ToString();
-                            textBox.Text = string.Concat(strArrays);
                         }
                     }
                 }
@@ -1196,11 +1229,29 @@ namespace CT_App
             if (!this.checkBox1.Checked)
             {
                 this.checkBox1.Text = "G. Amount :";
+                TextBox textBox = this.textBox35;
+                string[] strArrays = new string[] { "G", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.textBox39.Focus();
             }
             else
             {
                 this.checkBox1.Text = "T. Amount :";
+                TextBox textBox = this.textBox35;
+                string[] strArrays = new string[] { "T", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.textBox39.Focus();
             }
         }
@@ -1210,6 +1261,15 @@ namespace CT_App
             this.textBox39.ReadOnly = false;
             this.comboBox1.Enabled = true;
             this.textBox34.ReadOnly = false;
+            TextBox textBox = this.textBox35;
+            string[] strArrays = new string[] { "S", null, null, null, null };
+            int date = DateTime.Now.Day;
+            int month = DateTime.Now.Month;
+            int millis = DateTime.Now.Millisecond;
+            strArrays[2] = date.ToString();
+            strArrays[3] = month.ToString();
+            strArrays[4] = millis.ToString();
+            textBox.Text = string.Concat(strArrays);
         }
         private void radioButton2_Click(object sender, EventArgs e)
         {
@@ -1218,6 +1278,15 @@ namespace CT_App
             this.textBox39.ReadOnly = false;
             this.comboBox1.Enabled = true;
             this.textBox34.ReadOnly = false;
+            TextBox textBox = this.textBox35;
+            string[] strArrays = new string[] { "U", null, null, null, null };
+            int date = DateTime.Now.Day;
+            int month = DateTime.Now.Month;
+            int millis = DateTime.Now.Millisecond;
+            strArrays[2] = date.ToString();
+            strArrays[3] = month.ToString();
+            strArrays[4] = millis.ToString();
+            textBox.Text = string.Concat(strArrays);
         }
 
         private void textBox72_KeyPress(object sender, KeyPressEventArgs e)
@@ -1231,6 +1300,15 @@ namespace CT_App
                 else
                 {
                     this.textBox3.Focus();
+                    TextBox textBox = this.textBox101;
+                    string[] strArrays = new string[] { "M", null, null, null, null };
+                    int date = DateTime.Now.Day;
+                    int month = DateTime.Now.Month;
+                    int millis = DateTime.Now.Millisecond;
+                    strArrays[2] = date.ToString();
+                    strArrays[3] = month.ToString();
+                    strArrays[4] = millis.ToString();
+                    textBox.Text = string.Concat(strArrays);
                     this.button1.Text = "U to M";
                 }
             }
@@ -2751,15 +2829,6 @@ namespace CT_App
                     }
                     else
                     {
-                        TextBox textBox = this.textBox98;
-                        string[] strArrays = new string[] { "I", null, null, null, null };
-                        int date = DateTime.Now.Day;
-                        int month = DateTime.Now.Month;
-                        int millis = DateTime.Now.Millisecond;
-                        strArrays[2] = date.ToString();
-                        strArrays[3] = month.ToString();
-                        strArrays[4] = millis.ToString();
-                        textBox.Text = string.Concat(strArrays);
                         this.button4.Focus();
                     }
                 }
@@ -2858,8 +2927,6 @@ namespace CT_App
                 }
             }
         }
-
-
 
         #endregion
 
