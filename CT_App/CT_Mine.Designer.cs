@@ -411,6 +411,8 @@ namespace CT_App
             this.button10 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label180 = new System.Windows.Forms.Label();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -4457,7 +4459,7 @@ namespace CT_App
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 20);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Date";
+            this.label4.Text = "Date/Time";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
@@ -4465,12 +4467,35 @@ namespace CT_App
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label180.Location = new System.Drawing.Point(334, 6);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(66, 20);
+            this.label180.TabIndex = 1;
+            this.label180.Text = "Insert :";
+            // 
+            // textBox
+            // 
+            this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textBox.Location = new System.Drawing.Point(400, 3);
+            this.textBox.Name = "textBox";
+            this.textBox.PasswordChar = '$';
+            this.textBox.Size = new System.Drawing.Size(94, 26);
+            this.textBox.TabIndex = 2;
+            this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            // 
             // CT_Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(780, 729);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.label180);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -4526,6 +4551,7 @@ namespace CT_App
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -4899,5 +4925,7 @@ namespace CT_App
         private System.Windows.Forms.Label label218;
         private System.Windows.Forms.Label label217;
         private System.Windows.Forms.TextBox textBox101;
+        private System.Windows.Forms.Label label180;
+        private System.Windows.Forms.TextBox textBox;
     }
 }

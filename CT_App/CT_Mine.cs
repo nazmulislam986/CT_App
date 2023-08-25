@@ -20,6 +20,7 @@ namespace CT_App
         public CT_Mine()
         {
             InitializeComponent();
+            this.tabControl1.Visible = false;
             this.DltDate = DateTime.Now.ToString("MM/dd/yyyy");
             this.fillData();
             this.AmtDataView();
@@ -1121,7 +1122,22 @@ namespace CT_App
         //------------------------------All Event Work---------------------------
         //-----------------------------------------------------------------------
         #region All_TextBox_Event_Work
-
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (this.textBox.Text.Trim() == "*1355*")
+                {
+                    this.tabControl1.Visible = true;
+                    this.label180.Visible = false;
+                    this.textBox.Visible = false;
+                }
+                else
+                {
+                    this.textBox.Text = "";
+                }
+            }
+        }
         private void textBox39_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keyChar = e.KeyChar;
