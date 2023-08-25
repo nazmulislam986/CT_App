@@ -504,7 +504,7 @@ namespace CT_App
             this.panel9.Controls.Add(this.label171);
             this.panel9.Controls.Add(this.label172);
             this.panel9.Controls.Add(this.label179);
-            this.panel9.Location = new System.Drawing.Point(569, 458);
+            this.panel9.Location = new System.Drawing.Point(381, 649);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(111, 45);
             this.panel9.TabIndex = 10;
@@ -2693,7 +2693,7 @@ namespace CT_App
             this.panel12.Controls.Add(this.textBox100);
             this.panel12.Controls.Add(this.label70);
             this.panel12.Controls.Add(this.textBox99);
-            this.panel12.Location = new System.Drawing.Point(644, 495);
+            this.panel12.Location = new System.Drawing.Point(671, 615);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(94, 78);
             this.panel12.TabIndex = 25;

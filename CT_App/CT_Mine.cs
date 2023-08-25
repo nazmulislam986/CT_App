@@ -44,10 +44,10 @@ namespace CT_App
             this.textBox37.ReadOnly = true;
             this.textBox50.ReadOnly = true;
             this.panel9.Visible = false;
-            //this.panel12.Visible = false;
+            this.panel12.Visible = false;
             this.button12.Visible = false;
-            //this.panel10.Visible = false;
-            //this.panel11.Visible = false;
+            this.panel10.Visible = false;
+            this.panel11.Visible = false;
         }
 
         //-----------------------------------------------------------------------
