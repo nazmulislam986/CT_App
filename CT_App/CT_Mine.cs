@@ -21,7 +21,7 @@ namespace CT_App
         {
             InitializeComponent();
             this.tabControl1.Visible = false;
-            this.DltDate = DateTime.Now.ToString("MM/dd/yyyy");
+            this.DltDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             this.fillData();
             this.AmtDataView();
             this.fillGivenData();
@@ -59,7 +59,7 @@ namespace CT_App
             try
             {
                 DataTable dataTabledltAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT M_ID as [ID],M_Date as [Date],M_Amount as [Amount] FROM Market ORDER BY [ID] DESC"), this.conn);
+                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT M_ID as [ID],M_Date as [Date],M_Amount as [Amount] FROM Market ORDER BY [M_Date] DESC"), this.conn);
                 odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
                 dataGridView1.DataSource = dataTabledltAmt.DefaultView;
             }
@@ -143,12 +143,12 @@ namespace CT_App
             try
             {
                 DataTable dataTableDaiAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT D_ID as [ID],D_Date as [Date],NotTaken FROM Daily WHERE [D_Data]='NTKN' ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT D_ID as [ID],D_Date as [Date],NotTaken FROM Daily WHERE [D_Data]='NTKN' ORDER BY [D_Date] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView5.DataSource = dataTableDaiAmt.DefaultView;
 
                 DataTable dataTableCutAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT C_ID as [ID],C_Date as [Date],C_Amount as [Amount] FROM DailyCut ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT C_ID as [ID],C_Date as [Date],C_Amount as [Amount] FROM DailyCut ORDER BY [C_Date] DESC "), this.conn);
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
                 dataGridView4.DataSource = dataTableCutAmt.DefaultView;
             }
@@ -447,11 +447,12 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.DltDate + "','" + this.textBox1.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.textBox1.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Data Added"));
                     this.fillData();
+                    this.AmtDataView();
                     this.textBox1.ReadOnly = true;
                     this.textBox1.Text = "";
                     this.button1.Text = "Add";
@@ -489,11 +490,12 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.DltDate + "','" + this.label10.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.label10.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Memo Amount Added"));
                     this.fillData();
+                    this.AmtDataView();
                     this.button1.Text = "Add";
                     this.BalankFldMarMem();
                 }
@@ -537,7 +539,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Given_To],[Total_Given],[Given_Date],[Remarks_Given],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Given_To],[Total_Given],[Given_Date],[Remarks_Given],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Given"));
@@ -554,7 +556,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Take_To],[Total_Take],[Take_Date],[Remarks_Take],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Take_To],[Total_Take],[Take_Date],[Remarks_Take],[ThroughBy],[Amount],[Bank_Name],[InDel],[DT_V]) VALUES('" + this.textBox33.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Taken"));
@@ -579,7 +581,7 @@ namespace CT_App
                         double num3 = num1 + num2;//G.Amount
                         this.label83.Text = num3.ToString();
                         this.conn.Open();
-                        OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.label83.Text.Trim() + "',Total_Given= '" + this.label83.Text.Trim() + "',Given_Date= '" + this.DltDate + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                        OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.label83.Text.Trim() + "',Total_Given= '" + this.label83.Text.Trim() + "',Given_Date= '" + this.dateTimePicker3.Text.Trim() + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
                         command.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Update - ", this.textBox36.Text));
@@ -599,7 +601,7 @@ namespace CT_App
                         double num6 = num4 + num5;//T.Amount
                         this.label101.Text = num6.ToString();
                         this.conn.Open();
-                        OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.label101.Text.Trim() + "',Total_Take= '" + this.label101.Text.Trim() + "',Take_Date= '" + this.DltDate + "' WHERE InDel= " + this.label117.Text.Trim() + " ", this.conn);
+                        OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.label101.Text.Trim() + "',Total_Take= '" + this.label101.Text.Trim() + "',Take_Date= '" + this.dateTimePicker3.Text.Trim() + "' WHERE InDel= " + this.label117.Text.Trim() + " ", this.conn);
                         command.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Update - ", this.textBox44.Text));
@@ -623,7 +625,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Saving Amount"));
@@ -641,7 +643,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.DltDate + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Unrated Amount"));
@@ -664,7 +666,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE CREDIT SET DT_V='DDV', DT_V_Date= '" + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss") + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE CREDIT SET DT_V='DDV', DT_V_Date= '" + this.DltDate + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [" , this.label117.Text + "] "));                
@@ -691,7 +693,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data) VALUES('" + this.textBox92.Text.Trim() + "','" + this.DltDate + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker4.Text.Trim() + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Daily Data Added"));
@@ -712,7 +714,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Daily SET D_FPAmount = '" + this.textBox37.Text.Trim() + "',D_SPAmount = '" + this.label194.Text.Trim() + "',NotTaken = '" + this.label194.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Daily SET D_FPAmount = '" + this.textBox37.Text.Trim() + "',D_SPAmount = '" + this.label194.Text.Trim() + "',NotTaken = '" + this.label194.Text.Trim() + "',D_Date='" + this.dateTimePicker4.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
@@ -745,7 +747,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount) VALUES('" + this.textBox92.Text.Trim() + "','" + this.DltDate + "','" + this.textBox50.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker5.Text.Trim() + "','" + this.textBox50.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added Total Daily Amount"));
@@ -766,7 +768,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "',C_Date='" + this.dateTimePicker5.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
@@ -856,7 +858,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data) VALUES('" + this.textBox98.Text.Trim() + "','" + this.DltDate + "','" + this.textBox32.Text.Trim() + "','INS')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker2.Text.Trim() + "','" + this.textBox32.Text.Trim() + "','INS')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     this.fillInstData();
@@ -1220,7 +1222,6 @@ namespace CT_App
                 {
                     if (!(this.textBox1.Text.Trim() != ""))
                     {
-                        MessageBox.Show("Please Insert Amount.");
                         this.textBox1.Focus();
                     }
                     else
@@ -2770,7 +2771,6 @@ namespace CT_App
                 {
                     if (!(this.textBox37.Text.Trim() != ""))
                     {
-                        MessageBox.Show("Please Insert Amount.");
                         this.textBox37.Focus();
                     }
                     else
@@ -2801,7 +2801,6 @@ namespace CT_App
                 {
                     if (!(this.textBox50.Text.Trim() != ""))
                     {
-                        MessageBox.Show("Please Insert Amount.");
                         this.textBox50.Focus();
                     }
                     else
@@ -2830,7 +2829,6 @@ namespace CT_App
                 {
                     if (!(this.textBox32.Text.Trim() != ""))
                     {
-                        MessageBox.Show("Please Insert Amount.");
                         this.textBox32.Focus();
                     }
                     else
