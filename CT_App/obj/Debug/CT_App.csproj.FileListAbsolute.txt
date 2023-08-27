@@ -37,3 +37,4 @@ D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.csproj.Gen
 D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.csproj.CoreCompileInputs.cache
 D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.exe
 D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.pdb
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.csproj.AssemblyReference.cache

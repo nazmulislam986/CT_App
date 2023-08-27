@@ -129,7 +129,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableGivenAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDT],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDT],ThroughBy as [Through],Saving_Amount as [STK],Saving_Date as [SDT],Expense_Amount as [ETK],Expense_Date as [EDT],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDT],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDT],ThroughBy as [Through],Saving_To as [SName],Saving_Amount as [STK],Saving_Date as [SDT],Expense_To as [EName],Expense_Amount as [ETK],Expense_Date as [EDT],Unrated_To as [UName],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterGivenAmt.Fill(dataTableGivenAmt);
                 dataGridView3.DataSource = dataTableGivenAmt.DefaultView;
             }
@@ -622,12 +622,30 @@ namespace CT_App
                     //MessageBox.Show(ex.Message);
                 }
             }
+            else if (this.button6.Text == "Exp")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Expense_Amount],[Expense_To],[Expense_Date],[Remarks_Expense],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Added to Expense Amount"));
+                    this.fillGivenData();
+                    this.AmtCrDataView();
+                    this.button6.Text = "New";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
             else if (this.button6.Text == "Sav")
             {
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Saving_Amount],[Saving_To],[Saving_Date],[Remarks_Saving],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Saving Amount"));
@@ -645,28 +663,10 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Unrated_Amount],[Unrated_To],[Unrated_Date],[Remarks_Unrated],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added to Unrated Amount"));
-                    this.fillGivenData();
-                    this.AmtCrDataView();
-                    this.button6.Text = "New";
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show(ex.Message);
-                }
-            }
-            else if (this.button6.Text == "Exp")
-            {
-                try
-                {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Expense_Amount],[Expense_Date],[Remarks_Expense],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Added to Expense Amount"));
                     this.fillGivenData();
                     this.AmtCrDataView();
                     this.button6.Text = "New";
@@ -1048,25 +1048,31 @@ namespace CT_App
                 DataTable dataTable = new DataTable();
                 OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE InDel='", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
                 oleDbData.Fill(dataTable);
-                this.label102.Text  = dataTable.Rows[0][0].ToString();
-                this.label117.Text  = dataTable.Rows[0][1].ToString();
-                this.textBox36.Text = dataTable.Rows[0][2].ToString();
-                this.textBox40.Text = dataTable.Rows[0][3].ToString();
-                this.textBox41.Text = dataTable.Rows[0][4].ToString();
-                this.textBox42.Text = dataTable.Rows[0][5].ToString();
-                this.textBox44.Text = dataTable.Rows[0][6].ToString();
-                this.textBox45.Text = dataTable.Rows[0][7].ToString();
-                this.textBox46.Text = dataTable.Rows[0][8].ToString();
-                this.textBox47.Text = dataTable.Rows[0][9].ToString();
-                this.label113.Text  = dataTable.Rows[0][10].ToString();
-                this.label111.Text  = dataTable.Rows[0][11].ToString();
-                this.label108.Text  = dataTable.Rows[0][12].ToString();
-                this.textBox43.Text = dataTable.Rows[0][13].ToString();
-                this.textBox48.Text = dataTable.Rows[0][14].ToString();
-                this.textBox49.Text = dataTable.Rows[0][15].ToString();
-                this.textBox51.Text = dataTable.Rows[0][16].ToString();
-                this.textBox52.Text = dataTable.Rows[0][17].ToString();
-                this.textBox53.Text = dataTable.Rows[0][18].ToString();
+                this.label102.Text   = dataTable.Rows[0][0].ToString();
+                this.label117.Text   = dataTable.Rows[0][1].ToString();
+                this.textBox36.Text  = dataTable.Rows[0][2].ToString();
+                this.textBox40.Text  = dataTable.Rows[0][3].ToString();
+                this.textBox41.Text  = dataTable.Rows[0][4].ToString();
+                this.textBox42.Text  = dataTable.Rows[0][5].ToString();
+                this.textBox44.Text  = dataTable.Rows[0][6].ToString();
+                this.textBox45.Text  = dataTable.Rows[0][7].ToString();
+                this.textBox46.Text  = dataTable.Rows[0][8].ToString();
+                this.textBox47.Text  = dataTable.Rows[0][9].ToString();
+                this.label113.Text   = dataTable.Rows[0][10].ToString();
+                this.label111.Text   = dataTable.Rows[0][11].ToString();
+                this.label108.Text   = dataTable.Rows[0][12].ToString();
+                this.textBox105.Text = dataTable.Rows[0][13].ToString();
+                this.textBox43.Text  = dataTable.Rows[0][14].ToString();
+                this.textBox48.Text  = dataTable.Rows[0][15].ToString();
+                this.textBox49.Text  = dataTable.Rows[0][16].ToString();
+                this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                this.textBox51.Text  = dataTable.Rows[0][18].ToString();
+                this.textBox52.Text  = dataTable.Rows[0][19].ToString();
+                this.textBox53.Text  = dataTable.Rows[0][20].ToString();
+                this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                this.textBox93.Text  = dataTable.Rows[0][23].ToString();
+                this.textBox102.Text = dataTable.Rows[0][24].ToString();
                 this.conn.Close();
                 this.button7.Visible = true;
                 this.textBox39.ReadOnly = false;
