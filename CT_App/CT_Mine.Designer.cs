@@ -380,6 +380,7 @@ namespace CT_App
             this.label105 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
             this.label75 = new System.Windows.Forms.Label();
             this.label121 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -388,6 +389,7 @@ namespace CT_App
             this.button14 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.panel11 = new System.Windows.Forms.Panel();
             this.textBox92 = new System.Windows.Forms.TextBox();
             this.label194 = new System.Windows.Forms.Label();
@@ -413,8 +415,7 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -3395,6 +3396,7 @@ namespace CT_App
             this.groupBox1.Controls.Add(this.panel10);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.button5);
@@ -3423,6 +3425,7 @@ namespace CT_App
             "Roket",
             "DBBL",
             "City Bank",
+            "Expense",
             "Savings"});
             this.comboBox1.Location = new System.Drawing.Point(115, 98);
             this.comboBox1.Name = "comboBox1";
@@ -3674,7 +3677,7 @@ namespace CT_App
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radioButton2.Location = new System.Drawing.Point(190, 16);
+            this.radioButton2.Location = new System.Drawing.Point(288, 14);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(85, 24);
             this.radioButton2.TabIndex = 22;
@@ -3687,7 +3690,7 @@ namespace CT_App
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radioButton1.Location = new System.Drawing.Point(115, 15);
+            this.radioButton1.Location = new System.Drawing.Point(210, 14);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(75, 24);
             this.radioButton1.TabIndex = 22;
@@ -4088,6 +4091,15 @@ namespace CT_App
             this.panel4.Size = new System.Drawing.Size(376, 694);
             this.panel4.TabIndex = 22;
             // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.CustomFormat = "";
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker5.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(102, 23);
+            this.dateTimePicker5.TabIndex = 26;
+            // 
             // label75
             // 
             this.label75.AutoSize = true;
@@ -4215,6 +4227,15 @@ namespace CT_App
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(376, 694);
             this.panel3.TabIndex = 22;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "";
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker4.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(102, 23);
+            this.dateTimePicker4.TabIndex = 25;
             // 
             // panel11
             // 
@@ -4492,23 +4513,18 @@ namespace CT_App
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // dateTimePicker4
+            // radioButton3
             // 
-            this.dateTimePicker4.CustomFormat = "";
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(271, 1);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(102, 23);
-            this.dateTimePicker4.TabIndex = 25;
-            // 
-            // dateTimePicker5
-            // 
-            this.dateTimePicker5.CustomFormat = "";
-            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker5.Location = new System.Drawing.Point(271, 1);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(102, 23);
-            this.dateTimePicker5.TabIndex = 26;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radioButton3.Location = new System.Drawing.Point(118, 14);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(89, 24);
+            this.radioButton3.TabIndex = 22;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Expense";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Click += new System.EventHandler(this.radioButton3_Click);
             // 
             // CT_Mine
             // 
@@ -4951,5 +4967,6 @@ namespace CT_App
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker5;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }

@@ -40,6 +40,7 @@ namespace CT_App
             this.checkBox1.Enabled = false;
             this.radioButton1.Enabled = false;
             this.radioButton2.Enabled = false;
+            this.radioButton3.Enabled = false;
             this.button7.Visible = false;
             this.button11.Visible = false;
             this.textBox37.ReadOnly = true;
@@ -104,7 +105,7 @@ namespace CT_App
                 this.label92.Text = dataTableAmtTake.Rows[0][0].ToString();
 
                 DataTable dataTableAmtExp = new DataTable();
-                OleDbDataAdapter dataAdapterdltAmtE = new OleDbDataAdapter(string.Concat("SELECT SUM(Amount) FROM Credit WHERE [DT_V]='NDV' "), this.conn);
+                OleDbDataAdapter dataAdapterdltAmtE = new OleDbDataAdapter(string.Concat("SELECT SUM(Expense_Amount) FROM Credit WHERE [DT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtE.Fill(dataTableAmtExp);
                 this.label90.Text = dataTableAmtExp.Rows[0][0].ToString();
 
@@ -117,7 +118,6 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterdltAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(Unrated_Amount) FROM Credit WHERE [DT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtUnr.Fill(dataTableAmtUnr);
                 this.label116.Text = dataTableAmtUnr.Rows[0][0].ToString();
-
             }
             catch (Exception)
             {
@@ -129,7 +129,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableGivenAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDate],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDate],ThroughBy as [Through],Saving_Amount as [STK],Unrated_Amount as [UTK] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDT],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDT],ThroughBy as [Through],Saving_Amount as [STK],Saving_Date as [SDT],Expense_Amount as [ETK],Expense_Date as [EDT],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Credit WHERE [DT_V]='NDV' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterGivenAmt.Fill(dataTableGivenAmt);
                 dataGridView3.DataSource = dataTableGivenAmt.DefaultView;
             }
@@ -417,6 +417,7 @@ namespace CT_App
         {
             this.textBox1.Text = "";
             this.button1.Text = "Add";
+            this.BalankFldMarMem();
         }
         private void button11_Click(object sender, EventArgs e)
         {
@@ -522,6 +523,7 @@ namespace CT_App
                 this.checkBox1.Enabled = true;
                 this.radioButton1.Enabled = true;
                 this.radioButton2.Enabled = true;
+                this.radioButton3.Enabled = true;
                 TextBox textBox = this.textBox35;
                 string[] strArrays = new string[] { "G", null, null, null, null };
                 int date = DateTime.Now.Day;
@@ -656,10 +658,38 @@ namespace CT_App
                     //MessageBox.Show(ex.Message);
                 }
             }
+            else if (this.button6.Text == "Exp")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO [Credit] ([Expense_Amount],[Expense_Date],[Remarks_Expense],[Bank_Name],[Amount],[ThroughBy],[InDel],[DT_V]) VALUES('" + this.textBox39.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.textBox35.Text.Trim() + "','NDV')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Added to Expense Amount"));
+                    this.fillGivenData();
+                    this.AmtCrDataView();
+                    this.button6.Text = "New";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
         }
         private void button5_Click(object sender, EventArgs e)
         {
             this.button6.Text = "New";
+            this.radioButton1.Enabled = false;
+            this.radioButton2.Enabled = false;
+            this.radioButton3.Enabled = false;
+            this.textBox39.ReadOnly = true;
+            this.textBox33.ReadOnly = true;
+            this.comboBox1.Enabled = false;
+            this.dateTimePicker3.Enabled = false;
+            this.textBox34.ReadOnly = true;
+            this.checkBox1.Enabled = false;
+
         }
         private void button7_Click(object sender, EventArgs e)
         {
@@ -1287,6 +1317,23 @@ namespace CT_App
             this.textBox34.ReadOnly = false;
             TextBox textBox = this.textBox35;
             string[] strArrays = new string[] { "U", null, null, null, null };
+            int date = DateTime.Now.Day;
+            int month = DateTime.Now.Month;
+            int millis = DateTime.Now.Millisecond;
+            strArrays[2] = date.ToString();
+            strArrays[3] = month.ToString();
+            strArrays[4] = millis.ToString();
+            textBox.Text = string.Concat(strArrays);
+        }
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            this.button6.Text = "Exp";
+            this.textBox33.ReadOnly = false;
+            this.textBox39.ReadOnly = false;
+            this.comboBox1.Enabled = true;
+            this.textBox34.ReadOnly = false;
+            TextBox textBox = this.textBox35;
+            string[] strArrays = new string[] { "E", null, null, null, null };
             int date = DateTime.Now.Day;
             int month = DateTime.Now.Month;
             int millis = DateTime.Now.Millisecond;
@@ -2931,6 +2978,8 @@ namespace CT_App
                 }
             }
         }
+
+        
 
         #endregion
 
