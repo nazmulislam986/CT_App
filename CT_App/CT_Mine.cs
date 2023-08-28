@@ -1229,8 +1229,37 @@ namespace CT_App
                 }
                 else
                 {
-                    this.textBox34.Focus();
+                    this.dateTimePicker3.Focus();
                 }                
+            }
+        }
+        private void dateTimePicker3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker3.Text.Trim() != ""))
+                {
+                    this.dateTimePicker3.Focus();
+                }
+                else
+                {
+                    this.textBox34.Focus();
+                }
+            }
+        }
+        private void textBox107_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDT],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDT],ThroughBy as [Through],Saving_To as [SName],Saving_Amount as [STK],Saving_Date as [SDT],Expense_To as [EName],Expense_Amount as [ETK],Expense_Date as [EDT],Unrated_To as [UName],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Credit where ThroughBy like '%" + this.textBox107.Text.Trim() + "%' ORDER BY [ID] DESC" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                this.dataGridView3.DataSource = dataTable.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
             }
         }
         private void textBox34_KeyPress(object sender, KeyPressEventArgs e)
@@ -1301,9 +1330,6 @@ namespace CT_App
         private void radioButton1_Click(object sender, EventArgs e)
         {
             this.button6.Text = "Sav";
-            this.textBox39.ReadOnly = false;
-            this.comboBox1.Enabled = true;
-            this.textBox34.ReadOnly = false;
             TextBox textBox = this.textBox35;
             string[] strArrays = new string[] { "S", null, null, null, null };
             int date = DateTime.Now.Day;
@@ -1313,14 +1339,11 @@ namespace CT_App
             strArrays[3] = month.ToString();
             strArrays[4] = millis.ToString();
             textBox.Text = string.Concat(strArrays);
+            this.textBox39.Focus();
         }
         private void radioButton2_Click(object sender, EventArgs e)
         {
             this.button6.Text = "Unr";
-            this.textBox33.ReadOnly = false;
-            this.textBox39.ReadOnly = false;
-            this.comboBox1.Enabled = true;
-            this.textBox34.ReadOnly = false;
             TextBox textBox = this.textBox35;
             string[] strArrays = new string[] { "U", null, null, null, null };
             int date = DateTime.Now.Day;
@@ -1330,14 +1353,11 @@ namespace CT_App
             strArrays[3] = month.ToString();
             strArrays[4] = millis.ToString();
             textBox.Text = string.Concat(strArrays);
+            this.textBox39.Focus();
         }
         private void radioButton3_Click(object sender, EventArgs e)
         {
             this.button6.Text = "Exp";
-            this.textBox33.ReadOnly = false;
-            this.textBox39.ReadOnly = false;
-            this.comboBox1.Enabled = true;
-            this.textBox34.ReadOnly = false;
             TextBox textBox = this.textBox35;
             string[] strArrays = new string[] { "E", null, null, null, null };
             int date = DateTime.Now.Day;
@@ -1347,6 +1367,7 @@ namespace CT_App
             strArrays[3] = month.ToString();
             strArrays[4] = millis.ToString();
             textBox.Text = string.Concat(strArrays);
+            this.textBox39.Focus();
         }
 
         private void textBox72_KeyPress(object sender, KeyPressEventArgs e)
@@ -2984,9 +3005,63 @@ namespace CT_App
                 }
             }
         }
-
+        private void dateTimePicker4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker4.Text.Trim() != ""))
+                {
+                    this.dateTimePicker4.Focus();
+                }
+                else
+                {
+                    this.textBox37.Focus();
+                }
+            }
+        }
+        private void dateTimePicker5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker5.Text.Trim() != ""))
+                {
+                    this.dateTimePicker5.Focus();
+                }
+                else
+                {
+                    this.textBox50.Focus();
+                }
+            }
+        }
+        private void dateTimePicker2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker2.Text.Trim() != ""))
+                {
+                    this.dateTimePicker2.Focus();
+                }
+                else
+                {
+                    this.textBox32.Focus();
+                }
+            }
+        }
+        private void dateTimePicker1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker1.Text.Trim() != ""))
+                {
+                    this.dateTimePicker1.Focus();
+                }
+                else
+                {
+                    this.textBox1.Focus();
+                }
+            }
+        }
         
-
         #endregion
 
         //-----------------------------------------------------------------------
