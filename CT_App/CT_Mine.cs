@@ -30,6 +30,7 @@ namespace CT_App
             this.totalDailyData();
             this.fillInstData();
             this.totalInstData();
+            //this.fillMemo();
             this.textBox1.ReadOnly = true;
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
@@ -408,6 +409,94 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(InsPay) FROM Installment"), this.conn);
                 dataAdapterAmtUnr.Fill(dataTableDailAmt);
                 this.label211.Text = dataTableDailAmt.Rows[0][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+        private void fillMemo()
+        {
+            try
+            {
+                this.conn.Open();
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Memo"), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label224.Text = dataTable.Rows[0][0].ToString();
+                //this.label117.Text = dataTable.Rows[0][1].ToString();
+                //this.textBox36.Text = dataTable.Rows[0][2].ToString();
+                //this.textBox40.Text = dataTable.Rows[0][3].ToString();
+                //this.textBox41.Text = dataTable.Rows[0][4].ToString();
+                //this.textBox42.Text = dataTable.Rows[0][5].ToString();
+                //this.textBox44.Text = dataTable.Rows[0][6].ToString();
+                //this.textBox45.Text = dataTable.Rows[0][7].ToString();
+                //this.textBox46.Text = dataTable.Rows[0][8].ToString();
+                //this.textBox47.Text = dataTable.Rows[0][9].ToString();
+                //this.label113.Text = dataTable.Rows[0][10].ToString();
+                //this.label111.Text = dataTable.Rows[0][11].ToString();
+                //this.label108.Text = dataTable.Rows[0][12].ToString();
+                //this.textBox105.Text = dataTable.Rows[0][13].ToString();
+                //this.textBox43.Text = dataTable.Rows[0][14].ToString();
+                //this.textBox48.Text = dataTable.Rows[0][15].ToString();
+                //this.textBox49.Text = dataTable.Rows[0][16].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                //this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                //this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                //this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                //this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                //this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                //this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                //this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                //this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                this.conn.Close();
             }
             catch (Exception ex)
             {
@@ -1027,6 +1116,259 @@ namespace CT_App
             this.button4.Text = "Add";
             this.button13.Text = "Add";
         }
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (this.button15.Text == "New")
+            {
+                TextBox textBox = this.textBox101;
+                string[] strArrays = new string[] { "ME", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button15.Text = "Save";
+                this.textBox72.Focus();
+            }
+            else if (this.button15.Text == "Save")
+            {
+                try
+                {
+                    this.conn.Open();
+                    object[] longTimeString = new object[188];
+                    longTimeString[0] = "INSERT INTO Memo(M_ID,M_Date,R_InvTotal,C_InvTotal,Given_TK,Return_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_S01,I_S02,I_S03,I_S04,I_S05,I_S06,I_S07,I_S08,I_S09,I_S10,I_S11,I_S12,I_S13,I_S14,I_S15,I_S16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24) Values('";
+                    longTimeString[1] = this.textBox101.Text.Trim();      //M_ID
+                    longTimeString[2] = "','";
+                    longTimeString[3] = this.dateTimePicker1.Text.Trim(); //M_Date
+                    longTimeString[4] = "','";
+                    longTimeString[5] = this.textBox90.Text.Trim();       //R_InvTotal
+                    longTimeString[6] = "','";
+                    longTimeString[7] = this.label10.Text.Trim();         //C_InvTotal
+                    longTimeString[8] = "','";
+                    longTimeString[9] = this.textBox55.Text.Trim();       //Given_TK
+                    longTimeString[10] = "','";                           
+                    longTimeString[11] = this.label147.Text.Trim();       //Return_TK
+                    longTimeString[12] = "','";                           
+                    longTimeString[13] = this.textBox72.Text.Trim();      //I_N01
+                    longTimeString[14] = "','";                             
+                    longTimeString[15] = this.textBox73.Text.Trim();      //I_N02
+                    longTimeString[16] = "','";                             
+                    longTimeString[17] = this.textBox78.Text.Trim();      //I_N03
+                    longTimeString[18] = "','";                             
+                    longTimeString[19] = this.textBox75.Text.Trim();      //I_N04
+                    longTimeString[20] = "','";                            
+                    longTimeString[21] = this.textBox76.Text.Trim();      //I_N05
+                    longTimeString[22] = "','";                             
+                    longTimeString[23] = this.textBox77.Text.Trim();      //I_N06
+                    longTimeString[24] = "','";                             
+                    longTimeString[25] = this.textBox79.Text.Trim();      //I_N07
+                    longTimeString[26] = "','";                             
+                    longTimeString[27] = this.textBox80.Text.Trim();      //I_N08
+                    longTimeString[28] = "','";                             
+                    longTimeString[29] = this.textBox81.Text.Trim();      //I_N09
+                    longTimeString[30] = "','";                             
+                    longTimeString[31] = this.textBox82.Text.Trim();      //I_N10
+                    longTimeString[32] = "','";                             
+                    longTimeString[33] = this.textBox83.Text.Trim();      //I_N11
+                    longTimeString[34] = "','";                             
+                    longTimeString[35] = this.textBox84.Text.Trim();      //I_N12
+                    longTimeString[36] = "','";                             
+                    longTimeString[37] = this.textBox85.Text.Trim();      //I_N13
+                    longTimeString[38] = "','";                             
+                    longTimeString[39] = this.textBox86.Text.Trim();      //I_N14
+                    longTimeString[40] = "','";                             
+                    longTimeString[41] = this.textBox87.Text.Trim();      //I_N15
+                    longTimeString[42] = "','";                             
+                    longTimeString[43] = this.textBox88.Text.Trim();      //I_N16
+                    longTimeString[44] = "','";
+
+                    longTimeString[45] = this.textBox3.Text.Trim();       //I_P01
+                    longTimeString[46] = "','";                           
+                    longTimeString[47] = this.textBox5.Text.Trim();       //I_P03
+                    longTimeString[48] = "','";                           
+                    longTimeString[49] = this.textBox7.Text.Trim();       //I_P05
+                    longTimeString[50] = "','";                           
+                    longTimeString[51] = this.textBox9.Text.Trim();       //I_P07
+                    longTimeString[52] = "','";                           
+                    longTimeString[53] = this.textBox11.Text.Trim();      //I_P09
+                    longTimeString[54] = "','";                          
+                    longTimeString[55] = this.textBox13.Text.Trim();      //I_P11
+                    longTimeString[56] = "','";                           
+                    longTimeString[57] = this.textBox15.Text.Trim();      //I_P13
+                    longTimeString[58] = "','";                           
+                    longTimeString[59] = this.textBox17.Text.Trim();      //I_P15
+                    longTimeString[60] = "','";                           
+                    longTimeString[61] = this.textBox19.Text.Trim();      //I_P01
+                    longTimeString[62] = "','";                           
+                    longTimeString[63] = this.textBox21.Text.Trim();      //I_P03
+                    longTimeString[64] = "','";                          
+                    longTimeString[65] = this.textBox23.Text.Trim();      //I_P05
+                    longTimeString[66] = "','";                           
+                    longTimeString[67] = this.textBox25.Text.Trim();      //I_P07
+                    longTimeString[68] = "','";                           
+                    longTimeString[69] = this.textBox27.Text.Trim();      //I_P09
+                    longTimeString[70] = "','";                           
+                    longTimeString[71] = this.textBox29.Text.Trim();      //I_P11
+                    longTimeString[72] = "','";                           
+                    longTimeString[73] = this.textBox31.Text.Trim();      //I_P13
+                    longTimeString[74] = "','";                           
+                    longTimeString[75] = this.textBox38.Text.Trim();      //I_P15
+
+                    longTimeString[76] = this.textBox2.Text.Trim();       //I_Q01
+                    longTimeString[77] = "','";                           
+                    longTimeString[78] = this.textBox4.Text.Trim();       //I_Q01
+                    longTimeString[79] = "','";                           
+                    longTimeString[80] = this.textBox6.Text.Trim();       //I_Q01
+                    longTimeString[81] = "','";                           
+                    longTimeString[82] = this.textBox8.Text.Trim();       //I_Q01
+                    longTimeString[83] = "','";                          
+                    longTimeString[84] = this.textBox10.Text.Trim();      //I_Q01
+                    longTimeString[85] = "','";                           
+                    longTimeString[86] = this.textBox12.Text.Trim();      //I_Q01
+                    longTimeString[87] = "','";                           
+                    longTimeString[88] = this.textBox14.Text.Trim();      //I_Q01
+                    longTimeString[89] = "','";                           
+                    longTimeString[90] = this.textBox16.Text.Trim();      //I_Q01
+                    longTimeString[91] = "','";                           
+                    longTimeString[92] = this.textBox18.Text.Trim();      //I_Q01
+                    longTimeString[93] = "','";                           
+                    longTimeString[91] = this.textBox20.Text.Trim();      //I_Q01
+                    longTimeString[95] = "','";                           
+                    longTimeString[96] = this.textBox22.Text.Trim();      //I_Q01
+                    longTimeString[97] = "','";                           
+                    longTimeString[98] = this.textBox24.Text.Trim();      //I_Q01
+                    longTimeString[99] = "','";                           
+                    longTimeString[100] = this.textBox26.Text.Trim();     //I_Q01
+                    longTimeString[101] = "','";                          
+                    longTimeString[102] = this.textBox28.Text.Trim();     //I_Q01
+                    longTimeString[103] = "','";                          
+                    longTimeString[104] = this.textBox30.Text.Trim();     //I_Q01
+                    longTimeString[105] = "','";                          
+                    longTimeString[106] = this.textBox54.Text.Trim();     //I_Q01
+                    longTimeString[107] = "','";
+
+                    longTimeString[108] = this.label9.Text.Trim();        //I_S01
+                    longTimeString[109] = "','";                          
+                    longTimeString[110] = this.label13.Text.Trim();       //I_S01
+                    longTimeString[111] = "','";                          
+                    longTimeString[112] = this.label17.Text.Trim();       //I_S01
+                    longTimeString[113] = "','";                          
+                    longTimeString[114] = this.label24.Text.Trim();       //I_S01
+                    longTimeString[115] = "','";                          
+                    longTimeString[116] = this.label28.Text.Trim();       //I_S01
+                    longTimeString[117] = "','";                          
+                    longTimeString[118] = this.label32.Text.Trim();       //I_S01
+                    longTimeString[119] = "','";                          
+                    longTimeString[120] = this.label36.Text.Trim();       //I_S01
+                    longTimeString[121] = "','";                          
+                    longTimeString[122] = this.label40.Text.Trim();       //I_S01
+                    longTimeString[123] = "','";                          
+                    longTimeString[124] = this.label44.Text.Trim();       //I_S01
+                    longTimeString[125] = "','";                          
+                    longTimeString[126] = this.label48.Text.Trim();       //I_S01
+                    longTimeString[127] = "','";                          
+                    longTimeString[128] = this.label52.Text.Trim();       //I_S01
+                    longTimeString[129] = "','";                          
+                    longTimeString[130] = this.label56.Text.Trim();       //I_S01
+                    longTimeString[131] = "','";                          
+                    longTimeString[132] = this.label60.Text.Trim();       //I_S01
+                    longTimeString[133] = "','";                         
+                    longTimeString[134] = this.label64.Text.Trim();       //I_S01
+                    longTimeString[135] = "','";                          
+                    longTimeString[136] = this.label68.Text.Trim();       //I_S01
+                    longTimeString[137] = "','";                         
+                    longTimeString[138] = this.label76.Text.Trim();       //I_S01
+                    longTimeString[139] = "','";
+
+                    longTimeString[140] = this.textBox56.Text.Trim();     //R_Inv01
+                    longTimeString[141] = "','";                         
+                    longTimeString[142] = this.textBox57.Text.Trim();     //R_Inv01
+                    longTimeString[143] = "','";                          
+                    longTimeString[144] = this.textBox58.Text.Trim();     //R_Inv01
+                    longTimeString[145] = "','";                          
+                    longTimeString[146] = this.textBox59.Text.Trim();     //R_Inv01
+                    longTimeString[147] = "','";                          
+                    longTimeString[148] = this.textBox60.Text.Trim();     //R_Inv01
+                    longTimeString[149] = "','";                          
+                    longTimeString[150] = this.textBox61.Text.Trim();     //R_Inv01
+                    longTimeString[151] = "','";                          
+                    longTimeString[152] = this.textBox62.Text.Trim();     //R_Inv01
+                    longTimeString[153] = "','";                          
+                    longTimeString[154] = this.textBox63.Text.Trim();     //R_Inv01
+                    longTimeString[155] = "','";                          
+                    longTimeString[156] = this.textBox64.Text.Trim();     //R_Inv01
+                    longTimeString[157] = "','";                         
+                    longTimeString[158] = this.textBox65.Text.Trim();     //R_Inv01
+                    longTimeString[159] = "','";                          
+                    longTimeString[160] = this.textBox66.Text.Trim();     //R_Inv01
+                    longTimeString[161] = "','";                          
+                    longTimeString[162] = this.textBox67.Text.Trim();     //R_Inv01
+                    longTimeString[163] = "','";                          
+                    longTimeString[164] = this.textBox68.Text.Trim();     //R_Inv01
+                    longTimeString[165] = "','";                          
+                    longTimeString[166] = this.textBox69.Text.Trim();     //R_Inv01
+                    longTimeString[167] = "','";                          
+                    longTimeString[168] = this.textBox70.Text.Trim();     //R_Inv01
+                    longTimeString[169] = "','";                          
+                    longTimeString[170] = this.textBox71.Text.Trim();     //R_Inv01
+                    longTimeString[171] = "','";                          
+                    longTimeString[172] = this.textBox89.Text.Trim();     //R_Inv01
+                    longTimeString[173] = "','";                          
+                    longTimeString[174] = this.textBox91.Text.Trim();     //R_Inv01
+                    longTimeString[175] = "','";                          
+                    longTimeString[176] = this.textBox110.Text.Trim();    //R_Inv01
+                    longTimeString[177] = "','";                          
+                    longTimeString[178] = this.textBox111.Text.Trim();    //R_Inv01
+                    longTimeString[179] = "','";                          
+                    longTimeString[180] = this.textBox112.Text.Trim();    //R_Inv01
+                    longTimeString[181] = "','";                          
+                    longTimeString[182] = this.textBox113.Text.Trim();    //R_Inv01
+                    longTimeString[183] = "','";                          
+                    longTimeString[184] = this.textBox114.Text.Trim();    //R_Inv01
+                    longTimeString[185] = "','";                         
+                    longTimeString[186] = this.textBox115.Text.Trim();    //R_Inv01
+                    longTimeString[187] = "')";
+                    OleDbCommand cmd = new OleDbCommand(string.Concat(longTimeString), this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Memo Added"));
+                    this.button15.Text = "Delete";
+
+                    //OleDbCommand cmd = new OleDbCommand("INSERT INTO [Memo] ([M_ID],[M_Date],[R_InvTotal],[C_InvTotal],[Given_TK],[Return_TK],[I_N01],[I_N02],[I_N03],[I_N04],[I_N05],[I_N06],[I_N07],[I_N08],[I_N09],[I_N10],[I_N11],[I_N12],[I_N13],[I_N14],[I_N15],[I_N16],[I_P01],[I_P02],[I_P03],[I_P04],[I_P05],[I_P06],[I_P07],[I_P08],[I_P09],[I_P10],[I_P11],[I_P12],[I_P13],[I_P14],[I_P15],[I_P16],[I_Q01],[I_Q02],[I_Q03],[I_Q04],[I_Q05],[I_Q06],[I_Q07],[I_Q08],[I_Q09],[I_Q10],[I_Q11],[I_Q12],[I_Q13],[I_Q14],[I_Q15],[I_Q16],[I_S01],[I_S02],[I_S03],[I_S04],[I_S05],[I_S06],[I_S07],[I_S08],[I_S09],[I_S10],[I_S11],[I_S12],[I_S13],[I_S14],[I_S15],[I_S16],[R_Inv01],[R_Inv02],[R_Inv03],[R_Inv04],[R_Inv05],[R_Inv06],[R_Inv07],[R_Inv08],[R_Inv09],[R_Inv10],[R_Inv11],[R_Inv12],[R_Inv13],[R_Inv14],[R_Inv15],[R_Inv16],[R_Inv17],[R_Inv18],[R_Inv19],[R_Inv20],[R_Inv21],[R_Inv22],[R_Inv23],[R_Inv24]) VALUES (<M_ID, LongText>,<M_Date, DateTime>,<R_InvTotal, Long>,<C_InvTotal, Long>,<Given_TK, Long>,<Return_TK, Long>,<I_N01, LongText>,<I_N02, LongText>,<I_N03, LongText>,<I_N04, LongText>,<I_N05, LongText>,<I_N06, LongText>,<I_N07, LongText>,<I_N08, LongText>,<I_N09, LongText>,<I_N10, LongText>,<I_N11, LongText>,<I_N12, LongText>,<I_N13, LongText>,<I_N14, LongText>,<I_N15, LongText>,<I_N16, LongText>,<I_P01, Long>,<I_P02, Long>,<I_P03, Long>,<I_P04, Long>,<I_P05, Long>,<I_P06, Long>,<I_P07, Long>,<I_P08, Long>,<I_P09, Long>,<I_P10, Long>,<I_P11, Long>,<I_P12, Long>,<I_P13, Long>,<I_P14, Long>,<I_P15, Long>,<I_P16, Long>,<I_Q01, Long>,<I_Q02, Long>,<I_Q03, Long>,<I_Q04, Long>,<I_Q05, Long>,<I_Q06, Long>,<I_Q07, Long>,<I_Q08, Long>,<I_Q09, Long>,<I_Q10, Long>,<I_Q11, Long>,<I_Q12, Long>,<I_Q13, Long>,<I_Q14, Long>,<I_Q15, Long>,<I_Q16, Long>,<I_S01, Long>,<I_S02, Long>,<I_S03, Long>,<I_S04, Long>,<I_S05, Long>,<I_S06, Long>,<I_S07, Long>,<I_S08, Long>,<I_S09, Long>,<I_S10, Long>,<I_S11, Long>,<I_S12, Long>,<I_S13, Long>,<I_S14, Long>,<I_S15, Long>,<I_S16, Long>,<R_Inv01, Long>,<R_Inv02, Long>,<R_Inv03, Long>,<R_Inv04, Long>,<R_Inv05, Long>,<R_Inv06, Long>,<R_Inv07, Long>,<R_Inv08, Long>,<R_Inv09, Long>,<R_Inv10, Long>,<R_Inv11, Long>,<R_Inv12, Long>,<R_Inv13, Long>,<R_Inv14, Long>,<R_Inv15, Long>,<R_Inv16, Long>,<R_Inv17, Long>,<R_Inv18, Long>,<R_Inv19, Long>,<R_Inv20, Long>,<R_Inv21, Long>,<R_Inv22, Long>,<R_Inv23, Long>,<R_Inv24, Long>)", this.conn);
+                    //MessageBox.Show(string.Concat("Successfull Data Added"));
+                    //this.fillData();
+                    //this.AmtDataView();
+                    //this.textBox1.ReadOnly = true;
+                    //this.textBox1.Text = "";
+                    this.button15.Text = "New";
+                    //this.BalankFldMarMem();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (this.button15.Text == "Delete")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemos SELECT * FROM Memo WHERE M_ID = '" + this.textBox101.Text.Trim() + "' "), this.conn);
+                    sendData.ExecuteNonQuery();
+                    OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM Memo WHERE M_ID = '" + this.textBox101.Text.Trim() + "' "), this.conn);
+                    sendDData.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Deleted - [", this.textBox101.Text + "] "));
+                    this.button15.Text = "New";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+            }
+        }
         private void label217_DoubleClick(object sender, EventArgs e)
         {
             //code refresh for Due&Paid
@@ -1169,7 +1511,7 @@ namespace CT_App
         {
             if (e.KeyChar == '\r')
             {
-                if (this.textBox.Text.Trim() == "*1355*")
+                if (this.textBox.Text.Trim() == "*1355*" || this.textBox.Text.Trim() == "shohel")
                 {
                     this.tabControl1.Visible = true;
                     this.label180.Visible = false;
@@ -3067,19 +3409,12 @@ namespace CT_App
             }
         }
         
+        
         #endregion
 
         //-----------------------------------------------------------------------
         //------------------------------If Query Needed--------------------------
         //-----------------------------------------------------------------------
-        /*
-        this.conn.Open();
-        OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO DailyX SELECT * FROM Daily WHERE D_ID = '" + this.label182.Text.Trim() + "' "), this.conn);
-        sendData.ExecuteNonQuery();
-        OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM Daily WHERE D_ID = '" + this.label182.Text.Trim() + "' "), this.conn);
-        sendDData.ExecuteNonQuery();
-        this.conn.Close();
-        MessageBox.Show(string.Concat("Successfull Deleted - [", this.label182.Text + "] "));
-        */
+
     }
 }

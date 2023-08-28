@@ -407,6 +407,9 @@ namespace CT_App
             this.button9 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label222 = new System.Windows.Forms.Label();
+            this.label223 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.textBox92 = new System.Windows.Forms.TextBox();
             this.label194 = new System.Windows.Forms.Label();
@@ -432,9 +435,8 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.label222 = new System.Windows.Forms.Label();
-            this.label223 = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label224 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -462,9 +464,9 @@ namespace CT_App
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -483,10 +485,10 @@ namespace CT_App
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage1.Controls.Add(this.panel9);
             this.tabPage1.Controls.Add(this.panel7);
             this.tabPage1.Controls.Add(this.panel8);
             this.tabPage1.Controls.Add(this.textBox55);
+            this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.label128);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label147);
@@ -509,6 +511,7 @@ namespace CT_App
             this.panel9.Controls.Add(this.label150);
             this.panel9.Controls.Add(this.label151);
             this.panel9.Controls.Add(this.label152);
+            this.panel9.Controls.Add(this.label224);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Controls.Add(this.label153);
             this.panel9.Controls.Add(this.label154);
@@ -531,7 +534,7 @@ namespace CT_App
             this.panel9.Controls.Add(this.label171);
             this.panel9.Controls.Add(this.label172);
             this.panel9.Controls.Add(this.label179);
-            this.panel9.Location = new System.Drawing.Point(381, 649);
+            this.panel9.Location = new System.Drawing.Point(65, 10);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(111, 45);
             this.panel9.TabIndex = 10;
@@ -1288,6 +1291,7 @@ namespace CT_App
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label145);
+            this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.textBox90);
             this.panel8.Location = new System.Drawing.Point(379, 663);
             this.panel8.Name = "panel8";
@@ -4451,6 +4455,37 @@ namespace CT_App
             this.dateTimePicker4.TabIndex = 25;
             this.dateTimePicker4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker4_KeyPress);
             // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label222);
+            this.panel18.Controls.Add(this.label223);
+            this.panel18.Location = new System.Drawing.Point(22, 656);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(330, 19);
+            this.panel18.TabIndex = 24;
+            // 
+            // label222
+            // 
+            this.label222.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label222.ForeColor = System.Drawing.Color.DarkRed;
+            this.label222.Location = new System.Drawing.Point(129, 1);
+            this.label222.Name = "label222";
+            this.label222.Size = new System.Drawing.Size(196, 17);
+            this.label222.TabIndex = 14;
+            this.label222.Text = "0";
+            // 
+            // label223
+            // 
+            this.label223.AutoSize = true;
+            this.label223.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label223.ForeColor = System.Drawing.Color.DarkRed;
+            this.label223.Location = new System.Drawing.Point(-1, 0);
+            this.label223.Name = "label223";
+            this.label223.Size = new System.Drawing.Size(130, 16);
+            this.label223.TabIndex = 14;
+            this.label223.Text = "Last Teken Date :";
+            // 
             // panel11
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -4727,36 +4762,26 @@ namespace CT_App
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // label222
+            // button15
             // 
-            this.label222.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label222.ForeColor = System.Drawing.Color.DarkRed;
-            this.label222.Location = new System.Drawing.Point(129, 1);
-            this.label222.Name = "label222";
-            this.label222.Size = new System.Drawing.Size(196, 17);
-            this.label222.TabIndex = 14;
-            this.label222.Text = "0";
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button15.Location = new System.Drawing.Point(543, 2);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(61, 26);
+            this.button15.TabIndex = 9;
+            this.button15.Text = "New";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // label223
+            // label224
             // 
-            this.label223.AutoSize = true;
-            this.label223.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label223.ForeColor = System.Drawing.Color.DarkRed;
-            this.label223.Location = new System.Drawing.Point(-1, 0);
-            this.label223.Name = "label223";
-            this.label223.Size = new System.Drawing.Size(130, 16);
-            this.label223.TabIndex = 14;
-            this.label223.Text = "Last Teken Date :";
-            // 
-            // panel18
-            // 
-            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Controls.Add(this.label222);
-            this.panel18.Controls.Add(this.label223);
-            this.panel18.Location = new System.Drawing.Point(22, 656);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(330, 19);
-            this.panel18.TabIndex = 24;
+            this.label224.AutoSize = true;
+            this.label224.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.label224.Location = new System.Drawing.Point(58, 30);
+            this.label224.Name = "label224";
+            this.label224.Size = new System.Drawing.Size(6, 7);
+            this.label224.TabIndex = 0;
+            this.label224.Text = ".";
             // 
             // CT_Mine
             // 
@@ -4820,11 +4845,11 @@ namespace CT_App
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5224,5 +5249,7 @@ namespace CT_App
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label222;
         private System.Windows.Forms.Label label223;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label224;
     }
 }
