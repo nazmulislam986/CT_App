@@ -437,6 +437,7 @@ namespace CT_App
             this.textBox = new System.Windows.Forms.TextBox();
             this.button15 = new System.Windows.Forms.Button();
             this.label224 = new System.Windows.Forms.Label();
+            this.textBox108 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -507,6 +508,7 @@ namespace CT_App
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.textBox108);
             this.panel9.Controls.Add(this.textBox101);
             this.panel9.Controls.Add(this.label150);
             this.panel9.Controls.Add(this.label151);
@@ -534,9 +536,9 @@ namespace CT_App
             this.panel9.Controls.Add(this.label171);
             this.panel9.Controls.Add(this.label172);
             this.panel9.Controls.Add(this.label179);
-            this.panel9.Location = new System.Drawing.Point(65, 10);
+            this.panel9.Location = new System.Drawing.Point(17, 72);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(111, 45);
+            this.panel9.Size = new System.Drawing.Size(212, 45);
             this.panel9.TabIndex = 10;
             // 
             // textBox101
@@ -592,7 +594,7 @@ namespace CT_App
             // 
             this.label153.AutoSize = true;
             this.label153.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label153.Location = new System.Drawing.Point(47, 3);
+            this.label153.Location = new System.Drawing.Point(47, 2);
             this.label153.Name = "label153";
             this.label153.Size = new System.Drawing.Size(8, 7);
             this.label153.TabIndex = 2;
@@ -672,7 +674,7 @@ namespace CT_App
             // 
             this.label161.AutoSize = true;
             this.label161.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label161.Location = new System.Drawing.Point(38, 3);
+            this.label161.Location = new System.Drawing.Point(38, 2);
             this.label161.Name = "label161";
             this.label161.Size = new System.Drawing.Size(8, 7);
             this.label161.TabIndex = 2;
@@ -752,7 +754,7 @@ namespace CT_App
             // 
             this.label169.AutoSize = true;
             this.label169.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label169.Location = new System.Drawing.Point(29, 3);
+            this.label169.Location = new System.Drawing.Point(29, 2);
             this.label169.Name = "label169";
             this.label169.Size = new System.Drawing.Size(8, 7);
             this.label169.TabIndex = 2;
@@ -1291,7 +1293,6 @@ namespace CT_App
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label145);
-            this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.textBox90);
             this.panel8.Location = new System.Drawing.Point(379, 663);
             this.panel8.Name = "panel8";
@@ -2570,6 +2571,7 @@ namespace CT_App
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.panel9);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label3);
@@ -4783,6 +4785,15 @@ namespace CT_App
             this.label224.TabIndex = 0;
             this.label224.Text = ".";
             // 
+            // textBox108
+            // 
+            this.textBox108.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
+            this.textBox108.Location = new System.Drawing.Point(107, 3);
+            this.textBox108.Name = "textBox108";
+            this.textBox108.Size = new System.Drawing.Size(44, 15);
+            this.textBox108.TabIndex = 22;
+            this.textBox108.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // CT_Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5251,5 +5262,6 @@ namespace CT_App
         private System.Windows.Forms.Label label223;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Label label224;
+        private System.Windows.Forms.TextBox textBox108;
     }
 }
