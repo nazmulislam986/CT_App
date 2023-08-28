@@ -360,6 +360,7 @@ namespace CT_App
             this.label117 = new System.Windows.Forms.Label();
             this.label120 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox107 = new System.Windows.Forms.TextBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -393,6 +394,7 @@ namespace CT_App
             this.label92 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
+            this.label221 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
@@ -430,8 +432,9 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.textBox107 = new System.Windows.Forms.TextBox();
-            this.label221 = new System.Windows.Forms.Label();
+            this.label222 = new System.Windows.Forms.Label();
+            this.label223 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -461,6 +464,7 @@ namespace CT_App
             this.panel3.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -3852,6 +3856,15 @@ namespace CT_App
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Given / Taken :";
             // 
+            // textBox107
+            // 
+            this.textBox107.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textBox107.Location = new System.Drawing.Point(571, 181);
+            this.textBox107.Name = "textBox107";
+            this.textBox107.Size = new System.Drawing.Size(192, 26);
+            this.textBox107.TabIndex = 15;
+            this.textBox107.TextChanged += new System.EventHandler(this.textBox107_TextChanged);
+            // 
             // panel15
             // 
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -4249,6 +4262,16 @@ namespace CT_App
             this.label116.TabIndex = 19;
             this.label116.Text = "0";
             // 
+            // label221
+            // 
+            this.label221.AutoSize = true;
+            this.label221.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label221.Location = new System.Drawing.Point(418, 183);
+            this.label221.Name = "label221";
+            this.label221.Size = new System.Drawing.Size(153, 20);
+            this.label221.TabIndex = 2;
+            this.label221.Text = "Search Through By :";
+            // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -4391,6 +4414,7 @@ namespace CT_App
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dateTimePicker4);
+            this.panel3.Controls.Add(this.panel18);
             this.panel3.Controls.Add(this.panel11);
             this.panel3.Controls.Add(this.dataGridView5);
             this.panel3.Controls.Add(this.label191);
@@ -4410,6 +4434,7 @@ namespace CT_App
             this.panel3.Controls.Add(this.textBox37);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.button10);
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(376, 694);
@@ -4418,10 +4443,11 @@ namespace CT_App
             // dateTimePicker4
             // 
             this.dateTimePicker4.CustomFormat = "";
+            this.dateTimePicker4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker4.Location = new System.Drawing.Point(271, 1);
             this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(102, 23);
+            this.dateTimePicker4.Size = new System.Drawing.Size(102, 22);
             this.dateTimePicker4.TabIndex = 25;
             this.dateTimePicker4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker4_KeyPress);
             // 
@@ -4465,7 +4491,7 @@ namespace CT_App
             this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -4475,7 +4501,7 @@ namespace CT_App
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -4701,24 +4727,36 @@ namespace CT_App
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // textBox107
+            // label222
             // 
-            this.textBox107.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox107.Location = new System.Drawing.Point(571, 181);
-            this.textBox107.Name = "textBox107";
-            this.textBox107.Size = new System.Drawing.Size(192, 26);
-            this.textBox107.TabIndex = 15;
-            this.textBox107.TextChanged += new System.EventHandler(this.textBox107_TextChanged);
+            this.label222.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label222.ForeColor = System.Drawing.Color.DarkRed;
+            this.label222.Location = new System.Drawing.Point(129, 1);
+            this.label222.Name = "label222";
+            this.label222.Size = new System.Drawing.Size(196, 17);
+            this.label222.TabIndex = 14;
+            this.label222.Text = "0";
             // 
-            // label221
+            // label223
             // 
-            this.label221.AutoSize = true;
-            this.label221.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label221.Location = new System.Drawing.Point(418, 183);
-            this.label221.Name = "label221";
-            this.label221.Size = new System.Drawing.Size(153, 20);
-            this.label221.TabIndex = 2;
-            this.label221.Text = "Search Through By :";
+            this.label223.AutoSize = true;
+            this.label223.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label223.ForeColor = System.Drawing.Color.DarkRed;
+            this.label223.Location = new System.Drawing.Point(-1, 0);
+            this.label223.Name = "label223";
+            this.label223.Size = new System.Drawing.Size(130, 16);
+            this.label223.TabIndex = 14;
+            this.label223.Text = "Last Teken Date :";
+            // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label222);
+            this.panel18.Controls.Add(this.label223);
+            this.panel18.Location = new System.Drawing.Point(22, 656);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(330, 19);
+            this.panel18.TabIndex = 24;
             // 
             // CT_Mine
             // 
@@ -4785,6 +4823,8 @@ namespace CT_App
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5181,5 +5221,8 @@ namespace CT_App
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.TextBox textBox107;
         private System.Windows.Forms.Label label221;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label222;
+        private System.Windows.Forms.Label label223;
     }
 }

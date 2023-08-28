@@ -118,6 +118,11 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterdltAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(Unrated_Amount) FROM Credit WHERE [DT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtUnr.Fill(dataTableAmtUnr);
                 this.label116.Text = dataTableAmtUnr.Rows[0][0].ToString();
+
+                DataTable dataTableAmtCol = new DataTable();
+                OleDbDataAdapter dataAdapterdltAmtCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM Daily WHERE [D_Data]='TKN' "), this.conn);
+                dataAdapterdltAmtCol.Fill(dataTableAmtCol);
+                this.label222.Text = dataTableAmtCol.Rows[0][0].ToString();
             }
             catch (Exception)
             {

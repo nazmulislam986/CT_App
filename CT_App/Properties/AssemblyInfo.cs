@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MicroDoc")]
 [assembly: AssemblyProduct("CT_App")]
-[assembly: AssemblyCopyright("Copyright © 08 2023")]
+[assembly: AssemblyCopyright("Copyright MicroDoc © 08 2023")]
 [assembly: AssemblyTrademark("MicroDoc")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("28.8.231.1")]
-[assembly: AssemblyFileVersion("28.8.240.61")]
+[assembly: AssemblyFileVersion("28.8.240.73")]
 
-[assembly: AssemblyInformationalVersion("28.8.240.61")]
+[assembly: AssemblyInformationalVersion("28.8.240.73")]
