@@ -20,7 +20,7 @@
     <UpdatePackageVersion>False</UpdatePackageVersion>
     <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
     <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
-    <AssemblyVersion>28.8.231.1</AssemblyVersion>
+    <AssemblyVersion>29.8.231.1</AssemblyVersion>
     <PrimaryVersionType>AssemblyFileVersionAttribute</PrimaryVersionType>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
