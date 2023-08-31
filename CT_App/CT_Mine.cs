@@ -67,7 +67,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AmtDataView()
@@ -88,7 +88,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AmtCrDataView()
@@ -127,7 +127,7 @@ namespace CT_App
             }
             catch (Exception)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillGivenData()
@@ -141,7 +141,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillDailyData()
@@ -160,7 +160,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillInstData()
@@ -179,7 +179,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void BalankFld()
@@ -345,7 +345,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AllIinvAdd()
@@ -381,7 +381,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void totalDailyData()
@@ -399,7 +399,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void totalInstData()
@@ -413,7 +413,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillMemo()
@@ -510,7 +510,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button1.Text == "Updt")
@@ -532,7 +532,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button1.Text == "U to M")
@@ -551,7 +551,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -599,7 +599,7 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show(ex.Message);
+                        //MessageBox.Show("Error : " + ex.Message);
                     }
                 }
                 else
@@ -616,7 +616,7 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show(ex.Message);
+                        //MessageBox.Show("Error : " + ex.Message);
                     }
                 }
 
@@ -668,7 +668,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button6.Text == "Exp")
@@ -686,7 +686,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button6.Text == "Sav")
@@ -704,7 +704,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button6.Text == "Unr")
@@ -722,7 +722,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -756,7 +756,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button10_Click(object sender, EventArgs e)
@@ -785,7 +785,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button10.Text == "Updt")
@@ -809,7 +809,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -839,7 +839,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button14.Text == "Updt")
@@ -861,7 +861,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -894,7 +894,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button8_Click(object sender, EventArgs e)
@@ -949,7 +949,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button4.Text == "Updt")
@@ -968,7 +968,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1049,7 +1049,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1168,7 +1168,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error : " + ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1233,7 +1233,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1254,7 +1254,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView5_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1319,6 +1319,18 @@ namespace CT_App
                     this.tabControl1.Visible = true;
                     this.label180.Visible = false;
                     this.textBox.Visible = false;
+                }
+                else if (this.textBox.Text.Trim() == "shamim")
+                {
+                    this.label180.Visible = false;
+                    this.textBox.Visible = false;
+                    this.tabControl1.Visible = true;
+                    this.tabControl1.TabPages.Remove(tabPage1);
+                    this.tabControl1.TabPages.Remove(tabPage2);
+                    this.tabControl1.TabPages.Remove(tabPage3);
+                    this.panel4.Visible = false;
+                    this.panel19.Visible = false;
+                    this.dataGridView5.ReadOnly = true;
                 }
                 else
                 {
@@ -1409,7 +1421,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void textBox34_KeyPress(object sender, KeyPressEventArgs e)
