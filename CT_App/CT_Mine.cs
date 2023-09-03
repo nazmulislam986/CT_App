@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,8 @@ namespace CT_App
         public CT_Mine()
         {
             InitializeComponent();
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            this.lblVer.Text = String.Format(this.lblVer.Text, version.Major, version.Minor, version.Build, version.Revision);
             this.tabControl1.Visible = false;
             this.DltDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             this.fillData();
@@ -1184,59 +1187,7 @@ namespace CT_App
         {
             this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
         }
-
-        //-----------------------------------------------------------------------
-        //------------------------------All DataGrid Work------------------------
-        //-----------------------------------------------------------------------
-        private void dataGridView3_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                this.radioButton1.Enabled = false;
-                this.radioButton2.Enabled = false;
-                this.conn.Open();
-                DataTable dataTable = new DataTable();
-                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE InDel='", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
-                oleDbData.Fill(dataTable);
-                this.label102.Text   = dataTable.Rows[0][0].ToString();
-                this.label117.Text   = dataTable.Rows[0][1].ToString();
-                this.textBox36.Text  = dataTable.Rows[0][2].ToString();
-                this.textBox40.Text  = dataTable.Rows[0][3].ToString();
-                this.textBox41.Text  = dataTable.Rows[0][4].ToString();
-                this.textBox42.Text  = dataTable.Rows[0][5].ToString();
-                this.textBox44.Text  = dataTable.Rows[0][6].ToString();
-                this.textBox45.Text  = dataTable.Rows[0][7].ToString();
-                this.textBox46.Text  = dataTable.Rows[0][8].ToString();
-                this.textBox47.Text  = dataTable.Rows[0][9].ToString();
-                this.label113.Text   = dataTable.Rows[0][10].ToString();
-                this.label111.Text   = dataTable.Rows[0][11].ToString();
-                this.label108.Text   = dataTable.Rows[0][12].ToString();
-                this.textBox105.Text = dataTable.Rows[0][13].ToString();
-                this.textBox43.Text  = dataTable.Rows[0][14].ToString();
-                this.textBox48.Text  = dataTable.Rows[0][15].ToString();
-                this.textBox49.Text  = dataTable.Rows[0][16].ToString();
-                this.textBox106.Text = dataTable.Rows[0][17].ToString();
-                this.textBox51.Text  = dataTable.Rows[0][18].ToString();
-                this.textBox52.Text  = dataTable.Rows[0][19].ToString();
-                this.textBox53.Text  = dataTable.Rows[0][20].ToString();
-                this.textBox104.Text = dataTable.Rows[0][21].ToString();
-                this.textBox103.Text = dataTable.Rows[0][22].ToString();
-                this.textBox93.Text  = dataTable.Rows[0][23].ToString();
-                this.textBox102.Text = dataTable.Rows[0][24].ToString();
-                this.conn.Close();
-                this.button7.Visible = true;
-                this.textBox39.ReadOnly = false;
-                this.dateTimePicker3.Enabled = true;
-                this.checkBox1.Enabled = true;
-                this.textBox39.Focus();
-                this.button6.Text = "Updt";
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error : " + ex.Message);
-            }
-        }
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -1254,56 +1205,134 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                
+            }
+        }
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.button4.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,InsPay FROM Installment WHERE I_ID='", this.dataGridView2.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label201.Text = dataTable.Rows[0][0].ToString();
+                this.label212.Text = dataTable.Rows[0][1].ToString();
+                this.textBox32.Text = dataTable.Rows[0][1].ToString();
+                this.textBox32.ReadOnly = false;
+                this.textBox32.Focus();
+            }
+            catch (Exception ex)
+            {
                 //MessageBox.Show("Error : " + ex.Message);
             }
         }
-        private void dataGridView5_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.button12.Visible = true;
-            this.button10.Text = "Updt";
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,D_FPAmount,D_SPAmount,D_Data,NotTaken FROM Daily WHERE D_ID='", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
-            oleDbData.Fill(dataTable);
-            this.label182.Text  = dataTable.Rows[0][0].ToString();
-            this.label185.Text  = dataTable.Rows[0][1].ToString();
-            this.label187.Text  = dataTable.Rows[0][2].ToString();
-            this.label189.Text  = dataTable.Rows[0][3].ToString();
-            this.textBox37.Text = dataTable.Rows[0][4].ToString();
-            this.textBox37.ReadOnly = false;
+            try
+            {
+                this.radioButton1.Enabled = false;
+                this.radioButton2.Enabled = false;
+                this.conn.Open();
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE InDel='", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label102.Text = dataTable.Rows[0][0].ToString();
+                this.label117.Text = dataTable.Rows[0][1].ToString();
+                this.textBox36.Text = dataTable.Rows[0][2].ToString();
+                this.textBox40.Text = dataTable.Rows[0][3].ToString();
+                this.textBox41.Text = dataTable.Rows[0][4].ToString();
+                this.textBox42.Text = dataTable.Rows[0][5].ToString();
+                this.textBox44.Text = dataTable.Rows[0][6].ToString();
+                this.textBox45.Text = dataTable.Rows[0][7].ToString();
+                this.textBox46.Text = dataTable.Rows[0][8].ToString();
+                this.textBox47.Text = dataTable.Rows[0][9].ToString();
+                this.label113.Text = dataTable.Rows[0][10].ToString();
+                this.label111.Text = dataTable.Rows[0][11].ToString();
+                this.label108.Text = dataTable.Rows[0][12].ToString();
+                this.textBox105.Text = dataTable.Rows[0][13].ToString();
+                this.textBox43.Text = dataTable.Rows[0][14].ToString();
+                this.textBox48.Text = dataTable.Rows[0][15].ToString();
+                this.textBox49.Text = dataTable.Rows[0][16].ToString();
+                this.textBox106.Text = dataTable.Rows[0][17].ToString();
+                this.textBox51.Text = dataTable.Rows[0][18].ToString();
+                this.textBox52.Text = dataTable.Rows[0][19].ToString();
+                this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                this.textBox104.Text = dataTable.Rows[0][21].ToString();
+                this.textBox103.Text = dataTable.Rows[0][22].ToString();
+                this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                this.textBox102.Text = dataTable.Rows[0][24].ToString();
+                this.conn.Close();
+                this.button7.Visible = true;
+                this.textBox39.ReadOnly = false;
+                this.dateTimePicker3.Enabled = true;
+                this.checkBox1.Enabled = true;
+                this.textBox39.Focus();
+                this.button6.Text = "Updt";
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
         }
-        private void dataGridView4_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.button14.Text = "Updt";
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT C_ID,C_Amount FROM DailyCut WHERE C_ID='", this.dataGridView4.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
-            oleDbData.Fill(dataTable);
-            this.label182.Text  = dataTable.Rows[0][0].ToString();
-            this.label191.Text  = dataTable.Rows[0][1].ToString();
-            this.textBox50.Text = dataTable.Rows[0][1].ToString();
-            this.textBox50.ReadOnly = false;
-            this.textBox50.Focus();
+            try
+            {
+                this.button14.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT C_ID,C_Amount FROM DailyCut WHERE C_ID='", this.dataGridView4.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label182.Text = dataTable.Rows[0][0].ToString();
+                this.label191.Text = dataTable.Rows[0][1].ToString();
+                this.textBox50.Text = dataTable.Rows[0][1].ToString();
+                this.textBox50.ReadOnly = false;
+                this.textBox50.Focus();
+            }
+            catch (Exception exception)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+
         }
-        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.button4.Text = "Updt";
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,InsPay FROM Installment WHERE I_ID='", this.dataGridView2.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
-            oleDbData.Fill(dataTable);
-            this.label201.Text = dataTable.Rows[0][0].ToString();
-            this.label212.Text = dataTable.Rows[0][1].ToString();
-            this.textBox32.Text = dataTable.Rows[0][1].ToString();
-            this.textBox32.ReadOnly = false;
-            this.textBox32.Focus();
+            try
+            {
+                this.button12.Visible = true;
+                this.button10.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,D_FPAmount,D_SPAmount,D_Data,NotTaken FROM Daily WHERE D_ID='", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label182.Text = dataTable.Rows[0][0].ToString();
+                this.label185.Text = dataTable.Rows[0][1].ToString();
+                this.label187.Text = dataTable.Rows[0][2].ToString();
+                this.label189.Text = dataTable.Rows[0][3].ToString();
+                this.textBox37.Text = dataTable.Rows[0][4].ToString();
+                this.textBox37.ReadOnly = false;
+            }
+            catch (Exception exception)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+
         }
-        private void dataGridView6_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.button13.Text = "Dlt";
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,Take_Anot,Take_Mine FROM Installment WHERE I_ID='", this.dataGridView6.SelectedRows[0].Cells[0].Value.ToString(),"' "), this.conn);
-            oleDbData.Fill(dataTable);
-            this.label218.Text = dataTable.Rows[0][0].ToString();
-            this.label199.Text = dataTable.Rows[0][1].ToString();
-            this.label198.Text = dataTable.Rows[0][2].ToString();
+            try
+            {
+                this.button13.Text = "Dlt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT I_ID,Take_Anot,Take_Mine FROM Installment WHERE I_ID='", this.dataGridView6.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label218.Text = dataTable.Rows[0][0].ToString();
+                this.label199.Text = dataTable.Rows[0][1].ToString();
+                this.label198.Text = dataTable.Rows[0][2].ToString();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
         }
 
         //-----------------------------------------------------------------------
@@ -1319,6 +1348,7 @@ namespace CT_App
                     this.tabControl1.Visible = true;
                     this.label180.Visible = false;
                     this.textBox.Visible = false;
+                    this.lblVer.Visible = false;
                 }
                 else if (this.textBox.Text.Trim() == "shamim")
                 {
@@ -1330,6 +1360,7 @@ namespace CT_App
                     this.tabControl1.TabPages.Remove(tabPage3);
                     this.panel4.Visible = false;
                     this.panel19.Visible = false;
+                    this.lblVer.Visible = false;
                     this.dataGridView5.ReadOnly = true;
                 }
                 else
@@ -3241,8 +3272,6 @@ namespace CT_App
                 }
             }
         }
-
-        
 
         #endregion
 

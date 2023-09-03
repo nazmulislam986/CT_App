@@ -224,6 +224,7 @@ namespace CT_App
             this.label126 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -260,7 +261,6 @@ namespace CT_App
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
             this.textBox98 = new System.Windows.Forms.TextBox();
@@ -439,6 +439,7 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
+            this.lblVer = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -2307,6 +2308,17 @@ namespace CT_App
             this.panel5.Size = new System.Drawing.Size(376, 668);
             this.panel5.TabIndex = 10;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button2.Location = new System.Drawing.Point(148, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 29);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -2343,7 +2355,7 @@ namespace CT_App
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(372, 606);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
@@ -2718,17 +2730,6 @@ namespace CT_App
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button2.Location = new System.Drawing.Point(148, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 29);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -3003,7 +3004,7 @@ namespace CT_App
             this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView6.Size = new System.Drawing.Size(389, 506);
             this.dataGridView6.TabIndex = 12;
-            this.dataGridView6.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView6_CellContentDoubleClick);
+            this.dataGridView6.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView6_CellContentClick);
             // 
             // panel16
             // 
@@ -3299,7 +3300,7 @@ namespace CT_App
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(372, 606);
             this.dataGridView2.TabIndex = 12;
-            this.dataGridView2.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentDoubleClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // button4
             // 
@@ -4188,7 +4189,7 @@ namespace CT_App
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(762, 249);
             this.dataGridView3.TabIndex = 17;
-            this.dataGridView3.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentDoubleClick);
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // panel2
             // 
@@ -4407,7 +4408,7 @@ namespace CT_App
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(372, 604);
             this.dataGridView4.TabIndex = 20;
-            this.dataGridView4.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentDoubleClick);
+            this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
             // 
             // label125
             // 
@@ -4555,10 +4556,10 @@ namespace CT_App
             // label191
             // 
             this.label191.AutoSize = true;
-            this.label191.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label191.Location = new System.Drawing.Point(286, 8);
+            this.label191.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label191.Location = new System.Drawing.Point(286, 7);
             this.label191.Name = "label191";
-            this.label191.Size = new System.Drawing.Size(15, 16);
+            this.label191.Size = new System.Drawing.Size(16, 16);
             this.label191.TabIndex = 22;
             this.label191.Text = "0";
             // 
@@ -4585,20 +4586,20 @@ namespace CT_App
             // label182
             // 
             this.label182.AutoSize = true;
-            this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label182.Location = new System.Drawing.Point(125, 8);
+            this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label182.Location = new System.Drawing.Point(125, 7);
             this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(15, 16);
+            this.label182.Size = new System.Drawing.Size(16, 16);
             this.label182.TabIndex = 22;
             this.label182.Text = "0";
             // 
             // label187
             // 
             this.label187.AutoSize = true;
-            this.label187.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label187.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label187.Location = new System.Drawing.Point(125, 53);
             this.label187.Name = "label187";
-            this.label187.Size = new System.Drawing.Size(15, 16);
+            this.label187.Size = new System.Drawing.Size(16, 16);
             this.label187.TabIndex = 22;
             this.label187.Text = "0";
             // 
@@ -4708,7 +4709,7 @@ namespace CT_App
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView5.Size = new System.Drawing.Size(372, 483);
             this.dataGridView5.TabIndex = 20;
-            this.dataGridView5.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentDoubleClick);
+            this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             // 
             // label94
             // 
@@ -4775,9 +4776,9 @@ namespace CT_App
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(586, 2);
+            this.label4.Location = new System.Drawing.Point(588, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(189, 20);
+            this.label4.Size = new System.Drawing.Size(188, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Date/Time";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4790,17 +4791,17 @@ namespace CT_App
             // label180
             // 
             this.label180.AutoSize = true;
-            this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label180.Location = new System.Drawing.Point(334, 6);
+            this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label180.Location = new System.Drawing.Point(334, 5);
             this.label180.Name = "label180";
-            this.label180.Size = new System.Drawing.Size(66, 20);
+            this.label180.Size = new System.Drawing.Size(58, 20);
             this.label180.TabIndex = 1;
             this.label180.Text = "Insert :";
             // 
             // textBox
             // 
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox.Location = new System.Drawing.Point(400, 3);
+            this.textBox.Location = new System.Drawing.Point(390, 3);
             this.textBox.Name = "textBox";
             this.textBox.PasswordChar = '$';
             this.textBox.Size = new System.Drawing.Size(94, 26);
@@ -4808,15 +4809,28 @@ namespace CT_App
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
+            // lblVer
+            // 
+            this.lblVer.AutoSize = true;
+            this.lblVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.lblVer.ForeColor = System.Drawing.Color.Black;
+            this.lblVer.Location = new System.Drawing.Point(484, 9);
+            this.lblVer.Name = "lblVer";
+            this.lblVer.Size = new System.Drawing.Size(85, 13);
+            this.lblVer.TabIndex = 3;
+            this.lblVer.Text = "V: {0}.{1}.{2}.{3}";
+            this.lblVer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // CT_Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(780, 703);
+            this.Controls.Add(this.lblVer);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.label180);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -5282,5 +5296,6 @@ namespace CT_App
         private System.Windows.Forms.Label label224;
         private System.Windows.Forms.TextBox textBox108;
         private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label lblVer;
     }
 }
