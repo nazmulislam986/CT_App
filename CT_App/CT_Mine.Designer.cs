@@ -440,6 +440,12 @@ namespace CT_App
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.lblVer = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.textBox109 = new System.Windows.Forms.TextBox();
+            this.textBox116 = new System.Windows.Forms.TextBox();
+            this.textBox117 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -3338,6 +3344,9 @@ namespace CT_App
             // panel17
             // 
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.textBox117);
+            this.panel17.Controls.Add(this.textBox116);
+            this.panel17.Controls.Add(this.textBox109);
             this.panel17.Controls.Add(this.textBox53);
             this.panel17.Controls.Add(this.textBox106);
             this.panel17.Controls.Add(this.textBox51);
@@ -3349,7 +3358,10 @@ namespace CT_App
             this.panel17.Controls.Add(this.textBox105);
             this.panel17.Controls.Add(this.textBox104);
             this.panel17.Controls.Add(this.textBox93);
+            this.panel17.Controls.Add(this.button18);
+            this.panel17.Controls.Add(this.button17);
             this.panel17.Controls.Add(this.textBox48);
+            this.panel17.Controls.Add(this.button16);
             this.panel17.Controls.Add(this.textBox47);
             this.panel17.Controls.Add(this.textBox46);
             this.panel17.Controls.Add(this.textBox45);
@@ -3627,7 +3639,7 @@ namespace CT_App
             // 
             this.label108.AutoSize = true;
             this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label108.Location = new System.Drawing.Point(588, 119);
+            this.label108.Location = new System.Drawing.Point(588, 118);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(14, 16);
             this.label108.TabIndex = 2;
@@ -3777,7 +3789,7 @@ namespace CT_App
             // 
             this.label107.AutoSize = true;
             this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label107.Location = new System.Drawing.Point(545, 119);
+            this.label107.Location = new System.Drawing.Point(545, 118);
             this.label107.Name = "label107";
             this.label107.Size = new System.Drawing.Size(45, 16);
             this.label107.TabIndex = 2;
@@ -4821,6 +4833,72 @@ namespace CT_App
             this.lblVer.Text = "V: {0}.{1}.{2}.{3}";
             this.lblVer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.button16.Location = new System.Drawing.Point(673, 137);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(61, 25);
+            this.button16.TabIndex = 19;
+            this.button16.Text = "E. Updt";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.button17.Location = new System.Drawing.Point(673, 160);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(61, 25);
+            this.button17.TabIndex = 19;
+            this.button17.Text = "S. Updt";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.button18.Location = new System.Drawing.Point(673, 183);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(61, 25);
+            this.button18.TabIndex = 19;
+            this.button18.Text = "U. Updt";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // textBox109
+            // 
+            this.textBox109.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox109.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textBox109.Location = new System.Drawing.Point(589, 139);
+            this.textBox109.Name = "textBox109";
+            this.textBox109.Size = new System.Drawing.Size(84, 22);
+            this.textBox109.TabIndex = 20;
+            this.textBox109.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox109.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox109_KeyPress);
+            // 
+            // textBox116
+            // 
+            this.textBox116.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox116.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textBox116.Location = new System.Drawing.Point(589, 162);
+            this.textBox116.Name = "textBox116";
+            this.textBox116.Size = new System.Drawing.Size(84, 22);
+            this.textBox116.TabIndex = 20;
+            this.textBox116.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox116.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox116_KeyPress);
+            // 
+            // textBox117
+            // 
+            this.textBox117.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox117.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textBox117.Location = new System.Drawing.Point(589, 185);
+            this.textBox117.Name = "textBox117";
+            this.textBox117.Size = new System.Drawing.Size(84, 22);
+            this.textBox117.TabIndex = 20;
+            this.textBox117.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox117.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox117_KeyPress);
+            // 
             // CT_Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5297,5 +5375,11 @@ namespace CT_App
         private System.Windows.Forms.TextBox textBox108;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Label lblVer;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.TextBox textBox117;
+        private System.Windows.Forms.TextBox textBox116;
+        private System.Windows.Forms.TextBox textBox109;
     }
 }

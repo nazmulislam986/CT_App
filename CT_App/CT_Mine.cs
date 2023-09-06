@@ -729,6 +729,66 @@ namespace CT_App
                 }
             }
         }
+        private void button16_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.textBox109.Text.Trim() + "',Expense_Amount= '" + this.textBox109.Text.Trim() + "',DT_V_Date= '" + this.DltDate + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                command.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Expance Update - ", this.label117.Text));
+                this.AmtCrDataView();
+                this.BalankFld();
+                this.fillGivenData();
+                this.textBox109.Text = "";
+                this.button6.Text = "New";
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void button17_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.textBox116.Text.Trim() + "',Saving_Amount= '" + this.textBox116.Text.Trim() + "',DT_V_Date= '" + this.DltDate + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                command.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Saving Update - ", this.label117.Text));
+                this.AmtCrDataView();
+                this.BalankFld();
+                this.fillGivenData();
+                this.textBox116.Text = "";
+                this.button6.Text = "New";
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void button18_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand command = new OleDbCommand("UPDATE Credit SET Amount= '" + this.textBox117.Text.Trim() + "',Unrated_Amount= '" + this.textBox117.Text.Trim() + "',DT_V_Date= '" + this.DltDate + "' WHERE InDel= '" + this.label117.Text.Trim() + "' ", this.conn);
+                command.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Unrated Update - ", this.label117.Text));
+                this.AmtCrDataView();
+                this.BalankFld();
+                this.fillGivenData();
+                this.textBox117.Text = "";
+                this.button6.Text = "New";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void button5_Click(object sender, EventArgs e)
         {
             this.button6.Text = "New";
@@ -1237,32 +1297,35 @@ namespace CT_App
                 DataTable dataTable = new DataTable();
                 OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Credit WHERE InDel='", this.dataGridView3.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
                 oleDbData.Fill(dataTable);
-                this.label102.Text = dataTable.Rows[0][0].ToString();
-                this.label117.Text = dataTable.Rows[0][1].ToString();
-                this.textBox36.Text = dataTable.Rows[0][2].ToString();
-                this.textBox40.Text = dataTable.Rows[0][3].ToString();
-                this.textBox41.Text = dataTable.Rows[0][4].ToString();
-                this.textBox42.Text = dataTable.Rows[0][5].ToString();
-                this.textBox44.Text = dataTable.Rows[0][6].ToString();
-                this.textBox45.Text = dataTable.Rows[0][7].ToString();
-                this.textBox46.Text = dataTable.Rows[0][8].ToString();
-                this.textBox47.Text = dataTable.Rows[0][9].ToString();
-                this.label113.Text = dataTable.Rows[0][10].ToString();
-                this.label111.Text = dataTable.Rows[0][11].ToString();
-                this.label108.Text = dataTable.Rows[0][12].ToString();
+                this.label102.Text   = dataTable.Rows[0][0].ToString();
+                this.label117.Text   = dataTable.Rows[0][1].ToString();
+                this.textBox36.Text  = dataTable.Rows[0][2].ToString();
+                this.textBox40.Text  = dataTable.Rows[0][3].ToString();
+                this.textBox41.Text  = dataTable.Rows[0][4].ToString();
+                this.textBox42.Text  = dataTable.Rows[0][5].ToString();
+                this.textBox44.Text  = dataTable.Rows[0][6].ToString();
+                this.textBox45.Text  = dataTable.Rows[0][7].ToString();
+                this.textBox46.Text  = dataTable.Rows[0][8].ToString();
+                this.textBox47.Text  = dataTable.Rows[0][9].ToString();
+                this.label113.Text   = dataTable.Rows[0][10].ToString();
+                this.label111.Text   = dataTable.Rows[0][11].ToString();
+                this.label108.Text   = dataTable.Rows[0][12].ToString();
                 this.textBox105.Text = dataTable.Rows[0][13].ToString();
-                this.textBox43.Text = dataTable.Rows[0][14].ToString();
-                this.textBox48.Text = dataTable.Rows[0][15].ToString();
-                this.textBox49.Text = dataTable.Rows[0][16].ToString();
+                this.textBox43.Text  = dataTable.Rows[0][14].ToString();
+                this.textBox48.Text  = dataTable.Rows[0][15].ToString();
+                this.textBox49.Text  = dataTable.Rows[0][16].ToString();
                 this.textBox106.Text = dataTable.Rows[0][17].ToString();
-                this.textBox51.Text = dataTable.Rows[0][18].ToString();
-                this.textBox52.Text = dataTable.Rows[0][19].ToString();
-                this.textBox53.Text = dataTable.Rows[0][20].ToString();
+                this.textBox51.Text  = dataTable.Rows[0][18].ToString();
+                this.textBox52.Text  = dataTable.Rows[0][19].ToString();
+                this.textBox53.Text  = dataTable.Rows[0][20].ToString();
                 this.textBox104.Text = dataTable.Rows[0][21].ToString();
                 this.textBox103.Text = dataTable.Rows[0][22].ToString();
-                this.textBox93.Text = dataTable.Rows[0][23].ToString();
+                this.textBox93.Text  = dataTable.Rows[0][23].ToString();
                 this.textBox102.Text = dataTable.Rows[0][24].ToString();
                 this.conn.Close();
+                this.textBox109.Text = this.textBox103.Text.Trim();
+                this.textBox116.Text = this.textBox43.Text.Trim();
+                this.textBox117.Text = this.textBox51.Text.Trim();
                 this.button7.Visible = true;
                 this.textBox39.ReadOnly = false;
                 this.dateTimePicker3.Enabled = true;
@@ -3216,6 +3279,63 @@ namespace CT_App
                 }
             }
         }
+        private void textBox109_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox109.Text.Trim() != ""))
+                    {
+                        this.textBox109.Focus();
+                    }
+                    else
+                    {
+                        this.button16.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox116_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox116.Text.Trim() != ""))
+                    {
+                        this.textBox116.Focus();
+                    }
+                    else
+                    {
+                        this.button17.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox117_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox117.Text.Trim() != ""))
+                    {
+                        this.textBox117.Focus();
+                    }
+                    else
+                    {
+                        this.button18.Focus();
+                    }
+                }
+            }
+        }
         private void dateTimePicker4_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -3272,12 +3392,10 @@ namespace CT_App
                 }
             }
         }
-
         #endregion
 
         //-----------------------------------------------------------------------
         //------------------------------If Query Needed--------------------------
         //-----------------------------------------------------------------------
-
     }
 }
