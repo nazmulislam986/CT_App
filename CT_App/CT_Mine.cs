@@ -828,6 +828,15 @@ namespace CT_App
             {
                 this.textBox37.ReadOnly = false;
                 this.textBox37.Focus();
+                TextBox textBox = this.textBox92;
+                string[] strArrays = new string[] { "D", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.button10.Text = "Save";
             }
             else if (this.button10.Text == "Save")
@@ -882,6 +891,15 @@ namespace CT_App
             {
                 this.textBox50.ReadOnly = false;
                 this.textBox50.Focus();
+                TextBox textBox = this.textBox92;
+                string[] strArrays = new string[] { "C", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
                 this.button14.Text = "Add Amt";
             }
             else if (this.button14.Text == "Add Amt")
@@ -3123,15 +3141,6 @@ namespace CT_App
                     }
                     else
                     {
-                        TextBox textBox = this.textBox92;
-                        string[] strArrays = new string[] { "D", null, null, null, null };
-                        int date = DateTime.Now.Day;
-                        int month = DateTime.Now.Month;
-                        int millis = DateTime.Now.Millisecond;
-                        strArrays[2] = date.ToString();
-                        strArrays[3] = month.ToString();
-                        strArrays[4] = millis.ToString();
-                        textBox.Text = string.Concat(strArrays);
                         int dev = Convert.ToInt32(this.textBox37.Text.Trim()) / 2;
                         this.label194.Text = dev.ToString();
                         this.button10.Focus();
@@ -3153,15 +3162,6 @@ namespace CT_App
                     }
                     else
                     {
-                        TextBox textBox = this.textBox92;
-                        string[] strArrays = new string[] { "C", null, null, null, null };
-                        int date = DateTime.Now.Day;
-                        int month = DateTime.Now.Month;
-                        int millis = DateTime.Now.Millisecond;
-                        strArrays[2] = date.ToString();
-                        strArrays[3] = month.ToString();
-                        strArrays[4] = millis.ToString();
-                        textBox.Text = string.Concat(strArrays);
                         this.button14.Focus();
                     }
                 }
