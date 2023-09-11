@@ -22,7 +22,7 @@ namespace CT_App
         {
             InitializeComponent();
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            this.lblVer.Text = String.Format(this.lblVer.Text, version.Major, version.Minor, version.Build, version.Revision);
+            this.Text = string.Concat("T Mine - " + String.Format(this.lblVer.Text, version.Major, version.Minor, version.Build, version.Revision));
             this.tabControl1.Visible = false;
             this.DltDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             this.fillData();
