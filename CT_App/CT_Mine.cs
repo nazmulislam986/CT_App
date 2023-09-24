@@ -47,7 +47,6 @@ namespace CT_App
             this.radioButton5.Enabled = false;
             this.radioButton4.Enabled = false;
             this.button7.Visible = false;
-            this.button11.Visible = false;
             this.textBox37.ReadOnly = true;
             this.textBox50.ReadOnly = true;
             this.panel9.Visible = false;
@@ -55,6 +54,8 @@ namespace CT_App
             this.button12.Visible = false;
             this.panel10.Visible = false;
             this.panel11.Visible = false;
+            this.button21.Visible = false;
+            this.button22.Visible = false;
         }
 
         //-----------------------------------------------------------------------
@@ -263,102 +264,116 @@ namespace CT_App
             this.textBox87.Text = "";
             this.textBox88.Text = "";
 
-            this.textBox2.Text  = "";
-            this.textBox3.Text  = "";
-            this.textBox4.Text  = "";
-            this.textBox5.Text  = "";
-            this.textBox6.Text  = "";
-            this.textBox7.Text  = "";
-            this.textBox8.Text  = "";
-            this.textBox9.Text  = "";
-            this.textBox10.Text = "";
-            this.textBox11.Text = "";
-            this.textBox12.Text = "";
-            this.textBox13.Text = "";
-            this.textBox14.Text = "";
-            this.textBox15.Text = "";
-            this.textBox16.Text = "";
-            this.textBox17.Text = "";
-            this.textBox18.Text = "";
-            this.textBox19.Text = "";
-            this.textBox20.Text = "";
-            this.textBox21.Text = "";
-            this.textBox22.Text = "";
-            this.textBox23.Text = "";
-            this.textBox24.Text = "";
-            this.textBox25.Text = "";
-            this.textBox26.Text = "";
-            this.textBox27.Text = "";
-            this.textBox28.Text = "";
-            this.textBox29.Text = "";
-            this.textBox30.Text = "";
-            this.textBox31.Text = "";
-            this.textBox54.Text = "";
-            this.textBox38.Text = "";
+            this.textBox2.Text = "0";
+            this.textBox3.Text = "0";
+            this.textBox4.Text = "0";
+            this.textBox5.Text = "0";
+            this.textBox6.Text = "0";
+            this.textBox7.Text = "0";
+            this.textBox8.Text = "0";
+            this.textBox9.Text = "0";
+            this.textBox10.Text = "0";
+            this.textBox11.Text = "0";
+            this.textBox12.Text = "0";
+            this.textBox13.Text = "0";
+            this.textBox14.Text = "0";
+            this.textBox15.Text = "0";
+            this.textBox16.Text = "0";
+            this.textBox17.Text = "0";
+            this.textBox18.Text = "0";
+            this.textBox19.Text = "0";
+            this.textBox20.Text = "0";
+            this.textBox21.Text = "0";
+            this.textBox22.Text = "0";
+            this.textBox23.Text = "0";
+            this.textBox24.Text = "0";
+            this.textBox25.Text = "0";
+            this.textBox26.Text = "0";
+            this.textBox27.Text = "0";
+            this.textBox28.Text = "0";
+            this.textBox29.Text = "0";
+            this.textBox30.Text = "0";
+            this.textBox31.Text = "0";
+            this.textBox54.Text = "0";
+            this.textBox38.Text = "0";
 
-            this.label9.Text    = "0";
-            this.label13.Text   = "0";
-            this.label17.Text   = "0";
-            this.label24.Text   = "0";
-            this.label28.Text   = "0";
-            this.label32.Text   = "0";
-            this.label36.Text   = "0";
-            this.label40.Text   = "0";
-            this.label44.Text   = "0";
-            this.label48.Text   = "0";
-            this.label52.Text   = "0";
-            this.label56.Text   = "0";
-            this.label60.Text   = "0";
-            this.label64.Text   = "0";
-            this.label68.Text   = "0";
-            this.label76.Text   = "0";
+            this.label9.Text = "0";
+            this.label13.Text = "0";
+            this.label17.Text = "0";
+            this.label24.Text = "0";
+            this.label28.Text = "0";
+            this.label32.Text = "0";
+            this.label36.Text = "0";
+            this.label40.Text = "0";
+            this.label44.Text = "0";
+            this.label48.Text = "0";
+            this.label52.Text = "0";
+            this.label56.Text = "0";
+            this.label60.Text = "0";
+            this.label64.Text = "0";
+            this.label68.Text = "0";
+            this.label76.Text = "0";
             this.textBox90.Text = "0";
 
-            this.textBox56.Text = "";
-            this.textBox57.Text = "";
-            this.textBox58.Text = "";
-            this.textBox59.Text = "";
-            this.textBox60.Text = "";
-            this.textBox61.Text = "";
-            this.textBox62.Text = "";
-            this.textBox63.Text = "";
-            this.textBox64.Text = "";
-            this.textBox65.Text = "";
-            this.textBox66.Text = "";
-            this.textBox67.Text = "";
-            this.textBox68.Text = "";
-            this.textBox69.Text = "";
-            this.textBox70.Text = "";
-            this.textBox71.Text = "";
+            this.textBox56.Text = "0";
+            this.textBox57.Text = "0";
+            this.textBox58.Text = "0";
+            this.textBox59.Text = "0";
+            this.textBox60.Text = "0";
+            this.textBox61.Text = "0";
+            this.textBox62.Text = "0";
+            this.textBox63.Text = "0";
+            this.textBox64.Text = "0";
+            this.textBox65.Text = "0";
+            this.textBox66.Text = "0";
+            this.textBox67.Text = "0";
+            this.textBox68.Text = "0";
+            this.textBox69.Text = "0";
+            this.textBox70.Text = "0";
+            this.textBox71.Text = "0";
+            this.textBox89.Text = "0";
+            this.textBox91.Text = "0";
+            this.textBox110.Text = "0";
+            this.textBox111.Text = "0";
+            this.textBox112.Text = "0";
+            this.textBox113.Text = "0";
+            this.textBox114.Text = "0";
+            this.textBox115.Text = "0";
+            this.textBox.Text = "0";
+            this.textBox.Text = "0";
+            this.textBox.Text = "0";
+            this.textBox.Text = "0";
+            this.textBox.Text = "0";
 
-            this.textBox55.Text = "";
-            this.label147.Text  = "0";
+            this.textBox90.Text = "0";
+            this.textBox55.Text = "0";
+            this.label147.Text = "0";
             this.label10.Text = "0";
 
-            this.label179.Text  = "0";
-            this.label172.Text  = "0";
-            this.label171.Text  = "0";
-            this.label170.Text  = "0";
-            this.label165.Text  = "0";
-            this.label164.Text  = "0";
-            this.label163.Text  = "0";
-            this.label162.Text  = "0";
-            this.label157.Text  = "0";
-            this.label156.Text  = "0";
-            this.label155.Text  = "0";
-            this.label154.Text  = "0";
-            this.label169.Text  = "0";
-            this.label168.Text  = "0";
-            this.label167.Text  = "0";
-            this.label166.Text  = "0";
-            this.label161.Text  = "0";
-            this.label160.Text  = "0";
-            this.label159.Text  = "0";
-            this.label158.Text  = "0";
-            this.label153.Text  = "0";
-            this.label152.Text  = "0";
-            this.label151.Text  = "0";
-            this.label150.Text  = "0";
+            this.label179.Text = "0";
+            this.label172.Text = "0";
+            this.label171.Text = "0";
+            this.label170.Text = "0";
+            this.label165.Text = "0";
+            this.label164.Text = "0";
+            this.label163.Text = "0";
+            this.label162.Text = "0";
+            this.label157.Text = "0";
+            this.label156.Text = "0";
+            this.label155.Text = "0";
+            this.label154.Text = "0";
+            this.label169.Text = "0";
+            this.label168.Text = "0";
+            this.label167.Text = "0";
+            this.label166.Text = "0";
+            this.label161.Text = "0";
+            this.label160.Text = "0";
+            this.label159.Text = "0";
+            this.label158.Text = "0";
+            this.label153.Text = "0";
+            this.label152.Text = "0";
+            this.label151.Text = "0";
+            this.label150.Text = "0";
         }
         private void AllItemAdd()
         {
@@ -382,6 +397,7 @@ namespace CT_App
                 int num16 = Convert.ToInt32(this.label76.Text.Trim());
                 int totalItemSum = num1 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9 + num10 + num11 + num12 + num13 + num14 + num15 + num16;
                 this.label10.Text = totalItemSum.ToString();
+                this.textBox115.Text = this.label10.Text;
             }
             catch (Exception ex)
             {
@@ -460,38 +476,10 @@ namespace CT_App
         {
             try
             {
-                this.conn.Open();
-                DataTable dataTable = new DataTable();
-                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT Mem_ID,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,C_InvTK FROM MarketMemos"), this.conn);
-                oleDbData.Fill(dataTable);
-                if (dataTable.Rows.Count > 0)
-                {
-                    this.textBox108.Text = dataTable.Rows[0][0].ToString();
-                    this.textBox72.Text = dataTable.Rows[0][1].ToString();
-                    this.textBox73.Text = dataTable.Rows[0][2].ToString();
-                    this.textBox78.Text = dataTable.Rows[0][3].ToString();
-                    this.textBox75.Text = dataTable.Rows[0][4].ToString();
-                    this.textBox76.Text = dataTable.Rows[0][5].ToString();
-                    this.textBox77.Text = dataTable.Rows[0][6].ToString();
-                    this.textBox79.Text = dataTable.Rows[0][7].ToString();
-                    this.textBox80.Text = dataTable.Rows[0][8].ToString();
-                    this.textBox81.Text = dataTable.Rows[0][9].ToString();
-                    this.textBox82.Text = dataTable.Rows[0][10].ToString();
-                    this.textBox83.Text = dataTable.Rows[0][11].ToString();
-                    this.textBox84.Text = dataTable.Rows[0][12].ToString();
-                    this.textBox85.Text = dataTable.Rows[0][13].ToString();
-                    this.textBox86.Text = dataTable.Rows[0][14].ToString();
-                    this.textBox87.Text = dataTable.Rows[0][15].ToString();
-                    this.textBox88.Text = dataTable.Rows[0][16].ToString();
-                    this.label10.Text = dataTable.Rows[0][17].ToString();
-                    this.conn.Close();
-                    this.button15.Text = "Delete";
-                }
-                else
-                {
-                    this.conn.Close();
-                    this.button15.Text = "New";
-                }
+                DataTable dataTabledltAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT Mem_ID as [ID],Mem_Date as [Date],Giv_TK as [Given],R_InvTK as [Main],C_InvTK as [CAmt],Ret_TK as [Return] FROM MarketMemos ORDER BY Mem_Date DESC"), this.conn);
+                odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
+                dataGridView11.DataSource = dataTabledltAmt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -513,6 +501,7 @@ namespace CT_App
             this.BalankFldMarMem();
             this.label10.Text = "0";
             this.button1.Text = "Add";
+            this.button15.Text = "New";
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1077,6 +1066,25 @@ namespace CT_App
                 //MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand commanda = new OleDbCommand("DELETE FROM Daily WHERE D_ID= '" + this.label247.Text.Trim() + "' ", this.conn);
+                commanda.ExecuteNonQuery();
+                OleDbCommand commandb = new OleDbCommand("DELETE FROM DailyCut WHERE C_ID= '" + this.label248.Text.Trim() + "' ", this.conn);
+                commandb.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label247.Text + "] & [", this.label248.Text + "] "));
+                this.fillDailyData();
+                this.button22.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void button8_Click(object sender, EventArgs e)
         {
             this.textBox37.ReadOnly = true;
@@ -1255,6 +1263,7 @@ namespace CT_App
         {
             if (this.button15.Text == "New")
             {
+                this.BalankFldMarMem();
                 TextBox textBox = this.textBox108;
                 string[] strArrays = new string[] { "ME", null, null, null, null };
                 int date = DateTime.Now.Day;
@@ -1265,9 +1274,6 @@ namespace CT_App
                 strArrays[4] = millis.ToString();
                 textBox.Text = string.Concat(strArrays);
                 this.button15.Text = "Save";
-                this.textBox55.Text = "0";
-                this.textBox90.Text = "0";
-                this.label147.Text = "0";
                 this.textBox72.Focus();
             }
             else if (this.button15.Text == "Save")
@@ -1275,19 +1281,19 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    object[] longString = new object[45];
-                    longString[0] = "INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16) Values('";
+                    object[] longString = new object[189];
+                    longString[0] = "INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24) Values('";
                     longString[1] = this.textBox108.Text.Trim();
                     longString[2] = "','";
-                    longString[3] = this.DltDate;               
+                    longString[3] = this.DltDate;
                     longString[4] = "','";
-                    longString[5] = this.textBox90.Text.Trim(); 
+                    longString[5] = this.textBox90.Text.Trim();
                     longString[6] = "','";
-                    longString[7] = this.label10.Text.Trim();   
+                    longString[7] = this.label10.Text.Trim();
                     longString[8] = "','";
-                    longString[9] = this.textBox55.Text.Trim(); 
+                    longString[9] = this.textBox55.Text.Trim();
                     longString[10] = "','";
-                    longString[11] = this.label147.Text.Trim(); 
+                    longString[11] = this.label147.Text.Trim();
                     longString[12] = "','";
                     longString[13] = this.textBox72.Text.Trim();
                     longString[14] = "','";
@@ -1320,36 +1326,201 @@ namespace CT_App
                     longString[41] = this.textBox87.Text.Trim();
                     longString[42] = "','";
                     longString[43] = this.textBox88.Text.Trim();
-                    longString[44] = "')";
+                    longString[44] = "','";
+                    longString[45] = this.textBox3.Text.Trim();
+                    longString[46] = "','";
+                    longString[47] = this.textBox5.Text.Trim();
+                    longString[48] = "','";
+                    longString[49] = this.textBox7.Text.Trim();
+                    longString[50] = "','";
+                    longString[51] = this.textBox9.Text.Trim();
+                    longString[52] = "','";
+                    longString[53] = this.textBox11.Text.Trim();
+                    longString[54] = "','";
+                    longString[55] = this.textBox13.Text.Trim();
+                    longString[56] = "','";
+                    longString[57] = this.textBox15.Text.Trim();
+                    longString[58] = "','";
+                    longString[59] = this.textBox17.Text.Trim();
+                    longString[60] = "','";
+                    longString[61] = this.textBox19.Text.Trim();
+                    longString[62] = "','";
+                    longString[63] = this.textBox21.Text.Trim();
+                    longString[64] = "','";
+                    longString[65] = this.textBox23.Text.Trim();
+                    longString[66] = "','";
+                    longString[67] = this.textBox25.Text.Trim();
+                    longString[68] = "','";
+                    longString[69] = this.textBox27.Text.Trim();
+                    longString[70] = "','";
+                    longString[71] = this.textBox29.Text.Trim();
+                    longString[72] = "','";
+                    longString[73] = this.textBox31.Text.Trim();
+                    longString[74] = "','";
+                    longString[75] = this.textBox38.Text.Trim();
+                    longString[76] = "','";
+                    longString[77] = this.textBox2.Text.Trim();
+                    longString[78] = "','";
+                    longString[79] = this.textBox4.Text.Trim();
+                    longString[80] = "','";
+                    longString[81] = this.textBox6.Text.Trim();
+                    longString[82] = "','";
+                    longString[83] = this.textBox8.Text.Trim();
+                    longString[84] = "','";
+                    longString[85] = this.textBox10.Text.Trim();
+                    longString[86] = "','";
+                    longString[87] = this.textBox12.Text.Trim();
+                    longString[88] = "','";
+                    longString[89] = this.textBox14.Text.Trim();
+                    longString[90] = "','";
+                    longString[91] = this.textBox16.Text.Trim();
+                    longString[92] = "','";
+                    longString[93] = this.textBox18.Text.Trim();
+                    longString[94] = "','";
+                    longString[95] = this.textBox20.Text.Trim();
+                    longString[96] = "','";
+                    longString[97] = this.textBox22.Text.Trim();
+                    longString[98] = "','";
+                    longString[99] = this.textBox24.Text.Trim();
+                    longString[100] = "','";
+                    longString[101] = this.textBox26.Text.Trim();
+                    longString[102] = "','";
+                    longString[103] = this.textBox28.Text.Trim();
+                    longString[104] = "','";
+                    longString[105] = this.textBox30.Text.Trim();
+                    longString[106] = "','";
+                    longString[107] = this.textBox54.Text.Trim();
+                    longString[108] = "','";
+                    longString[109] = this.label9.Text.Trim();
+                    longString[110] = "','";
+                    longString[111] = this.label13.Text.Trim();
+                    longString[112] = "','";
+                    longString[113] = this.label17.Text.Trim();
+                    longString[114] = "','";
+                    longString[115] = this.label24.Text.Trim();
+                    longString[116] = "','";
+                    longString[117] = this.label28.Text.Trim();
+                    longString[118] = "','";
+                    longString[119] = this.label32.Text.Trim();
+                    longString[120] = "','";
+                    longString[121] = this.label36.Text.Trim();
+                    longString[122] = "','";
+                    longString[123] = this.label40.Text.Trim();
+                    longString[124] = "','";
+                    longString[125] = this.label44.Text.Trim();
+                    longString[126] = "','";
+                    longString[127] = this.label48.Text.Trim();
+                    longString[128] = "','";
+                    longString[129] = this.label52.Text.Trim();
+                    longString[130] = "','";
+                    longString[131] = this.label56.Text.Trim();
+                    longString[132] = "','";
+                    longString[133] = this.label60.Text.Trim();
+                    longString[134] = "','";
+                    longString[135] = this.label64.Text.Trim();
+                    longString[136] = "','";
+                    longString[137] = this.label68.Text.Trim();
+                    longString[138] = "','";
+                    longString[139] = this.label76.Text.Trim();
+                    longString[140] = "','";
+                    longString[141] = this.textBox56.Text.Trim();
+                    longString[142] = "','";
+                    longString[143] = this.textBox57.Text.Trim();
+                    longString[144] = "','";
+                    longString[145] = this.textBox58.Text.Trim();
+                    longString[146] = "','";
+                    longString[147] = this.textBox59.Text.Trim();
+                    longString[148] = "','";
+                    longString[149] = this.textBox60.Text.Trim();
+                    longString[150] = "','";
+                    longString[151] = this.textBox61.Text.Trim();
+                    longString[152] = "','";
+                    longString[153] = this.textBox62.Text.Trim();
+                    longString[154] = "','";
+                    longString[155] = this.textBox63.Text.Trim();
+                    longString[156] = "','";
+                    longString[157] = this.textBox64.Text.Trim();
+                    longString[158] = "','";
+                    longString[159] = this.textBox65.Text.Trim();
+                    longString[160] = "','";
+                    longString[161] = this.textBox66.Text.Trim();
+                    longString[162] = "','";
+                    longString[163] = this.textBox67.Text.Trim();
+                    longString[164] = "','";
+                    longString[165] = this.textBox68.Text.Trim();
+                    longString[166] = "','";
+                    longString[167] = this.textBox69.Text.Trim();
+                    longString[168] = "','";
+                    longString[169] = this.textBox70.Text.Trim();
+                    longString[170] = "','";
+                    longString[171] = this.textBox71.Text.Trim();
+                    longString[172] = "','";
+                    longString[173] = this.textBox89.Text.Trim();
+                    longString[174] = "','";
+                    longString[175] = this.textBox91.Text.Trim();
+                    longString[176] = "','";
+                    longString[177] = this.textBox110.Text.Trim();
+                    longString[178] = "','";
+                    longString[179] = this.textBox111.Text.Trim();
+                    longString[180] = "','";
+                    longString[181] = this.textBox112.Text.Trim();
+                    longString[182] = "','";
+                    longString[183] = this.textBox113.Text.Trim();
+                    longString[184] = "','";
+                    longString[185] = this.textBox114.Text.Trim();
+                    longString[186] = "','";
+                    longString[187] = this.textBox115.Text.Trim();
+                    longString[188] = "')";
                     OleDbCommand cmd = new OleDbCommand(string.Concat(longString), this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Memo Added"));
-                    this.button15.Text = "Delete";
+                    this.fillMemo();
+                    this.button21.Visible = true;
+                    this.button15.Text = "New";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error : " + ex.Message);
                 }
             }
-            else if (this.button15.Text == "Delete")
+            else if (this.button15.Text == "Update")
             {
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
-                    sendData.ExecuteNonQuery();
-                    OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
-                    sendDData.ExecuteNonQuery();
+                    OleDbCommand command = new OleDbCommand("UPDATE MarketMemos SET R_InvTK= '" + this.textBox90.Text.Trim() + "',C_InvTK= '" + this.label10.Text.Trim() + "',Giv_TK= '" + this.textBox55.Text.Trim() + "',Ret_TK= '" + this.label147.Text.Trim() + "',I_N01= '" + this.textBox72.Text.Trim() + "',I_N02= '" + this.textBox73.Text.Trim() + "',I_N03= '" + this.textBox78.Text.Trim() + "',I_N04= '" + this.textBox75.Text.Trim() + "',I_N05= '" + this.textBox76.Text.Trim() + "',I_N06= '" + this.textBox77.Text.Trim() + "',I_N07= '" + this.textBox79.Text.Trim() + "',I_N08= '" + this.textBox80.Text.Trim() + "',I_N09= '" + this.textBox81.Text.Trim() + "',I_N10= '" + this.textBox82.Text.Trim() + "',I_N11= '" + this.textBox83.Text.Trim() + "',I_N12= '" + this.textBox84.Text.Trim() + "',I_N13= '" + this.textBox85.Text.Trim() + "',I_N14= '" + this.textBox86.Text.Trim() + "',I_N15= '" + this.textBox87.Text.Trim() + "',I_N16= '" + this.textBox88.Text.Trim() + "',I_P01= '" + this.textBox3.Text.Trim() + "',I_P02= '" + this.textBox5.Text.Trim() + "',I_P03= '" + this.textBox7.Text.Trim() + "',I_P04= '" + this.textBox9.Text.Trim() + "',I_P05= '" + this.textBox11.Text.Trim() + "',I_P06= '" + this.textBox13.Text.Trim() + "',I_P07= '" + this.textBox15.Text.Trim() + "',I_P08= '" + this.textBox17.Text.Trim() + "',I_P09= '" + this.textBox19.Text.Trim() + "',I_P10= '" + this.textBox21.Text.Trim() + "',I_P11= '" + this.textBox23.Text.Trim() + "',I_P12= '" + this.textBox25.Text.Trim() + "',I_P13= '" + this.textBox27.Text.Trim() + "',I_P14= '" + this.textBox29.Text.Trim() + "',I_P15= '" + this.textBox31.Text.Trim() + "',I_P16= '" + this.textBox38.Text.Trim() + "',I_Q01= '" + this.textBox2.Text.Trim() + "',I_Q02= '" + this.textBox4.Text.Trim() + "',I_Q03= '" + this.textBox6.Text.Trim() + "',I_Q04= '" + this.textBox8.Text.Trim() + "',I_Q05= '" + this.textBox10.Text.Trim() + "',I_Q06= '" + this.textBox12.Text.Trim() + "',I_Q07= '" + this.textBox14.Text.Trim() + "',I_Q08= '" + this.textBox16.Text.Trim() + "',I_Q09= '" + this.textBox18.Text.Trim() + "',I_Q10= '" + this.textBox20.Text.Trim() + "',I_Q11= '" + this.textBox22.Text.Trim() + "',I_Q12= '" + this.textBox24.Text.Trim() + "',I_Q13= '" + this.textBox26.Text.Trim() + "',I_Q14= '" + this.textBox28.Text.Trim() + "',I_Q15= '" + this.textBox30.Text.Trim() + "',I_Q16= '" + this.textBox54.Text.Trim() + "',I_ST01= '" + this.label9.Text.Trim() + "',I_ST02= '" + this.label13.Text.Trim() + "',I_ST03= '" + this.label17.Text.Trim() + "',I_ST04= '" + this.label24.Text.Trim() + "',I_ST05= '" + this.label28.Text.Trim() + "',I_ST06= '" + this.label32.Text.Trim() + "',I_ST07= '" + this.label36.Text.Trim() + "',I_ST08= '" + this.label40.Text.Trim() + "',I_ST09= '" + this.label44.Text.Trim() + "',I_ST10= '" + this.label48.Text.Trim() + "',I_ST11= '" + this.label52.Text.Trim() + "',I_ST12= '" + this.label56.Text.Trim() + "',I_ST13= '" + this.label60.Text.Trim() + "',I_ST14= '" + this.label64.Text.Trim() + "',I_ST15= '" + this.label68.Text.Trim() + "',I_ST16= '" + this.label76.Text.Trim() + "',R_Inv01= '" + this.textBox56.Text.Trim() + "',R_Inv02= '" + this.textBox57.Text.Trim() + "',R_Inv03= '" + this.textBox58.Text.Trim() + "',R_Inv04= '" + this.textBox59.Text.Trim() + "',R_Inv05= '" + this.textBox60.Text.Trim() + "',R_Inv06= '" + this.textBox61.Text.Trim() + "',R_Inv07= '" + this.textBox62.Text.Trim() + "',R_Inv08= '" + this.textBox63.Text.Trim() + "',R_Inv09= '" + this.textBox64.Text.Trim() + "',R_Inv10= '" + this.textBox65.Text.Trim() + "',R_Inv11= '" + this.textBox66.Text.Trim() + "',R_Inv12= '" + this.textBox67.Text.Trim() + "',R_Inv13= '" + this.textBox68.Text.Trim() + "',R_Inv14= '" + this.textBox69.Text.Trim() + "',R_Inv15= '" + this.textBox70.Text.Trim() + "',R_Inv16= '" + this.textBox71.Text.Trim() + "',R_Inv17= '" + this.textBox89.Text.Trim() + "',R_Inv18= '" + this.textBox91.Text.Trim() + "',R_Inv19= '" + this.textBox110.Text.Trim() + "',R_Inv20= '" + this.textBox111.Text.Trim() + "',R_Inv21= '" + this.textBox112.Text.Trim() + "',R_Inv22= '" + this.textBox113.Text.Trim() + "',R_Inv23= '" + this.textBox114.Text.Trim() + "',R_Inv24= '" + this.textBox115.Text.Trim() + "' WHERE Mem_ID = '" + this.label224.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
                     this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Deleted - [", this.textBox108.Text + "] "));
-                    this.BalankFldMarMem();
+                    MessageBox.Show(string.Concat("Successfull Update - ", this.label224.Text));
+                    this.fillMemo();
+                    this.button21.Visible = true;
                     this.button15.Text = "New";
                 }
                 catch (Exception ex)
                 {
                     //MessageBox.Show("Error : " + ex.Message);
                 }
+            }
+        }
+        private void button21_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
+                sendData.ExecuteNonQuery();
+                OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
+                sendDData.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.textBox108.Text + "] "));
+                this.BalankFldMarMem();
+                this.button15.Text = "New";
+                this.button21.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void label217_DoubleClick(object sender, EventArgs e)
@@ -1432,15 +1603,40 @@ namespace CT_App
                 //MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.button12.Visible = true;
+                this.button22.Visible = true;
+                this.button10.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,D_FPAmount,D_SPAmount,D_Data,NotTaken FROM Daily WHERE D_ID='", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label182.Text = dataTable.Rows[0][0].ToString();
+                this.label247.Text = dataTable.Rows[0][0].ToString();
+                this.label185.Text = dataTable.Rows[0][1].ToString();
+                this.label187.Text = dataTable.Rows[0][2].ToString();
+                this.label189.Text = dataTable.Rows[0][3].ToString();
+                this.textBox37.Text = dataTable.Rows[0][4].ToString();
+                this.textBox37.ReadOnly = false;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                this.button22.Visible = true;
                 this.button14.Text = "Updt";
                 DataTable dataTable = new DataTable();
                 OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT C_ID,C_Amount FROM DailyCut WHERE C_ID='", this.dataGridView4.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
                 oleDbData.Fill(dataTable);
                 this.label182.Text = dataTable.Rows[0][0].ToString();
+                this.label248.Text = dataTable.Rows[0][0].ToString();
                 this.label191.Text = dataTable.Rows[0][1].ToString();
                 this.textBox50.Text = dataTable.Rows[0][1].ToString();
                 this.textBox50.ReadOnly = false;
@@ -1452,28 +1648,7 @@ namespace CT_App
             }
 
         }
-        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                this.button12.Visible = true;
-                this.button10.Text = "Updt";
-                DataTable dataTable = new DataTable();
-                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT D_ID,D_FPAmount,D_SPAmount,D_Data,NotTaken FROM Daily WHERE D_ID='", this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
-                oleDbData.Fill(dataTable);
-                this.label182.Text = dataTable.Rows[0][0].ToString();
-                this.label185.Text = dataTable.Rows[0][1].ToString();
-                this.label187.Text = dataTable.Rows[0][2].ToString();
-                this.label189.Text = dataTable.Rows[0][3].ToString();
-                this.textBox37.Text = dataTable.Rows[0][4].ToString();
-                this.textBox37.ReadOnly = false;
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error : " + ex.Message);
-            }
-
-        }
+        
         private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1594,6 +1769,127 @@ namespace CT_App
                 this.textBox117.Text = this.label111.Text.Trim();
                 this.button7.Visible = true;
                 this.button7.Text = "Delete U.";
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void dataGridView11_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM MarketMemos WHERE Mem_ID='", this.dataGridView11.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                if (dataTable.Rows.Count > 0)
+                {                                                           
+                    this.label224.Text = dataTable.Rows[0][0].ToString();
+                    this.textBox90.Text = dataTable.Rows[0][2].ToString();
+                    this.label10.Text = dataTable.Rows[0][3].ToString();
+                    this.textBox55.Text = dataTable.Rows[0][4].ToString();
+                    this.label147.Text = dataTable.Rows[0][5].ToString();  
+                    this.textBox72.Text = dataTable.Rows[0][6].ToString();
+                    this.textBox73.Text = dataTable.Rows[0][7].ToString();
+                    this.textBox78.Text = dataTable.Rows[0][8].ToString();
+                    this.textBox75.Text = dataTable.Rows[0][9].ToString();
+                    this.textBox76.Text = dataTable.Rows[0][10].ToString();
+                    this.textBox77.Text = dataTable.Rows[0][11].ToString();
+                    this.textBox79.Text = dataTable.Rows[0][12].ToString();
+                    this.textBox80.Text = dataTable.Rows[0][13].ToString();
+                    this.textBox81.Text = dataTable.Rows[0][14].ToString();
+                    this.textBox82.Text = dataTable.Rows[0][15].ToString();
+                    this.textBox83.Text = dataTable.Rows[0][16].ToString();
+                    this.textBox84.Text = dataTable.Rows[0][17].ToString();
+                    this.textBox85.Text = dataTable.Rows[0][18].ToString();
+                    this.textBox86.Text = dataTable.Rows[0][19].ToString();
+                    this.textBox87.Text = dataTable.Rows[0][20].ToString();
+                    this.textBox88.Text = dataTable.Rows[0][21].ToString();
+                    this.textBox3.Text = dataTable.Rows[0][22].ToString();
+                    this.textBox5.Text = dataTable.Rows[0][23].ToString();
+                    this.textBox7.Text = dataTable.Rows[0][24].ToString();
+                    this.textBox9.Text = dataTable.Rows[0][25].ToString();
+                    this.textBox11.Text = dataTable.Rows[0][26].ToString();
+                    this.textBox13.Text = dataTable.Rows[0][27].ToString();
+                    this.textBox15.Text = dataTable.Rows[0][28].ToString();
+                    this.textBox17.Text = dataTable.Rows[0][29].ToString();
+                    this.textBox19.Text = dataTable.Rows[0][30].ToString();
+                    this.textBox21.Text = dataTable.Rows[0][31].ToString();
+                    this.textBox23.Text = dataTable.Rows[0][32].ToString();
+                    this.textBox25.Text = dataTable.Rows[0][33].ToString();
+                    this.textBox27.Text = dataTable.Rows[0][34].ToString();
+                    this.textBox29.Text = dataTable.Rows[0][35].ToString();
+                    this.textBox31.Text = dataTable.Rows[0][36].ToString();
+                    this.textBox38.Text = dataTable.Rows[0][37].ToString();
+                    this.textBox2.Text = dataTable.Rows[0][38].ToString();
+                    this.textBox4.Text = dataTable.Rows[0][39].ToString();
+                    this.textBox6.Text = dataTable.Rows[0][40].ToString();
+                    this.textBox8.Text = dataTable.Rows[0][41].ToString();
+                    this.textBox10.Text = dataTable.Rows[0][42].ToString();
+                    this.textBox12.Text = dataTable.Rows[0][43].ToString();
+                    this.textBox14.Text = dataTable.Rows[0][44].ToString();
+                    this.textBox16.Text = dataTable.Rows[0][45].ToString();
+                    this.textBox18.Text = dataTable.Rows[0][46].ToString();
+                    this.textBox20.Text = dataTable.Rows[0][47].ToString();
+                    this.textBox22.Text = dataTable.Rows[0][48].ToString();
+                    this.textBox24.Text = dataTable.Rows[0][49].ToString();
+                    this.textBox26.Text = dataTable.Rows[0][50].ToString();
+                    this.textBox28.Text = dataTable.Rows[0][51].ToString();
+                    this.textBox30.Text = dataTable.Rows[0][52].ToString();
+                    this.textBox54.Text = dataTable.Rows[0][53].ToString();
+                    this.label9.Text = dataTable.Rows[0][54].ToString();
+                    this.label13.Text = dataTable.Rows[0][55].ToString();
+                    this.label17.Text = dataTable.Rows[0][56].ToString();
+                    this.label24.Text = dataTable.Rows[0][57].ToString();
+                    this.label28.Text = dataTable.Rows[0][58].ToString();
+                    this.label32.Text = dataTable.Rows[0][59].ToString();
+                    this.label36.Text = dataTable.Rows[0][60].ToString();
+                    this.label40.Text = dataTable.Rows[0][61].ToString();
+                    this.label44.Text = dataTable.Rows[0][62].ToString();
+                    this.label48.Text = dataTable.Rows[0][63].ToString();
+                    this.label52.Text = dataTable.Rows[0][64].ToString();
+                    this.label56.Text = dataTable.Rows[0][65].ToString();
+                    this.label60.Text = dataTable.Rows[0][66].ToString();
+                    this.label64.Text = dataTable.Rows[0][67].ToString();
+                    this.label68.Text = dataTable.Rows[0][68].ToString();
+                    this.label76.Text = dataTable.Rows[0][69].ToString();
+                    this.textBox56.Text = dataTable.Rows[0][70].ToString();
+                    this.textBox57.Text = dataTable.Rows[0][71].ToString();
+                    this.textBox58.Text = dataTable.Rows[0][72].ToString();
+                    this.textBox59.Text = dataTable.Rows[0][73].ToString();
+                    this.textBox60.Text = dataTable.Rows[0][74].ToString();
+                    this.textBox61.Text = dataTable.Rows[0][75].ToString();
+                    this.textBox62.Text = dataTable.Rows[0][76].ToString();
+                    this.textBox63.Text = dataTable.Rows[0][77].ToString();
+                    this.textBox64.Text = dataTable.Rows[0][78].ToString();
+                    this.textBox65.Text = dataTable.Rows[0][79].ToString();
+                    this.textBox66.Text = dataTable.Rows[0][80].ToString();
+                    this.textBox67.Text = dataTable.Rows[0][81].ToString();
+                    this.textBox68.Text = dataTable.Rows[0][82].ToString();
+                    this.textBox69.Text = dataTable.Rows[0][83].ToString();
+                    this.textBox70.Text = dataTable.Rows[0][84].ToString();
+                    this.textBox71.Text = dataTable.Rows[0][85].ToString();
+                    this.textBox89.Text = dataTable.Rows[0][86].ToString();
+                    this.textBox91.Text = dataTable.Rows[0][87].ToString();
+                    this.textBox110.Text = dataTable.Rows[0][88].ToString();
+                    this.textBox111.Text = dataTable.Rows[0][89].ToString();
+                    this.textBox112.Text = dataTable.Rows[0][90].ToString();
+                    this.textBox113.Text = dataTable.Rows[0][91].ToString();
+                    this.textBox114.Text = dataTable.Rows[0][92].ToString();
+                    this.textBox115.Text = dataTable.Rows[0][93].ToString();
+                    this.conn.Close();
+                    this.button15.Text = "Update";
+                    this.button21.Visible = true;
+                }
+                else
+                {
+                    this.conn.Close();
+                    this.button15.Text = "New";
+                }
+                this.conn.Close();
+                this.button15.Text = "Update";
+                this.button21.Visible = true;
             }
             catch (Exception ex)
             {
@@ -2346,7 +2642,6 @@ namespace CT_App
                         int num1 = Convert.ToInt32(this.textBox19.Text.Trim());
                         int num2 = Convert.ToInt32(this.textBox18.Text.Trim());
                         int num3 = num1 * num2;
-                        this.label44.Text = num3.ToString();
                         this.AllItemAdd();
                         this.textBox82.Focus();
                     }
@@ -3610,7 +3905,7 @@ namespace CT_App
                 }
             }
         }
-        
+
         #endregion
 
         //-----------------------------------------------------------------------
