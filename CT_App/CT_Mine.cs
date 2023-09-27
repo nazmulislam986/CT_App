@@ -793,7 +793,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error : " + ex.Message);
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button5_Click(object sender, EventArgs e)
@@ -1209,7 +1209,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show(ex.Message);
                 }
             }
             else if (this.button13.Text == "Dlt")
@@ -1481,7 +1481,7 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error : " + ex.Message);
+                    //MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button15.Text == "Update")
@@ -1508,13 +1508,14 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
+                OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = '" + this.label224.Text.Trim() + "' "), this.conn);
                 sendData.ExecuteNonQuery();
-                OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM MarketMemos WHERE Mem_ID = '" + this.textBox108.Text.Trim() + "' "), this.conn);
+                OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM MarketMemos WHERE Mem_ID = '" + this.label224.Text.Trim() + "' "), this.conn);
                 sendDData.ExecuteNonQuery();
                 this.conn.Close();
-                MessageBox.Show(string.Concat("Successfull Deleted - [", this.textBox108.Text + "] "));
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label224.Text + "] "));
                 this.BalankFldMarMem();
+                this.fillMemo();
                 this.button15.Text = "New";
                 this.button21.Visible = false;
             }
@@ -1553,7 +1554,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1648,7 +1649,6 @@ namespace CT_App
             }
 
         }
-        
         private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -3580,6 +3580,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                //MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void textBox55_KeyPress(object sender, KeyPressEventArgs e)
