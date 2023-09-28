@@ -55,6 +55,9 @@ namespace CT_App
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CT_Mine));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.label146 = new System.Windows.Forms.Label();
+            this.label147 = new System.Windows.Forms.Label();
             this.button21 = new System.Windows.Forms.Button();
             this.dataGridView11 = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -111,11 +114,8 @@ namespace CT_App
             this.label145 = new System.Windows.Forms.Label();
             this.textBox55 = new System.Windows.Forms.TextBox();
             this.label128 = new System.Windows.Forms.Label();
-            this.label146 = new System.Windows.Forms.Label();
-            this.label147 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -505,9 +505,9 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.panel26 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -547,7 +547,6 @@ namespace CT_App
             this.panel3.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            this.panel26.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -573,7 +572,6 @@ namespace CT_App
             this.tabPage1.Controls.Add(this.panel8);
             this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.panel5);
@@ -585,10 +583,41 @@ namespace CT_App
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Market / Memo";
             // 
+            // panel26
+            // 
+            this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel26.Controls.Add(this.label146);
+            this.panel26.Controls.Add(this.label147);
+            this.panel26.Location = new System.Drawing.Point(944, 645);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(240, 25);
+            this.panel26.TabIndex = 11;
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label146.Location = new System.Drawing.Point(32, 1);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(103, 20);
+            this.label146.TabIndex = 0;
+            this.label146.Text = "Total M / L :";
+            // 
+            // label147
+            // 
+            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.label147.ForeColor = System.Drawing.Color.Red;
+            this.label147.Location = new System.Drawing.Point(135, 0);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(100, 20);
+            this.label147.TabIndex = 6;
+            this.label147.Text = "0";
+            this.label147.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // button21
             // 
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button21.Location = new System.Drawing.Point(719, 2);
+            this.button21.Location = new System.Drawing.Point(719, 1);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(61, 26);
             this.button21.TabIndex = 13;
@@ -1204,31 +1233,10 @@ namespace CT_App
             this.label128.TabIndex = 7;
             this.label128.Text = "Takes :";
             // 
-            // label146
-            // 
-            this.label146.AutoSize = true;
-            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label146.Location = new System.Drawing.Point(32, 1);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(103, 20);
-            this.label146.TabIndex = 0;
-            this.label146.Text = "Total M / L :";
-            // 
-            // label147
-            // 
-            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.label147.ForeColor = System.Drawing.Color.Red;
-            this.label147.Location = new System.Drawing.Point(135, 0);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(100, 20);
-            this.label147.TabIndex = 6;
-            this.label147.Text = "0";
-            this.label147.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // button15
             // 
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button15.Location = new System.Drawing.Point(439, 2);
+            this.button15.Location = new System.Drawing.Point(378, 1);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(61, 26);
             this.button15.TabIndex = 9;
@@ -1239,28 +1247,17 @@ namespace CT_App
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(832, 5);
+            this.label10.Location = new System.Drawing.Point(832, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "0";
             // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button11.Location = new System.Drawing.Point(379, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(61, 26);
-            this.button11.TabIndex = 9;
-            this.button11.Text = "Clear";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(776, 6);
+            this.label1.Location = new System.Drawing.Point(776, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 7;
@@ -5672,16 +5669,6 @@ namespace CT_App
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // panel26
-            // 
-            this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel26.Controls.Add(this.label146);
-            this.panel26.Controls.Add(this.label147);
-            this.panel26.Location = new System.Drawing.Point(944, 645);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(240, 25);
-            this.panel26.TabIndex = 11;
-            // 
             // CT_Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5702,6 +5689,8 @@ namespace CT_App
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -5767,8 +5756,6 @@ namespace CT_App
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.panel26.ResumeLayout(false);
-            this.panel26.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5996,7 +5983,6 @@ namespace CT_App
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox72;
         private System.Windows.Forms.Label label126;
         private System.Windows.Forms.TextBox textBox88;

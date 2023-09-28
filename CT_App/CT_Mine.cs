@@ -72,7 +72,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AmtDataView()
@@ -93,7 +93,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AmtCrDataView()
@@ -104,35 +104,30 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterdltAmtG = new OleDbDataAdapter(string.Concat("SELECT SUM(Total_Given) FROM Given WHERE [GDT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtG.Fill(dataTableAmtGiven);
                 this.label87.Text = dataTableAmtGiven.Rows[0][0].ToString();
-
                 DataTable dataTableAmtTake = new DataTable();
                 OleDbDataAdapter dataAdapterdltAmtT = new OleDbDataAdapter(string.Concat("SELECT SUM(Total_Take) FROM Teken WHERE [TDT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtT.Fill(dataTableAmtTake);
                 this.label92.Text = dataTableAmtTake.Rows[0][0].ToString();
-
                 DataTable dataTableAmtExp = new DataTable();
                 OleDbDataAdapter dataAdapterdltAmtE = new OleDbDataAdapter(string.Concat("SELECT SUM(Expense_Amount) FROM Expense WHERE [EDT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtE.Fill(dataTableAmtExp);
                 this.label90.Text = dataTableAmtExp.Rows[0][0].ToString();
-
                 DataTable dataTableAmtSev = new DataTable();
                 OleDbDataAdapter dataAdapterdltSev = new OleDbDataAdapter(string.Concat("SELECT SUM(Saving_Amount) FROM Saving WHERE [SDT_V]='NDV' "), this.conn);
                 dataAdapterdltSev.Fill(dataTableAmtSev);
                 this.label114.Text = dataTableAmtSev.Rows[0][0].ToString();
-
                 DataTable dataTableAmtUnr = new DataTable();
                 OleDbDataAdapter dataAdapterdltAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(Unrated_Amount) FROM Unrated WHERE [UDT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtUnr.Fill(dataTableAmtUnr);
                 this.label116.Text = dataTableAmtUnr.Rows[0][0].ToString();
-
                 DataTable dataTableAmtCol = new DataTable();
                 OleDbDataAdapter dataAdapterdltAmtCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM Daily WHERE [D_Data]='TKN' "), this.conn);
                 dataAdapterdltAmtCol.Fill(dataTableAmtCol);
                 this.label222.Text = dataTableAmtCol.Rows[0][0].ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillGivenData()
@@ -143,22 +138,18 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterGivenAmt = new OleDbDataAdapter(string.Concat("SELECT InGiven as [ID],Given_To as [Name],Total_Given as [GTK],Given_Date as [GDT] FROM Given WHERE [GDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterGivenAmt.Fill(dataTableGivenAmt);
                 dataGridView3.DataSource = dataTableGivenAmt.DefaultView;
-
                 DataTable dataTableTekenAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterTekenAmt = new OleDbDataAdapter(string.Concat("SELECT InTake as [ID],Take_To as [Name],Total_Take as [TTK],Take_Date as [TDT] FROM Teken WHERE [TDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterTekenAmt.Fill(dataTableTekenAmt);
                 dataGridView7.DataSource = dataTableTekenAmt.DefaultView;
-
                 DataTable dataTableExpenAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterExpenAmt = new OleDbDataAdapter(string.Concat("SELECT InExpense as [ID],Expense_To as [Name],Expense_Amount as [ETK],Expense_Date as [EDT] FROM Expense WHERE [EDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterExpenAmt.Fill(dataTableExpenAmt);
                 dataGridView8.DataSource = dataTableExpenAmt.DefaultView;
-
                 DataTable dataTableSaveAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterSavenAmt = new OleDbDataAdapter(string.Concat("SELECT InSaving as [ID],Saving_To as [Name],Saving_Amount as [STK],Saving_Date as [SDT] FROM Saving WHERE [SDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterSavenAmt.Fill(dataTableSaveAmt);
                 dataGridView9.DataSource = dataTableSaveAmt.DefaultView;
-
                 DataTable dataTableUntatAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterUntaAmt = new OleDbDataAdapter(string.Concat("SELECT InUnrated as [ID],Unrated_To as [Name],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Unrated WHERE [UDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterUntaAmt.Fill(dataTableUntatAmt);
@@ -166,7 +157,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillDailyData()
@@ -177,7 +168,6 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT D_ID as [ID],D_Date as [Date],NotTaken FROM Daily WHERE [D_Data]='NTKN' ORDER BY [D_Date] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView5.DataSource = dataTableDaiAmt.DefaultView;
-
                 DataTable dataTableCutAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT C_ID as [ID],C_Date as [Date],C_Amount as [Amount] FROM DailyCut ORDER BY [C_Date] DESC "), this.conn);
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
@@ -185,7 +175,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillInstData()
@@ -196,7 +186,6 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT I_ID as [ID],InsPay_Date as [Date],InsPay as [PayAmt] FROM Installment WHERE Take_Data='INS' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView2.DataSource = dataTableDaiAmt.DefaultView;
-
                 DataTable dataTableTakeiAmt = new DataTable();
                 OleDbDataAdapter odbcDataAdapterTakiAmt = new OleDbDataAdapter(string.Concat("SELECT I_ID as [ID],I_Date as [Date],Take_Total as [Total],Take_Anot as [Anot],Take_Mine as [Mine] FROM Installment WHERE Take_Data='NPD' ORDER BY [ID] DESC "), this.conn);
                 odbcDataAdapterTakiAmt.Fill(dataTableTakeiAmt);
@@ -204,176 +193,171 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void BalankFld()
         {
-            this.label117.Text = "";
-            this.label102.Text = "";
-            this.textBox36.Text = "";
-            this.textBox40.Text = "";
-            this.textBox41.Text = "";
-            this.textBox42.Text = "";
+            this.label117.Text   = "";
+            this.label102.Text   = "";
+            this.textBox36.Text  = "";
+            this.textBox40.Text  = "";
+            this.textBox41.Text  = "";
+            this.textBox42.Text  = "";
             this.textBox118.Text = "";
             this.textBox119.Text = "";
-            this.label111.Text = "";
-            this.textBox44.Text = "";
-            this.textBox45.Text = "";
-            this.textBox46.Text = "";
-            this.textBox47.Text = "";
+            this.label111.Text   = "";
+            this.textBox44.Text  = "";
+            this.textBox45.Text  = "";
+            this.textBox46.Text  = "";
+            this.textBox47.Text  = "";
             this.textBox121.Text = "";
             this.textBox120.Text = "";
-            this.label113.Text = "";
+            this.label113.Text   = "";
             this.textBox104.Text = "";
             this.textBox103.Text = "";
-            this.textBox93.Text = "";
+            this.textBox93.Text  = "";
             this.textBox102.Text = "";
             this.textBox127.Text = "";
             this.textBox109.Text = "";
-            this.label243.Text = "";
+            this.label243.Text   = "";
             this.textBox105.Text = "";
-            this.textBox43.Text = "";
-            this.textBox48.Text = "";
-            this.textBox49.Text = "";
+            this.textBox43.Text  = "";
+            this.textBox48.Text  = "";
+            this.textBox49.Text  = "";
             this.textBox122.Text = "";
             this.textBox116.Text = "";
             this.textBox106.Text = "";
-            this.textBox51.Text = "";
-            this.textBox52.Text = "";
-            this.textBox53.Text = "";
+            this.textBox51.Text  = "";
+            this.textBox52.Text  = "";
+            this.textBox53.Text  = "";
             this.textBox123.Text = "";
             this.textBox117.Text = "";
         }
         private void BalankFldMarMem()
         {
-            this.textBox72.Text = "";
-            this.textBox73.Text = "";
-            this.textBox78.Text = "";
-            this.textBox75.Text = "";
-            this.textBox76.Text = "";
-            this.textBox77.Text = "";
-            this.textBox79.Text = "";
-            this.textBox80.Text = "";
-            this.textBox81.Text = "";
-            this.textBox82.Text = "";
-            this.textBox83.Text = "";
-            this.textBox84.Text = "";
-            this.textBox85.Text = "";
-            this.textBox86.Text = "";
-            this.textBox87.Text = "";
-            this.textBox88.Text = "";
+            this.textBox72.Text  = "";
+            this.textBox73.Text  = "";
+            this.textBox78.Text  = "";
+            this.textBox75.Text  = "";
+            this.textBox76.Text  = "";
+            this.textBox77.Text  = "";
+            this.textBox79.Text  = "";
+            this.textBox80.Text  = "";
+            this.textBox81.Text  = "";
+            this.textBox82.Text  = "";
+            this.textBox83.Text  = "";
+            this.textBox84.Text  = "";
+            this.textBox85.Text  = "";
+            this.textBox86.Text  = "";
+            this.textBox87.Text  = "";
+            this.textBox88.Text  = "";
 
-            this.textBox2.Text = "0";
-            this.textBox3.Text = "0";
-            this.textBox4.Text = "0";
-            this.textBox5.Text = "0";
-            this.textBox6.Text = "0";
-            this.textBox7.Text = "0";
-            this.textBox8.Text = "0";
-            this.textBox9.Text = "0";
-            this.textBox10.Text = "0";
-            this.textBox11.Text = "0";
-            this.textBox12.Text = "0";
-            this.textBox13.Text = "0";
-            this.textBox14.Text = "0";
-            this.textBox15.Text = "0";
-            this.textBox16.Text = "0";
-            this.textBox17.Text = "0";
-            this.textBox18.Text = "0";
-            this.textBox19.Text = "0";
-            this.textBox20.Text = "0";
-            this.textBox21.Text = "0";
-            this.textBox22.Text = "0";
-            this.textBox23.Text = "0";
-            this.textBox24.Text = "0";
-            this.textBox25.Text = "0";
-            this.textBox26.Text = "0";
-            this.textBox27.Text = "0";
-            this.textBox28.Text = "0";
-            this.textBox29.Text = "0";
-            this.textBox30.Text = "0";
-            this.textBox31.Text = "0";
-            this.textBox54.Text = "0";
-            this.textBox38.Text = "0";
+            this.textBox2.Text   = "0";
+            this.textBox3.Text   = "0";
+            this.textBox4.Text   = "0";
+            this.textBox5.Text   = "0";
+            this.textBox6.Text   = "0";
+            this.textBox7.Text   = "0";
+            this.textBox8.Text   = "0";
+            this.textBox9.Text   = "0";
+            this.textBox10.Text  = "0";
+            this.textBox11.Text  = "0";
+            this.textBox12.Text  = "0";
+            this.textBox13.Text  = "0";
+            this.textBox14.Text  = "0";
+            this.textBox15.Text  = "0";
+            this.textBox16.Text  = "0";
+            this.textBox17.Text  = "0";
+            this.textBox18.Text  = "0";
+            this.textBox19.Text  = "0";
+            this.textBox20.Text  = "0";
+            this.textBox21.Text  = "0";
+            this.textBox22.Text  = "0";
+            this.textBox23.Text  = "0";
+            this.textBox24.Text  = "0";
+            this.textBox25.Text  = "0";
+            this.textBox26.Text  = "0";
+            this.textBox27.Text  = "0";
+            this.textBox28.Text  = "0";
+            this.textBox29.Text  = "0";
+            this.textBox30.Text  = "0";
+            this.textBox31.Text  = "0";
+            this.textBox54.Text  = "0";
+            this.textBox38.Text  = "0";
 
-            this.label9.Text = "0";
-            this.label13.Text = "0";
-            this.label17.Text = "0";
-            this.label24.Text = "0";
-            this.label28.Text = "0";
-            this.label32.Text = "0";
-            this.label36.Text = "0";
-            this.label40.Text = "0";
-            this.label44.Text = "0";
-            this.label48.Text = "0";
-            this.label52.Text = "0";
-            this.label56.Text = "0";
-            this.label60.Text = "0";
-            this.label64.Text = "0";
-            this.label68.Text = "0";
-            this.label76.Text = "0";
-            this.textBox90.Text = "0";
+            this.label9.Text     = "0";
+            this.label13.Text    = "0";
+            this.label17.Text    = "0";
+            this.label24.Text    = "0";
+            this.label28.Text    = "0";
+            this.label32.Text    = "0";
+            this.label36.Text    = "0";
+            this.label40.Text    = "0";
+            this.label44.Text    = "0";
+            this.label48.Text    = "0";
+            this.label52.Text    = "0";
+            this.label56.Text    = "0";
+            this.label60.Text    = "0";
+            this.label64.Text    = "0";
+            this.label68.Text    = "0";
+            this.label76.Text    = "0";
+            this.textBox90.Text  = "0";
 
-            this.textBox56.Text = "0";
-            this.textBox57.Text = "0";
-            this.textBox58.Text = "0";
-            this.textBox59.Text = "0";
-            this.textBox60.Text = "0";
-            this.textBox61.Text = "0";
-            this.textBox62.Text = "0";
-            this.textBox63.Text = "0";
-            this.textBox64.Text = "0";
-            this.textBox65.Text = "0";
-            this.textBox66.Text = "0";
-            this.textBox67.Text = "0";
-            this.textBox68.Text = "0";
-            this.textBox69.Text = "0";
-            this.textBox70.Text = "0";
-            this.textBox71.Text = "0";
-            this.textBox89.Text = "0";
-            this.textBox91.Text = "0";
+            this.textBox56.Text  = "0";
+            this.textBox57.Text  = "0";
+            this.textBox58.Text  = "0";
+            this.textBox59.Text  = "0";
+            this.textBox60.Text  = "0";
+            this.textBox61.Text  = "0";
+            this.textBox62.Text  = "0";
+            this.textBox63.Text  = "0";
+            this.textBox64.Text  = "0";
+            this.textBox65.Text  = "0";
+            this.textBox66.Text  = "0";
+            this.textBox67.Text  = "0";
+            this.textBox68.Text  = "0";
+            this.textBox69.Text  = "0";
+            this.textBox70.Text  = "0";
+            this.textBox71.Text  = "0";
+            this.textBox89.Text  = "0";
+            this.textBox91.Text  = "0";
             this.textBox110.Text = "0";
             this.textBox111.Text = "0";
             this.textBox112.Text = "0";
             this.textBox113.Text = "0";
             this.textBox114.Text = "0";
             this.textBox115.Text = "0";
-            this.textBox.Text = "0";
-            this.textBox.Text = "0";
-            this.textBox.Text = "0";
-            this.textBox.Text = "0";
-            this.textBox.Text = "0";
 
-            this.textBox90.Text = "0";
-            this.textBox55.Text = "0";
-            this.label147.Text = "0";
-            this.label10.Text = "0";
+            this.textBox90.Text  = "0";
+            this.textBox55.Text  = "0";
+            this.label147.Text   = "0";
+            this.label10.Text    = "0";
 
-            this.label179.Text = "0";
-            this.label172.Text = "0";
-            this.label171.Text = "0";
-            this.label170.Text = "0";
-            this.label165.Text = "0";
-            this.label164.Text = "0";
-            this.label163.Text = "0";
-            this.label162.Text = "0";
-            this.label157.Text = "0";
-            this.label156.Text = "0";
-            this.label155.Text = "0";
-            this.label154.Text = "0";
-            this.label169.Text = "0";
-            this.label168.Text = "0";
-            this.label167.Text = "0";
-            this.label166.Text = "0";
-            this.label161.Text = "0";
-            this.label160.Text = "0";
-            this.label159.Text = "0";
-            this.label158.Text = "0";
-            this.label153.Text = "0";
-            this.label152.Text = "0";
-            this.label151.Text = "0";
-            this.label150.Text = "0";
+            this.label179.Text   = "0";
+            this.label172.Text   = "0";
+            this.label171.Text   = "0";
+            this.label170.Text   = "0";
+            this.label165.Text   = "0";
+            this.label164.Text   = "0";
+            this.label163.Text   = "0";
+            this.label162.Text   = "0";
+            this.label157.Text   = "0";
+            this.label156.Text   = "0";
+            this.label155.Text   = "0";
+            this.label154.Text   = "0";
+            this.label169.Text   = "0";
+            this.label168.Text   = "0";
+            this.label167.Text   = "0";
+            this.label166.Text   = "0";
+            this.label161.Text   = "0";
+            this.label160.Text   = "0";
+            this.label159.Text   = "0";
+            this.label158.Text   = "0";
+            this.label153.Text   = "0";
+            this.label152.Text   = "0";
+            this.label151.Text   = "0";
+            this.label150.Text   = "0";
         }
         private void AllItemAdd()
         {
@@ -401,7 +385,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void AllIinvAdd()
@@ -437,7 +421,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void totalDailyData()
@@ -455,7 +439,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void totalInstData()
@@ -469,7 +453,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void fillMemo()
@@ -483,7 +467,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
 
@@ -495,12 +479,7 @@ namespace CT_App
             this.textBox1.Text = "";
             this.button1.Text = "Add";
             this.BalankFldMarMem();
-        }
-        private void button11_Click(object sender, EventArgs e)
-        {
-            this.BalankFldMarMem();
             this.label10.Text = "0";
-            this.button1.Text = "Add";
             this.button15.Text = "New";
         }
         private void button1_Click(object sender, EventArgs e)
@@ -510,7 +489,7 @@ namespace CT_App
                 this.textBox1.ReadOnly = false;
                 this.textBox1.Focus();
                 TextBox textBox = this.textBox101;
-                string[] strArrays = new string[] { "M", null, null, null, null };
+                string[] strArrays = new string[] { "ME", null, null, null, null };
                 int date = DateTime.Now.Day;
                 int month = DateTime.Now.Month;
                 int millis = DateTime.Now.Millisecond;
@@ -539,7 +518,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button1.Text == "Updt")
@@ -561,7 +541,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button1.Text == "U to M")
@@ -580,7 +561,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -621,7 +603,8 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("Error : " + ex.Message);
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
                     }
                 }
                 else if(this.radioButton4.Checked)
@@ -639,7 +622,8 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("Error : " + ex.Message);
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
                     }
                 }
                 else if (this.radioButton3.Checked)
@@ -657,7 +641,8 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("Error : " + ex.Message);
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
                     }
                 }
                 else if (this.radioButton1.Checked)
@@ -675,7 +660,8 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("Error : " + ex.Message);
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
                     }
                 }
                 else if (this.radioButton2.Checked)
@@ -693,7 +679,8 @@ namespace CT_App
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("Error : " + ex.Message);
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
                     }
                 }
             }
@@ -714,7 +701,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button20_Click(object sender, EventArgs e)
@@ -733,7 +721,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button16_Click(object sender, EventArgs e)
@@ -753,7 +742,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button17_Click(object sender, EventArgs e)
@@ -773,7 +763,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button18_Click(object sender, EventArgs e)
@@ -793,7 +784,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button5_Click(object sender, EventArgs e)
@@ -830,7 +822,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button7.Text == "Delete T.")
@@ -849,7 +842,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button7.Text == "Delete E.")
@@ -868,7 +862,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button7.Text == "Delete S.")
@@ -887,7 +882,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button7.Text == "Delete U.")
@@ -906,7 +902,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -945,7 +942,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button10.Text == "Updt")
@@ -969,7 +967,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1008,7 +1007,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button14.Text == "Updt")
@@ -1030,7 +1030,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1063,7 +1064,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button22_Click(object sender, EventArgs e)
@@ -1082,7 +1084,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void button8_Click(object sender, EventArgs e)
@@ -1137,7 +1140,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button4.Text == "Updt")
@@ -1156,7 +1160,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1209,7 +1214,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button13.Text == "Dlt")
@@ -1237,7 +1243,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1274,6 +1281,7 @@ namespace CT_App
                 strArrays[4] = millis.ToString();
                 textBox.Text = string.Concat(strArrays);
                 this.button15.Text = "Save";
+                this.button1.Text = "U to M";
                 this.textBox72.Focus();
             }
             else if (this.button15.Text == "Save")
@@ -1481,7 +1489,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
             else if (this.button15.Text == "Update")
@@ -1499,7 +1508,8 @@ namespace CT_App
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Error : " + ex.Message);
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
                 }
             }
         }
@@ -1521,7 +1531,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void label217_DoubleClick(object sender, EventArgs e)
@@ -1554,7 +1565,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1573,7 +1585,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1601,7 +1614,8 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1624,7 +1638,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1645,7 +1659,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
 
         }
@@ -1663,7 +1677,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1690,7 +1704,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView8_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1717,7 +1731,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView9_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1745,7 +1759,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView10_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1772,7 +1786,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void dataGridView11_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1893,7 +1907,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
 
@@ -2014,7 +2028,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void textBox34_KeyPress(object sender, KeyPressEventArgs e)
@@ -2090,7 +2104,6 @@ namespace CT_App
             textBox.Text = string.Concat(strArrays);
             this.textBox39.Focus();
         }
-
         private void radioButton1_Click(object sender, EventArgs e)
         {
             TextBox textBox = this.textBox35;
@@ -2104,7 +2117,6 @@ namespace CT_App
             textBox.Text = string.Concat(strArrays);
             this.textBox39.Focus();
         }
-
         private void radioButton2_Click(object sender, EventArgs e)
         {
             TextBox textBox = this.textBox35;
@@ -2118,7 +2130,6 @@ namespace CT_App
             textBox.Text = string.Concat(strArrays);
             this.textBox39.Focus();
         }
-
         private void textBox72_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2129,17 +2140,15 @@ namespace CT_App
                 }
                 else
                 {
-                    this.textBox3.Focus();
-                    TextBox textBox = this.textBox101;
-                    string[] strArrays = new string[] { "M", null, null, null, null };
-                    int date = DateTime.Now.Day;
-                    int month = DateTime.Now.Month;
-                    int millis = DateTime.Now.Millisecond;
-                    strArrays[2] = date.ToString();
-                    strArrays[3] = month.ToString();
-                    strArrays[4] = millis.ToString();
-                    textBox.Text = string.Concat(strArrays);
-                    this.button1.Text = "U to M";
+                    if (this.button15.Text == "New")
+                    {
+                        MessageBox.Show(string.Concat("Please Press New Button"));
+                        this.textBox72.Focus();
+                    }
+                    else
+                    {
+                        this.textBox3.Focus();
+                    }
                 }
             }
         }
@@ -2243,7 +2252,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox78_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2301,7 +2309,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox75_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2359,7 +2366,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox76_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2417,7 +2423,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox77_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2475,7 +2480,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox79_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2533,7 +2537,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox80_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2591,7 +2594,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox81_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2648,7 +2650,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox82_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2706,7 +2707,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox83_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2764,7 +2764,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox84_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2822,7 +2821,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox85_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2880,7 +2878,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox86_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2938,7 +2935,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox87_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -2996,7 +2992,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox88_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -3053,7 +3048,6 @@ namespace CT_App
                 }
             }
         }
-
         private void textBox56_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keyChar = e.KeyChar;
@@ -3068,9 +3062,17 @@ namespace CT_App
                     }
                     else
                     {
-                        this.label179.Text = this.textBox56.Text.Trim();
-                        this.AllIinvAdd();
-                        this.textBox57.Focus();
+                        if (this.button15.Text == "New")
+                        {
+                            MessageBox.Show(string.Concat("Please Press New Button"));
+                            this.textBox56.Focus();
+                        }
+                        else
+                        {
+                            this.label179.Text = this.textBox56.Text.Trim();
+                            this.AllIinvAdd();
+                            this.textBox57.Focus();
+                        }
                     }
                 }
             }
@@ -3580,7 +3582,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error : " + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
         private void textBox55_KeyPress(object sender, KeyPressEventArgs e)
