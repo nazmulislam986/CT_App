@@ -505,7 +505,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.textBox1.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.textBox1.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Data Added"));
@@ -527,7 +527,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Market SET M_Amount= '" + this.textBox1.Text.Trim() + "',M_Date= '" + this.dateTimePicker1.Text.Trim() + "' WHERE M_ID= '" + this.label6.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Market SET M_Amount= '" + this.textBox1.Text.Trim() + "',M_Date= '" + this.dateTimePicker1.Text.Trim() + "',M_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE M_ID= '" + this.label6.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update - ", this.label6.Text));
@@ -550,7 +550,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.label10.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.label10.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Memo Amount Added"));
@@ -593,7 +593,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Given (InGiven,Total_Given,Given_To,ThroughBy,Given_Date,Remarks_Given,GDT_V) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Given (InGiven,Total_Given,Given_To,ThroughBy,Given_Date,Remarks_Given,GDT_V,G_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Given"));
@@ -612,7 +612,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Teken (InTake,Total_Take,Take_To,ThroughBy,Take_Date,Remarks_Take,TDT_V) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Teken (InTake,Total_Take,Take_To,ThroughBy,Take_Date,Remarks_Take,TDT_V,T_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Taken"));
@@ -631,7 +631,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Expense (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Expense (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V,E_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Expense"));
@@ -650,7 +650,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Saving (InSaving,Saving_Amount,Saving_To,ThroughBy,Saving_Date,Remarks_Saving,SDT_V,Saving_Bank) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.comboBox1.Text.Trim() + "')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Saving (InSaving,Saving_Amount,Saving_To,ThroughBy,Saving_Date,Remarks_Saving,SDT_V,Saving_Bank,S_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.comboBox1.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Saving"));
@@ -669,7 +669,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Unrated (InUnrated,Unrated_Amount,Unrated_To,ThroughBy,Unrated_Date,Remarks_Unrated,UDT_V) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Unrated (InUnrated,Unrated_Amount,Unrated_To,ThroughBy,Unrated_Date,Remarks_Unrated,UDT_V,U_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Unrated"));
@@ -690,7 +690,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Given SET Total_Given= '" + this.textBox119.Text.Trim() + "',GDT_V_Date= '" + this.DltDate + "' WHERE InGiven= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Given SET Total_Given= '" + this.textBox119.Text.Trim() + "',GDT_V_Date= '" + this.DltDate + "',G_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InGiven= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Given TK Update - ", this.label117.Text));
@@ -710,7 +710,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Teken SET Total_Take= '" + this.textBox120.Text.Trim() + "',TDT_V_Date= '" + this.DltDate + "' WHERE InTake= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Teken SET Total_Take= '" + this.textBox120.Text.Trim() + "',TDT_V_Date= '" + this.DltDate + "',T_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InTake= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Teken TK Update - ", this.label117.Text));
@@ -730,7 +730,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Expense SET Expense_Amount= '" + this.textBox109.Text.Trim() + "',EDT_V_Date= '" + this.DltDate + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Expense SET Expense_Amount= '" + this.textBox109.Text.Trim() + "',EDT_V_Date= '" + this.DltDate + "',E_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Expance TK Update - ", this.label117.Text));
@@ -751,7 +751,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Saving SET Saving_Amount= '" + this.textBox116.Text.Trim() + "',SDT_V_Date= '" + this.DltDate + "' WHERE InSaving= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Saving SET Saving_Amount= '" + this.textBox116.Text.Trim() + "',SDT_V_Date= '" + this.DltDate + "',S_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InSaving= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Saving TK Update - ", this.label117.Text));
@@ -772,7 +772,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Unrated SET Unrated_Amount= '" + this.textBox117.Text.Trim() + "',UDT_V_Date= '" + this.DltDate + "' WHERE InUnrated= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Unrated SET Unrated_Amount= '" + this.textBox117.Text.Trim() + "',UDT_V_Date= '" + this.DltDate + "',U_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InUnrated= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Unrated TK Update - ", this.label117.Text));
@@ -811,7 +811,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Given SET GDT_V='DDV', DDT_V_Date= '" + this.DltDate + "' WHERE InGiven= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Given SET GDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',G_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InGiven= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -831,7 +831,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Teken SET TDT_V='DDV', DDT_V_Date= '" + this.DltDate + "' WHERE InTake= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Teken SET TDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',T_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InTake= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -851,7 +851,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Expense SET EDT_V='DDV', DDT_V_Date= '" + this.DltDate + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Expense SET EDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',E_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -871,7 +871,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Saving SET SDT_V='DDV', DDT_V_Date= '" + this.DltDate + "' WHERE InSaving= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Saving SET SDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',S_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InSaving= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -891,7 +891,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Unrated SET UDT_V='DDV', DDT_V_Date= '" + this.DltDate + "' WHERE InUnrated= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Unrated SET UDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',U_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InUnrated= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -929,7 +929,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker4.Text.Trim() + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,D_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker4.Text.Trim() + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Daily Data Added"));
@@ -951,7 +951,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Daily SET D_FPAmount = '" + this.textBox37.Text.Trim() + "',D_SPAmount = '" + this.label194.Text.Trim() + "',NotTaken = '" + this.label194.Text.Trim() + "',D_Date='" + this.dateTimePicker4.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Daily SET D_FPAmount = '" + this.textBox37.Text.Trim() + "',D_SPAmount = '" + this.label194.Text.Trim() + "',NotTaken = '" + this.label194.Text.Trim() + "',D_Date='" + this.dateTimePicker4.Text.Trim() + "',D_Updt_Person='" + this.label249.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
@@ -994,7 +994,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker5.Text.Trim() + "','" + this.textBox50.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount,C_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker5.Text.Trim() + "','" + this.textBox50.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Added Total Daily Amount"));
@@ -1016,7 +1016,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "',C_Date='" + this.dateTimePicker5.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "',C_Date='" + this.dateTimePicker5.Text.Trim() + "',C_Updt_Persone='" + this.label249.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
@@ -1040,7 +1040,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Daily SET [D_Data]='TKN',[TakenDate]='" + this.DltDate + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE Daily SET [D_Data]='TKN',[TakenDate]='" + this.DltDate + "',[D_Del_Person]='" + this.label249.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [", this.label182.Text + "] "));
@@ -1128,7 +1128,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker2.Text.Trim() + "','" + this.textBox32.Text.Trim() + "','INS')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data,I_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker2.Text.Trim() + "','" + this.textBox32.Text.Trim() + "','INS','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     this.fillInstData();
@@ -1149,7 +1149,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Installment SET InsPay_Date = '" + this.dateTimePicker2.Text.Trim() + "' WHERE I_ID= '" + this.label201.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE Installment SET InsPay_Date= '" + this.dateTimePicker2.Text.Trim() + "',I_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE I_ID= '" + this.label201.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Instrallment Date"));
@@ -1289,8 +1289,8 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    object[] longString = new object[189];
-                    longString[0] = "INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24) Values('";
+                    object[] longString = new object[191];
+                    longString[0] = "INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person) Values('";
                     longString[1] = this.textBox108.Text.Trim();
                     longString[2] = "','";
                     longString[3] = this.DltDate;
@@ -1478,7 +1478,9 @@ namespace CT_App
                     longString[185] = this.textBox114.Text.Trim();
                     longString[186] = "','";
                     longString[187] = this.textBox115.Text.Trim();
-                    longString[188] = "')";
+                    longString[188] = "','";
+                    longString[189] = this.label249.Text.Trim();
+                    longString[190] = "')";
                     OleDbCommand cmd = new OleDbCommand(string.Concat(longString), this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
@@ -1498,7 +1500,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE MarketMemos SET R_InvTK= '" + this.textBox90.Text.Trim() + "',C_InvTK= '" + this.label10.Text.Trim() + "',Giv_TK= '" + this.textBox55.Text.Trim() + "',Ret_TK= '" + this.label147.Text.Trim() + "',I_N01= '" + this.textBox72.Text.Trim() + "',I_N02= '" + this.textBox73.Text.Trim() + "',I_N03= '" + this.textBox78.Text.Trim() + "',I_N04= '" + this.textBox75.Text.Trim() + "',I_N05= '" + this.textBox76.Text.Trim() + "',I_N06= '" + this.textBox77.Text.Trim() + "',I_N07= '" + this.textBox79.Text.Trim() + "',I_N08= '" + this.textBox80.Text.Trim() + "',I_N09= '" + this.textBox81.Text.Trim() + "',I_N10= '" + this.textBox82.Text.Trim() + "',I_N11= '" + this.textBox83.Text.Trim() + "',I_N12= '" + this.textBox84.Text.Trim() + "',I_N13= '" + this.textBox85.Text.Trim() + "',I_N14= '" + this.textBox86.Text.Trim() + "',I_N15= '" + this.textBox87.Text.Trim() + "',I_N16= '" + this.textBox88.Text.Trim() + "',I_P01= '" + this.textBox3.Text.Trim() + "',I_P02= '" + this.textBox5.Text.Trim() + "',I_P03= '" + this.textBox7.Text.Trim() + "',I_P04= '" + this.textBox9.Text.Trim() + "',I_P05= '" + this.textBox11.Text.Trim() + "',I_P06= '" + this.textBox13.Text.Trim() + "',I_P07= '" + this.textBox15.Text.Trim() + "',I_P08= '" + this.textBox17.Text.Trim() + "',I_P09= '" + this.textBox19.Text.Trim() + "',I_P10= '" + this.textBox21.Text.Trim() + "',I_P11= '" + this.textBox23.Text.Trim() + "',I_P12= '" + this.textBox25.Text.Trim() + "',I_P13= '" + this.textBox27.Text.Trim() + "',I_P14= '" + this.textBox29.Text.Trim() + "',I_P15= '" + this.textBox31.Text.Trim() + "',I_P16= '" + this.textBox38.Text.Trim() + "',I_Q01= '" + this.textBox2.Text.Trim() + "',I_Q02= '" + this.textBox4.Text.Trim() + "',I_Q03= '" + this.textBox6.Text.Trim() + "',I_Q04= '" + this.textBox8.Text.Trim() + "',I_Q05= '" + this.textBox10.Text.Trim() + "',I_Q06= '" + this.textBox12.Text.Trim() + "',I_Q07= '" + this.textBox14.Text.Trim() + "',I_Q08= '" + this.textBox16.Text.Trim() + "',I_Q09= '" + this.textBox18.Text.Trim() + "',I_Q10= '" + this.textBox20.Text.Trim() + "',I_Q11= '" + this.textBox22.Text.Trim() + "',I_Q12= '" + this.textBox24.Text.Trim() + "',I_Q13= '" + this.textBox26.Text.Trim() + "',I_Q14= '" + this.textBox28.Text.Trim() + "',I_Q15= '" + this.textBox30.Text.Trim() + "',I_Q16= '" + this.textBox54.Text.Trim() + "',I_ST01= '" + this.label9.Text.Trim() + "',I_ST02= '" + this.label13.Text.Trim() + "',I_ST03= '" + this.label17.Text.Trim() + "',I_ST04= '" + this.label24.Text.Trim() + "',I_ST05= '" + this.label28.Text.Trim() + "',I_ST06= '" + this.label32.Text.Trim() + "',I_ST07= '" + this.label36.Text.Trim() + "',I_ST08= '" + this.label40.Text.Trim() + "',I_ST09= '" + this.label44.Text.Trim() + "',I_ST10= '" + this.label48.Text.Trim() + "',I_ST11= '" + this.label52.Text.Trim() + "',I_ST12= '" + this.label56.Text.Trim() + "',I_ST13= '" + this.label60.Text.Trim() + "',I_ST14= '" + this.label64.Text.Trim() + "',I_ST15= '" + this.label68.Text.Trim() + "',I_ST16= '" + this.label76.Text.Trim() + "',R_Inv01= '" + this.textBox56.Text.Trim() + "',R_Inv02= '" + this.textBox57.Text.Trim() + "',R_Inv03= '" + this.textBox58.Text.Trim() + "',R_Inv04= '" + this.textBox59.Text.Trim() + "',R_Inv05= '" + this.textBox60.Text.Trim() + "',R_Inv06= '" + this.textBox61.Text.Trim() + "',R_Inv07= '" + this.textBox62.Text.Trim() + "',R_Inv08= '" + this.textBox63.Text.Trim() + "',R_Inv09= '" + this.textBox64.Text.Trim() + "',R_Inv10= '" + this.textBox65.Text.Trim() + "',R_Inv11= '" + this.textBox66.Text.Trim() + "',R_Inv12= '" + this.textBox67.Text.Trim() + "',R_Inv13= '" + this.textBox68.Text.Trim() + "',R_Inv14= '" + this.textBox69.Text.Trim() + "',R_Inv15= '" + this.textBox70.Text.Trim() + "',R_Inv16= '" + this.textBox71.Text.Trim() + "',R_Inv17= '" + this.textBox89.Text.Trim() + "',R_Inv18= '" + this.textBox91.Text.Trim() + "',R_Inv19= '" + this.textBox110.Text.Trim() + "',R_Inv20= '" + this.textBox111.Text.Trim() + "',R_Inv21= '" + this.textBox112.Text.Trim() + "',R_Inv22= '" + this.textBox113.Text.Trim() + "',R_Inv23= '" + this.textBox114.Text.Trim() + "',R_Inv24= '" + this.textBox115.Text.Trim() + "' WHERE Mem_ID = '" + this.label224.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE MarketMemos SET R_InvTK= '" + this.textBox90.Text.Trim() + "',C_InvTK= '" + this.label10.Text.Trim() + "',Giv_TK= '" + this.textBox55.Text.Trim() + "',Ret_TK= '" + this.label147.Text.Trim() + "',I_N01= '" + this.textBox72.Text.Trim() + "',I_N02= '" + this.textBox73.Text.Trim() + "',I_N03= '" + this.textBox78.Text.Trim() + "',I_N04= '" + this.textBox75.Text.Trim() + "',I_N05= '" + this.textBox76.Text.Trim() + "',I_N06= '" + this.textBox77.Text.Trim() + "',I_N07= '" + this.textBox79.Text.Trim() + "',I_N08= '" + this.textBox80.Text.Trim() + "',I_N09= '" + this.textBox81.Text.Trim() + "',I_N10= '" + this.textBox82.Text.Trim() + "',I_N11= '" + this.textBox83.Text.Trim() + "',I_N12= '" + this.textBox84.Text.Trim() + "',I_N13= '" + this.textBox85.Text.Trim() + "',I_N14= '" + this.textBox86.Text.Trim() + "',I_N15= '" + this.textBox87.Text.Trim() + "',I_N16= '" + this.textBox88.Text.Trim() + "',I_P01= '" + this.textBox3.Text.Trim() + "',I_P02= '" + this.textBox5.Text.Trim() + "',I_P03= '" + this.textBox7.Text.Trim() + "',I_P04= '" + this.textBox9.Text.Trim() + "',I_P05= '" + this.textBox11.Text.Trim() + "',I_P06= '" + this.textBox13.Text.Trim() + "',I_P07= '" + this.textBox15.Text.Trim() + "',I_P08= '" + this.textBox17.Text.Trim() + "',I_P09= '" + this.textBox19.Text.Trim() + "',I_P10= '" + this.textBox21.Text.Trim() + "',I_P11= '" + this.textBox23.Text.Trim() + "',I_P12= '" + this.textBox25.Text.Trim() + "',I_P13= '" + this.textBox27.Text.Trim() + "',I_P14= '" + this.textBox29.Text.Trim() + "',I_P15= '" + this.textBox31.Text.Trim() + "',I_P16= '" + this.textBox38.Text.Trim() + "',I_Q01= '" + this.textBox2.Text.Trim() + "',I_Q02= '" + this.textBox4.Text.Trim() + "',I_Q03= '" + this.textBox6.Text.Trim() + "',I_Q04= '" + this.textBox8.Text.Trim() + "',I_Q05= '" + this.textBox10.Text.Trim() + "',I_Q06= '" + this.textBox12.Text.Trim() + "',I_Q07= '" + this.textBox14.Text.Trim() + "',I_Q08= '" + this.textBox16.Text.Trim() + "',I_Q09= '" + this.textBox18.Text.Trim() + "',I_Q10= '" + this.textBox20.Text.Trim() + "',I_Q11= '" + this.textBox22.Text.Trim() + "',I_Q12= '" + this.textBox24.Text.Trim() + "',I_Q13= '" + this.textBox26.Text.Trim() + "',I_Q14= '" + this.textBox28.Text.Trim() + "',I_Q15= '" + this.textBox30.Text.Trim() + "',I_Q16= '" + this.textBox54.Text.Trim() + "',I_ST01= '" + this.label9.Text.Trim() + "',I_ST02= '" + this.label13.Text.Trim() + "',I_ST03= '" + this.label17.Text.Trim() + "',I_ST04= '" + this.label24.Text.Trim() + "',I_ST05= '" + this.label28.Text.Trim() + "',I_ST06= '" + this.label32.Text.Trim() + "',I_ST07= '" + this.label36.Text.Trim() + "',I_ST08= '" + this.label40.Text.Trim() + "',I_ST09= '" + this.label44.Text.Trim() + "',I_ST10= '" + this.label48.Text.Trim() + "',I_ST11= '" + this.label52.Text.Trim() + "',I_ST12= '" + this.label56.Text.Trim() + "',I_ST13= '" + this.label60.Text.Trim() + "',I_ST14= '" + this.label64.Text.Trim() + "',I_ST15= '" + this.label68.Text.Trim() + "',I_ST16= '" + this.label76.Text.Trim() + "',R_Inv01= '" + this.textBox56.Text.Trim() + "',R_Inv02= '" + this.textBox57.Text.Trim() + "',R_Inv03= '" + this.textBox58.Text.Trim() + "',R_Inv04= '" + this.textBox59.Text.Trim() + "',R_Inv05= '" + this.textBox60.Text.Trim() + "',R_Inv06= '" + this.textBox61.Text.Trim() + "',R_Inv07= '" + this.textBox62.Text.Trim() + "',R_Inv08= '" + this.textBox63.Text.Trim() + "',R_Inv09= '" + this.textBox64.Text.Trim() + "',R_Inv10= '" + this.textBox65.Text.Trim() + "',R_Inv11= '" + this.textBox66.Text.Trim() + "',R_Inv12= '" + this.textBox67.Text.Trim() + "',R_Inv13= '" + this.textBox68.Text.Trim() + "',R_Inv14= '" + this.textBox69.Text.Trim() + "',R_Inv15= '" + this.textBox70.Text.Trim() + "',R_Inv16= '" + this.textBox71.Text.Trim() + "',R_Inv17= '" + this.textBox89.Text.Trim() + "',R_Inv18= '" + this.textBox91.Text.Trim() + "',R_Inv19= '" + this.textBox110.Text.Trim() + "',R_Inv20= '" + this.textBox111.Text.Trim() + "',R_Inv21= '" + this.textBox112.Text.Trim() + "',R_Inv22= '" + this.textBox113.Text.Trim() + "',R_Inv23= '" + this.textBox114.Text.Trim() + "',R_Inv24= '" + this.textBox115.Text.Trim() + "',Mem_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE Mem_ID = '" + this.label224.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update - ", this.label224.Text));
@@ -1518,6 +1520,8 @@ namespace CT_App
             try
             {
                 this.conn.Open();
+                OleDbCommand commandUpdtPerson = new OleDbCommand("UPDATE MarketMemos SET Mem_Del_Person= '" + this.label249.Text.Trim() + "' WHERE Mem_ID = '" + this.label224.Text.Trim() + "' ", this.conn);
+                commandUpdtPerson.ExecuteNonQuery();
                 OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = '" + this.label224.Text.Trim() + "' "), this.conn);
                 sendData.ExecuteNonQuery();
                 OleDbCommand sendDData = new OleDbCommand(string.Concat("DELETE FROM MarketMemos WHERE Mem_ID = '" + this.label224.Text.Trim() + "' "), this.conn);
@@ -1925,6 +1929,7 @@ namespace CT_App
                     this.label180.Visible = false;
                     this.textBox.Visible = false;
                     this.lblVer.Visible = false;
+                    this.label249.Text = this.textBox.Text.Trim();
                 }
                 else if (this.textBox.Text.Trim() == "shamim")
                 {
@@ -1938,6 +1943,7 @@ namespace CT_App
                     this.panel19.Visible = false;
                     this.lblVer.Visible = false;
                     this.dataGridView5.ReadOnly = true;
+                    this.label249.Text = this.textBox.Text.Trim();
                 }
                 else
                 {

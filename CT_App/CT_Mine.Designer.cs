@@ -505,6 +505,7 @@ namespace CT_App
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
+            this.label249 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -905,7 +906,7 @@ namespace CT_App
             this.label178.AutoSize = true;
             this.label178.Location = new System.Drawing.Point(71, 533);
             this.label178.Name = "label178";
-            this.label178.Size = new System.Drawing.Size(77, 16);
+            this.label178.Size = new System.Drawing.Size(76, 16);
             this.label178.TabIndex = 2;
             this.label178.Text = "24. Invoice :";
             // 
@@ -924,7 +925,7 @@ namespace CT_App
             this.label177.AutoSize = true;
             this.label177.Location = new System.Drawing.Point(71, 510);
             this.label177.Name = "label177";
-            this.label177.Size = new System.Drawing.Size(77, 16);
+            this.label177.Size = new System.Drawing.Size(76, 16);
             this.label177.TabIndex = 2;
             this.label177.Text = "23. Invoice :";
             // 
@@ -943,7 +944,7 @@ namespace CT_App
             this.label176.AutoSize = true;
             this.label176.Location = new System.Drawing.Point(71, 487);
             this.label176.Name = "label176";
-            this.label176.Size = new System.Drawing.Size(77, 16);
+            this.label176.Size = new System.Drawing.Size(76, 16);
             this.label176.TabIndex = 2;
             this.label176.Text = "22. Invoice :";
             // 
@@ -962,7 +963,7 @@ namespace CT_App
             this.label175.AutoSize = true;
             this.label175.Location = new System.Drawing.Point(71, 464);
             this.label175.Name = "label175";
-            this.label175.Size = new System.Drawing.Size(77, 16);
+            this.label175.Size = new System.Drawing.Size(76, 16);
             this.label175.TabIndex = 2;
             this.label175.Text = "21. Invoice :";
             // 
@@ -981,7 +982,7 @@ namespace CT_App
             this.label174.AutoSize = true;
             this.label174.Location = new System.Drawing.Point(71, 441);
             this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(77, 16);
+            this.label174.Size = new System.Drawing.Size(76, 16);
             this.label174.TabIndex = 2;
             this.label174.Text = "20. Invoice :";
             // 
@@ -1000,7 +1001,7 @@ namespace CT_App
             this.label173.AutoSize = true;
             this.label173.Location = new System.Drawing.Point(71, 418);
             this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(77, 16);
+            this.label173.Size = new System.Drawing.Size(76, 16);
             this.label173.TabIndex = 2;
             this.label173.Text = "19. Invoice :";
             // 
@@ -1019,7 +1020,7 @@ namespace CT_App
             this.label148.AutoSize = true;
             this.label148.Location = new System.Drawing.Point(71, 395);
             this.label148.Name = "label148";
-            this.label148.Size = new System.Drawing.Size(77, 16);
+            this.label148.Size = new System.Drawing.Size(76, 16);
             this.label148.TabIndex = 2;
             this.label148.Text = "18. Invoice :";
             // 
@@ -1028,7 +1029,7 @@ namespace CT_App
             this.label149.AutoSize = true;
             this.label149.Location = new System.Drawing.Point(71, 372);
             this.label149.Name = "label149";
-            this.label149.Size = new System.Drawing.Size(77, 16);
+            this.label149.Size = new System.Drawing.Size(76, 16);
             this.label149.TabIndex = 2;
             this.label149.Text = "17. Invoice :";
             // 
@@ -1037,7 +1038,7 @@ namespace CT_App
             this.label144.AutoSize = true;
             this.label144.Location = new System.Drawing.Point(70, 349);
             this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(77, 16);
+            this.label144.Size = new System.Drawing.Size(76, 16);
             this.label144.TabIndex = 2;
             this.label144.Text = "16. Invoice :";
             // 
@@ -1046,7 +1047,7 @@ namespace CT_App
             this.label143.AutoSize = true;
             this.label143.Location = new System.Drawing.Point(70, 326);
             this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(77, 16);
+            this.label143.Size = new System.Drawing.Size(76, 16);
             this.label143.TabIndex = 2;
             this.label143.Text = "15. Invoice :";
             // 
@@ -1055,7 +1056,7 @@ namespace CT_App
             this.label142.AutoSize = true;
             this.label142.Location = new System.Drawing.Point(70, 303);
             this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(77, 16);
+            this.label142.Size = new System.Drawing.Size(76, 16);
             this.label142.TabIndex = 2;
             this.label142.Text = "14. Invoice :";
             // 
@@ -1064,7 +1065,7 @@ namespace CT_App
             this.label141.AutoSize = true;
             this.label141.Location = new System.Drawing.Point(70, 280);
             this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(77, 16);
+            this.label141.Size = new System.Drawing.Size(76, 16);
             this.label141.TabIndex = 2;
             this.label141.Text = "13. Invoice :";
             // 
@@ -1073,7 +1074,7 @@ namespace CT_App
             this.label140.AutoSize = true;
             this.label140.Location = new System.Drawing.Point(70, 257);
             this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(77, 16);
+            this.label140.Size = new System.Drawing.Size(76, 16);
             this.label140.TabIndex = 2;
             this.label140.Text = "12. Invoice :";
             // 
@@ -1082,7 +1083,7 @@ namespace CT_App
             this.label139.AutoSize = true;
             this.label139.Location = new System.Drawing.Point(70, 234);
             this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(77, 16);
+            this.label139.Size = new System.Drawing.Size(76, 16);
             this.label139.TabIndex = 2;
             this.label139.Text = "11. Invoice :";
             // 
@@ -1091,7 +1092,7 @@ namespace CT_App
             this.label138.AutoSize = true;
             this.label138.Location = new System.Drawing.Point(70, 211);
             this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(77, 16);
+            this.label138.Size = new System.Drawing.Size(76, 16);
             this.label138.TabIndex = 2;
             this.label138.Text = "10. Invoice :";
             // 
@@ -1100,7 +1101,7 @@ namespace CT_App
             this.label137.AutoSize = true;
             this.label137.Location = new System.Drawing.Point(71, 188);
             this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(77, 16);
+            this.label137.Size = new System.Drawing.Size(76, 16);
             this.label137.TabIndex = 2;
             this.label137.Text = "09. Invoice :";
             // 
@@ -1109,7 +1110,7 @@ namespace CT_App
             this.label136.AutoSize = true;
             this.label136.Location = new System.Drawing.Point(71, 165);
             this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(77, 16);
+            this.label136.Size = new System.Drawing.Size(76, 16);
             this.label136.TabIndex = 2;
             this.label136.Text = "08. Invoice :";
             // 
@@ -1118,7 +1119,7 @@ namespace CT_App
             this.label135.AutoSize = true;
             this.label135.Location = new System.Drawing.Point(71, 142);
             this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(77, 16);
+            this.label135.Size = new System.Drawing.Size(76, 16);
             this.label135.TabIndex = 2;
             this.label135.Text = "07. Invoice :";
             // 
@@ -1127,7 +1128,7 @@ namespace CT_App
             this.label134.AutoSize = true;
             this.label134.Location = new System.Drawing.Point(71, 119);
             this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(77, 16);
+            this.label134.Size = new System.Drawing.Size(76, 16);
             this.label134.TabIndex = 2;
             this.label134.Text = "06. Invoice :";
             // 
@@ -1136,7 +1137,7 @@ namespace CT_App
             this.label133.AutoSize = true;
             this.label133.Location = new System.Drawing.Point(71, 96);
             this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(77, 16);
+            this.label133.Size = new System.Drawing.Size(76, 16);
             this.label133.TabIndex = 2;
             this.label133.Text = "05. Invoice :";
             // 
@@ -1145,7 +1146,7 @@ namespace CT_App
             this.label132.AutoSize = true;
             this.label132.Location = new System.Drawing.Point(71, 73);
             this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(77, 16);
+            this.label132.Size = new System.Drawing.Size(76, 16);
             this.label132.TabIndex = 2;
             this.label132.Text = "04. Invoice :";
             // 
@@ -1154,7 +1155,7 @@ namespace CT_App
             this.label131.AutoSize = true;
             this.label131.Location = new System.Drawing.Point(71, 50);
             this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(77, 16);
+            this.label131.Size = new System.Drawing.Size(76, 16);
             this.label131.TabIndex = 2;
             this.label131.Text = "03. Invoice :";
             // 
@@ -1163,7 +1164,7 @@ namespace CT_App
             this.label130.AutoSize = true;
             this.label130.Location = new System.Drawing.Point(71, 27);
             this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(77, 16);
+            this.label130.Size = new System.Drawing.Size(76, 16);
             this.label130.TabIndex = 2;
             this.label130.Text = "02. Invoice :";
             // 
@@ -1172,7 +1173,7 @@ namespace CT_App
             this.label129.AutoSize = true;
             this.label129.Location = new System.Drawing.Point(71, 4);
             this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(77, 16);
+            this.label129.Size = new System.Drawing.Size(76, 16);
             this.label129.TabIndex = 2;
             this.label129.Text = "01. Invoice :";
             // 
@@ -1206,7 +1207,7 @@ namespace CT_App
             this.label145.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label145.Location = new System.Drawing.Point(-1, 6);
             this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(135, 16);
+            this.label145.Size = new System.Drawing.Size(134, 16);
             this.label145.TabIndex = 2;
             this.label145.Text = "Total Inv. Amount :";
             // 
@@ -2008,7 +2009,7 @@ namespace CT_App
             this.label127.AutoSize = true;
             this.label127.Location = new System.Drawing.Point(168, 0);
             this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(73, 16);
+            this.label127.Size = new System.Drawing.Size(72, 16);
             this.label127.TabIndex = 2;
             this.label127.Text = "Item Name";
             // 
@@ -2017,7 +2018,7 @@ namespace CT_App
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(460, -1);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(33, 16);
+            this.label21.Size = new System.Drawing.Size(32, 16);
             this.label21.TabIndex = 2;
             this.label21.Text = "Item";
             // 
@@ -2026,7 +2027,7 @@ namespace CT_App
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(1, 20);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 16);
+            this.label7.Size = new System.Drawing.Size(24, 16);
             this.label7.TabIndex = 2;
             this.label7.Text = "01.";
             // 
@@ -2035,7 +2036,7 @@ namespace CT_App
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(493, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 16);
+            this.label8.Size = new System.Drawing.Size(14, 16);
             this.label8.TabIndex = 2;
             this.label8.Text = "=";
             // 
@@ -2044,7 +2045,7 @@ namespace CT_App
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(1, 43);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(25, 16);
+            this.label11.Size = new System.Drawing.Size(24, 16);
             this.label11.TabIndex = 2;
             this.label11.Text = "02.";
             // 
@@ -2053,7 +2054,7 @@ namespace CT_App
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(1, 66);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(25, 16);
+            this.label15.Size = new System.Drawing.Size(24, 16);
             this.label15.TabIndex = 2;
             this.label15.Text = "03.";
             // 
@@ -2062,7 +2063,7 @@ namespace CT_App
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(493, 43);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 16);
+            this.label12.Size = new System.Drawing.Size(14, 16);
             this.label12.TabIndex = 2;
             this.label12.Text = "=";
             // 
@@ -2071,7 +2072,7 @@ namespace CT_App
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(1, 89);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(25, 16);
+            this.label19.Size = new System.Drawing.Size(24, 16);
             this.label19.TabIndex = 2;
             this.label19.Text = "04.";
             // 
@@ -2080,7 +2081,7 @@ namespace CT_App
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(1, 112);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(25, 16);
+            this.label26.Size = new System.Drawing.Size(24, 16);
             this.label26.TabIndex = 2;
             this.label26.Text = "05.";
             // 
@@ -2089,7 +2090,7 @@ namespace CT_App
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(493, 66);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(15, 16);
+            this.label16.Size = new System.Drawing.Size(14, 16);
             this.label16.TabIndex = 2;
             this.label16.Text = "=";
             // 
@@ -2098,7 +2099,7 @@ namespace CT_App
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(1, 135);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(25, 16);
+            this.label30.Size = new System.Drawing.Size(24, 16);
             this.label30.TabIndex = 2;
             this.label30.Text = "06.";
             // 
@@ -2107,7 +2108,7 @@ namespace CT_App
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(1, 158);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(25, 16);
+            this.label34.Size = new System.Drawing.Size(24, 16);
             this.label34.TabIndex = 2;
             this.label34.Text = "07.";
             // 
@@ -2116,7 +2117,7 @@ namespace CT_App
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(493, 89);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(15, 16);
+            this.label23.Size = new System.Drawing.Size(14, 16);
             this.label23.TabIndex = 2;
             this.label23.Text = "=";
             // 
@@ -2125,7 +2126,7 @@ namespace CT_App
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(1, 181);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(25, 16);
+            this.label38.Size = new System.Drawing.Size(24, 16);
             this.label38.TabIndex = 2;
             this.label38.Text = "08.";
             // 
@@ -2134,7 +2135,7 @@ namespace CT_App
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(1, 204);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(25, 16);
+            this.label42.Size = new System.Drawing.Size(24, 16);
             this.label42.TabIndex = 2;
             this.label42.Text = "09.";
             // 
@@ -2143,7 +2144,7 @@ namespace CT_App
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(493, 112);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(15, 16);
+            this.label27.Size = new System.Drawing.Size(14, 16);
             this.label27.TabIndex = 2;
             this.label27.Text = "=";
             // 
@@ -2152,7 +2153,7 @@ namespace CT_App
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(1, 227);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(25, 16);
+            this.label46.Size = new System.Drawing.Size(24, 16);
             this.label46.TabIndex = 2;
             this.label46.Text = "10.";
             // 
@@ -2161,7 +2162,7 @@ namespace CT_App
             this.label50.AutoSize = true;
             this.label50.Location = new System.Drawing.Point(1, 250);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(25, 16);
+            this.label50.Size = new System.Drawing.Size(24, 16);
             this.label50.TabIndex = 2;
             this.label50.Text = "11.";
             // 
@@ -2170,7 +2171,7 @@ namespace CT_App
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(493, 135);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(15, 16);
+            this.label31.Size = new System.Drawing.Size(14, 16);
             this.label31.TabIndex = 2;
             this.label31.Text = "=";
             // 
@@ -2179,7 +2180,7 @@ namespace CT_App
             this.label54.AutoSize = true;
             this.label54.Location = new System.Drawing.Point(1, 273);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(25, 16);
+            this.label54.Size = new System.Drawing.Size(24, 16);
             this.label54.TabIndex = 2;
             this.label54.Text = "12.";
             // 
@@ -2188,7 +2189,7 @@ namespace CT_App
             this.label58.AutoSize = true;
             this.label58.Location = new System.Drawing.Point(1, 296);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(25, 16);
+            this.label58.Size = new System.Drawing.Size(24, 16);
             this.label58.TabIndex = 2;
             this.label58.Text = "13.";
             // 
@@ -2197,7 +2198,7 @@ namespace CT_App
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(493, 158);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(15, 16);
+            this.label35.Size = new System.Drawing.Size(14, 16);
             this.label35.TabIndex = 2;
             this.label35.Text = "=";
             // 
@@ -2206,7 +2207,7 @@ namespace CT_App
             this.label62.AutoSize = true;
             this.label62.Location = new System.Drawing.Point(1, 319);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(25, 16);
+            this.label62.Size = new System.Drawing.Size(24, 16);
             this.label62.TabIndex = 2;
             this.label62.Text = "14.";
             // 
@@ -2215,7 +2216,7 @@ namespace CT_App
             this.label98.AutoSize = true;
             this.label98.Location = new System.Drawing.Point(1, 365);
             this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(25, 16);
+            this.label98.Size = new System.Drawing.Size(24, 16);
             this.label98.TabIndex = 2;
             this.label98.Text = "16.";
             // 
@@ -2224,7 +2225,7 @@ namespace CT_App
             this.label66.AutoSize = true;
             this.label66.Location = new System.Drawing.Point(1, 342);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(25, 16);
+            this.label66.Size = new System.Drawing.Size(24, 16);
             this.label66.TabIndex = 2;
             this.label66.Text = "15.";
             // 
@@ -2233,7 +2234,7 @@ namespace CT_App
             this.label97.AutoSize = true;
             this.label97.Location = new System.Drawing.Point(446, 365);
             this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(16, 16);
+            this.label97.Size = new System.Drawing.Size(15, 16);
             this.label97.TabIndex = 2;
             this.label97.Text = "X";
             // 
@@ -2242,7 +2243,7 @@ namespace CT_App
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(493, 181);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(15, 16);
+            this.label39.Size = new System.Drawing.Size(14, 16);
             this.label39.TabIndex = 2;
             this.label39.Text = "=";
             // 
@@ -2251,7 +2252,7 @@ namespace CT_App
             this.label69.AutoSize = true;
             this.label69.Location = new System.Drawing.Point(446, 342);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(16, 16);
+            this.label69.Size = new System.Drawing.Size(15, 16);
             this.label69.TabIndex = 2;
             this.label69.Text = "X";
             // 
@@ -2260,7 +2261,7 @@ namespace CT_App
             this.label65.AutoSize = true;
             this.label65.Location = new System.Drawing.Point(446, 319);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(16, 16);
+            this.label65.Size = new System.Drawing.Size(15, 16);
             this.label65.TabIndex = 2;
             this.label65.Text = "X";
             // 
@@ -2269,7 +2270,7 @@ namespace CT_App
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(493, 204);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(15, 16);
+            this.label43.Size = new System.Drawing.Size(14, 16);
             this.label43.TabIndex = 2;
             this.label43.Text = "=";
             // 
@@ -2278,7 +2279,7 @@ namespace CT_App
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(446, 296);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(16, 16);
+            this.label61.Size = new System.Drawing.Size(15, 16);
             this.label61.TabIndex = 2;
             this.label61.Text = "X";
             // 
@@ -2287,7 +2288,7 @@ namespace CT_App
             this.label57.AutoSize = true;
             this.label57.Location = new System.Drawing.Point(446, 273);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(16, 16);
+            this.label57.Size = new System.Drawing.Size(15, 16);
             this.label57.TabIndex = 2;
             this.label57.Text = "X";
             // 
@@ -2296,7 +2297,7 @@ namespace CT_App
             this.label47.AutoSize = true;
             this.label47.Location = new System.Drawing.Point(493, 227);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(15, 16);
+            this.label47.Size = new System.Drawing.Size(14, 16);
             this.label47.TabIndex = 2;
             this.label47.Text = "=";
             // 
@@ -2305,7 +2306,7 @@ namespace CT_App
             this.label53.AutoSize = true;
             this.label53.Location = new System.Drawing.Point(446, 250);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(16, 16);
+            this.label53.Size = new System.Drawing.Size(15, 16);
             this.label53.TabIndex = 2;
             this.label53.Text = "X";
             // 
@@ -2314,7 +2315,7 @@ namespace CT_App
             this.label49.AutoSize = true;
             this.label49.Location = new System.Drawing.Point(446, 227);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(16, 16);
+            this.label49.Size = new System.Drawing.Size(15, 16);
             this.label49.TabIndex = 2;
             this.label49.Text = "X";
             // 
@@ -2323,7 +2324,7 @@ namespace CT_App
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(493, 250);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(15, 16);
+            this.label51.Size = new System.Drawing.Size(14, 16);
             this.label51.TabIndex = 2;
             this.label51.Text = "=";
             // 
@@ -2332,7 +2333,7 @@ namespace CT_App
             this.label45.AutoSize = true;
             this.label45.Location = new System.Drawing.Point(446, 204);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(16, 16);
+            this.label45.Size = new System.Drawing.Size(15, 16);
             this.label45.TabIndex = 2;
             this.label45.Text = "X";
             // 
@@ -2341,7 +2342,7 @@ namespace CT_App
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(446, 181);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(16, 16);
+            this.label41.Size = new System.Drawing.Size(15, 16);
             this.label41.TabIndex = 2;
             this.label41.Text = "X";
             // 
@@ -2350,7 +2351,7 @@ namespace CT_App
             this.label55.AutoSize = true;
             this.label55.Location = new System.Drawing.Point(493, 273);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(15, 16);
+            this.label55.Size = new System.Drawing.Size(14, 16);
             this.label55.TabIndex = 2;
             this.label55.Text = "=";
             // 
@@ -2359,7 +2360,7 @@ namespace CT_App
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(446, 158);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(16, 16);
+            this.label37.Size = new System.Drawing.Size(15, 16);
             this.label37.TabIndex = 2;
             this.label37.Text = "X";
             // 
@@ -2368,7 +2369,7 @@ namespace CT_App
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(446, 135);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(16, 16);
+            this.label33.Size = new System.Drawing.Size(15, 16);
             this.label33.TabIndex = 2;
             this.label33.Text = "X";
             // 
@@ -2377,7 +2378,7 @@ namespace CT_App
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(493, 296);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(15, 16);
+            this.label59.Size = new System.Drawing.Size(14, 16);
             this.label59.TabIndex = 2;
             this.label59.Text = "=";
             // 
@@ -2386,7 +2387,7 @@ namespace CT_App
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(446, 112);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(16, 16);
+            this.label29.Size = new System.Drawing.Size(15, 16);
             this.label29.TabIndex = 2;
             this.label29.Text = "X";
             // 
@@ -2395,7 +2396,7 @@ namespace CT_App
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(446, 89);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(16, 16);
+            this.label25.Size = new System.Drawing.Size(15, 16);
             this.label25.TabIndex = 2;
             this.label25.Text = "X";
             // 
@@ -2404,7 +2405,7 @@ namespace CT_App
             this.label63.AutoSize = true;
             this.label63.Location = new System.Drawing.Point(493, 319);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(15, 16);
+            this.label63.Size = new System.Drawing.Size(14, 16);
             this.label63.TabIndex = 2;
             this.label63.Text = "=";
             // 
@@ -2413,7 +2414,7 @@ namespace CT_App
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(446, 66);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(16, 16);
+            this.label18.Size = new System.Drawing.Size(15, 16);
             this.label18.TabIndex = 2;
             this.label18.Text = "X";
             // 
@@ -2422,7 +2423,7 @@ namespace CT_App
             this.label96.AutoSize = true;
             this.label96.Location = new System.Drawing.Point(493, 365);
             this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(15, 16);
+            this.label96.Size = new System.Drawing.Size(14, 16);
             this.label96.TabIndex = 2;
             this.label96.Text = "=";
             // 
@@ -2431,7 +2432,7 @@ namespace CT_App
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(446, 43);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(16, 16);
+            this.label14.Size = new System.Drawing.Size(15, 16);
             this.label14.TabIndex = 2;
             this.label14.Text = "X";
             // 
@@ -2440,7 +2441,7 @@ namespace CT_App
             this.label67.AutoSize = true;
             this.label67.Location = new System.Drawing.Point(493, 342);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(15, 16);
+            this.label67.Size = new System.Drawing.Size(14, 16);
             this.label67.TabIndex = 2;
             this.label67.Text = "=";
             // 
@@ -2449,7 +2450,7 @@ namespace CT_App
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(446, 20);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(16, 16);
+            this.label20.Size = new System.Drawing.Size(15, 16);
             this.label20.TabIndex = 2;
             this.label20.Text = "X";
             // 
@@ -2458,7 +2459,7 @@ namespace CT_App
             this.label126.AutoSize = true;
             this.label126.Location = new System.Drawing.Point(498, -1);
             this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(66, 16);
+            this.label126.Size = new System.Drawing.Size(65, 16);
             this.label126.TabIndex = 2;
             this.label126.Text = "Sub Total";
             // 
@@ -2467,7 +2468,7 @@ namespace CT_App
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(398, -1);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(39, 16);
+            this.label22.Size = new System.Drawing.Size(38, 16);
             this.label22.TabIndex = 2;
             this.label22.Text = "Price";
             // 
@@ -2612,6 +2613,7 @@ namespace CT_App
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.label249);
             this.panel9.Controls.Add(this.textBox108);
             this.panel9.Controls.Add(this.textBox101);
             this.panel9.Controls.Add(this.label150);
@@ -2641,7 +2643,7 @@ namespace CT_App
             this.panel9.Controls.Add(this.label171);
             this.panel9.Controls.Add(this.label172);
             this.panel9.Controls.Add(this.label179);
-            this.panel9.Location = new System.Drawing.Point(2, 37);
+            this.panel9.Location = new System.Drawing.Point(2, 39);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(107, 55);
             this.panel9.TabIndex = 10;
@@ -3739,7 +3741,7 @@ namespace CT_App
             this.label123.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label123.Location = new System.Drawing.Point(940, 74);
             this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(94, 16);
+            this.label123.Size = new System.Drawing.Size(93, 16);
             this.label123.TabIndex = 2;
             this.label123.Text = "Unrated Date :";
             // 
@@ -3879,7 +3881,7 @@ namespace CT_App
             this.label110.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label110.Location = new System.Drawing.Point(261, 3);
             this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(59, 16);
+            this.label110.Size = new System.Drawing.Size(58, 16);
             this.label110.TabIndex = 2;
             this.label110.Text = "Amount :";
             // 
@@ -3889,7 +3891,7 @@ namespace CT_App
             this.label111.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label111.Location = new System.Drawing.Point(319, 3);
             this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(16, 16);
+            this.label111.Size = new System.Drawing.Size(15, 16);
             this.label111.TabIndex = 2;
             this.label111.Text = "..";
             // 
@@ -3955,7 +3957,7 @@ namespace CT_App
             this.label229.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label229.Location = new System.Drawing.Point(477, 120);
             this.label229.Name = "label229";
-            this.label229.Size = new System.Drawing.Size(87, 16);
+            this.label229.Size = new System.Drawing.Size(86, 16);
             this.label229.TabIndex = 2;
             this.label229.Text = "E. L. Update :";
             // 
@@ -3965,7 +3967,7 @@ namespace CT_App
             this.label228.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label228.Location = new System.Drawing.Point(946, 120);
             this.label228.Name = "label228";
-            this.label228.Size = new System.Drawing.Size(88, 16);
+            this.label228.Size = new System.Drawing.Size(87, 16);
             this.label228.TabIndex = 2;
             this.label228.Text = "U. L. Update :";
             // 
@@ -3975,7 +3977,7 @@ namespace CT_App
             this.label124.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label124.Location = new System.Drawing.Point(965, 97);
             this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(69, 16);
+            this.label124.Size = new System.Drawing.Size(68, 16);
             this.label124.TabIndex = 2;
             this.label124.Text = "Remarks :";
             // 
@@ -3985,7 +3987,7 @@ namespace CT_App
             this.label122.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label122.Location = new System.Drawing.Point(952, 51);
             this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(82, 16);
+            this.label122.Size = new System.Drawing.Size(81, 16);
             this.label122.TabIndex = 2;
             this.label122.Text = "Unrated TK :";
             // 
@@ -3995,7 +3997,7 @@ namespace CT_App
             this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label107.Location = new System.Drawing.Point(751, 3);
             this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(45, 16);
+            this.label107.Size = new System.Drawing.Size(44, 16);
             this.label107.TabIndex = 2;
             this.label107.Text = "Bank :";
             // 
@@ -4005,7 +4007,7 @@ namespace CT_App
             this.label220.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label220.Location = new System.Drawing.Point(952, 28);
             this.label220.Name = "label220";
-            this.label220.Size = new System.Drawing.Size(82, 16);
+            this.label220.Size = new System.Drawing.Size(81, 16);
             this.label220.TabIndex = 2;
             this.label220.Text = "Unrated To :";
             // 
@@ -4015,7 +4017,7 @@ namespace CT_App
             this.label227.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label227.Location = new System.Drawing.Point(709, 120);
             this.label227.Name = "label227";
-            this.label227.Size = new System.Drawing.Size(87, 16);
+            this.label227.Size = new System.Drawing.Size(86, 16);
             this.label227.TabIndex = 2;
             this.label227.Text = "S. L. Update :";
             // 
@@ -4025,7 +4027,7 @@ namespace CT_App
             this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label108.Location = new System.Drawing.Point(1032, 110);
             this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(14, 16);
+            this.label108.Size = new System.Drawing.Size(13, 16);
             this.label108.TabIndex = 2;
             this.label108.Text = "..";
             // 
@@ -4035,7 +4037,7 @@ namespace CT_App
             this.label192.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label192.Location = new System.Drawing.Point(495, 97);
             this.label192.Name = "label192";
-            this.label192.Size = new System.Drawing.Size(69, 16);
+            this.label192.Size = new System.Drawing.Size(68, 16);
             this.label192.TabIndex = 2;
             this.label192.Text = "Remarks :";
             // 
@@ -4045,7 +4047,7 @@ namespace CT_App
             this.label120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label120.Location = new System.Drawing.Point(727, 97);
             this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(69, 16);
+            this.label120.Size = new System.Drawing.Size(68, 16);
             this.label120.TabIndex = 2;
             this.label120.Text = "Remarks :";
             // 
@@ -4055,7 +4057,7 @@ namespace CT_App
             this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label118.Location = new System.Drawing.Point(720, 51);
             this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(76, 16);
+            this.label118.Size = new System.Drawing.Size(75, 16);
             this.label118.TabIndex = 2;
             this.label118.Text = "Saving TK :";
             // 
@@ -4065,7 +4067,7 @@ namespace CT_App
             this.label193.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label193.Location = new System.Drawing.Point(477, 51);
             this.label193.Name = "label193";
-            this.label193.Size = new System.Drawing.Size(87, 16);
+            this.label193.Size = new System.Drawing.Size(86, 16);
             this.label193.TabIndex = 2;
             this.label193.Text = "Expense TK :";
             // 
@@ -4075,7 +4077,7 @@ namespace CT_App
             this.label119.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label119.Location = new System.Drawing.Point(708, 74);
             this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(88, 16);
+            this.label119.Size = new System.Drawing.Size(87, 16);
             this.label119.TabIndex = 2;
             this.label119.Text = "Saving Date :";
             // 
@@ -4085,7 +4087,7 @@ namespace CT_App
             this.label219.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label219.Location = new System.Drawing.Point(720, 28);
             this.label219.Name = "label219";
-            this.label219.Size = new System.Drawing.Size(76, 16);
+            this.label219.Size = new System.Drawing.Size(75, 16);
             this.label219.TabIndex = 2;
             this.label219.Text = "Saving To :";
             // 
@@ -4106,7 +4108,7 @@ namespace CT_App
             this.label112.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label112.Location = new System.Drawing.Point(472, 3);
             this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(92, 16);
+            this.label112.Size = new System.Drawing.Size(91, 16);
             this.label112.TabIndex = 2;
             this.label112.Text = "Through Use :";
             // 
@@ -4116,7 +4118,7 @@ namespace CT_App
             this.label181.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label181.Location = new System.Drawing.Point(465, 74);
             this.label181.Name = "label181";
-            this.label181.Size = new System.Drawing.Size(99, 16);
+            this.label181.Size = new System.Drawing.Size(98, 16);
             this.label181.TabIndex = 2;
             this.label181.Text = "Expense Date :";
             // 
@@ -4126,7 +4128,7 @@ namespace CT_App
             this.label216.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label216.Location = new System.Drawing.Point(477, 28);
             this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(87, 16);
+            this.label216.Size = new System.Drawing.Size(86, 16);
             this.label216.TabIndex = 2;
             this.label216.Text = "Expense To :";
             // 
@@ -4136,7 +4138,7 @@ namespace CT_App
             this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label117.Location = new System.Drawing.Point(87, 3);
             this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(16, 16);
+            this.label117.Size = new System.Drawing.Size(15, 16);
             this.label117.TabIndex = 2;
             this.label117.Text = "..";
             // 
@@ -4168,7 +4170,7 @@ namespace CT_App
             this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label104.Location = new System.Drawing.Point(254, 51);
             this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(66, 16);
+            this.label104.Size = new System.Drawing.Size(65, 16);
             this.label104.TabIndex = 2;
             this.label104.Text = "Take TK :";
             // 
@@ -4178,7 +4180,7 @@ namespace CT_App
             this.label243.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label243.Location = new System.Drawing.Point(795, 3);
             this.label243.Name = "label243";
-            this.label243.Size = new System.Drawing.Size(14, 16);
+            this.label243.Size = new System.Drawing.Size(13, 16);
             this.label243.TabIndex = 2;
             this.label243.Text = "..";
             // 
@@ -4188,7 +4190,7 @@ namespace CT_App
             this.label113.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label113.Location = new System.Drawing.Point(563, 3);
             this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(14, 16);
+            this.label113.Size = new System.Drawing.Size(13, 16);
             this.label113.TabIndex = 2;
             this.label113.Text = "..";
             // 
@@ -4198,7 +4200,7 @@ namespace CT_App
             this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label106.Location = new System.Drawing.Point(251, 97);
             this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(69, 16);
+            this.label106.Size = new System.Drawing.Size(68, 16);
             this.label106.TabIndex = 2;
             this.label106.Text = "Remarks :";
             // 
@@ -4208,7 +4210,7 @@ namespace CT_App
             this.label226.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label226.Location = new System.Drawing.Point(233, 120);
             this.label226.Name = "label226";
-            this.label226.Size = new System.Drawing.Size(87, 16);
+            this.label226.Size = new System.Drawing.Size(86, 16);
             this.label226.TabIndex = 2;
             this.label226.Text = "T. L. Update :";
             // 
@@ -4218,7 +4220,7 @@ namespace CT_App
             this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label84.Location = new System.Drawing.Point(61, 3);
             this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(27, 16);
+            this.label84.Size = new System.Drawing.Size(26, 16);
             this.label84.TabIndex = 2;
             this.label84.Text = "ID :";
             // 
@@ -4228,7 +4230,7 @@ namespace CT_App
             this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label103.Location = new System.Drawing.Point(254, 28);
             this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(66, 16);
+            this.label103.Size = new System.Drawing.Size(65, 16);
             this.label103.TabIndex = 2;
             this.label103.Text = "Take To :";
             // 
@@ -4238,7 +4240,7 @@ namespace CT_App
             this.label105.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label105.Location = new System.Drawing.Point(242, 74);
             this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(78, 16);
+            this.label105.Size = new System.Drawing.Size(77, 16);
             this.label105.TabIndex = 2;
             this.label105.Text = "Take Date :";
             // 
@@ -4248,7 +4250,7 @@ namespace CT_App
             this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label85.Location = new System.Drawing.Point(19, 28);
             this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(69, 16);
+            this.label85.Size = new System.Drawing.Size(68, 16);
             this.label85.TabIndex = 2;
             this.label85.Text = "Given To :";
             // 
@@ -4258,7 +4260,7 @@ namespace CT_App
             this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label86.Location = new System.Drawing.Point(19, 51);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(69, 16);
+            this.label86.Size = new System.Drawing.Size(68, 16);
             this.label86.TabIndex = 2;
             this.label86.Text = "Given TK :";
             // 
@@ -4268,7 +4270,7 @@ namespace CT_App
             this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label100.Location = new System.Drawing.Point(19, 97);
             this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(69, 16);
+            this.label100.Size = new System.Drawing.Size(68, 16);
             this.label100.TabIndex = 2;
             this.label100.Text = "Remarks :";
             // 
@@ -4289,7 +4291,7 @@ namespace CT_App
             this.label99.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label99.Location = new System.Drawing.Point(7, 74);
             this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(81, 16);
+            this.label99.Size = new System.Drawing.Size(80, 16);
             this.label99.TabIndex = 2;
             this.label99.Text = "Given Date :";
             // 
@@ -4299,7 +4301,7 @@ namespace CT_App
             this.label225.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label225.Location = new System.Drawing.Point(0, 120);
             this.label225.Name = "label225";
-            this.label225.Size = new System.Drawing.Size(88, 16);
+            this.label225.Size = new System.Drawing.Size(87, 16);
             this.label225.TabIndex = 2;
             this.label225.Text = "G. L. Update :";
             // 
@@ -4923,7 +4925,7 @@ namespace CT_App
             this.label242.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label242.Location = new System.Drawing.Point(91, -1);
             this.label242.Name = "label242";
-            this.label242.Size = new System.Drawing.Size(63, 16);
+            this.label242.Size = new System.Drawing.Size(62, 16);
             this.label242.TabIndex = 25;
             this.label242.Text = "Unrated";
             // 
@@ -4942,7 +4944,7 @@ namespace CT_App
             this.label241.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label241.Location = new System.Drawing.Point(85, -1);
             this.label241.Name = "label241";
-            this.label241.Size = new System.Drawing.Size(64, 16);
+            this.label241.Size = new System.Drawing.Size(63, 16);
             this.label241.TabIndex = 25;
             this.label241.Text = "Savings";
             // 
@@ -4961,7 +4963,7 @@ namespace CT_App
             this.label240.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label240.Location = new System.Drawing.Point(84, -1);
             this.label240.Name = "label240";
-            this.label240.Size = new System.Drawing.Size(68, 16);
+            this.label240.Size = new System.Drawing.Size(67, 16);
             this.label240.TabIndex = 25;
             this.label240.Text = "Expense";
             // 
@@ -4980,7 +4982,7 @@ namespace CT_App
             this.label239.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label239.Location = new System.Drawing.Point(92, -1);
             this.label239.Name = "label239";
-            this.label239.Size = new System.Drawing.Size(52, 16);
+            this.label239.Size = new System.Drawing.Size(51, 16);
             this.label239.TabIndex = 25;
             this.label239.Text = "Taken";
             // 
@@ -4999,7 +5001,7 @@ namespace CT_App
             this.label238.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label238.Location = new System.Drawing.Point(83, -1);
             this.label238.Name = "label238";
-            this.label238.Size = new System.Drawing.Size(48, 16);
+            this.label238.Size = new System.Drawing.Size(47, 16);
             this.label238.TabIndex = 25;
             this.label238.Text = "Given";
             // 
@@ -5262,9 +5264,9 @@ namespace CT_App
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.textBox92);
             this.panel11.Controls.Add(this.label194);
-            this.panel11.Location = new System.Drawing.Point(18, 46);
+            this.panel11.Location = new System.Drawing.Point(18, 50);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(53, 34);
+            this.panel11.Size = new System.Drawing.Size(53, 46);
             this.panel11.TabIndex = 24;
             // 
             // textBox92
@@ -5378,7 +5380,7 @@ namespace CT_App
             this.label183.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label183.Location = new System.Drawing.Point(100, 7);
             this.label183.Name = "label183";
-            this.label183.Size = new System.Drawing.Size(27, 16);
+            this.label183.Size = new System.Drawing.Size(26, 16);
             this.label183.TabIndex = 14;
             this.label183.Text = "ID :";
             // 
@@ -5388,7 +5390,7 @@ namespace CT_App
             this.label184.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label184.Location = new System.Drawing.Point(42, 30);
             this.label184.Name = "label184";
-            this.label184.Size = new System.Drawing.Size(85, 16);
+            this.label184.Size = new System.Drawing.Size(84, 16);
             this.label184.TabIndex = 14;
             this.label184.Text = "F.P. Amount :";
             // 
@@ -5398,7 +5400,7 @@ namespace CT_App
             this.label186.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label186.Location = new System.Drawing.Point(41, 53);
             this.label186.Name = "label186";
-            this.label186.Size = new System.Drawing.Size(86, 16);
+            this.label186.Size = new System.Drawing.Size(85, 16);
             this.label186.TabIndex = 14;
             this.label186.Text = "S.P. Amount :";
             // 
@@ -5408,7 +5410,7 @@ namespace CT_App
             this.label188.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label188.Location = new System.Drawing.Point(92, 76);
             this.label188.Name = "label188";
-            this.label188.Size = new System.Drawing.Size(35, 16);
+            this.label188.Size = new System.Drawing.Size(34, 16);
             this.label188.TabIndex = 14;
             this.label188.Text = "Info :";
             // 
@@ -5418,7 +5420,7 @@ namespace CT_App
             this.label191.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label191.Location = new System.Drawing.Point(286, 7);
             this.label191.Name = "label191";
-            this.label191.Size = new System.Drawing.Size(16, 16);
+            this.label191.Size = new System.Drawing.Size(15, 16);
             this.label191.TabIndex = 22;
             this.label191.Text = "0";
             // 
@@ -5428,7 +5430,7 @@ namespace CT_App
             this.label190.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label190.Location = new System.Drawing.Point(229, 7);
             this.label190.Name = "label190";
-            this.label190.Size = new System.Drawing.Size(59, 16);
+            this.label190.Size = new System.Drawing.Size(58, 16);
             this.label190.TabIndex = 14;
             this.label190.Text = "Cut Amt :";
             // 
@@ -5438,7 +5440,7 @@ namespace CT_App
             this.label189.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label189.Location = new System.Drawing.Point(125, 76);
             this.label189.Name = "label189";
-            this.label189.Size = new System.Drawing.Size(15, 16);
+            this.label189.Size = new System.Drawing.Size(14, 16);
             this.label189.TabIndex = 22;
             this.label189.Text = "0";
             // 
@@ -5448,7 +5450,7 @@ namespace CT_App
             this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label182.Location = new System.Drawing.Point(125, 7);
             this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(16, 16);
+            this.label182.Size = new System.Drawing.Size(15, 16);
             this.label182.TabIndex = 22;
             this.label182.Text = "0";
             // 
@@ -5458,7 +5460,7 @@ namespace CT_App
             this.label187.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label187.Location = new System.Drawing.Point(125, 53);
             this.label187.Name = "label187";
-            this.label187.Size = new System.Drawing.Size(16, 16);
+            this.label187.Size = new System.Drawing.Size(15, 16);
             this.label187.TabIndex = 22;
             this.label187.Text = "0";
             // 
@@ -5468,7 +5470,7 @@ namespace CT_App
             this.label185.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label185.Location = new System.Drawing.Point(125, 30);
             this.label185.Name = "label185";
-            this.label185.Size = new System.Drawing.Size(15, 16);
+            this.label185.Size = new System.Drawing.Size(14, 16);
             this.label185.TabIndex = 22;
             this.label185.Text = "0";
             // 
@@ -5528,7 +5530,7 @@ namespace CT_App
             this.label223.ForeColor = System.Drawing.Color.DarkRed;
             this.label223.Location = new System.Drawing.Point(-1, 0);
             this.label223.Name = "label223";
-            this.label223.Size = new System.Drawing.Size(130, 16);
+            this.label223.Size = new System.Drawing.Size(129, 16);
             this.label223.TabIndex = 14;
             this.label223.Text = "Last Teken Date :";
             // 
@@ -5668,6 +5670,16 @@ namespace CT_App
             this.textBox.TabIndex = 2;
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            // 
+            // label249
+            // 
+            this.label249.AutoSize = true;
+            this.label249.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.label249.Location = new System.Drawing.Point(21, 44);
+            this.label249.Name = "label249";
+            this.label249.Size = new System.Drawing.Size(6, 7);
+            this.label249.TabIndex = 25;
+            this.label249.Text = ".";
             // 
             // CT_Mine
             // 
@@ -6215,5 +6227,6 @@ namespace CT_App
         private System.Windows.Forms.Label label247;
         private System.Windows.Forms.Label label245;
         private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Label label249;
     }
 }
