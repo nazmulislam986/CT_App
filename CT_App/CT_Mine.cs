@@ -34,6 +34,7 @@ namespace CT_App
             this.fillInstData();
             this.totalInstData();
             this.fillMemo();
+            this.fillDataBike();
             this.textBox1.ReadOnly = true;
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
@@ -61,6 +62,20 @@ namespace CT_App
         //-----------------------------------------------------------------------
         //------------------------------All Classes------------------------------
         //-----------------------------------------------------------------------
+        private void fillDataBike()
+        {
+            try
+            {
+                DataTable dataTabledltAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT B_Next_ODO as [ODO],B_Chng_Date as [Date],B_ID as [ID] FROM BikeInfo ORDER BY [ID] DESC"), this.conn);
+                odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
+                dataGridView12.DataSource = dataTabledltAmt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void fillData()
         {
             try
@@ -1543,6 +1558,25 @@ namespace CT_App
         {
             //code refresh for Due&Paid
         }
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand cmd = new OleDbCommand("INSERT INTO BikeInfo(B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person) VALUES('" + this.dateTimePicker6.Text.Trim() + "','" + this.textBox98.Text.Trim() + "','" + this.textBox128.Text.Trim() + "','" + this.label257.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                cmd.ExecuteNonQuery();
+                this.conn.Close();
+                this.fillDataBike();
+                MessageBox.Show(string.Concat("Successfull Bike Info Added"));
+                this.textBox129.Text = "";
+                this.button11.Text = "Add";
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
 
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
@@ -1914,7 +1948,34 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
-
+        private void dataGridView12_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT B_Next_ODO FROM BikeInfo WHERE B_ID='", this.dataGridView12.SelectedRows[0].Cells[2].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.textBox129.Text = dataTable.Rows[0][0].ToString();
+                this.conn.Close();
+                TextBox textBox = this.textBox98;
+                string[] strArrays = new string[] { "OM", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button11.Text = "Save";
+                this.textBox129.Focus();
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         //-----------------------------------------------------------------------
         //------------------------------All Event Work---------------------------
         //-----------------------------------------------------------------------
@@ -1926,22 +1987,18 @@ namespace CT_App
                 if (this.textBox.Text.Trim() == "*1355*" || this.textBox.Text.Trim() == "shohel")
                 {
                     this.tabControl1.Visible = true;
-                    this.label180.Visible = false;
-                    this.textBox.Visible = false;
-                    this.lblVer.Visible = false;
+                    this.panel27.Visible = false;
                     this.label249.Text = this.textBox.Text.Trim();
                 }
                 else if (this.textBox.Text.Trim() == "shamim")
                 {
-                    this.label180.Visible = false;
-                    this.textBox.Visible = false;
+                    this.panel27.Visible = false;
                     this.tabControl1.Visible = true;
                     this.tabControl1.TabPages.Remove(tabPage1);
                     this.tabControl1.TabPages.Remove(tabPage2);
                     this.tabControl1.TabPages.Remove(tabPage3);
                     this.panel4.Visible = false;
                     this.panel19.Visible = false;
-                    this.lblVer.Visible = false;
                     this.dataGridView5.ReadOnly = true;
                     this.label249.Text = this.textBox.Text.Trim();
                 }
@@ -3800,7 +3857,69 @@ namespace CT_App
                 }
             }
         }
-
+        private void textBox129_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox129.Text.Trim() != ""))
+                    {
+                        this.textBox129.Focus();
+                    }
+                    else
+                    {
+                        this.textBox128.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox128_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox128.Text.Trim() != ""))
+                    {
+                        this.textBox128.Focus();
+                    }
+                    else
+                    {
+                        this.button11.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox128_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.textBox128.Text.Trim() != "")
+                {
+                    double num = double.Parse(this.textBox129.Text.Trim());
+                    double num1 = double.Parse(this.textBox128.Text.Trim());
+                    double num3 = num1 + num;
+                    decimal num2 = Convert.ToDecimal(num3.ToString());
+                    Label str1 = this.label257;
+                    decimal num4 = Math.Round(num2, 4);
+                    num3 = double.Parse(num4.ToString());
+                    str1.Text = num3.ToString();
+                }
+                else
+                {
+                    this.label257.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void textBox120_KeyPress(object sender, KeyPressEventArgs e)
         {
             char keyChar = e.KeyChar;
@@ -3911,6 +4030,20 @@ namespace CT_App
                 else
                 {
                     this.textBox1.Focus();
+                }
+            }
+        }
+        private void dateTimePicker6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (!(this.dateTimePicker6.Text.Trim() != ""))
+                {
+                    this.dateTimePicker6.Focus();
+                }
+                else
+                {
+                    this.textBox129.Focus();
                 }
             }
         }
