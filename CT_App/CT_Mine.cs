@@ -1563,13 +1563,14 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand cmd = new OleDbCommand("INSERT INTO BikeInfo(B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person) VALUES('" + this.dateTimePicker6.Text.Trim() + "','" + this.textBox98.Text.Trim() + "','" + this.textBox128.Text.Trim() + "','" + this.label257.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                OleDbCommand cmd = new OleDbCommand("INSERT INTO BikeInfo(B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker6.Text.Trim() + "','" + this.textBox129.Text.Trim() + "','" + this.textBox128.Text.Trim() + "','" + this.label257.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                 cmd.ExecuteNonQuery();
                 this.conn.Close();
                 this.fillDataBike();
                 MessageBox.Show(string.Concat("Successfull Bike Info Added"));
                 this.textBox129.Text = "";
-                this.button11.Text = "Add";
+                this.textBox128.Text = "";
+                this.label257.Text = "0";
             }
             catch (Exception ex)
             {
@@ -1967,7 +1968,6 @@ namespace CT_App
                 strArrays[3] = month.ToString();
                 strArrays[4] = millis.ToString();
                 textBox.Text = string.Concat(strArrays);
-                this.button11.Text = "Save";
                 this.textBox129.Focus();
             }
             catch (Exception ex)
