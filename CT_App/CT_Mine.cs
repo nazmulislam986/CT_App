@@ -57,6 +57,10 @@ namespace CT_App
             this.panel11.Visible = false;
             this.button21.Visible = false;
             this.button22.Visible = false;
+            this.label231.Text = "";
+            this.label233.Text = "";
+            this.label235.Text = "";
+            this.label237.Text = "";
         }
 
         //-----------------------------------------------------------------------
@@ -2083,11 +2087,84 @@ namespace CT_App
         {
             try
             {
-                //DataTable dataTable = new DataTable();
-                //string[] strArrays = new string[] { "SELECT InDel as [ID],Amount,Given_To as [GName],Total_Given as [GTK],Given_Date as [GDT],Take_To as [TName],Total_Take as [TTK],Take_Date as [TDT],ThroughBy as [Through],Saving_To as [SName],Saving_Amount as [STK],Saving_Date as [SDT],Expense_To as [EName],Expense_Amount as [ETK],Expense_Date as [EDT],Unrated_To as [UName],Unrated_Amount as [UTK],Unrated_Date as [UDT] FROM Credit where ThroughBy like '%" + this.textBox107.Text.Trim() + "%' ORDER BY [ID] DESC" };
-                //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                //dataAdapter.Fill(dataTable);
-                //this.dataGridView3.DataSource = dataTable.DefaultView;
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT SUM(Total_Given) as Total,Given_To FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' Group By Given_To" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0 && this.textBox107.Text.Trim() != "")
+                {
+                    this.label231.Text = dataTable.Rows[0][0].ToString();
+                }
+                else
+                {
+                    this.label231.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void textBox124_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT SUM(Total_Take) as Total,Take_To FROM Teken where Take_To like '%" + this.textBox124.Text.Trim() + "%' Group By Take_To" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0 && this.textBox124.Text.Trim() != "")
+                {
+                    this.label233.Text = dataTable.Rows[0][0].ToString();
+                }
+                else
+                {
+                    this.label233.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void textBox125_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT SUM(Saving_Amount) as Total,Saving_To FROM Saving where Saving_To like '%" + this.textBox125.Text.Trim() + "%' Group By Saving_To" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0 && this.textBox125.Text.Trim() != "")
+                {
+                    this.label235.Text = dataTable.Rows[0][0].ToString();
+                }
+                else
+                {
+                    this.label235.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void textBox126_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT SUM(Unrated_Amount) as Total,Unrated_To FROM Unrated where Unrated_To like '%" + this.textBox126.Text.Trim() + "%' Group By Unrated_To" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0 && this.textBox126.Text.Trim() != "")
+                {
+                    this.label237.Text = dataTable.Rows[0][0].ToString();
+                }
+                else
+                {
+                    this.label237.Text = "";
+                }
             }
             catch (Exception ex)
             {
