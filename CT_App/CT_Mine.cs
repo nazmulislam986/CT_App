@@ -569,7 +569,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.label10.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox108.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.label10.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Memo Amount Added"));
