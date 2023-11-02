@@ -1035,7 +1035,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "',C_Date='" + this.dateTimePicker5.Text.Trim() + "',C_Updt_Persone='" + this.label249.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyCut SET C_Amount = '" + this.textBox50.Text.Trim() + "',C_Date='" + this.dateTimePicker5.Text.Trim() + "',C_Updt_Person='" + this.label249.Text.Trim() + "' WHERE C_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
