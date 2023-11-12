@@ -2177,8 +2177,46 @@ namespace CT_App
             {
                 if (!(this.textBox34.Text.Trim() != ""))
                 {
-                    this.textBox34.Text = "Through By Bkash";
-                    this.button6.Focus();
+                    if (this.comboBox1.Text == "Hand")
+                    {
+                        this.textBox34.Text = "Through By Hand ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "Bkash")
+                    {
+                        this.textBox34.Text = "Through By Bkash ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "Nagad")
+                    {
+                        this.textBox34.Text = "Through By Nagad ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "Roket")
+                    {
+                        this.textBox34.Text = "Through By Roket ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "DBBL")
+                    {
+                        this.textBox34.Text = "Through By DBBL ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "City Bank")
+                    {
+                        this.textBox34.Text = "Through By City Bank Cr.Card / CityTouch ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "Expense")
+                    {
+                        this.textBox34.Text = "Through By  ()";
+                        this.button6.Focus();
+                    }
+                    else if (this.comboBox1.Text == "Savings")
+                    {
+                        this.textBox34.Text = "Through By ()";
+                        this.button6.Focus();
+                    }
                 }
                 else
                 {
