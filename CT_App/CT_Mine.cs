@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,6 +18,7 @@ namespace CT_App
         #region Comments
         OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
         private string DltDate;
+        private string tableName = "ImagesTable";
         #endregion
         public CT_Mine()
         {
@@ -60,6 +62,7 @@ namespace CT_App
             this.label231.Text = "";
             this.label233.Text = "";
             this.label235.Text = "";
+            this.label250.Text = "";
             this.label237.Text = "";
             this.dataGridView13.Visible = false;
         }
@@ -1584,6 +1587,38 @@ namespace CT_App
             }
         }
 
+        private void button24_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+            oFD.Title  = "Select an Image";
+            if (oFD.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(oFD.FileName);
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            // Check if an image is selected
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Please select an image first.");
+                return;
+            }
+            byte[] imageBytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
+                imageBytes = ms.ToArray();
+            }
+            this.conn.Open();
+            OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemos (Mem_Img) VALUES ('", imageBytes ,"')"), this.conn);
+            sendData.ExecuteNonQuery();
+            this.conn.Close();
+            MessageBox.Show("Image inserted successfully.");
+        }
+
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
@@ -1935,6 +1970,7 @@ namespace CT_App
                     this.textBox113.Text = dataTable.Rows[0][91].ToString();
                     this.textBox114.Text = dataTable.Rows[0][92].ToString();
                     this.textBox115.Text = dataTable.Rows[0][93].ToString();
+                    //this.pictureBox1.Text = dataTable.Rows[0][97].ToString();
                     this.conn.Close();
                     this.button15.Text = "Update";
                     this.button21.Visible = true;
@@ -2088,7 +2124,7 @@ namespace CT_App
             try
             {
                 DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Total_Given) as Total,Given_To FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' Group By Given_To" };
+                string[] strArrays = new string[] { "SELECT SUM(Total_Given) as Total,Given_To FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' AND GDT_V='NDV' Group By Given_To" };
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
                 dataAdapter.Fill(dataTable);
                 if (dataTable.Rows.Count > 0 && this.textBox107.Text.Trim() != "")
@@ -2110,7 +2146,7 @@ namespace CT_App
             try
             {
                 DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Total_Take) as Total,Take_To FROM Teken where Take_To like '%" + this.textBox124.Text.Trim() + "%' Group By Take_To" };
+                string[] strArrays = new string[] { "SELECT SUM(Total_Take) as Total,Take_To FROM Teken where Take_To like '%" + this.textBox124.Text.Trim() + "%' AND TDT_V='NDV' Group By Take_To" };
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
                 dataAdapter.Fill(dataTable);
                 if (dataTable.Rows.Count > 0 && this.textBox124.Text.Trim() != "")
@@ -2132,7 +2168,7 @@ namespace CT_App
             try
             {
                 DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Saving_Amount) as Total,Saving_To FROM Saving where Saving_To like '%" + this.textBox125.Text.Trim() + "%' Group By Saving_To" };
+                string[] strArrays = new string[] { "SELECT SUM(Saving_Amount) as Total,Saving_To FROM Saving where Saving_To like '%" + this.textBox125.Text.Trim() + "%' AND SDT_V='NDV' Group By Saving_To" };
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
                 dataAdapter.Fill(dataTable);
                 if (dataTable.Rows.Count > 0 && this.textBox125.Text.Trim() != "")
@@ -2149,12 +2185,34 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void textBox130_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string[] strArrays = new string[] { "SELECT SUM(Expense_Amount) as Total,Expense_To FROM Expense where Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Group By Expense_To" };
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                dataAdapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0 && this.textBox130.Text.Trim() != "")
+                {
+                    this.label250.Text = dataTable.Rows[0][0].ToString();
+                }
+                else
+                {
+                    this.label250.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void textBox126_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Unrated_Amount) as Total,Unrated_To FROM Unrated where Unrated_To like '%" + this.textBox126.Text.Trim() + "%' Group By Unrated_To" };
+                string[] strArrays = new string[] { "SELECT SUM(Unrated_Amount) as Total,Unrated_To FROM Unrated where Unrated_To like '%" + this.textBox126.Text.Trim() + "%' AND UDT_V='NDV' Group By Unrated_To" };
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
                 dataAdapter.Fill(dataTable);
                 if (dataTable.Rows.Count > 0 && this.textBox126.Text.Trim() != "")
@@ -4289,6 +4347,8 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+
+        
 
         #endregion
 

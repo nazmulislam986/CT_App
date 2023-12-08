@@ -50,12 +50,12 @@ namespace CT_App
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CT_Mine));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -476,7 +476,11 @@ namespace CT_App
             this.label92 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
+            this.dataGridView13 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
             this.label75 = new System.Windows.Forms.Label();
@@ -523,7 +527,9 @@ namespace CT_App
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.dataGridView13 = new System.Windows.Forms.DataGridView();
+            this.label250 = new System.Windows.Forms.Label();
+            this.label251 = new System.Windows.Forms.Label();
+            this.textBox130 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -560,7 +566,9 @@ namespace CT_App
             this.panel22.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.panel11.SuspendLayout();
@@ -569,7 +577,6 @@ namespace CT_App
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.panel27.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -4985,13 +4992,16 @@ namespace CT_App
             // panel20
             // 
             this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel20.Controls.Add(this.textBox130);
             this.panel20.Controls.Add(this.textBox126);
             this.panel20.Controls.Add(this.textBox125);
             this.panel20.Controls.Add(this.textBox124);
+            this.panel20.Controls.Add(this.label251);
             this.panel20.Controls.Add(this.label236);
             this.panel20.Controls.Add(this.textBox107);
             this.panel20.Controls.Add(this.label234);
             this.panel20.Controls.Add(this.label232);
+            this.panel20.Controls.Add(this.label250);
             this.panel20.Controls.Add(this.label237);
             this.panel20.Controls.Add(this.label235);
             this.panel20.Controls.Add(this.label233);
@@ -5005,7 +5015,7 @@ namespace CT_App
             // textBox126
             // 
             this.textBox126.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox126.Location = new System.Drawing.Point(116, 87);
+            this.textBox126.Location = new System.Drawing.Point(116, 110);
             this.textBox126.Name = "textBox126";
             this.textBox126.Size = new System.Drawing.Size(108, 26);
             this.textBox126.TabIndex = 26;
@@ -5014,7 +5024,7 @@ namespace CT_App
             // textBox125
             // 
             this.textBox125.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox125.Location = new System.Drawing.Point(116, 60);
+            this.textBox125.Location = new System.Drawing.Point(116, 83);
             this.textBox125.Name = "textBox125";
             this.textBox125.Size = new System.Drawing.Size(108, 26);
             this.textBox125.TabIndex = 26;
@@ -5023,7 +5033,7 @@ namespace CT_App
             // textBox124
             // 
             this.textBox124.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox124.Location = new System.Drawing.Point(116, 33);
+            this.textBox124.Location = new System.Drawing.Point(116, 29);
             this.textBox124.Name = "textBox124";
             this.textBox124.Size = new System.Drawing.Size(108, 26);
             this.textBox124.TabIndex = 26;
@@ -5033,7 +5043,7 @@ namespace CT_App
             // 
             this.label236.AutoSize = true;
             this.label236.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label236.Location = new System.Drawing.Point(0, 89);
+            this.label236.Location = new System.Drawing.Point(0, 112);
             this.label236.Name = "label236";
             this.label236.Size = new System.Drawing.Size(118, 20);
             this.label236.TabIndex = 25;
@@ -5042,7 +5052,7 @@ namespace CT_App
             // textBox107
             // 
             this.textBox107.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox107.Location = new System.Drawing.Point(116, 6);
+            this.textBox107.Location = new System.Drawing.Point(116, 2);
             this.textBox107.Name = "textBox107";
             this.textBox107.Size = new System.Drawing.Size(108, 26);
             this.textBox107.TabIndex = 26;
@@ -5052,7 +5062,7 @@ namespace CT_App
             // 
             this.label234.AutoSize = true;
             this.label234.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label234.Location = new System.Drawing.Point(1, 62);
+            this.label234.Location = new System.Drawing.Point(1, 85);
             this.label234.Name = "label234";
             this.label234.Size = new System.Drawing.Size(117, 20);
             this.label234.TabIndex = 25;
@@ -5063,7 +5073,7 @@ namespace CT_App
             this.label232.AutoSize = true;
             this.label232.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label232.ForeColor = System.Drawing.Color.Red;
-            this.label232.Location = new System.Drawing.Point(3, 35);
+            this.label232.Location = new System.Drawing.Point(3, 31);
             this.label232.Name = "label232";
             this.label232.Size = new System.Drawing.Size(115, 20);
             this.label232.TabIndex = 25;
@@ -5072,7 +5082,7 @@ namespace CT_App
             // label237
             // 
             this.label237.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label237.Location = new System.Drawing.Point(228, 89);
+            this.label237.Location = new System.Drawing.Point(228, 112);
             this.label237.Name = "label237";
             this.label237.Size = new System.Drawing.Size(103, 20);
             this.label237.TabIndex = 25;
@@ -5082,7 +5092,7 @@ namespace CT_App
             // label235
             // 
             this.label235.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label235.Location = new System.Drawing.Point(228, 62);
+            this.label235.Location = new System.Drawing.Point(228, 85);
             this.label235.Name = "label235";
             this.label235.Size = new System.Drawing.Size(103, 20);
             this.label235.TabIndex = 25;
@@ -5093,7 +5103,7 @@ namespace CT_App
             // 
             this.label233.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label233.ForeColor = System.Drawing.Color.Red;
-            this.label233.Location = new System.Drawing.Point(228, 35);
+            this.label233.Location = new System.Drawing.Point(228, 31);
             this.label233.Name = "label233";
             this.label233.Size = new System.Drawing.Size(103, 20);
             this.label233.TabIndex = 25;
@@ -5103,7 +5113,7 @@ namespace CT_App
             // label231
             // 
             this.label231.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label231.Location = new System.Drawing.Point(228, 8);
+            this.label231.Location = new System.Drawing.Point(228, 4);
             this.label231.Name = "label231";
             this.label231.Size = new System.Drawing.Size(103, 20);
             this.label231.TabIndex = 25;
@@ -5114,7 +5124,7 @@ namespace CT_App
             // 
             this.label221.AutoSize = true;
             this.label221.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label221.Location = new System.Drawing.Point(-1, 8);
+            this.label221.Location = new System.Drawing.Point(-1, 4);
             this.label221.Name = "label221";
             this.label221.Size = new System.Drawing.Size(119, 20);
             this.label221.TabIndex = 25;
@@ -5330,9 +5340,50 @@ namespace CT_App
             this.label116.TabIndex = 19;
             this.label116.Text = "0";
             // 
+            // dataGridView13
+            // 
+            this.dataGridView13.AllowUserToAddRows = false;
+            this.dataGridView13.AllowUserToDeleteRows = false;
+            this.dataGridView13.AllowUserToOrderColumns = true;
+            this.dataGridView13.AllowUserToResizeColumns = false;
+            this.dataGridView13.AllowUserToResizeRows = false;
+            this.dataGridView13.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView13.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView13.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView13.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView13.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridView13.Location = new System.Drawing.Point(503, 142);
+            this.dataGridView13.MultiSelect = false;
+            this.dataGridView13.Name = "dataGridView13";
+            this.dataGridView13.ReadOnly = true;
+            this.dataGridView13.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView13.RowHeadersVisible = false;
+            this.dataGridView13.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView13.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView13.Size = new System.Drawing.Size(681, 525);
+            this.dataGridView13.TabIndex = 33;
+            // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage4.Controls.Add(this.button25);
+            this.tabPage4.Controls.Add(this.button24);
+            this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.panel4);
             this.tabPage4.Controls.Add(this.panel19);
             this.tabPage4.Controls.Add(this.panel3);
@@ -5342,6 +5393,37 @@ namespace CT_App
             this.tabPage4.Size = new System.Drawing.Size(1186, 672);
             this.tabPage4.TabIndex = 6;
             this.tabPage4.Text = "Daily / Achive";
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(952, 243);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(62, 28);
+            this.button25.TabIndex = 26;
+            this.button25.Text = "Save";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(819, 243);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(88, 28);
+            this.button24.TabIndex = 26;
+            this.button24.Text = "Browse File";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(819, 67);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(195, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
             // 
             // panel4
             // 
@@ -5891,43 +5973,34 @@ namespace CT_App
             this.panel27.Size = new System.Drawing.Size(162, 46);
             this.panel27.TabIndex = 12;
             // 
-            // dataGridView13
+            // label250
             // 
-            this.dataGridView13.AllowUserToAddRows = false;
-            this.dataGridView13.AllowUserToDeleteRows = false;
-            this.dataGridView13.AllowUserToOrderColumns = true;
-            this.dataGridView13.AllowUserToResizeColumns = false;
-            this.dataGridView13.AllowUserToResizeRows = false;
-            this.dataGridView13.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView13.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView13.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView13.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView13.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridView13.Location = new System.Drawing.Point(503, 142);
-            this.dataGridView13.MultiSelect = false;
-            this.dataGridView13.Name = "dataGridView13";
-            this.dataGridView13.ReadOnly = true;
-            this.dataGridView13.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView13.RowHeadersVisible = false;
-            this.dataGridView13.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView13.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView13.Size = new System.Drawing.Size(681, 525);
-            this.dataGridView13.TabIndex = 33;
+            this.label250.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label250.Location = new System.Drawing.Point(228, 58);
+            this.label250.Name = "label250";
+            this.label250.Size = new System.Drawing.Size(103, 20);
+            this.label250.TabIndex = 25;
+            this.label250.Text = "0";
+            this.label250.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label251
+            // 
+            this.label251.AutoSize = true;
+            this.label251.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label251.Location = new System.Drawing.Point(1, 58);
+            this.label251.Name = "label251";
+            this.label251.Size = new System.Drawing.Size(117, 20);
+            this.label251.TabIndex = 25;
+            this.label251.Text = "T. E. By Name :";
+            // 
+            // textBox130
+            // 
+            this.textBox130.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textBox130.Location = new System.Drawing.Point(116, 56);
+            this.textBox130.Name = "textBox130";
+            this.textBox130.Size = new System.Drawing.Size(108, 26);
+            this.textBox130.TabIndex = 26;
+            this.textBox130.TextChanged += new System.EventHandler(this.textBox130_TextChanged);
             // 
             // CT_Mine
             // 
@@ -6005,7 +6078,9 @@ namespace CT_App
             this.panel21.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -6020,7 +6095,6 @@ namespace CT_App
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6070,8 +6144,6 @@ namespace CT_App
         private System.Windows.Forms.Label label99;
         private System.Windows.Forms.TextBox textBox45;
         private System.Windows.Forms.TextBox textBox40;
-        private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.Label label86;
         private System.Windows.Forms.TextBox textBox44;
         private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.Label label103;
@@ -6089,8 +6161,6 @@ namespace CT_App
         private System.Windows.Forms.TextBox textBox51;
         private System.Windows.Forms.TextBox textBox48;
         private System.Windows.Forms.TextBox textBox52;
-        private System.Windows.Forms.Label label118;
-        private System.Windows.Forms.Label label122;
         private System.Windows.Forms.Label label119;
         private System.Windows.Forms.Label label124;
         private System.Windows.Forms.Label label123;
@@ -6376,7 +6446,6 @@ namespace CT_App
         private System.Windows.Forms.Label label219;
         private System.Windows.Forms.Label label220;
         private System.Windows.Forms.Label label181;
-        private System.Windows.Forms.Label label193;
         private System.Windows.Forms.Label label192;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label222;
@@ -6494,5 +6563,16 @@ namespace CT_App
         private System.Windows.Forms.Label label259;
         private System.Windows.Forms.Label label260;
         private System.Windows.Forms.DataGridView dataGridView13;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label122;
+        private System.Windows.Forms.Label label118;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.TextBox textBox130;
+        private System.Windows.Forms.Label label251;
+        private System.Windows.Forms.Label label250;
     }
 }
