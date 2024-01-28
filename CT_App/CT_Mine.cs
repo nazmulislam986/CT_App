@@ -19,6 +19,7 @@ namespace CT_App
         OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
         private string DltDate;
         private string tableName = "ImagesTable";
+        private string selectedImagePath;
         #endregion
         public CT_Mine()
         {
@@ -33,10 +34,13 @@ namespace CT_App
             this.AmtCrDataView();
             this.fillDailyData();
             this.totalDailyData();
+            this.fillDailyAntData();
+            this.totalDailyAntData();
             this.fillInstData();
             this.totalInstData();
             this.fillMemo();
             this.fillDataBike();
+            this.fillImageData();
             this.textBox1.ReadOnly = true;
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
@@ -51,14 +55,18 @@ namespace CT_App
             this.radioButton4.Enabled = false;
             this.button7.Visible = false;
             this.textBox37.ReadOnly = true;
+            this.textBox133.ReadOnly = true;
             this.textBox50.ReadOnly = true;
             this.panel9.Visible = false;
             this.panel12.Visible = false;
             this.button12.Visible = false;
             this.panel10.Visible = false;
             this.panel11.Visible = false;
+            this.panel30.Visible = false;
             this.button21.Visible = false;
             this.button22.Visible = false;
+            this.button33.Visible = false;
+            this.button32.Visible = false;
             this.label231.Text = "";
             this.label233.Text = "";
             this.label235.Text = "";
@@ -147,6 +155,10 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterdltAmtCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM Daily WHERE [D_Data]='TKN' "), this.conn);
                 dataAdapterdltAmtCol.Fill(dataTableAmtCol);
                 this.label222.Text = dataTableAmtCol.Rows[0][0].ToString();
+                DataTable dataTableAmtAntCol = new DataTable();
+                OleDbDataAdapter dataAdapterdltAmtAntCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM DailyAnt WHERE [DA_Data]='TKN' "), this.conn);
+                dataAdapterdltAmtAntCol.Fill(dataTableAmtAntCol);
+                this.label253.Text = dataTableAmtAntCol.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
@@ -195,6 +207,24 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT C_ID as [ID],C_Date as [Date],C_Amount as [Amount] FROM DailyCut ORDER BY [C_Date] DESC "), this.conn);
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
                 dataGridView4.DataSource = dataTableCutAmt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void fillDailyAntData()
+        {
+            try
+            {
+                DataTable dataTableDaiAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT DA_ID as [ID],DA_Date as [Date],NotTaken,DA_APAmount as [NotGiven] FROM DailyAnt WHERE [Da_Data]='NTKN' ORDER BY [Da_Date] DESC "), this.conn);
+                odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
+                dataGridView17.DataSource = dataTableDaiAmt.DefaultView;
+                DataTable dataTableCutAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT CA_ID as [ID],CA_Date as [Date],CA_Amount as [Amount] FROM DailyAntCut ORDER BY [CA_Date] DESC "), this.conn);
+                odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
+                dataGridView16.DataSource = dataTableCutAmt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -465,6 +495,25 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void totalDailyAntData()
+        {
+            try
+            {
+                DataTable dataTableDailAmt = new DataTable();
+                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken),SUM(DA_APAmount) FROM DailyAnt WHERE [DA_Data]='NTKN' "), this.conn);
+                dataAdapterAmtUnr.Fill(dataTableDailAmt);
+                this.label263.Text = dataTableDailAmt.Rows[0][0].ToString();
+                this.label282.Text = dataTableDailAmt.Rows[0][1].ToString();
+                DataTable dataTableDaiylAmt = new DataTable();
+                OleDbDataAdapter dataAdapterAmUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(CA_Amount) FROM DailyAntCut"), this.conn);
+                dataAdapterAmUnr.Fill(dataTableDaiylAmt);
+                this.label253.Text = dataTableDaiylAmt.Rows[0][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void totalInstData()
         {
             try
@@ -493,7 +542,20 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
-
+        private void fillImageData()
+        {
+            try
+            {
+                DataTable dataTabledltAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterdltAmt = new OleDbDataAdapter(string.Concat("SELECT Img_ID as [ID] FROM Images"), this.conn);
+                odbcDataAdapterdltAmt.Fill(dataTabledltAmt);
+                dataGridView14.DataSource = dataTabledltAmt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         //-----------------------------------------------------------------------
         //------------------------------All Button Work--------------------------
         //-----------------------------------------------------------------------
@@ -977,7 +1039,7 @@ namespace CT_App
                     OleDbCommand command = new OleDbCommand("UPDATE Daily SET D_FPAmount = '" + this.textBox37.Text.Trim() + "',D_SPAmount = '" + this.label194.Text.Trim() + "',NotTaken = '" + this.label194.Text.Trim() + "',D_Date='" + this.dateTimePicker4.Text.Trim() + "',D_Updt_Person='" + this.label249.Text.Trim() + "' WHERE D_ID= '" + this.label182.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Update Daily Gat"));
+                    MessageBox.Show(string.Concat("Successfull Update Daily Get"));
                     this.fillDailyData();
                     this.totalDailyData();
                     this.textBox37.ReadOnly = true;
@@ -1121,6 +1183,16 @@ namespace CT_App
             this.label189.Text = "0";
             this.button10.Text = "Add";
         }
+        private void button30_Click(object sender, EventArgs e)
+        {
+            this.textBox133.ReadOnly = true;
+            this.textBox133.Text = "";
+            this.label277.Text = "0";
+            this.label279.Text = "0";
+            this.label278.Text = "0";
+            this.label276.Text = "0";
+            this.button31.Text = "Add";
+        }
         private void button9_Click(object sender, EventArgs e)
         {
             this.textBox50.ReadOnly = true;
@@ -1128,6 +1200,14 @@ namespace CT_App
             this.label182.Text = "0";
             this.label191.Text = "0";
             this.button14.Text = "Add";
+        }
+        private void button29_Click(object sender, EventArgs e)
+        {
+            this.textBox131.ReadOnly = true;
+            this.textBox131.Text = "";
+            this.label277.Text = "0";
+            this.label274.Text = "0";
+            this.button28.Text = "Add";
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -1586,42 +1666,229 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
-
         private void button24_Click(object sender, EventArgs e)
         {
             OpenFileDialog oFD = new OpenFileDialog();
-            oFD.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+            oFD.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.gif;*.bmp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All Files (*.*)|*.*";
             oFD.Title  = "Select an Image";
             if (oFD.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(oFD.FileName);
             }
         }
-
         private void button25_Click(object sender, EventArgs e)
         {
-            // Check if an image is selected
             if (pictureBox1.Image == null)
             {
                 MessageBox.Show("Please select an image first.");
                 return;
             }
-            byte[] imageBytes;
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
-                imageBytes = ms.ToArray();
+                MemoryStream ms = new MemoryStream();
+                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat); ;//(ms, pictureBox1.Image.RawFormat);   (ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imageBytes = ms.ToArray();
+                this.conn.Open();
+                //OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemos (Mem_Img) VALUES ('", imageBytes, "')"), this.conn); //imageBytes this.pictureBox1.Image.ToString()
+                OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO Images (img_ID,ImageData) VALUES ('",this.DltDate, "','", imageBytes, "')"), this.conn);
+                sendData.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show("Image inserted successfully.");
+                pictureBox1.Image = null;
+                this.fillImageData();
             }
-            this.conn.Open();
-            OleDbCommand sendData = new OleDbCommand(string.Concat("INSERT INTO MarketMemos (Mem_Img) VALUES ('", imageBytes ,"')"), this.conn);
-            sendData.ExecuteNonQuery();
-            this.conn.Close();
-            MessageBox.Show("Image inserted successfully.");
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
         }
-
+        private void button31_Click(object sender, EventArgs e)
+        {
+            if (this.button31.Text == "Add")
+            {
+                this.textBox133.ReadOnly = false;
+                this.textBox133.Focus();
+                TextBox textBox = this.textBox132;
+                string[] strArrays = new string[] { "DA", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button31.Text = "Save";
+            }
+            else if (this.button31.Text == "Save")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAnt(DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,DA_APAmount,NotTaken,DA_Data,DA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker8.Text.Trim() + "','" + this.textBox133.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','" + this.label280.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Daily AntData Added"));
+                    this.fillDailyAntData();
+                    this.totalDailyAntData();
+                    this.textBox133.ReadOnly = true;
+                    this.textBox133.Text = "";
+                    this.textBox132.Text = "";
+                    this.button31.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
+            }
+            else if (this.button31.Text == "Updt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyAnt SET DA_FPAmount = '" + this.textBox133.Text.Trim() + "',DA_SPAmount = '" + this.textBox134.Text.Trim() + "',DA_APAmount = '" + this.label280.Text.Trim() + "',NotTaken = '" + this.textBox134.Text.Trim() + "',DA_Date='" + this.dateTimePicker8.Text.Trim() + "',DA_Updt_Person='" + this.label249.Text.Trim() + "' WHERE DA_ID= '" + this.label277.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Update AntDaily Get"));
+                    this.fillDailyAntData();
+                    this.totalDailyAntData();
+                    this.textBox133.ReadOnly = true;
+                    this.textBox133.Text = "";
+                    this.label277.Text = "0";
+                    this.label279.Text = "0";
+                    this.label278.Text = "0";
+                    this.label276.Text = "0";
+                    this.button31.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
+            }
+        }
+        private void button33_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand command = new OleDbCommand("UPDATE DailyAnt SET [DA_Data]='TKN',[TakenDate]='" + this.DltDate + "',[DA_Del_Person]='" + this.label249.Text.Trim() + "' WHERE DA_ID= '" + this.label277.Text.Trim() + "' ", this.conn);
+                command.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label277.Text + "] "));
+                this.fillDailyAntData();
+                if (this.dataGridView5.RowCount > 0)
+                {
+                    this.totalDailyAntData();
+                }
+                else
+                {
+                    this.label263.Text = "00";
+                    this.label282.Text = "00";
+                }
+                this.button33.Visible = false;
+                this.button31.Text = "Add";
+                this.textBox133.Text = "";
+                this.label277.Text = "0";
+                this.label279.Text = "0";
+                this.label278.Text = "0";
+                this.label276.Text = "0";
+                this.label274.Text = "0";
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void button32_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand commanda = new OleDbCommand("DELETE FROM DailyAnt WHERE DA_ID= '" + this.label268.Text.Trim() + "' ", this.conn);
+                commanda.ExecuteNonQuery();
+                OleDbCommand commandb = new OleDbCommand("DELETE FROM DailyAntCut WHERE CA_ID= '" + this.label267.Text.Trim() + "' ", this.conn);
+                commandb.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label268.Text + "] & [", this.label267.Text + "] "));
+                this.fillDailyAntData();
+                this.button32.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void button28_Click(object sender, EventArgs e)
+        {
+            if (this.button28.Text == "Add")
+            {
+                this.textBox131.ReadOnly = false;
+                this.textBox131.Focus();
+                TextBox textBox = this.textBox132;
+                string[] strArrays = new string[] { "CA", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button28.Text = "Add Amt";
+            }
+            else if (this.button28.Text == "Add Amt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAntCut(CA_ID,CA_Date,CA_Amount,CA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker7.Text.Trim() + "','" + this.textBox131.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Added Total AntDaily Amount"));
+                    this.fillDailyAntData();
+                    this.totalDailyAntData();
+                    this.textBox131.ReadOnly = true;
+                    this.textBox131.Text = "";
+                    this.textBox132.Text = "";
+                    this.button28.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
+            }
+            else if (this.button28.Text == "Updt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyAntCut SET CA_Amount = '" + this.textBox131.Text.Trim() + "',CA_Date='" + this.dateTimePicker7.Text.Trim() + "',CA_Updt_Person='" + this.label249.Text.Trim() + "' WHERE CA_ID= '" + this.label277.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Update AntDaily Get"));
+                    this.fillDailyAntData();
+                    this.totalDailyAntData();
+                    this.textBox131.ReadOnly = true;
+                    this.textBox131.Text = "";
+                    this.label277.Text = "0";
+                    this.label274.Text = "0";
+                    this.button28.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
+            }
+        }
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
@@ -2016,6 +2283,75 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void dataGridView17_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.button33.Visible = true;
+                this.button32.Visible = true;
+                this.button31.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT DA_ID,DA_FPAmount,DA_SPAmount,DA_Data,NotTaken FROM DailyAnt WHERE DA_ID='", this.dataGridView17.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label277.Text = dataTable.Rows[0][0].ToString();
+                this.label268.Text = dataTable.Rows[0][0].ToString();
+                this.label279.Text = dataTable.Rows[0][1].ToString();
+                this.label278.Text = dataTable.Rows[0][2].ToString();
+                this.label276.Text = dataTable.Rows[0][3].ToString();
+                this.textBox133.Text = dataTable.Rows[0][4].ToString();
+                this.textBox133.ReadOnly = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void dataGridView16_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.button32.Visible = true;
+                this.button28.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT CA_ID,CA_Amount FROM DailyAntCut WHERE CA_ID='", this.dataGridView16.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label277.Text = dataTable.Rows[0][0].ToString();
+                this.label267.Text = dataTable.Rows[0][0].ToString();
+                this.label274.Text = dataTable.Rows[0][1].ToString();
+                this.textBox131.Text = dataTable.Rows[0][1].ToString();
+                this.textBox131.ReadOnly = false;
+                this.textBox131.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void dataGridView14_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //DataTable dataTable = new DataTable();
+                //OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT Img_ID,ImageData FROM Images WHERE Img_ID='", this.dataGridView14.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                //oleDbData.Fill(dataTable);
+                this.conn.Open();
+                OleDbCommand oleDbCommand = new OleDbCommand("SELECT ImageData FROM Images", this.conn);
+                OleDbDataReader reader = oleDbCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    byte[] imageBytes = (byte[])reader["ImageData"];
+                    MemoryStream ms = new MemoryStream(imageBytes);
+                    pictureBox1.Image = Image.FromStream(ms);
+                }
+                reader.Close();
+                this.conn.Close();
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         //-----------------------------------------------------------------------
         //------------------------------All Event Work---------------------------
         //-----------------------------------------------------------------------
@@ -2037,6 +2373,7 @@ namespace CT_App
                     this.tabControl1.TabPages.Remove(tabPage1);
                     this.tabControl1.TabPages.Remove(tabPage2);
                     this.tabControl1.TabPages.Remove(tabPage3);
+                    this.tabControl1.TabPages.Remove(tabPage5);
                     this.panel4.Visible = false;
                     this.panel19.Visible = false;
                     this.dataGridView5.ReadOnly = true;
@@ -4347,9 +4684,48 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
-
-        
-
+        private void textBox133_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox133.Text.Trim() != ""))
+                    {
+                        this.textBox133.Focus();
+                    }
+                    else
+                    {
+                        int dev = Convert.ToInt32(this.textBox133.Text.Trim()) / 2;
+                        this.textBox134.Text = dev.ToString();
+                        int dev1 = Convert.ToInt32(this.textBox134.Text.Trim()) * Convert.ToInt32(this.textBox135.Text.Trim()) / 100;
+                        this.label280.Text = dev1.ToString();
+                        this.button31.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox131_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox131.Text.Trim() != ""))
+                    {
+                        this.textBox131.Focus();
+                    }
+                    else
+                    {
+                        this.button28.Focus();
+                    }
+                }
+            }
+        }
         #endregion
 
         //-----------------------------------------------------------------------
