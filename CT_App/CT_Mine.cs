@@ -158,7 +158,7 @@ namespace CT_App
                 DataTable dataTableAmtAntCol = new DataTable();
                 OleDbDataAdapter dataAdapterdltAmtAntCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM DailyAnt WHERE [DA_Data]='TKN' "), this.conn);
                 dataAdapterdltAmtAntCol.Fill(dataTableAmtAntCol);
-                this.label253.Text = dataTableAmtAntCol.Rows[0][0].ToString();
+                this.label261.Text = dataTableAmtAntCol.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
