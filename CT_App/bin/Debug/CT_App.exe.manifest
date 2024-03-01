@@ -4,7 +4,7 @@
   <description asmv2:iconFile="xing.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="CT_App" version="3.2.37.2097" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="CT_App" version="3.3.61.2103" language="neutral" processorArchitecture="msil" />
     <commandLine file="CT_App.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CT_App.exe" size="226312">
-      <assemblyIdentity name="CT_App" version="3.2.37.2097" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CT_App.exe" size="217096">
+      <assemblyIdentity name="CT_App" version="3.3.61.2103" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ArOOOMWh5P6cicKn67Ystl2Wy8u3ovavB5syt7TF5l4=</dsig:DigestValue>
+        <dsig:DigestValue>EQfySdSNE6F7UitPiUHA5QCOvrgDqTo9zUBZbYsbp8o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
