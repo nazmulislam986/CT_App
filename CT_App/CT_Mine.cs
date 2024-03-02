@@ -2013,7 +2013,7 @@ namespace CT_App
                 this.label113.Text   = dataTable.Rows[0][4].ToString();
                 this.textBox48.Text  = dataTable.Rows[0][5].ToString();
                 this.textBox49.Text  = dataTable.Rows[0][6].ToString();
-                this.textBox112.Text = dataTable.Rows[0][8].ToString();
+                this.textBox122.Text = dataTable.Rows[0][8].ToString();
                 this.label243.Text = dataTable.Rows[0][9].ToString();
                 this.conn.Close();
                 this.button7.Visible = true;
