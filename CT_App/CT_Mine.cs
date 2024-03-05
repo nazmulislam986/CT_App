@@ -1793,7 +1793,7 @@ namespace CT_App
                 OleDbCommand commanda = new OleDbCommand("DELETE FROM DailyAnt WHERE DA_ID= '" + this.label268.Text.Trim() + "' ", this.conn);
                 commanda.ExecuteNonQuery();
                 this.conn.Close();
-                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label268.Text + "] & [", this.label267.Text + "] "));
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label268.Text , "] "));
                 this.fillDailyAntData();
                 this.button32.Visible = false;
             }

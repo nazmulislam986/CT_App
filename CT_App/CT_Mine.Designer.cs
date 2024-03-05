@@ -484,19 +484,16 @@ namespace CT_App
             this.dataGridView13 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.button30 = new System.Windows.Forms.Button();
             this.panel33 = new System.Windows.Forms.Panel();
             this.button32 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
-            this.label266 = new System.Windows.Forms.Label();
-            this.label267 = new System.Windows.Forms.Label();
             this.label268 = new System.Windows.Forms.Label();
             this.label269 = new System.Windows.Forms.Label();
             this.label270 = new System.Windows.Forms.Label();
             this.label271 = new System.Windows.Forms.Label();
             this.label272 = new System.Windows.Forms.Label();
             this.label273 = new System.Windows.Forms.Label();
-            this.label274 = new System.Windows.Forms.Label();
-            this.label275 = new System.Windows.Forms.Label();
             this.label276 = new System.Windows.Forms.Label();
             this.label277 = new System.Windows.Forms.Label();
             this.label278 = new System.Windows.Forms.Label();
@@ -512,7 +509,6 @@ namespace CT_App
             this.label264 = new System.Windows.Forms.Label();
             this.label265 = new System.Windows.Forms.Label();
             this.textBox133 = new System.Windows.Forms.TextBox();
-            this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
@@ -2649,9 +2645,9 @@ namespace CT_App
             // 
             this.dateTimePicker1.CustomFormat = "";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker1.Location = new System.Drawing.Point(272, 1);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(102, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(101, 22);
             this.dateTimePicker1.TabIndex = 4;
             this.dateTimePicker1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker1_KeyPress);
             // 
@@ -3149,7 +3145,7 @@ namespace CT_App
             this.textBox128.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.textBox128.Location = new System.Drawing.Point(112, 50);
             this.textBox128.Name = "textBox128";
-            this.textBox128.Size = new System.Drawing.Size(122, 24);
+            this.textBox128.Size = new System.Drawing.Size(121, 24);
             this.textBox128.TabIndex = 9;
             this.textBox128.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox128.TextChanged += new System.EventHandler(this.textBox128_TextChanged);
@@ -3160,7 +3156,7 @@ namespace CT_App
             this.textBox129.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.textBox129.Location = new System.Drawing.Point(112, 25);
             this.textBox129.Name = "textBox129";
-            this.textBox129.Size = new System.Drawing.Size(122, 24);
+            this.textBox129.Size = new System.Drawing.Size(121, 24);
             this.textBox129.TabIndex = 9;
             this.textBox129.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox129.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox129_KeyPress);
@@ -3701,9 +3697,9 @@ namespace CT_App
             // 
             this.dateTimePicker2.CustomFormat = "";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker2.Location = new System.Drawing.Point(272, 1);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(102, 23);
+            this.dateTimePicker2.Size = new System.Drawing.Size(101, 23);
             this.dateTimePicker2.TabIndex = 13;
             this.dateTimePicker2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker2_KeyPress);
             // 
@@ -4667,12 +4663,12 @@ namespace CT_App
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.CustomFormat = "";
+            this.dateTimePicker3.CustomFormat = "MM/dd/yyyy HH:mm:ss";
             this.dateTimePicker3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker3.Location = new System.Drawing.Point(113, 106);
             this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(102, 22);
+            this.dateTimePicker3.Size = new System.Drawing.Size(152, 22);
             this.dateTimePicker3.TabIndex = 14;
             this.dateTimePicker3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker3_KeyPress);
             // 
@@ -5462,6 +5458,7 @@ namespace CT_App
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.button30);
             this.panel31.Controls.Add(this.panel33);
             this.panel31.Controls.Add(this.dateTimePicker8);
             this.panel31.Controls.Add(this.panel32);
@@ -5472,7 +5469,6 @@ namespace CT_App
             this.panel31.Controls.Add(this.label264);
             this.panel31.Controls.Add(this.label265);
             this.panel31.Controls.Add(this.textBox133);
-            this.panel31.Controls.Add(this.button30);
             this.panel31.Controls.Add(this.button31);
             this.panel31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel31.Location = new System.Drawing.Point(756, 2);
@@ -5480,21 +5476,29 @@ namespace CT_App
             this.panel31.Size = new System.Drawing.Size(376, 668);
             this.panel31.TabIndex = 30;
             // 
+            // button30
+            // 
+            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button30.ForeColor = System.Drawing.Color.DarkViolet;
+            this.button30.Location = new System.Drawing.Point(168, 30);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(48, 29);
+            this.button30.TabIndex = 19;
+            this.button30.Text = "Cncl";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
             // panel33
             // 
             this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel33.Controls.Add(this.button32);
             this.panel33.Controls.Add(this.button33);
-            this.panel33.Controls.Add(this.label266);
-            this.panel33.Controls.Add(this.label267);
             this.panel33.Controls.Add(this.label268);
             this.panel33.Controls.Add(this.label269);
             this.panel33.Controls.Add(this.label270);
             this.panel33.Controls.Add(this.label271);
             this.panel33.Controls.Add(this.label272);
             this.panel33.Controls.Add(this.label273);
-            this.panel33.Controls.Add(this.label274);
-            this.panel33.Controls.Add(this.label275);
             this.panel33.Controls.Add(this.label276);
             this.panel33.Controls.Add(this.label277);
             this.panel33.Controls.Add(this.label278);
@@ -5526,34 +5530,12 @@ namespace CT_App
             this.button33.UseVisualStyleBackColor = true;
             this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
-            // label266
-            // 
-            this.label266.AutoSize = true;
-            this.label266.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label266.ForeColor = System.Drawing.Color.DarkViolet;
-            this.label266.Location = new System.Drawing.Point(225, 55);
-            this.label266.Name = "label266";
-            this.label266.Size = new System.Drawing.Size(63, 13);
-            this.label266.TabIndex = 14;
-            this.label266.Text = "R. Del ID2 :";
-            // 
-            // label267
-            // 
-            this.label267.AutoSize = true;
-            this.label267.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label267.ForeColor = System.Drawing.Color.DarkRed;
-            this.label267.Location = new System.Drawing.Point(286, 55);
-            this.label267.Name = "label267";
-            this.label267.Size = new System.Drawing.Size(13, 13);
-            this.label267.TabIndex = 14;
-            this.label267.Text = "0";
-            // 
             // label268
             // 
             this.label268.AutoSize = true;
             this.label268.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label268.ForeColor = System.Drawing.Color.DarkRed;
-            this.label268.Location = new System.Drawing.Point(286, 32);
+            this.label268.Location = new System.Drawing.Point(286, 9);
             this.label268.Name = "label268";
             this.label268.Size = new System.Drawing.Size(13, 13);
             this.label268.TabIndex = 14;
@@ -5564,11 +5546,11 @@ namespace CT_App
             this.label269.AutoSize = true;
             this.label269.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label269.ForeColor = System.Drawing.Color.DarkViolet;
-            this.label269.Location = new System.Drawing.Point(225, 32);
+            this.label269.Location = new System.Drawing.Point(231, 9);
             this.label269.Name = "label269";
-            this.label269.Size = new System.Drawing.Size(63, 13);
+            this.label269.Size = new System.Drawing.Size(57, 13);
             this.label269.TabIndex = 14;
-            this.label269.Text = "R. Del ID1 :";
+            this.label269.Text = "R. Del ID :";
             // 
             // label270
             // 
@@ -5613,28 +5595,6 @@ namespace CT_App
             this.label273.Size = new System.Drawing.Size(35, 16);
             this.label273.TabIndex = 14;
             this.label273.Text = "Info :";
-            // 
-            // label274
-            // 
-            this.label274.AutoSize = true;
-            this.label274.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label274.ForeColor = System.Drawing.Color.DarkRed;
-            this.label274.Location = new System.Drawing.Point(286, 7);
-            this.label274.Name = "label274";
-            this.label274.Size = new System.Drawing.Size(16, 16);
-            this.label274.TabIndex = 22;
-            this.label274.Text = "0";
-            // 
-            // label275
-            // 
-            this.label275.AutoSize = true;
-            this.label275.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label275.ForeColor = System.Drawing.Color.DarkViolet;
-            this.label275.Location = new System.Drawing.Point(229, 7);
-            this.label275.Name = "label275";
-            this.label275.Size = new System.Drawing.Size(59, 16);
-            this.label275.TabIndex = 14;
-            this.label275.Text = "Cut Amt :";
             // 
             // label276
             // 
@@ -5685,9 +5645,9 @@ namespace CT_App
             this.dateTimePicker8.CustomFormat = "";
             this.dateTimePicker8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker8.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker8.Location = new System.Drawing.Point(272, 1);
             this.dateTimePicker8.Name = "dateTimePicker8";
-            this.dateTimePicker8.Size = new System.Drawing.Size(102, 22);
+            this.dateTimePicker8.Size = new System.Drawing.Size(101, 22);
             this.dateTimePicker8.TabIndex = 25;
             // 
             // panel32
@@ -5763,7 +5723,7 @@ namespace CT_App
             // 
             this.label282.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label282.ForeColor = System.Drawing.Color.DarkRed;
-            this.label282.Location = new System.Drawing.Point(262, 42);
+            this.label282.Location = new System.Drawing.Point(262, 41);
             this.label282.Name = "label282";
             this.label282.Size = new System.Drawing.Size(107, 20);
             this.label282.TabIndex = 15;
@@ -5784,7 +5744,7 @@ namespace CT_App
             // 
             this.label281.AutoSize = true;
             this.label281.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label281.Location = new System.Drawing.Point(213, 41);
+            this.label281.Location = new System.Drawing.Point(213, 40);
             this.label281.Name = "label281";
             this.label281.Size = new System.Drawing.Size(53, 20);
             this.label281.TabIndex = 14;
@@ -5822,25 +5782,13 @@ namespace CT_App
             this.textBox133.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox133.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox133_KeyPress);
             // 
-            // button30
-            // 
-            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button30.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button30.Location = new System.Drawing.Point(148, 30);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(66, 29);
-            this.button30.TabIndex = 19;
-            this.button30.Text = "Cncl";
-            this.button30.UseVisualStyleBackColor = true;
-            this.button30.Click += new System.EventHandler(this.button30_Click);
-            // 
             // button31
             // 
             this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button31.ForeColor = System.Drawing.Color.DarkViolet;
             this.button31.Location = new System.Drawing.Point(82, 30);
             this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(66, 29);
+            this.button31.Size = new System.Drawing.Size(87, 29);
             this.button31.TabIndex = 19;
             this.button31.Text = "Add";
             this.button31.UseVisualStyleBackColor = true;
@@ -5867,9 +5815,9 @@ namespace CT_App
             // 
             this.dateTimePicker5.CustomFormat = "";
             this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker5.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker5.Location = new System.Drawing.Point(272, 1);
             this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(102, 23);
+            this.dateTimePicker5.Size = new System.Drawing.Size(101, 23);
             this.dateTimePicker5.TabIndex = 26;
             this.dateTimePicker5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker5_KeyPress);
             // 
@@ -5886,7 +5834,7 @@ namespace CT_App
             // label121
             // 
             this.label121.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label121.Location = new System.Drawing.Point(269, 38);
+            this.label121.Location = new System.Drawing.Point(269, 41);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(102, 20);
             this.label121.TabIndex = 15;
@@ -5934,7 +5882,7 @@ namespace CT_App
             // 
             this.label125.AutoSize = true;
             this.label125.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label125.Location = new System.Drawing.Point(215, 38);
+            this.label125.Location = new System.Drawing.Point(215, 40);
             this.label125.Name = "label125";
             this.label125.Size = new System.Drawing.Size(57, 20);
             this.label125.TabIndex = 14;
@@ -6264,9 +6212,9 @@ namespace CT_App
             this.dateTimePicker4.CustomFormat = "";
             this.dateTimePicker4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(271, 1);
+            this.dateTimePicker4.Location = new System.Drawing.Point(272, 1);
             this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(102, 22);
+            this.dateTimePicker4.Size = new System.Drawing.Size(101, 22);
             this.dateTimePicker4.TabIndex = 25;
             this.dateTimePicker4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateTimePicker4_KeyPress);
             // 
@@ -6343,7 +6291,7 @@ namespace CT_App
             // 
             this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label94.ForeColor = System.Drawing.Color.DarkRed;
-            this.label94.Location = new System.Drawing.Point(262, 39);
+            this.label94.Location = new System.Drawing.Point(262, 41);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(107, 20);
             this.label94.TabIndex = 15;
@@ -6363,7 +6311,7 @@ namespace CT_App
             // 
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.Location = new System.Drawing.Point(214, 38);
+            this.label93.Location = new System.Drawing.Point(214, 40);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(51, 20);
             this.label93.TabIndex = 14;
@@ -6382,9 +6330,9 @@ namespace CT_App
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button8.Location = new System.Drawing.Point(148, 30);
+            this.button8.Location = new System.Drawing.Point(168, 30);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(66, 29);
+            this.button8.Size = new System.Drawing.Size(48, 29);
             this.button8.TabIndex = 19;
             this.button8.Text = "Cncl";
             this.button8.UseVisualStyleBackColor = true;
@@ -6395,7 +6343,7 @@ namespace CT_App
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button10.Location = new System.Drawing.Point(82, 30);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(66, 29);
+            this.button10.Size = new System.Drawing.Size(87, 29);
             this.button10.TabIndex = 19;
             this.button10.Text = "Add";
             this.button10.UseVisualStyleBackColor = true;
@@ -7026,8 +6974,6 @@ namespace CT_App
         private System.Windows.Forms.Panel panel33;
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Label label266;
-        private System.Windows.Forms.Label label267;
         private System.Windows.Forms.Label label268;
         private System.Windows.Forms.Label label269;
         private System.Windows.Forms.Label label270;
@@ -7035,7 +6981,6 @@ namespace CT_App
         private System.Windows.Forms.Label label272;
         private System.Windows.Forms.Label label273;
         private System.Windows.Forms.Label label274;
-        private System.Windows.Forms.Label label275;
         private System.Windows.Forms.Label label276;
         private System.Windows.Forms.Label label277;
         private System.Windows.Forms.Label label278;

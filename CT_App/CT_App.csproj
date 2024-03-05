@@ -33,7 +33,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>CT_App</ProductName>
-    <PublisherName>CT_MainDev</PublisherName>
+    <PublisherName>CT_Main</PublisherName>
     <SuiteName>CT_Main</SuiteName>
     <ApplicationRevision>2025</ApplicationRevision>
     <ApplicationVersion>3.11.315.%2a</ApplicationVersion>
