@@ -217,7 +217,7 @@ namespace CT_App
             try
             {
                 DataTable dataTableDaiAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT DA_ID as [ID],DA_Date as [Date],NotTaken,DA_APAmount as [NotGiven] FROM DailyAnt WHERE [Da_Data]='NTKN' ORDER BY [Da_Date] DESC "), this.conn);
+                OleDbDataAdapter odbcDataAdapterDaiAmt = new OleDbDataAdapter(string.Concat("SELECT DA_ID as [ID],DA_Date as [Date],NotTaken FROM DailyAnt WHERE [Da_Data]='NTKN' ORDER BY [Da_Date] DESC "), this.conn);
                 odbcDataAdapterDaiAmt.Fill(dataTableDaiAmt);
                 dataGridView17.DataSource = dataTableDaiAmt.DefaultView;
             }
@@ -495,10 +495,9 @@ namespace CT_App
             try
             {
                 DataTable dataTableDailAmt = new DataTable();
-                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken),SUM(DA_APAmount) FROM DailyAnt WHERE [DA_Data]='NTKN' "), this.conn);
+                OleDbDataAdapter dataAdapterAmtUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken) FROM DailyAnt WHERE [DA_Data]='NTKN' "), this.conn);
                 dataAdapterAmtUnr.Fill(dataTableDailAmt);
                 this.label263.Text = dataTableDailAmt.Rows[0][0].ToString();
-                this.label282.Text = dataTableDailAmt.Rows[0][1].ToString();
             }
             catch (Exception ex)
             {
@@ -1708,7 +1707,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAnt(DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,DA_APAmount,NotTaken,DA_Data,DA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker8.Text.Trim() + "','" + this.textBox133.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','" + this.label280.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAnt(DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,DA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker8.Text.Trim() + "','" + this.textBox133.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
                     cmd.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Daily AntData Added"));
@@ -1730,7 +1729,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE DailyAnt SET DA_FPAmount = '" + this.textBox133.Text.Trim() + "',DA_SPAmount = '" + this.textBox134.Text.Trim() + "',DA_APAmount = '" + this.label280.Text.Trim() + "',NotTaken = '" + this.textBox134.Text.Trim() + "',DA_Date='" + this.dateTimePicker8.Text.Trim() + "',DA_Updt_Person='" + this.label249.Text.Trim() + "' WHERE DA_ID= '" + this.label277.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE DailyAnt SET DA_FPAmount = '" + this.textBox133.Text.Trim() + "',DA_SPAmount = '" + this.textBox134.Text.Trim() + "',NotTaken = '" + this.textBox134.Text.Trim() + "',DA_Date='" + this.dateTimePicker8.Text.Trim() + "',DA_Updt_Person='" + this.label249.Text.Trim() + "' WHERE DA_ID= '" + this.label277.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Update AntDaily Get"));
@@ -1768,7 +1767,6 @@ namespace CT_App
                 else
                 {
                     this.label263.Text = "00";
-                    this.label282.Text = "00";
                 }
                 this.button33.Visible = false;
                 this.button31.Text = "Add";
@@ -1898,6 +1896,7 @@ namespace CT_App
                 this.label189.Text = dataTable.Rows[0][3].ToString();
                 this.textBox37.Text = dataTable.Rows[0][4].ToString();
                 this.textBox37.ReadOnly = false;
+                this.textBox37.Focus();
             }
             catch (Exception ex)
             {
@@ -2218,6 +2217,7 @@ namespace CT_App
                 this.label276.Text = dataTable.Rows[0][3].ToString();
                 this.textBox133.Text = dataTable.Rows[0][4].ToString();
                 this.textBox133.ReadOnly = false;
+                this.textBox133.Focus();
             }
             catch (Exception ex)
             {
@@ -4597,8 +4597,6 @@ namespace CT_App
                     {
                         int dev = Convert.ToInt32(this.textBox133.Text.Trim()) / 2;
                         this.textBox134.Text = dev.ToString();
-                        int dev1 = Convert.ToInt32(this.textBox134.Text.Trim()) * Convert.ToInt32(this.textBox135.Text.Trim()) / 100;
-                        this.label280.Text = dev1.ToString();
                         this.button31.Focus();
                     }
                 }
