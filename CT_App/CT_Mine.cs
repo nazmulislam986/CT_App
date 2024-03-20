@@ -577,24 +577,31 @@ namespace CT_App
             }
             else if (this.button1.Text == "Save")
             {
-                try
+                if (!(this.textBox1.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.textBox1.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Data Added"));
-                    this.fillData();
-                    this.AmtDataView();
-                    this.textBox1.ReadOnly = true;
-                    this.textBox1.Text = "";
-                    this.button1.Text = "Add";
-                    this.BalankFldMarMem();
+                    this.textBox1.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Market(M_ID,M_Date,M_Amount,M_Insrt_Person) VALUES('" + this.textBox101.Text.Trim() + "','" + this.dateTimePicker1.Text.Trim() + "','" + this.textBox1.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        MessageBox.Show(string.Concat("Successfull Data Added"));
+                        this.fillData();
+                        this.AmtDataView();
+                        this.textBox1.ReadOnly = true;
+                        this.textBox1.Text = "";
+                        this.button1.Text = "Add";
+                        this.BalankFldMarMem();
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button1.Text == "Updt")
@@ -1001,24 +1008,31 @@ namespace CT_App
             }
             else if (this.button10.Text == "Save")
             {
-                try
+                if (!(this.textBox37.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,D_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker4.Text.Trim() + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Daily Data Added"));
-                    this.fillDailyData();
-                    this.totalDailyData();
-                    this.textBox37.ReadOnly = true;
-                    this.textBox37.Text = "";
-                    this.textBox92.Text = "";
-                    this.button10.Text = "Add";
+                    this.textBox37.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Daily(D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,D_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker4.Text.Trim() + "','" + this.textBox37.Text.Trim() + "','" + this.label194.Text.Trim() + "','" + this.label194.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        MessageBox.Show(string.Concat("Successfull Daily Data Added"));
+                        this.fillDailyData();
+                        this.totalDailyData();
+                        this.textBox37.ReadOnly = true;
+                        this.textBox37.Text = "";
+                        this.textBox92.Text = "";
+                        this.button10.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button10.Text == "Updt")
@@ -1066,24 +1080,31 @@ namespace CT_App
             }
             else if (this.button14.Text == "Add Amt")
             {
-                try
+                if (!(this.textBox50.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount,C_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker5.Text.Trim() + "','" + this.textBox50.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Added Total Daily Amount"));
-                    this.fillDailyData();
-                    this.totalDailyData();
-                    this.textBox50.ReadOnly = true;
-                    this.textBox50.Text = "";
-                    this.textBox92.Text = "";
-                    this.button14.Text = "Add";
+                    this.textBox50.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyCut(C_ID,C_Date,C_Amount,C_Insrt_Person) VALUES('" + this.textBox92.Text.Trim() + "','" + this.dateTimePicker5.Text.Trim() + "','" + this.textBox50.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        MessageBox.Show(string.Concat("Successfull Added Total Daily Amount"));
+                        this.fillDailyData();
+                        this.totalDailyData();
+                        this.textBox50.ReadOnly = true;
+                        this.textBox50.Text = "";
+                        this.textBox92.Text = "";
+                        this.button14.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button14.Text == "Updt")
@@ -1210,23 +1231,30 @@ namespace CT_App
             }
             else if (this.button4.Text == "Save")
             {
-                try
+                if (!(this.textBox32.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data,I_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker2.Text.Trim() + "','" + this.textBox32.Text.Trim() + "','INS','" + this.label249.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    this.fillInstData();
-                    this.totalInstData();
-                    MessageBox.Show(string.Concat("Successfull Daily InstallPay Added"));
-                    this.textBox32.ReadOnly = true;
-                    this.textBox32.Text = "";
-                    this.button4.Text = "Add";
+                    this.textBox32.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,InsPay_Date,InsPay,Take_Data,I_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker2.Text.Trim() + "','" + this.textBox32.Text.Trim() + "','INS','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        this.fillInstData();
+                        this.totalInstData();
+                        MessageBox.Show(string.Concat("Successfull Daily InstallPay Added"));
+                        this.textBox32.ReadOnly = true;
+                        this.textBox32.Text = "";
+                        this.button4.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button4.Text == "Updt")
@@ -1276,31 +1304,38 @@ namespace CT_App
                 this.textBox94.Focus();
             }
             else if (this.button13.Text == "Insert")
-            { 
-                try
+            {
+                if (!(this.textBox94.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,InsPerMonth,PerMonthPay,Take_Data) VALUES('" + this.textBox99.Text.Trim() + "','" + this.DltDate + "','" + this.textBox94.Text.Trim() + "','" + this.textBox96.Text.Trim() + "','" + this.textBox97.Text.Trim() + "','" + this.textBox95.Text.Trim() + "','" + this.label195.Text.Trim() + "','NPD')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    this.fillInstData();
-                    this.totalInstData();
-                    MessageBox.Show(string.Concat("Successfull Inserted"));
-                    this.textBox94.ReadOnly = false;
-                    this.textBox94.Text = "";
-                    this.textBox95.ReadOnly = false;
-                    this.textBox95.Text = "";
-                    this.textBox96.ReadOnly = false;
-                    this.textBox96.Text = "";
-                    this.textBox97.ReadOnly = false;
-                    this.textBox97.Text = "";
-                    this.label195.Text = "0";
-                    this.button13.Text = "Add";
+                    this.textBox94.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Installment(I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,InsPerMonth,PerMonthPay,Take_Data) VALUES('" + this.textBox99.Text.Trim() + "','" + this.DltDate + "','" + this.textBox94.Text.Trim() + "','" + this.textBox96.Text.Trim() + "','" + this.textBox97.Text.Trim() + "','" + this.textBox95.Text.Trim() + "','" + this.label195.Text.Trim() + "','NPD')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        this.fillInstData();
+                        this.totalInstData();
+                        MessageBox.Show(string.Concat("Successfull Inserted"));
+                        this.textBox94.ReadOnly = false;
+                        this.textBox94.Text = "";
+                        this.textBox95.ReadOnly = false;
+                        this.textBox95.Text = "";
+                        this.textBox96.ReadOnly = false;
+                        this.textBox96.Text = "";
+                        this.textBox97.ReadOnly = false;
+                        this.textBox97.Text = "";
+                        this.label195.Text = "0";
+                        this.button13.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button13.Text == "Dlt")
@@ -1630,22 +1665,29 @@ namespace CT_App
         }
         private void button11_Click(object sender, EventArgs e)
         {
-            try
+            if (!(this.textBox129.Text.Trim() != ""))
             {
-                this.conn.Open();
-                OleDbCommand cmd = new OleDbCommand("INSERT INTO BikeInfo(B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker6.Text.Trim() + "','" + this.textBox129.Text.Trim() + "','" + this.textBox128.Text.Trim() + "','" + this.label257.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
-                cmd.ExecuteNonQuery();
-                this.conn.Close();
-                this.fillDataBike();
-                MessageBox.Show(string.Concat("Successfull Bike Info Added"));
-                this.textBox129.Text = "";
-                this.textBox128.Text = "";
-                this.label257.Text = "0";
+                this.textBox129.Focus();
             }
-            catch (Exception ex)
+            else
             {
-                this.conn.Close();
-                MessageBox.Show("Error : " + ex.Message);
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand cmd = new OleDbCommand("INSERT INTO BikeInfo(B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person) VALUES('" + this.textBox98.Text.Trim() + "','" + this.dateTimePicker6.Text.Trim() + "','" + this.textBox129.Text.Trim() + "','" + this.textBox128.Text.Trim() + "','" + this.label257.Text.Trim() + "','" + this.label249.Text.Trim() + "')", this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.conn.Close();
+                    this.fillDataBike();
+                    MessageBox.Show(string.Concat("Successfull Bike Info Added"));
+                    this.textBox129.Text = "";
+                    this.textBox128.Text = "";
+                    this.label257.Text = "0";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
             }
         }
         private void button24_Click(object sender, EventArgs e)
@@ -1704,24 +1746,31 @@ namespace CT_App
             }
             else if (this.button31.Text == "Save")
             {
-                try
+                if (!(this.textBox133.Text.Trim() != ""))
                 {
-                    this.conn.Open();
-                    OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAnt(DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,DA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker8.Text.Trim() + "','" + this.textBox133.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
-                    cmd.ExecuteNonQuery();
-                    this.conn.Close();
-                    MessageBox.Show(string.Concat("Successfull Daily AntData Added"));
-                    this.fillDailyAntData();
-                    this.totalDailyAntData();
-                    this.textBox133.ReadOnly = true;
-                    this.textBox133.Text = "";
-                    this.textBox132.Text = "";
-                    this.button31.Text = "Add";
+                    this.textBox133.Focus();
                 }
-                catch (Exception ex)
+                else
                 {
-                    this.conn.Close();
-                    MessageBox.Show("Error : " + ex.Message);
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO DailyAnt(DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,DA_Insrt_Person) VALUES('" + this.textBox132.Text.Trim() + "','" + this.dateTimePicker8.Text.Trim() + "','" + this.textBox133.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','" + this.textBox134.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        MessageBox.Show(string.Concat("Successfull Daily AntData Added"));
+                        this.fillDailyAntData();
+                        this.totalDailyAntData();
+                        this.textBox133.ReadOnly = true;
+                        this.textBox133.Text = "";
+                        this.textBox132.Text = "";
+                        this.button31.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
                 }
             }
             else if (this.button31.Text == "Updt")
@@ -1775,7 +1824,6 @@ namespace CT_App
                 this.label279.Text = "0";
                 this.label278.Text = "0";
                 this.label276.Text = "0";
-                this.label274.Text = "0";
             }
             catch (Exception ex)
             {
