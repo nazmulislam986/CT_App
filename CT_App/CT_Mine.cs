@@ -546,6 +546,14 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void checkBoxClear()
+        {
+            this.checkBox1.Checked = false;
+            this.checkBox2.Checked = false;
+            this.checkBox3.Checked = false;
+            this.checkBox4.Checked = false;
+            this.checkBox5.Checked = false;
+        }
         //-----------------------------------------------------------------------
         //------------------------------All Button Work--------------------------
         //-----------------------------------------------------------------------
@@ -779,6 +787,7 @@ namespace CT_App
                 this.AmtCrDataView();
                 this.BalankFld();
                 this.fillGivenData();
+                this.checkBoxClear();
                 this.textBox109.Text = "";
             }
             catch (Exception ex)
@@ -799,6 +808,7 @@ namespace CT_App
                 this.AmtCrDataView();
                 this.BalankFld();
                 this.fillGivenData();
+                this.checkBoxClear();
                 this.textBox109.Text = "";
             }
             catch (Exception ex)
@@ -819,6 +829,7 @@ namespace CT_App
                 this.AmtCrDataView();
                 this.BalankFld();
                 this.fillGivenData();
+                this.checkBoxClear();
                 this.textBox109.Text = "";
                 this.button6.Text = "New";
             }
@@ -840,6 +851,7 @@ namespace CT_App
                 this.AmtCrDataView();
                 this.BalankFld();
                 this.fillGivenData();
+                this.checkBoxClear();
                 this.textBox116.Text = "";
                 this.button6.Text = "New";
             }
@@ -861,6 +873,7 @@ namespace CT_App
                 this.AmtCrDataView();
                 this.BalankFld();
                 this.fillGivenData();
+                this.checkBoxClear();
                 this.textBox117.Text = "";
                 this.button6.Text = "New";
             }
@@ -1852,7 +1865,6 @@ namespace CT_App
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
@@ -4326,6 +4338,15 @@ namespace CT_App
                     }
                     else
                     {
+                        TextBox textBox = this.textBox98;
+                        string[] strArrays = new string[] { "OM", null, null, null, null };
+                        int date = DateTime.Now.Day;
+                        int month = DateTime.Now.Month;
+                        int millis = DateTime.Now.Millisecond;
+                        strArrays[2] = date.ToString();
+                        strArrays[3] = month.ToString();
+                        strArrays[4] = millis.ToString();
+                        textBox.Text = string.Concat(strArrays);
                         this.textBox128.Focus();
                     }
                 }
@@ -4508,14 +4529,28 @@ namespace CT_App
             {
                 if (this.textBox117.Text.Trim() != "")
                 {
-                    double num = double.Parse(this.label111.Text.Trim());
-                    double num1 = double.Parse(this.textBox117.Text.Trim());
-                    double num3 = num1 + num;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    TextBox str1 = this.textBox51;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
+                    if (!this.checkBox5.Checked)
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox117.Text.Trim());
+                        double num3 = num1 + num;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox51;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
+                    else
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox117.Text.Trim());
+                        double num3 = num - num1;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox51;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
                 }
                 else
                 {
@@ -4526,8 +4561,6 @@ namespace CT_App
             {
                 MessageBox.Show("Error : " + ex.Message);
             }
-
-            
         }
         private void textBox116_TextChanged(object sender, EventArgs e)
         {
@@ -4535,14 +4568,28 @@ namespace CT_App
             {
                 if (this.textBox116.Text.Trim() != "")
                 {
-                    double num = double.Parse(this.label111.Text.Trim());
-                    double num1 = double.Parse(this.textBox116.Text.Trim());
-                    double num3 = num1 + num;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    TextBox str1 = this.textBox43;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
+                    if (!this.checkBox4.Checked)
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox116.Text.Trim());
+                        double num3 = num1 + num;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox43;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
+                    else
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox116.Text.Trim());
+                        double num3 = num - num1;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox43;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
                 }
                 else
                 {
@@ -4560,14 +4607,28 @@ namespace CT_App
             {
                 if (this.textBox109.Text.Trim() != "")
                 {
-                    double num = double.Parse(this.label111.Text.Trim());
-                    double num1 = double.Parse(this.textBox109.Text.Trim());
-                    double num3 = num1 + num;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    TextBox str1 = this.textBox103;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
+                    if (!this.checkBox3.Checked)
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox109.Text.Trim());
+                        double num3 = num1 + num;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox103;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
+                    else
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox109.Text.Trim());
+                        double num3 = num - num1;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox103;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
                 }
                 else
                 {
@@ -4583,16 +4644,31 @@ namespace CT_App
         {
             try
             {
+
                 if (this.textBox120.Text.Trim() != "")
                 {
-                    double num = double.Parse(this.label111.Text.Trim());
-                    double num1 = double.Parse(this.textBox120.Text.Trim());
-                    double num3 = num1 + num;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    TextBox str1 = this.textBox45;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
+                    if (!this.checkBox2.Checked)
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox120.Text.Trim());
+                        double num3 = num1 + num;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox45;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
+                    else
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox120.Text.Trim());
+                        double num3 = num - num1;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox45;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
                 }
                 else
                 {
@@ -4610,14 +4686,28 @@ namespace CT_App
             {
                 if (this.textBox119.Text.Trim() != "")
                 {
-                    double num = double.Parse(this.label111.Text.Trim());
-                    double num1 = double.Parse(this.textBox119.Text.Trim());
-                    double num3 = num1 + num;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    TextBox str1 = this.textBox40;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
+                    if (!this.checkBox1.Checked)
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox119.Text.Trim());
+                        double num3 = num1 + num;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox40;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
+                    else
+                    {
+                        double num = double.Parse(this.label111.Text.Trim());
+                        double num1 = double.Parse(this.textBox119.Text.Trim());
+                        double num3 = num - num1;
+                        decimal num2 = Convert.ToDecimal(num3.ToString());
+                        TextBox str1 = this.textBox40;
+                        decimal num4 = Math.Round(num2, 4);
+                        num3 = double.Parse(num4.ToString());
+                        str1.Text = num3.ToString();
+                    }
                 }
                 else
                 {
@@ -4649,6 +4739,26 @@ namespace CT_App
                     }
                 }
             }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox119.Focus();
+        }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox120.Focus();
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox109.Focus();
+        }
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox116.Focus();
+        }
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBox117.Focus();
         }
         #endregion
 
