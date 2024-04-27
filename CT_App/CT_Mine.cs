@@ -71,7 +71,9 @@ namespace CT_App
             this.label235.Text = "";
             this.label250.Text = "";
             this.label237.Text = "";
+            this.label252.Visible = false;
             this.dataGridView13.Visible = false;
+
         }
 
         //-----------------------------------------------------------------------
@@ -2417,17 +2419,35 @@ namespace CT_App
         {
             try
             {
-                DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Total_Given) as Total,Given_To FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' AND GDT_V='NDV' Group By Given_To" };
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                dataAdapter.Fill(dataTable);
-                if (dataTable.Rows.Count > 0 && this.textBox107.Text.Trim() != "")
+                if (!(this.textBox107.Text.Trim() != ""))
                 {
-                    this.label231.Text = dataTable.Rows[0][0].ToString();
+                    this.dataGridView13.DataSource = null;
+                    this.label231.Text = "";
+                    this.label252.Visible = false;
+                    this.dataGridView13.Visible = false;
                 }
                 else
                 {
-                    this.label231.Text = "";
+                    this.label252.Visible = true;
+                    this.label252.Text = "Given";
+                    DataTable dataTable = new DataTable();
+                    string[] strArrays = new string[] { "SELECT SUM(Total_Given) as Total,Given_To FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' AND GDT_V='NDV' Group By Given_To" };
+                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                    dataAdapter.Fill(dataTable);
+                    this.dataGridView13.Visible = true;
+                    DataTable dataTablegv = new DataTable();
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Given_To as Name,Total_Given as GAmount,Given_Date as GDate,ThroughBy as GUsing,GDT_V_Date as LUpDT,Remarks_Given as Remarks FROM Given where Given_To like '%" + this.textBox107.Text.Trim() + "%' AND GDT_V='NDV' Order By Given_Date DESC" };
+                    OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
+                    dataAdaptergv.Fill(dataTablegv);
+                    if (dataTable.Rows.Count > 0 && this.textBox107.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
+                    {
+                        this.label231.Text = dataTable.Rows[0][0].ToString();
+                        this.dataGridView13.DataSource = dataTablegv;
+                    }
+                    else
+                    {
+                        this.label231.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -2439,39 +2459,35 @@ namespace CT_App
         {
             try
             {
-                DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Total_Take) as Total,Take_To FROM Teken where Take_To like '%" + this.textBox124.Text.Trim() + "%' AND TDT_V='NDV' Group By Take_To" };
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                dataAdapter.Fill(dataTable);
-                if (dataTable.Rows.Count > 0 && this.textBox124.Text.Trim() != "")
+                if (!(this.textBox124.Text.Trim() != ""))
                 {
-                    this.label233.Text = dataTable.Rows[0][0].ToString();
-                }
-                else
-                {
+                    this.dataGridView13.DataSource = null;
                     this.label233.Text = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error : " + ex.Message);
-            }
-        }
-        private void textBox125_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Saving_Amount) as Total,Saving_To FROM Saving where Saving_To like '%" + this.textBox125.Text.Trim() + "%' AND SDT_V='NDV' Group By Saving_To" };
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                dataAdapter.Fill(dataTable);
-                if (dataTable.Rows.Count > 0 && this.textBox125.Text.Trim() != "")
-                {
-                    this.label235.Text = dataTable.Rows[0][0].ToString();
+                    this.label252.Visible = false;
+                    this.dataGridView13.Visible = false;
                 }
                 else
                 {
-                    this.label235.Text = "";
+                    this.label252.Visible = true;
+                    this.label252.Text = "Taken";
+                    DataTable dataTable = new DataTable();
+                    string[] strArrays = new string[] { "SELECT SUM(Total_Take) as Total,Take_To FROM Teken where Take_To like '%" + this.textBox124.Text.Trim() + "%' AND TDT_V='NDV' Group By Take_To" };
+                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                    dataAdapter.Fill(dataTable);
+                    this.dataGridView13.Visible = true;
+                    DataTable dataTablegv = new DataTable();
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Take_To as Name,Total_Take as TAmount,Take_Date as TDate,ThroughBy as TUsing,TDT_V_Date as LUpDT,Remarks_Take as Remarks FROM Teken WHERE Take_To like '%" + this.textBox124.Text.Trim() + "%' AND TDT_V='NDV' Order By Take_Date DESC" };
+                    OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
+                    dataAdaptergv.Fill(dataTablegv);
+                    if (dataTable.Rows.Count > 0 && this.textBox124.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
+                    {
+                        this.label233.Text = dataTable.Rows[0][0].ToString();
+                        this.dataGridView13.DataSource = dataTablegv;
+                    }
+                    else
+                    {
+                        this.label233.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -2483,17 +2499,75 @@ namespace CT_App
         {
             try
             {
-                DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Expense_Amount) as Total,Expense_To FROM Expense where Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Group By Expense_To" };
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                dataAdapter.Fill(dataTable);
-                if (dataTable.Rows.Count > 0 && this.textBox130.Text.Trim() != "")
+                if (!(this.textBox130.Text.Trim() != ""))
                 {
-                    this.label250.Text = dataTable.Rows[0][0].ToString();
+                    this.dataGridView13.DataSource = null;
+                    this.label250.Text = "";
+                    this.label252.Visible = false;
+                    this.dataGridView13.Visible = false;
                 }
                 else
                 {
-                    this.label250.Text = "";
+                    this.label252.Visible = true;
+                    this.label252.Text = "Expense";
+                    DataTable dataTable = new DataTable();
+                    string[] strArrays = new string[] { "SELECT SUM(Expense_Amount) as Total,Expense_To FROM Expense where Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Group By Expense_To" };
+                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                    dataAdapter.Fill(dataTable);
+                    this.dataGridView13.Visible = true;
+                    DataTable dataTablegv = new DataTable();
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Expense_To as Name,Expense_Amount as EAmount,Expense_Date as EDate,ThroughBy as EUsing,EDT_V_Date as LUpDT,Remarks_Expense as Remarks FROM Expense WHERE Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Order By Expense_Date DESC" };
+                    OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
+                    dataAdaptergv.Fill(dataTablegv);
+                    if (dataTable.Rows.Count > 0 && this.textBox130.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
+                    {
+                        this.label250.Text = dataTable.Rows[0][0].ToString();
+                        this.dataGridView13.DataSource = dataTablegv;
+                    }
+                    else
+                    {
+                        this.label250.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void textBox125_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!(this.textBox125.Text.Trim() != ""))
+                {
+                    this.dataGridView13.DataSource = null;
+                    this.label235.Text = "";
+                    this.label252.Visible = false;
+                    this.dataGridView13.Visible = false;
+                }
+                else
+                {
+                    this.label252.Visible = true;
+                    this.label252.Text = "Savings";
+                    DataTable dataTable = new DataTable();
+                    string[] strArrays = new string[] { "SELECT SUM(Saving_Amount) as Total,Saving_To FROM Saving where Saving_To like '%" + this.textBox125.Text.Trim() + "%' AND SDT_V='NDV' Group By Saving_To" };
+                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                    dataAdapter.Fill(dataTable);
+                    this.dataGridView13.Visible = true;
+                    DataTable dataTablegv = new DataTable();
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Saving_To as Name,Saving_Amount as SAmount,Saving_Date as SDate,ThroughBy as SUsing,SDT_V_Date as LUpDT,Remarks_Saving as Remarks FROM Saving WHERE Saving_To like '%" + this.textBox125.Text.Trim() + "%' AND SDT_V='NDV' Order By Saving_Date DESC" };
+                    OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
+                    dataAdaptergv.Fill(dataTablegv);
+                    if (dataTable.Rows.Count > 0 && this.textBox125.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
+                    {
+                        this.label235.Text = dataTable.Rows[0][0].ToString();
+                        this.dataGridView13.DataSource = dataTablegv;
+                    }
+                    else
+                    {
+                        this.label235.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -2505,17 +2579,35 @@ namespace CT_App
         {
             try
             {
-                DataTable dataTable = new DataTable();
-                string[] strArrays = new string[] { "SELECT SUM(Unrated_Amount) as Total,Unrated_To FROM Unrated where Unrated_To like '%" + this.textBox126.Text.Trim() + "%' AND UDT_V='NDV' Group By Unrated_To" };
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
-                dataAdapter.Fill(dataTable);
-                if (dataTable.Rows.Count > 0 && this.textBox126.Text.Trim() != "")
+                if (!(this.textBox126.Text.Trim() != ""))
                 {
-                    this.label237.Text = dataTable.Rows[0][0].ToString();
+                    this.dataGridView13.DataSource = null;
+                    this.label237.Text = "";
+                    this.label252.Visible = false;
+                    this.dataGridView13.Visible = false;
                 }
                 else
                 {
-                    this.label237.Text = "";
+                    this.label252.Visible = true;
+                    this.label252.Text = "Unrated";
+                    DataTable dataTable = new DataTable();
+                    string[] strArrays = new string[] { "SELECT SUM(Unrated_Amount) as Total,Unrated_To FROM Unrated where Unrated_To like '%" + this.textBox126.Text.Trim() + "%' AND UDT_V='NDV' Group By Unrated_To" };
+                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
+                    dataAdapter.Fill(dataTable);
+                    this.dataGridView13.Visible = true;
+                    DataTable dataTablegv = new DataTable();
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Unrated_To as Name,Unrated_Amount as UAmount,Unrated_Date as UDate,ThroughBy as TUsing,UDT_V_Date as LUpDT,Remarks_Unrated as Remarks FROM Unrated WHERE Unrated_To like '%" + this.textBox126.Text.Trim() + "%' AND UDT_V='NDV' Order By Unrated_Date DESC" };
+                    OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
+                    dataAdaptergv.Fill(dataTablegv);
+                    if (dataTable.Rows.Count > 0 && this.textBox126.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
+                    {
+                        this.label237.Text = dataTable.Rows[0][0].ToString();
+                        this.dataGridView13.DataSource = dataTablegv;
+                    }
+                    else
+                    {
+                        this.label237.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
