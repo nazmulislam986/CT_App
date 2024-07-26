@@ -57,15 +57,19 @@ namespace CT_App
             this.textBox37.ReadOnly = true;
             this.textBox133.ReadOnly = true;
             this.textBox50.ReadOnly = true;
+            this.textBox131.ReadOnly = true;
             this.panel9.Visible = false;
             this.panel12.Visible = false;
             this.button12.Visible = false;
             this.panel10.Visible = false;
             this.panel11.Visible = false;
+            this.panel30.Visible = false;
             this.button21.Visible = false;
             this.button22.Visible = false;
             this.button33.Visible = false;
             this.button32.Visible = false;
+            this.button25.Visible = false;
+            this.button24.Visible = false;
             this.label231.Text = "";
             this.label233.Text = "";
             this.label235.Text = "";
@@ -160,6 +164,10 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterdltAmtAntCol = new OleDbDataAdapter(string.Concat("SELECT Max(TakenDate) FROM DailyAnt WHERE [DA_Data]='TKN' "), this.conn);
                 dataAdapterdltAmtAntCol.Fill(dataTableAmtAntCol);
                 this.label261.Text = dataTableAmtAntCol.Rows[0][0].ToString();
+                DataTable dataTableAmtSavCol = new DataTable();
+                OleDbDataAdapter dataAdapterdltAmtSavCol = new OleDbDataAdapter(string.Concat("SELECT Max(DS_InBankDate) FROM DailySaving WHERE [DS_Data]='TKN' "), this.conn);
+                dataAdapterdltAmtSavCol.Fill(dataTableAmtSavCol);
+                this.label210.Text = dataTableAmtSavCol.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
@@ -208,6 +216,10 @@ namespace CT_App
                 OleDbDataAdapter odbcDataAdapterCutAmt = new OleDbDataAdapter(string.Concat("SELECT C_ID as [ID],C_Date as [Date],C_Amount as [Amount] FROM DailyCut ORDER BY [C_Date] DESC "), this.conn);
                 odbcDataAdapterCutAmt.Fill(dataTableCutAmt);
                 dataGridView4.DataSource = dataTableCutAmt.DefaultView;
+                DataTable dataTableSavAmt = new DataTable();
+                OleDbDataAdapter odbcDataAdapterSavAmt = new OleDbDataAdapter(string.Concat("SELECT DS_ID as [ID],DS_Date as [Date],NotTaken FROM DailySaving WHERE [DS_Data]='NTKN' ORDER BY [DS_Date] DESC "), this.conn);
+                odbcDataAdapterSavAmt.Fill(dataTableSavAmt);
+                dataGridView14.DataSource = dataTableSavAmt.DefaultView;
             }
             catch (Exception ex)
             {
@@ -486,6 +498,10 @@ namespace CT_App
                 OleDbDataAdapter dataAdapterAmUnr = new OleDbDataAdapter(string.Concat("SELECT SUM(C_Amount) FROM DailyCut"), this.conn);
                 dataAdapterAmUnr.Fill(dataTableDaiylAmt);
                 this.label121.Text = dataTableDaiylAmt.Rows[0][0].ToString();
+                DataTable dataTableDailySavAmt = new DataTable();
+                OleDbDataAdapter dataAdapterDailySavAmt = new OleDbDataAdapter(string.Concat("SELECT SUM(NotTaken) FROM DailySaving WHERE [DS_Data]='NTKN' "), this.conn);
+                dataAdapterDailySavAmt.Fill(dataTableDailySavAmt);
+                this.label254.Text = dataTableDailySavAmt.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
@@ -556,6 +572,7 @@ namespace CT_App
             this.checkBox4.Checked = false;
             this.checkBox5.Checked = false;
         }
+
         //-----------------------------------------------------------------------
         //------------------------------All Button Work--------------------------
         //-----------------------------------------------------------------------
@@ -1156,6 +1173,7 @@ namespace CT_App
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [", this.label182.Text + "] "));
                 this.fillDailyData();
+                this.AmtCrDataView();
                 if (this.dataGridView5.RowCount > 0)
                 {
                     this.totalDailyData();
@@ -1172,6 +1190,40 @@ namespace CT_App
                 this.label187.Text = "0";
                 this.label189.Text = "0";
                 this.label191.Text = "0";
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void button25_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand command = new OleDbCommand("UPDATE DailySaving SET [DS_Data]='TKN',[DS_InBankDate]='" + this.DltDate + "',[DS_Del_Person]='" + this.label249.Text.Trim() + "' WHERE DS_ID= '" + this.label292.Text.Trim() + "' ", this.conn);
+                command.ExecuteNonQuery();
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label292.Text + "] "));
+                this.fillDailyData();
+                this.AmtCrDataView();
+                if (this.dataGridView5.RowCount > 0)
+                {
+                    this.totalDailyData();
+                }
+                else
+                {
+                    this.label254.Text = "00";
+                }
+                this.button25.Visible = false;
+                this.buttonS24.Text = "Add";
+                this.textBox131.Text = "";
+                this.label292.Text = "0";
+                this.label289.Text = "0";
+                this.label282.Text = "0";
+                this.label293.Text = "0";
+                this.label291.Text = "0";
             }
             catch (Exception ex)
             {
@@ -1199,6 +1251,25 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void button24_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.conn.Open();
+                OleDbCommand commanda = new OleDbCommand("DELETE FROM DailySaving WHERE DS_ID= '" + this.label284.Text.Trim() + "' ", this.conn);
+                commanda.ExecuteNonQuery();
+
+                this.conn.Close();
+                MessageBox.Show(string.Concat("Successfull Deleted - [", this.label284.Text + "] "));
+                this.fillDailyData();
+                this.button22.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                this.conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void button8_Click(object sender, EventArgs e)
         {
             this.textBox37.ReadOnly = true;
@@ -1208,6 +1279,16 @@ namespace CT_App
             this.label187.Text = "0";
             this.label189.Text = "0";
             this.button10.Text = "Add";
+        }
+        private void buttonS25_Click(object sender, EventArgs e)
+        {
+            this.textBox131.ReadOnly = true;
+            this.textBox131.Text = "";
+            this.label292.Text = "0";
+            this.label282.Text = "0";
+            this.label293.Text = "0";
+            this.label291.Text = "0";
+            this.buttonS24.Text = "Add";
         }
         private void button30_Click(object sender, EventArgs e)
         {
@@ -1824,6 +1905,7 @@ namespace CT_App
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Deleted - [", this.label277.Text + "] "));
                 this.fillDailyAntData();
+                this.AmtCrDataView();
                 if (this.dataGridView5.RowCount > 0)
                 {
                     this.totalDailyAntData();
@@ -1864,6 +1946,77 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void buttonS24_Click(object sender, EventArgs e)
+        {
+            if (this.buttonS24.Text == "Add")
+            {
+                this.textBox131.ReadOnly = false;
+                this.textBox131.Focus();
+                TextBox textBox = this.textBox137;
+                string[] strArrays = new string[] { "DS", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.buttonS24.Text = "Add Amt";
+            }
+            else if (this.buttonS24.Text == "Add Amt")
+            {
+                if (!(this.textBox131.Text.Trim() != ""))
+                {
+                    this.textBox131.Focus();
+                }
+                else
+                {
+                    try
+                    {
+                        this.conn.Open();
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO DailySaving(DS_ID,DS_Date,DS_FPAmount,DS_SPAmount,DS_TPAmount,NotTaken,DS_Data,DS_Insrt_Person) VALUES ('" + this.textBox137.Text.Trim() + "','" + this.dateTimePicker7.Text.Trim() + "','" + this.textBox131.Text.Trim() + "','" + this.textBox135.Text.Trim() + "','" + this.textBox135.Text.Trim() + "','" + this.textBox135.Text.Trim() + "','NTKN','" + this.label249.Text.Trim() + "')", this.conn);
+                        cmd.ExecuteNonQuery();
+                        this.conn.Close();
+                        MessageBox.Show(string.Concat("Successfull Added Daily Saving Amount"));
+                        this.fillDailyData();
+                        this.totalDailyData();
+                        this.textBox131.ReadOnly = true;
+                        this.textBox131.Text = "";
+                        this.textBox137.Text = "";
+                        this.buttonS24.Text = "Add";
+                    }
+                    catch (Exception ex)
+                    {
+                        this.conn.Close();
+                        MessageBox.Show("Error : " + ex.Message);
+                    }
+                }
+            }
+            else if (this.buttonS24.Text == "Updt")
+            {
+                try
+                {
+                    this.conn.Open();
+                    OleDbCommand command = new OleDbCommand("UPDATE DailySaving SET DS_FPAmount = '" + this.textBox131.Text.Trim() + "',DS_Date='" + this.dateTimePicker7.Text.Trim() + "',DS_SPAmount = '" + this.textBox135.Text.Trim() + "',DS_TPAmount = '" + this.textBox135.Text.Trim() + "',NotTaken = '" + this.textBox135.Text.Trim() + "',DS_Updt_Person='" + this.label249.Text.Trim() + "' WHERE DS_ID= '" + this.label292.Text.Trim() + "' ", this.conn);
+                    command.ExecuteNonQuery();
+                    this.conn.Close();
+                    MessageBox.Show(string.Concat("Successfull Update Daily Saving"));
+                    this.fillDailyData();
+                    this.totalDailyData();
+                    this.textBox131.ReadOnly = true;
+                    this.textBox131.Text = "";
+                    this.label292.Text = "0";
+                    this.label289.Text = "0";
+                    this.buttonS24.Text = "Add";
+                }
+                catch (Exception ex)
+                {
+                    this.conn.Close();
+                    MessageBox.Show("Error : " + ex.Message);
+                }
+            }
+        }
+
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
@@ -2286,6 +2439,30 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+        private void dataGridView14_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.button25.Visible = true;
+                this.button24.Visible = true;
+                this.buttonS24.Text = "Updt";
+                DataTable dataTable = new DataTable();
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT DS_ID,DS_FPAmount,DS_TPAmount,DS_Data,NotTaken FROM DailySaving WHERE DS_ID='", this.dataGridView14.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                oleDbData.Fill(dataTable);
+                this.label292.Text = dataTable.Rows[0][0].ToString();
+                this.label284.Text = dataTable.Rows[0][0].ToString();
+                this.label282.Text = dataTable.Rows[0][1].ToString();
+                this.label293.Text = dataTable.Rows[0][2].ToString();
+                this.label291.Text = dataTable.Rows[0][3].ToString();
+                this.textBox131.Text = dataTable.Rows[0][4].ToString();
+                this.textBox131.ReadOnly = false;
+                this.textBox131.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         private void dataGridView14_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -2311,6 +2488,7 @@ namespace CT_App
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+
         //-----------------------------------------------------------------------
         //------------------------------All Event Work---------------------------
         //-----------------------------------------------------------------------
@@ -4852,8 +5030,32 @@ namespace CT_App
         {
             this.textBox117.Focus();
         }
-        #endregion
+        private void textBox131_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox131.Text.Trim() != ""))
+                    {
+                        this.textBox131.Focus();
+                    }
+                    else
+                    {
+                        int dev = Convert.ToInt32(this.textBox131.Text.Trim()) / 3;
+                        this.textBox135.Text = dev.ToString();
+                        this.buttonS24.Focus();
+                    }
+                }
+            }
+        }
 
+        
+
+
+        #endregion
         //-----------------------------------------------------------------------
         //------------------------------If Query Needed--------------------------
         //-----------------------------------------------------------------------
