@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,9 +19,12 @@ namespace CT_App
     {
         #region Comments
         OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
+        OdbcConnection conne = new OdbcConnection(@"Dsn=RETAILMasterSHOPS;uid=sa;Pwd=Ajwahana$@$;");
         private string DltDate;
         private string tableName = "ImagesTable";
         private string selectedImagePath;
+        string conn1 = (@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
+        string conne1 = (@"Dsn=RETAILMasterSHOPS;uid=sa;Pwd=Ajwahana$@$;");
         #endregion
         public CT_Mine()
         {
@@ -77,7 +82,6 @@ namespace CT_App
             this.label237.Text = "";
             this.label252.Visible = false;
             this.dataGridView13.Visible = false;
-
         }
 
         //-----------------------------------------------------------------------
@@ -145,7 +149,7 @@ namespace CT_App
                 dataAdapterdltAmtT.Fill(dataTableAmtTake);
                 this.label92.Text = dataTableAmtTake.Rows[0][0].ToString();
                 DataTable dataTableAmtExp = new DataTable();
-                OleDbDataAdapter dataAdapterdltAmtE = new OleDbDataAdapter(string.Concat("SELECT SUM(Expense_Amount) FROM Expense WHERE [EDT_V]='NDV' "), this.conn);
+                OleDbDataAdapter dataAdapterdltAmtE = new OleDbDataAdapter(string.Concat("SELECT SUM(Expense_Amount) FROM TariffAmt WHERE [EDT_V]='NDV' "), this.conn);
                 dataAdapterdltAmtE.Fill(dataTableAmtExp);
                 this.label90.Text = dataTableAmtExp.Rows[0][0].ToString();
                 DataTable dataTableAmtSev = new DataTable();
@@ -187,7 +191,7 @@ namespace CT_App
                 odbcDataAdapterTekenAmt.Fill(dataTableTekenAmt);
                 dataGridView7.DataSource = dataTableTekenAmt.DefaultView;
                 DataTable dataTableExpenAmt = new DataTable();
-                OleDbDataAdapter odbcDataAdapterExpenAmt = new OleDbDataAdapter(string.Concat("SELECT InExpense as [ID],Expense_To as [Name],Expense_Amount as [ETK],Expense_Date as [EDT] FROM Expense WHERE [EDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
+                OleDbDataAdapter odbcDataAdapterExpenAmt = new OleDbDataAdapter(string.Concat("SELECT InExpense as [ID],Expense_To as [Name],Expense_Amount as [ETK],Expense_Date as [EDT] FROM TariffAmt WHERE [EDT_V]='NDV' ORDER BY [ID] DESC"), this.conn);
                 odbcDataAdapterExpenAmt.Fill(dataTableExpenAmt);
                 dataGridView8.DataSource = dataTableExpenAmt.DefaultView;
                 DataTable dataTableSaveAmt = new DataTable();
@@ -740,7 +744,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        OleDbCommand cmd = new OleDbCommand("INSERT INTO Expense (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V,E_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO TariffAmt (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V,E_Insrt_Person) VALUES('" + this.textBox35.Text.Trim() + "','" + this.textBox39.Text.Trim() + "','" + this.textBox33.Text.Trim() + "','" + this.comboBox1.Text.Trim() + "','" + this.dateTimePicker3.Text.Trim() + "','" + this.textBox34.Text.Trim() + "','NDV','" + this.label249.Text.Trim() + "')", this.conn);
                         cmd.ExecuteNonQuery();
                         this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added to Expense"));
@@ -841,7 +845,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                OleDbCommand command = new OleDbCommand("UPDATE Expense SET Expense_Amount= '" + this.textBox103.Text.Trim() + "',EDT_V_Date= '" + this.DltDate + "',E_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
+                OleDbCommand command = new OleDbCommand("UPDATE TariffAmt SET Expense_Amount= '" + this.textBox103.Text.Trim() + "',EDT_V_Date= '" + this.DltDate + "',E_Updt_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
                 command.ExecuteNonQuery();
                 this.conn.Close();
                 MessageBox.Show(string.Concat("Successfull Expance TK Update - ", this.label117.Text));
@@ -965,7 +969,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    OleDbCommand command = new OleDbCommand("UPDATE Expense SET EDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',E_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
+                    OleDbCommand command = new OleDbCommand("UPDATE TariffAmt SET EDT_V='DDV',DDT_V_Date= '" + this.DltDate + "',E_Del_Person= '" + this.label249.Text.Trim() + "' WHERE InExpense= '" + this.label117.Text.Trim() + "' ", this.conn);
                     command.ExecuteNonQuery();
                     this.conn.Close();
                     MessageBox.Show(string.Concat("Successfull Deleted - [", this.label117.Text + "] "));
@@ -2016,6 +2020,963 @@ namespace CT_App
                 }
             }
         }
+        private void button26_Click(object sender, EventArgs e)
+        {
+            this.marketSync();
+            this.marketMemosSync();
+            this.marketMemosDelSync();
+            //this.imagesSync();
+        }
+        private void button27_Click(object sender, EventArgs e)
+        {
+            this.dailySavingSync();
+            this.installmentSync();
+            this.installmentPaySync();
+            this.bikeInfoSync();
+        }
+        private void button36_Click(object sender, EventArgs e)
+        {
+            this.givenSync();
+            this.tekenSync();
+            this.expenseSync();
+            this.savingSync();
+            this.unratedSync();
+        }
+        private void button29_Click(object sender, EventArgs e)
+        {
+            this.dailySync();
+            this.dailyAntSync();
+            this.dailyCutSync();
+        }
+        private void button28_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                    "DELETE FROM BikeInfo; DELETE FROM Daily; DELETE FROM DailyAnt; DELETE FROM DailyCut;DELETE FROM DailySaving;DELETE FROM TariffAmt;DELETE FROM Given;DELETE FROM Images;DELETE FROM Installment;DELETE FROM Market;DELETE FROM MarketMemos;DELETE FROM MarketMemosDel;DELETE FROM Saving; DELETE FROM Teken;DELETE FROM Unrated; " +
+                                "END;";
+                using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                {
+                    if (MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            sqlConn.Open();
+                            using (OdbcTransaction transaction = sqlConn.BeginTransaction())
+                            {
+                                using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn, transaction))
+                                {
+                                    sqlInsComm.ExecuteNonQuery();
+                                }
+                                transaction.Commit();
+                            }
+                            using (OleDbConnection accConn = new OleDbConnection(conn1))
+                            {
+                                accConn.Open();
+                                this.marketSync();
+                                this.marketMemosSync();
+                                this.marketMemosDelSync();
+                                this.dailySavingSync();
+                                this.installmentSync();
+                                this.installmentPaySync();
+                                this.bikeInfoSync();
+                                this.givenSync();
+                                this.tekenSync();
+                                this.expenseSync();
+                                this.savingSync();
+                                this.unratedSync();
+                                this.dailySync();
+                                this.dailyAntSync();
+                                this.dailyCutSync();
+                                accConn.Close();
+                            }
+                            sqlConn.Close();
+                            MessageBox.Show($"Successfully Data Synchronization", "Success");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
+        }
+
+        //-----------------------------------------------------------------------
+        //----------------Access to SQL Data Insert Event Work-------------------
+        //-----------------------------------------------------------------------
+        private void marketSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Market WHERE M_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Market (M_ID,M_Date,M_Amount,M_Insrt_Person,M_Updt_Person,M_Del_Person) " +
+                                        "VALUES (?, ?, ?, ?, ?, ?) " +
+                                    "END " +
+                                "END ";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Market";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["M_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void marketMemosSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM MarketMemos WHERE Mem_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO MarketMemos (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
+                                    "END " +
+                                "END ";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM MarketMemos";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_InvTK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_InvTK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Giv_TK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Ret_TK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv17"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv18"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv19"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv20"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv21"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv22"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv23"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv24"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void marketMemosDelSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM MarketMemosDel WHERE Mem_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO MarketMemosDel (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
+                                    "END " +
+                                "END ";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM MarketMemosDel";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_InvTK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_InvTK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Giv_TK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Ret_TK"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_N16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_P16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Q16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ST16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv01"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv02"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv03"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv04"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv05"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv06"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv07"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv08"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv09"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv10"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv11"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv12"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv13"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv14"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv15"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv16"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv17"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv18"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv19"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv20"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv21"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv22"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv23"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["R_Inv24"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Mem_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+
+        private void dailySavingSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM DailySaving WHERE DS_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO DailySaving (DS_ID,DS_Date,DS_FPAmount,DS_SPAmount,DS_TPAmount,NotTaken,DS_Data,DS_InBankDate,DS_Insrt_Person,DS_Updt_Person,DS_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM DailySaving";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_FPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_SPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_TPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["NotTaken"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_Data"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_InBankDate"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DS_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void installmentSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Installment WHERE I_ID = ?) " +
+                                    "BEGIN " +
+                                    "INSERT INTO Installment (I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,Take_Data,InsPerMonth,PerMonthPay,InsPay,InsPay_Date,I_Insrt_Person,I_Updt_Person,I_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Installment";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_Total"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_Anot"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_Mine"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_Data"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InsPerMonth"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["PerMonthPay"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InsPay"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InsPay_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["I_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void installmentPaySync()
+        {
+            try
+            {
+                //Work Later
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void bikeInfoSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM BikeInfo WHERE B_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO BikeInfo (B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person,B_Updt_Person) " +
+                                        "VALUES (?, ?, ?, ?, ?, ?, ?) " +
+                                    "END " +
+                                "END ";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM BikeInfo";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_Chng_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_KM_ODO"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_Mobile_Go"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_Next_ODO"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["B_Updt_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+
+        private void givenSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Given WHERE InGiven = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Given (InGiven,Total_Given,Given_To,ThroughBy,Given_Date,Remarks_Given,GDT_V,GDT_V_Date,DDT_V_Date,G_Insrt_Person,G_Updt_Person,G_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Given";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InGiven"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InGiven"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Total_Given"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Given_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Given_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Given"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["GDT_V"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["GDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["G_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["G_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["G_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void tekenSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Teken WHERE InTake = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Teken (InTake,Total_Take,Take_To,ThroughBy,Take_Date,Remarks_Take,TDT_V,TDT_V_Date,DDT_V_Date,T_Insrt_Person,T_Updt_Person,T_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Teken";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InTake"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InTake"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Total_Take"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Take"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["TDT_V"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["TDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["T_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["T_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["T_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void expenseSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM TariffAmt WHERE InExpense = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO TariffAmt (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V,EDT_V_Date,DDT_V_Date,E_Insrt_Person,E_Updt_Person,E_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM TariffAmt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InExpense"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InExpense"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Expense_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Expense_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Expense_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Expense"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["EDT_V"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["EDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["E_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["E_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["E_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void savingSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Saving WHERE InSaving = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Saving (InSaving,Saving_Amount,Saving_To,ThroughBy,Saving_Date,Remarks_Saving,SDT_V,SDT_V_Date,DDT_V_Date,Saving_Bank,S_Insrt_Person,S_Updt_Person,S_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Saving";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InSaving"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InSaving"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Saving"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["SDT_V"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["SDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Bank"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["S_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["S_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["S_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void unratedSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Unrated WHERE InUnrated = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Unrated (InUnrated,Unrated_Amount,Unrated_To,ThroughBy,Unrated_Date,Remarks_Unrated,UDT_V,UDT_V_Date,DDT_V_Date,U_Insrt_Person,U_Updt_Person,U_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Unrated";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InUnrated"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InUnrated"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Unrated"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["UDT_V"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["UDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DDT_V_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["U_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["U_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["U_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+
+        private void dailySync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM Daily WHERE D_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO Daily (D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,TakenDate,D_Insrt_Person,D_Updt_Person,D_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM Daily";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_FPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_SPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["NotTaken"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_Data"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["TakenDate"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["D_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void dailyCutSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM DailyCut WHERE C_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO DailyCut (C_ID,C_Date,C_Amount,C_Insrt_Person,C_Updt_Person,C_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM DailyCut";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["C_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void dailyAntSync()
+        {
+            try
+            {
+                string insCom = "BEGIN " +
+                                "IF NOT EXISTS (SELECT * FROM DailyAnt WHERE DA_ID = ?) " +
+                                    "BEGIN " +
+                                        "INSERT INTO DailyAnt (DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,TakenDate,DA_Insrt_Person,DA_Updt_Person,DA_Del_Person) " +
+                                        "VALUES (?,?,?,?,?,?,?,?,?,?)" +
+                                    "END " +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(conn1))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM DailyAnt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(conne1))
+                    {
+                        sqlConn.Open();
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_ID"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_ID"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_Date"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_FPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_SPAmount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["NotTaken"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_Data"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["TakenDate"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_Insrt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_Updt_Person"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["DA_Del_Person"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
+        private void imagesSync()
+        {
+
+        }
 
         //-----------------------------------------------------------------------
         //------------------------------Time Event Work--------------------------
@@ -2190,7 +3151,7 @@ namespace CT_App
             {
                 this.conn.Open();
                 DataTable dataTable = new DataTable();
-                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM Expense WHERE InExpense='", this.dataGridView8.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
+                OleDbDataAdapter oleDbData = new OleDbDataAdapter(String.Concat("SELECT * FROM TariffAmt WHERE InExpense='", this.dataGridView8.SelectedRows[0].Cells[0].Value.ToString(), "' "), this.conn);
                 oleDbData.Fill(dataTable);
                 this.label102.Text   = dataTable.Rows[0][0].ToString();
                 this.label117.Text   = dataTable.Rows[0][1].ToString();
@@ -2689,12 +3650,12 @@ namespace CT_App
                     this.label252.Visible = true;
                     this.label252.Text = "Expense";
                     DataTable dataTable = new DataTable();
-                    string[] strArrays = new string[] { "SELECT SUM(Expense_Amount) as Total,Expense_To FROM Expense where Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Group By Expense_To" };
+                    string[] strArrays = new string[] { "SELECT SUM(Expense_Amount) as Total,Expense_To FROM TariffAmt where Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Group By Expense_To" };
                     OleDbDataAdapter dataAdapter = new OleDbDataAdapter(string.Concat(strArrays), this.conn);
                     dataAdapter.Fill(dataTable);
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string[] strgvArrays = new string[] { "SELECT TOP 500 Expense_To as Name,Expense_Amount as EAmount,Expense_Date as EDate,ThroughBy as EUsing,EDT_V_Date as LUpDT,Remarks_Expense as Remarks FROM Expense WHERE Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Order By Expense_Date DESC" };
+                    string[] strgvArrays = new string[] { "SELECT TOP 500 Expense_To as Name,Expense_Amount as EAmount,Expense_Date as EDate,ThroughBy as EUsing,EDT_V_Date as LUpDT,Remarks_Expense as Remarks FROM TariffAmt WHERE Expense_To like '%" + this.textBox130.Text.Trim() + "%' AND EDT_V='NDV' Order By Expense_Date DESC" };
                     OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(string.Concat(strgvArrays), this.conn);
                     dataAdaptergv.Fill(dataTablegv);
                     if (dataTable.Rows.Count > 0 && this.textBox130.Text.Trim() != "" && dataTablegv.Rows.Count > 0)
@@ -5051,9 +6012,6 @@ namespace CT_App
                 }
             }
         }
-
-        
-
 
         #endregion
         //-----------------------------------------------------------------------
