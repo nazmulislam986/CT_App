@@ -122,6 +122,7 @@ namespace CT_App
             this.label145 = new System.Windows.Forms.Label();
             this.textBox55 = new System.Windows.Forms.TextBox();
             this.label128 = new System.Windows.Forms.Label();
+            this.button28 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -385,7 +386,6 @@ namespace CT_App
             this.dataGridView13 = new System.Windows.Forms.DataGridView();
             this.label252 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.button36 = new System.Windows.Forms.Button();
             this.textBox119 = new System.Windows.Forms.TextBox();
             this.textBox123 = new System.Windows.Forms.TextBox();
             this.textBox106 = new System.Windows.Forms.TextBox();
@@ -465,6 +465,7 @@ namespace CT_App
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox34 = new System.Windows.Forms.TextBox();
+            this.button36 = new System.Windows.Forms.Button();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.textBox39 = new System.Windows.Forms.TextBox();
             this.textBox33 = new System.Windows.Forms.TextBox();
@@ -602,7 +603,6 @@ namespace CT_App
             this.label180 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.button28 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -1344,6 +1344,18 @@ namespace CT_App
             this.label128.Size = new System.Drawing.Size(67, 20);
             this.label128.TabIndex = 7;
             this.label128.Text = "Takes :";
+            // 
+            // button28
+            // 
+            this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button28.ForeColor = System.Drawing.Color.DarkRed;
+            this.button28.Location = new System.Drawing.Point(1091, 1);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(90, 26);
+            this.button28.TabIndex = 9;
+            this.button28.Text = "Del. && Sync";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // button15
             // 
@@ -4375,17 +4387,6 @@ namespace CT_App
             this.panel17.Size = new System.Drawing.Size(1182, 167);
             this.panel17.TabIndex = 23;
             // 
-            // button36
-            // 
-            this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button36.Location = new System.Drawing.Point(244, 155);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(61, 29);
-            this.button36.TabIndex = 24;
-            this.button36.Text = "Sync";
-            this.button36.UseVisualStyleBackColor = true;
-            this.button36.Click += new System.EventHandler(this.button36_Click);
-            // 
             // textBox119
             // 
             this.textBox119.BackColor = System.Drawing.SystemColors.Info;
@@ -5203,6 +5204,17 @@ namespace CT_App
             this.textBox34.Size = new System.Drawing.Size(382, 26);
             this.textBox34.TabIndex = 15;
             this.textBox34.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox34_KeyPress);
+            // 
+            // button36
+            // 
+            this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button36.Location = new System.Drawing.Point(244, 155);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(61, 29);
+            this.button36.TabIndex = 24;
+            this.button36.Text = "Sync";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
             // 
             // radioButton3
             // 
@@ -6897,18 +6909,6 @@ namespace CT_App
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(162, 46);
             this.panel27.TabIndex = 12;
-            // 
-            // button28
-            // 
-            this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button28.ForeColor = System.Drawing.Color.DarkRed;
-            this.button28.Location = new System.Drawing.Point(1091, 1);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(90, 26);
-            this.button28.TabIndex = 9;
-            this.button28.Text = "Del. && Sync";
-            this.button28.UseVisualStyleBackColor = true;
-            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // CT_Mine
             // 
