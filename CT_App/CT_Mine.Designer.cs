@@ -122,6 +122,7 @@ namespace CT_App
             this.label145 = new System.Windows.Forms.Label();
             this.textBox55 = new System.Windows.Forms.TextBox();
             this.label128 = new System.Windows.Forms.Label();
+            this.button35 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -681,6 +682,7 @@ namespace CT_App
             this.tabPage1.Controls.Add(this.dataGridView11);
             this.tabPage1.Controls.Add(this.panel7);
             this.tabPage1.Controls.Add(this.panel8);
+            this.tabPage1.Controls.Add(this.button35);
             this.tabPage1.Controls.Add(this.button28);
             this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.label10);
@@ -1345,13 +1347,27 @@ namespace CT_App
             this.label128.TabIndex = 7;
             this.label128.Text = "Takes :";
             // 
+            // button35
+            // 
+            this.button35.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button35.ForeColor = System.Drawing.Color.DarkRed;
+            this.button35.Location = new System.Drawing.Point(943, 1);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(130, 26);
+            this.button35.TabIndex = 9;
+            this.button35.Text = "&Backup && Restore";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
             // button28
             // 
+            this.button28.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button28.ForeColor = System.Drawing.Color.DarkRed;
-            this.button28.Location = new System.Drawing.Point(1091, 1);
+            this.button28.Location = new System.Drawing.Point(1089, 1);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(90, 26);
+            this.button28.Size = new System.Drawing.Size(94, 26);
             this.button28.TabIndex = 9;
             this.button28.Text = "Del. && Sync";
             this.button28.UseVisualStyleBackColor = true;
@@ -1373,7 +1389,7 @@ namespace CT_App
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.label10.Location = new System.Drawing.Point(832, 4);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(109, 20);
+            this.label10.Size = new System.Drawing.Size(108, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "0";
             // 
@@ -7567,5 +7583,6 @@ namespace CT_App
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button35;
     }
 }

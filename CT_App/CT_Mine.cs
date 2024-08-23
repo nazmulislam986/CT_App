@@ -2475,6 +2475,68 @@ namespace CT_App
             }
                 
         }
+        private void button35_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string folderPath = @"D:\BackupACC";
+                string dbBackupPath = System.IO.Path.Combine(folderPath, "CT_DB.accdb");
+                string dbRestorePath = System.IO.Path.Combine(folderPath, "CT_DB.accdb");
+                if (System.IO.Directory.Exists(folderPath))
+                {
+                    System.IO.DirectoryInfo directoryInfo = new System.IO.DirectoryInfo(folderPath);
+                    directoryInfo.Attributes &= ~System.IO.FileAttributes.Hidden;
+                }
+                DialogResult result = MessageBox.Show("Click 'Yes' To Create Backup\n\nClick 'No' To Restore.", "Backup / Restore", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string timestamp = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt");
+                    string defaultFileName = $"CT_DB_{timestamp}.accdb";
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    {
+                        saveFileDialog.Filter = "Access Database (*.accdb)|*.accdb";
+                        saveFileDialog.Title = "Select Save Backup";
+                        saveFileDialog.FileName = defaultFileName;
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string backupPath = saveFileDialog.FileName;
+                            if (System.IO.File.Exists(dbBackupPath))
+                            {
+                                System.IO.File.Copy(dbBackupPath, backupPath, true);
+                                MessageBox.Show($"Backup Successful! \n\nLocation : [ {dbBackupPath} ] ", "Success");
+                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(folderPath);
+                                di.Attributes |= System.IO.FileAttributes.Hidden;
+                            }
+                        }
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    string restoreFileName = $"RCT_DB.accdb";
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        openFileDialog.Filter = "Access Database (*.accdb)|*.accdb";
+                        openFileDialog.Title = "Select Backup to Restore";
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string restorePath = restoreFileName;
+                            if (System.IO.File.Exists(dbRestorePath))
+                            {
+                                System.IO.File.Copy(dbRestorePath, restorePath, true);
+                                MessageBox.Show($"Restore Successful! \n\nLocation : [ {dbRestorePath} ] ", "Success");
+                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(folderPath);
+                                di.Attributes |= System.IO.FileAttributes.Hidden;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+
+        }
 
         //-----------------------------------------------------------------------
         //----------------Access to SQL Data Insert Event Work-------------------
