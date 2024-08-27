@@ -101,6 +101,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -118,6 +119,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -142,6 +144,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -238,6 +241,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -263,6 +267,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -280,6 +285,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -304,6 +310,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -496,6 +503,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -525,6 +533,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -557,6 +566,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -581,6 +591,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -605,6 +616,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -622,6 +634,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -644,6 +657,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -1424,6 +1438,7 @@ namespace CT_App
                             cmd.Parameters.AddWithValue("@C_Insrt_Person", this.label249.Text.Trim());
                             cmd.ExecuteNonQuery();
                         }
+                        this.conn.Close();
                         MessageBox.Show(string.Concat("Successfull Added Total Daily Amount"));
                         this.fillDailyData();
                         this.totalDailyData();
@@ -4010,6 +4025,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -4044,6 +4060,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -4079,6 +4096,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -4113,6 +4131,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -4237,6 +4256,7 @@ namespace CT_App
             }
             catch (Exception ex)
             {
+                this.conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
@@ -4318,6 +4338,7 @@ namespace CT_App
                 this.button25.Visible = true;
                 this.button24.Visible = true;
                 this.buttonS24.Text = "Updt";
+                this.conn.Open();
                 string query = "SELECT DS_ID, DS_FPAmount, DS_TPAmount, DS_Data, NotTaken FROM DailySaving WHERE DS_ID = ?";
                 using (OleDbDataAdapter oleDbData = new OleDbDataAdapter(query, this.conn))
                 {
@@ -4337,6 +4358,7 @@ namespace CT_App
                         this.textBox131.Focus();
                     }
                 }
+                this.conn.Close();
             }
             catch (Exception ex)
             {
