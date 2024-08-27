@@ -696,7 +696,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Market(M_ID, M_Date, M_Amount, M_Insrt_Person) VALUES (?, ?, ?, ?)";
+                        string query = $"INSERT INTO Market(M_ID, M_Date, M_Amount, M_Insrt_Person) VALUES (?, ?, ?, ?)";
                         using (OleDbCommand insComm = new OleDbCommand(query, this.conn))
                         {
                             insComm.Parameters.AddWithValue("@M_ID", textBox101.Text.Trim());
@@ -726,7 +726,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Market SET M_Amount = ?, M_Date = ?, M_Updt_Person = ? WHERE M_ID = ?";
+                    string query = $"UPDATE Market SET M_Amount = ?, M_Date = ?, M_Updt_Person = ? WHERE M_ID = ?";
                     OleDbCommand updtComm = new OleDbCommand(query, this.conn);
                     updtComm.Parameters.AddWithValue("@M_Amount", this.textBox1.Text.Trim());
                     updtComm.Parameters.AddWithValue("@M_Date", this.dateTimePicker1.Text.Trim());
@@ -756,7 +756,7 @@ namespace CT_App
                     using (OleDbConnection insrtconn = new OleDbConnection(connAcc))
                     {
                         insrtconn.Open();
-                        string query = "INSERT INTO Market(M_ID, M_Date, M_Amount, M_Insrt_Person) VALUES (?, ?, ?, ?)";
+                        string query = $"INSERT INTO Market(M_ID, M_Date, M_Amount, M_Insrt_Person) VALUES (?, ?, ?, ?)";
                         using (OleDbCommand accInsComm = new OleDbCommand(query, insrtconn))
                         {
                             accInsComm.Parameters.AddWithValue("@M_ID", textBox108.Text.Trim());
@@ -807,13 +807,13 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Given (InGiven, Total_Given, Given_To, ThroughBy, Given_Date, Remarks_Given, GDT_V, G_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
+                        string query = $"INSERT INTO Given (InGiven, Total_Given, Given_To, ThroughBy_Given, Given_Date, Remarks_Given, GDT_V, G_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@InGiven", this.textBox35.Text.Trim());
                             cmd.Parameters.AddWithValue("@Total_Given", this.textBox39.Text.Trim());
                             cmd.Parameters.AddWithValue("@Given_To", this.textBox33.Text.Trim());
-                            cmd.Parameters.AddWithValue("@ThroughBy", this.comboBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ThroughBy_Given", this.comboBox1.Text.Trim());
                             cmd.Parameters.AddWithValue("@Given_Date", this.dateTimePicker3.Text.Trim()); 
                             cmd.Parameters.AddWithValue("@Remarks_Given", this.textBox34.Text.Trim());
                             cmd.Parameters.AddWithValue("@G_Insrt_Person", this.label249.Text.Trim());
@@ -836,13 +836,13 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Teken (InTake, Total_Take, Take_To, ThroughBy, Take_Date, Remarks_Take, TDT_V, T_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
+                        string query = $"INSERT INTO Teken (InTake, Total_Take, Take_To, ThroughBy_Take, Take_Date, Remarks_Take, TDT_V, T_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@InTake", this.textBox35.Text.Trim());
                             cmd.Parameters.AddWithValue("@Total_Take", this.textBox39.Text.Trim());
                             cmd.Parameters.AddWithValue("@Take_To", this.textBox33.Text.Trim());
-                            cmd.Parameters.AddWithValue("@ThroughBy", this.comboBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ThroughBy_Take", this.comboBox1.Text.Trim());
                             cmd.Parameters.AddWithValue("@Take_Date", this.dateTimePicker3.Text.Trim());
                             cmd.Parameters.AddWithValue("@Remarks_Take", this.textBox34.Text.Trim());
                             cmd.Parameters.AddWithValue("@T_Insrt_Person", this.label249.Text.Trim());
@@ -865,13 +865,13 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO TariffAmt (InExpense, Expense_Amount, Expense_To, ThroughBy, Expense_Date, Remarks_Expense, EDT_V, E_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
+                        string query = $"INSERT INTO TariffAmt (InExpense, Expense_Amount, Expense_To, ThroughBy_Expense, Expense_Date, Remarks_Expense, EDT_V, E_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@InExpense", this.textBox35.Text.Trim());
                             cmd.Parameters.AddWithValue("@Expense_Amount", this.textBox39.Text.Trim());
                             cmd.Parameters.AddWithValue("@Expense_To", this.textBox33.Text.Trim());
-                            cmd.Parameters.AddWithValue("@ThroughBy", this.comboBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ThroughBy_Expense", this.comboBox1.Text.Trim());
                             cmd.Parameters.AddWithValue("@Expense_Date", this.dateTimePicker3.Text.Trim());
                             cmd.Parameters.AddWithValue("@Remarks_Expense", this.textBox34.Text.Trim());
                             cmd.Parameters.AddWithValue("@E_Insrt_Person", this.label249.Text.Trim());
@@ -894,13 +894,13 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Saving (InSaving, Saving_Amount, Saving_To, ThroughBy, Saving_Date, Remarks_Saving, SDT_V, Saving_Bank, S_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?, ?)";
+                        string query = $"INSERT INTO Saving (InSaving, Saving_Amount, Saving_To, ThroughBy_Saving, Saving_Date, Remarks_Saving, SDT_V, Saving_Bank, S_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?, ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@InSaving", this.textBox35.Text.Trim());
                             cmd.Parameters.AddWithValue("@Saving_Amount", this.textBox39.Text.Trim());
                             cmd.Parameters.AddWithValue("@Saving_To", this.textBox33.Text.Trim());
-                            cmd.Parameters.AddWithValue("@ThroughBy", this.comboBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ThroughBy_Saving", this.comboBox1.Text.Trim());
                             cmd.Parameters.AddWithValue("@Saving_Date", this.dateTimePicker3.Text.Trim());
                             cmd.Parameters.AddWithValue("@Remarks_Saving", this.textBox34.Text.Trim());
                             cmd.Parameters.AddWithValue("@Saving_Bank", this.comboBox1.Text.Trim());
@@ -924,13 +924,13 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Unrated (InUnrated, Unrated_Amount, Unrated_To, ThroughBy, Unrated_Date, Remarks_Unrated, UDT_V, U_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
+                        string query = $"INSERT INTO Unrated (InUnrated, Unrated_Amount, Unrated_To, ThroughBy_Unrated, Unrated_Date, Remarks_Unrated, UDT_V, U_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@InUnrated", this.textBox35.Text.Trim());
                             cmd.Parameters.AddWithValue("@Unrated_Amount", this.textBox39.Text.Trim());
                             cmd.Parameters.AddWithValue("@Unrated_To", this.textBox33.Text.Trim());
-                            cmd.Parameters.AddWithValue("@ThroughBy", this.comboBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ThroughBy_Unrated", this.comboBox1.Text.Trim());
                             cmd.Parameters.AddWithValue("@Unrated_Date", this.dateTimePicker3.Text.Trim());
                             cmd.Parameters.AddWithValue("@Remarks_Unrated", this.textBox34.Text.Trim());
                             cmd.Parameters.AddWithValue("@U_Insrt_Person", this.label249.Text.Trim());
@@ -955,7 +955,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE Given SET Total_Given = ?, GDT_V_Date = ?, G_Updt_Person = ? WHERE InGiven = ?";
+                string query = $"UPDATE Given SET Total_Given = ?, GDT_V_Date = ?, G_Updt_Person = ? WHERE InGiven = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@TotalGiven", this.textBox40.Text.Trim());
@@ -963,6 +963,17 @@ namespace CT_App
                     command.Parameters.AddWithValue("@G_Updt_Person", this.label249.Text.Trim());
                     command.Parameters.AddWithValue("@InGiven", this.label117.Text.Trim());
                     command.ExecuteNonQuery();
+                }
+                string query2 = $"INSERT INTO Given_Updt(InGiven, Was_Given, Now_Given, Total_Given, Given_To, GDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+                using (OleDbCommand insertCommand = new OleDbCommand(query2, this.conn))
+                {
+                    insertCommand.Parameters.AddWithValue("@InGiven", this.label117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Was_Given", this.label111.Text.Trim()); 
+                    insertCommand.Parameters.AddWithValue("@Now_Given", this.textBox119.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Total_Given", this.textBox40.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Given_To", this.textBox36.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@GDT_V_Date", this.DltDate);
+                    insertCommand.ExecuteNonQuery();
                 }
                 this.conn.Close();
                 MessageBox.Show($"Successfully Given TK Update For - {this.label117.Text} ");
@@ -983,7 +994,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE Teken SET Total_Take = ?, TDT_V_Date = ?, T_Updt_Person = ? WHERE InTake = ?";
+                string query = $"UPDATE Teken SET Total_Take = ?, TDT_V_Date = ?, T_Updt_Person = ? WHERE InTake = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@TotalTake", this.textBox45.Text.Trim());
@@ -991,6 +1002,17 @@ namespace CT_App
                     command.Parameters.AddWithValue("@T_Updt_Person", this.label249.Text.Trim());
                     command.Parameters.AddWithValue("@InTake", this.label117.Text.Trim());
                     command.ExecuteNonQuery();
+                }
+                string query2 = $"INSERT INTO Teken_Updt(InTake ,Was_Take ,Now_Take ,Total_Take ,Take_To ,TDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+                using (OleDbCommand insertCommand = new OleDbCommand(query2, this.conn))
+                {
+                    insertCommand.Parameters.AddWithValue("@InTake", this.label117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Was_Take", this.label111.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Now_Take", this.textBox120.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Total_Take", this.textBox45.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Take_To", this.textBox44.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@TDT_V_Date", this.DltDate);
+                    insertCommand.ExecuteNonQuery();
                 }
                 this.conn.Close();
                 MessageBox.Show($"Successfully Teken TK Update For - {this.label117.Text} ");
@@ -1011,7 +1033,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE TariffAmt SET Expense_Amount = ?, EDT_V_Date = ?, E_Updt_Person = ? WHERE InExpense = ?";
+                string query = $"UPDATE TariffAmt SET Expense_Amount = ?, EDT_V_Date = ?, E_Updt_Person = ? WHERE InExpense = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@ExpenseAmount", this.textBox103.Text.Trim());
@@ -1019,6 +1041,17 @@ namespace CT_App
                     command.Parameters.AddWithValue("@E_Updt_Person", this.label249.Text.Trim());
                     command.Parameters.AddWithValue("@InExpense", this.label117.Text.Trim());
                     command.ExecuteNonQuery();
+                }
+                string query2 = $"INSERT INTO TariffAmt_Updt(InExpense ,Was_Expense ,Now_Expense ,Expense_Amount ,Expense_To ,EDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+                using (OleDbCommand insertCommand = new OleDbCommand(query2, this.conn))
+                {
+                    insertCommand.Parameters.AddWithValue("@InExpense", this.label117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Was_Expense", this.label111.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Now_Expense", this.textBox109.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Expense_Amount", this.textBox103.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Expense_To", this.textBox104.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@EDT_V_Date", this.DltDate);
+                    insertCommand.ExecuteNonQuery();
                 }
                 this.conn.Close();
                 MessageBox.Show($"Successfully Expance TK Update For - {this.label117.Text} ");
@@ -1040,7 +1073,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE Saving SET Saving_Amount = ?, SDT_V_Date = ?, S_Updt_Person = ? WHERE InSaving = ?";
+                string query = $"UPDATE Saving SET Saving_Amount = ?, SDT_V_Date = ?, S_Updt_Person = ? WHERE InSaving = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@SavingAmount", this.textBox43.Text.Trim());
@@ -1048,6 +1081,17 @@ namespace CT_App
                     command.Parameters.AddWithValue("@S_Updt_Person", this.label249.Text.Trim());
                     command.Parameters.AddWithValue("@InSaving", this.label117.Text.Trim());
                     command.ExecuteNonQuery();
+                }
+                string query2 = $"INSERT INTO Saving_Updt(InSaving, Was_Saving, Now_Saving, Saving_Amount, Saving_To, SDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+                using (OleDbCommand insertCommand = new OleDbCommand(query2, this.conn))
+                {
+                    insertCommand.Parameters.AddWithValue("@InSaving", this.label117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Was_Saving", this.label111.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Now_Saving", this.textBox116.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Saving_Amount", this.textBox43.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Saving_To", this.textBox105.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@SDT_V_Date", this.DltDate);
+                    insertCommand.ExecuteNonQuery();
                 }
                 this.conn.Close();
                 MessageBox.Show($"Successfully Saving TK Update For - {this.label117.Text} ");
@@ -1069,7 +1113,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE Unrated SET Unrated_Amount = ?, UDT_V_Date = ?, U_Updt_Person = ? WHERE InUnrated = ?";
+                string query = $"UPDATE Unrated SET Unrated_Amount = ?, UDT_V_Date = ?, U_Updt_Person = ? WHERE InUnrated = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@UnratedAmount", this.textBox51.Text.Trim());
@@ -1077,6 +1121,17 @@ namespace CT_App
                     command.Parameters.AddWithValue("@U_Updt_Person", this.label249.Text.Trim());
                     command.Parameters.AddWithValue("@InUnrated", this.label117.Text.Trim());
                     command.ExecuteNonQuery();
+                }
+                string query2 = $"INSERT INTO Unrated_Updt(InUnrated, Was_Unrated, Now_Unrated, Unrated_Amount, Unrated_To, UDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+                using (OleDbCommand insertCommand = new OleDbCommand(query2, this.conn))
+                {
+                    insertCommand.Parameters.AddWithValue("@InUnrated", this.label117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Was_Unrated", this.label111.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Now_Unrated", this.textBox117.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Unrated_Amount", this.textBox51.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@Unrated_To", this.textBox106.Text.Trim());
+                    insertCommand.Parameters.AddWithValue("@UDT_V_Date", this.DltDate);
+                    insertCommand.ExecuteNonQuery();
                 }
                 this.conn.Close();
                 MessageBox.Show($"Successfully Unrated TK Update For - {this.label117.Text} ");
@@ -1116,7 +1171,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Given SET GDT_V = 'DDV', DDT_V_Date = ?, G_Del_Person = ? WHERE InGiven = ?";
+                    string query = $"UPDATE Given SET GDT_V = 'DDV', DDT_V_Date = ?, G_Del_Person = ? WHERE InGiven = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@DDT_V_Date", this.DltDate);
@@ -1142,7 +1197,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Teken SET TDT_V = 'DDV', DDT_V_Date = ?, T_Del_Person = ? WHERE InTake = ?";
+                    string query = $"UPDATE Teken SET TDT_V = 'DDV', DDT_V_Date = ?, T_Del_Person = ? WHERE InTake = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@DDT_V_Date", this.DltDate);
@@ -1168,7 +1223,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE TariffAmt SET EDT_V = 'DDV', DDT_V_Date = ?, E_Del_Person = ? WHERE InExpense = ?";
+                    string query = $"UPDATE TariffAmt SET EDT_V = 'DDV', DDT_V_Date = ?, E_Del_Person = ? WHERE InExpense = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@DDT_V_Date", this.DltDate);
@@ -1194,7 +1249,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Saving SET SDT_V = 'DDV', DDT_V_Date = ?, S_Del_Person = ? WHERE InSaving = ?";
+                    string query = $"UPDATE Saving SET SDT_V = 'DDV', DDT_V_Date = ?, S_Del_Person = ? WHERE InSaving = ?";
                     using (OleDbCommand command = new OleDbCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@DDT_V_Date", this.DltDate);
@@ -1220,7 +1275,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Unrated SET UDT_V = 'DDV', DDT_V_Date = ?, U_Del_Person = ? WHERE InUnrated = ?";
+                    string query = $"UPDATE Unrated SET UDT_V = 'DDV', DDT_V_Date = ?, U_Del_Person = ? WHERE InUnrated = ?";
                     using (OleDbCommand command = new OleDbCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@DDT_V_Date", this.DltDate);
@@ -1270,7 +1325,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Daily (D_ID, D_Date, D_FPAmount, D_SPAmount, NotTaken, D_Data, D_Insrt_Person) VALUES (?, ?, ?, ?, ?, 'NTKN', ?)";
+                        string query = $"INSERT INTO Daily (D_ID, D_Date, D_FPAmount, D_SPAmount, NotTaken, D_Data, D_Insrt_Person) VALUES (?, ?, ?, ?, ?, 'NTKN', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@D_ID", this.textBox92.Text.Trim());
@@ -1302,7 +1357,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Daily SET D_FPAmount = ?, D_SPAmount = ?, NotTaken = ?, D_Date = ?, D_Updt_Person = ? WHERE D_ID = ?";
+                    string query = $"UPDATE Daily SET D_FPAmount = ?, D_SPAmount = ?, NotTaken = ?, D_Date = ?, D_Updt_Person = ? WHERE D_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@D_FPAmount", this.textBox37.Text.Trim());
@@ -1360,7 +1415,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO DailyCut (C_ID, C_Date, C_Amount, C_Insrt_Person) VALUES (?, ?, ?, ?)";
+                        string query = $"INSERT INTO DailyCut (C_ID, C_Date, C_Amount, C_Insrt_Person) VALUES (?, ?, ?, ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@C_ID", this.textBox92.Text.Trim());
@@ -1389,7 +1444,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE DailyCut SET C_Amount = ?, C_Date = ?, C_Updt_Person = ? WHERE C_ID = ?";
+                    string query = $"UPDATE DailyCut SET C_Amount = ?, C_Date = ?, C_Updt_Person = ? WHERE C_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@C_Amount", this.textBox50.Text.Trim());
@@ -1420,7 +1475,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE Daily SET D_Data = 'TKN', TakenDate = ?, D_Del_Person = ? WHERE D_ID = ?";
+                string query = $"UPDATE Daily SET D_Data = 'TKN', TakenDate = ?, D_Del_Person = ? WHERE D_ID = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@TakenDate", this.DltDate);
@@ -1460,7 +1515,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE DailySaving SET DS_Data = 'TKN', DS_InBankDate = ?, DS_Del_Person = ? WHERE DS_ID = ?";
+                string query = $"UPDATE DailySaving SET DS_Data = 'TKN', DS_InBankDate = ?, DS_Del_Person = ? WHERE DS_ID = ?";
                 using (OleDbCommand command = new OleDbCommand(query, this.conn))
                 {
                     command.Parameters.AddWithValue("@DS_InBankDate", this.DltDate);
@@ -1500,8 +1555,8 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "DELETE FROM Daily WHERE D_ID = ?";
-                string query2 = "DELETE FROM DailyCut WHERE C_ID = ?";
+                string query = $"DELETE FROM Daily WHERE D_ID = ?";
+                string query2 = $"DELETE FROM DailyCut WHERE C_ID = ?";
                 using (OleDbCommand commanda = new OleDbCommand(query, this.conn))
                 {
                     commanda.Parameters.AddWithValue("?", this.label247.Text.Trim());
@@ -1528,7 +1583,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "DELETE FROM DailySaving WHERE DS_ID = ?";
+                string query = $"DELETE FROM DailySaving WHERE DS_ID = ?";
                 using (OleDbCommand commanda = new OleDbCommand(query, this.conn))
                 {
                     commanda.Parameters.AddWithValue("@DS_ID", this.label284.Text.Trim());
@@ -1611,7 +1666,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Installment (I_ID, InsPay_Date, InsPay, Take_Data, I_Insrt_Person) VALUES (?, ?, ?, 'INS', ?)";
+                        string query = $"INSERT INTO Installment (I_ID, InsPay_Date, InsPay, Take_Data, I_Insrt_Person) VALUES (?, ?, ?, 'INS', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@I_ID", this.textBox98.Text.Trim());
@@ -1640,7 +1695,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Installment SET InsPay_Date = ?, I_Updt_Person = ? WHERE I_ID = ?";
+                    string query = $"UPDATE Installment SET InsPay_Date = ?, I_Updt_Person = ? WHERE I_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@InsPay_Date", this.dateTimePicker2.Text.Trim());
@@ -1698,7 +1753,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO Installment (I_ID, I_Date, Take_Total, Take_Anot, Take_Mine, InsPerMonth, PerMonthPay, Take_Data) VALUES (?, ?, ?, ?, ?, ?, ?, 'NPD')";
+                        string query = $"INSERT INTO Installment (I_ID, I_Date, Take_Total, Take_Anot, Take_Mine, InsPerMonth, PerMonthPay, Take_Data) VALUES (?, ?, ?, ?, ?, ?, ?, 'NPD')";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@I_ID", this.textBox99.Text.Trim());
@@ -1737,7 +1792,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE Installment SET Take_Data = 'TPD' WHERE I_ID = ?";
+                    string query = $"UPDATE Installment SET Take_Data = 'TPD' WHERE I_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@I_ID", this.label218.Text.Trim());
@@ -1807,7 +1862,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person) " +
+                    string query = $"INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person) " +
                                    "VALUES (@Mem_ID, @Mem_Date, @R_InvTK, @C_InvTK, @Giv_TK, @Ret_TK, @I_N01, @I_N02, @I_N03, @I_N04, @I_N05, @I_N06, @I_N07, @I_N08, @I_N09, @I_N10, @I_N11, @I_N12, @I_N13, @I_N14, @I_N15, @I_N16, @I_P01, @I_P02, @I_P03, @I_P04, @I_P05, @I_P06, @I_P07, @I_P08, @I_P09, @I_P10, @I_P11, @I_P12, @I_P13, @I_P14, @I_P15, @I_P16, @I_Q01, @I_Q02, @I_Q03, @I_Q04, @I_Q05, @I_Q06, @I_Q07, @I_Q08, @I_Q09, @I_Q10, @I_Q11, @I_Q12, @I_Q13, @I_Q14, @I_Q15, @I_Q16, @I_ST01, @I_ST02, @I_ST03, @I_ST04, @I_ST05, @I_ST06, @I_ST07, @I_ST08, @I_ST09, @I_ST10, @I_ST11, @I_ST12, @I_ST13, @I_ST14, @I_ST15, @I_ST16, @R_Inv01, @R_Inv02, @R_Inv03, @R_Inv04, @R_Inv05, @R_Inv06, @R_Inv07, @R_Inv08, @R_Inv09, @R_Inv10, @R_Inv11, @R_Inv12, @R_Inv13, @R_Inv14, @R_Inv15, @R_Inv16, @R_Inv17, @R_Inv18, @R_Inv19, @R_Inv20, @R_Inv21, @R_Inv22, @R_Inv23, @R_Inv24, @Mem_Insrt_Person)";
                     using (OleDbCommand insComm = new OleDbCommand(query, this.conn))
                     {
@@ -1925,7 +1980,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE MarketMemos SET R_InvTK = ?,C_InvTK = ?,Giv_TK = ?,Ret_TK = ?,I_N01 = ? ,I_N02 = ? ,I_N03 = ? ,I_N04 = ? ,I_N05 = ? ,I_N06 = ? ,I_N07 = ? ,I_N08 = ? ,I_N09 = ? ,I_N10 = ? ,I_N11 = ? ,I_N12 = ? ,I_N13 = ? ,I_N14 = ? ,I_N15 = ? ,I_N16 = ? ,I_P01 = ? ,I_P02 = ? ,I_P03 = ? ,I_P04 = ? ,I_P05 = ? ,I_P06 = ? ,I_P07 = ? ,I_P08 = ? ,I_P09 = ? ,I_P10 = ? ,I_P11 = ? ,I_P12 = ? ,I_P13 = ? ,I_P14 = ? ,I_P15 = ? ,I_P16 = ? ,I_Q01 = ? ,I_Q02 = ? ,I_Q03 = ? ,I_Q04 = ? ,I_Q05 = ? ,I_Q06 = ? ,I_Q07 = ? ,I_Q08 = ? ,I_Q09 = ? ,I_Q10 = ? ,I_Q11 = ? ,I_Q12 = ? ,I_Q13 = ? ,I_Q14 = ? ,I_Q15 = ? ,I_Q16 = ? ,I_ST01 = ? ,I_ST02 = ? ,I_ST03 = ? ,I_ST04 = ? ,I_ST05 = ? ,I_ST06 = ? ,I_ST07 = ? ,I_ST08 = ? ,I_ST09 = ? ,I_ST10 = ? ,I_ST11 = ? ,I_ST12 = ? ,I_ST13 = ? ,I_ST14 = ? ,I_ST15 = ? ,I_ST16 = ? ,R_Inv01 = ? ,R_Inv02 = ? ,R_Inv03 = ? ,R_Inv04 = ? ,R_Inv05 = ? ,R_Inv06 = ? ,R_Inv07 = ? ,R_Inv08 = ? ,R_Inv09 = ? ,R_Inv10 = ? ,R_Inv11 = ? ,R_Inv12 = ? ,R_Inv13 = ? ,R_Inv14 = ? ,R_Inv15 = ? ,R_Inv16 = ? ,R_Inv17 = ? ,R_Inv18 = ? ,R_Inv19 = ? ,R_Inv20 = ? ,R_Inv21 = ? ,R_Inv22 = ? ,R_Inv23 = ? ,R_Inv24 = ? ,Mem_Updt_Person = ? WHERE Mem_ID = ?";
+                    string query = $"UPDATE MarketMemos SET R_InvTK = ?,C_InvTK = ?,Giv_TK = ?,Ret_TK = ?,I_N01 = ? ,I_N02 = ? ,I_N03 = ? ,I_N04 = ? ,I_N05 = ? ,I_N06 = ? ,I_N07 = ? ,I_N08 = ? ,I_N09 = ? ,I_N10 = ? ,I_N11 = ? ,I_N12 = ? ,I_N13 = ? ,I_N14 = ? ,I_N15 = ? ,I_N16 = ? ,I_P01 = ? ,I_P02 = ? ,I_P03 = ? ,I_P04 = ? ,I_P05 = ? ,I_P06 = ? ,I_P07 = ? ,I_P08 = ? ,I_P09 = ? ,I_P10 = ? ,I_P11 = ? ,I_P12 = ? ,I_P13 = ? ,I_P14 = ? ,I_P15 = ? ,I_P16 = ? ,I_Q01 = ? ,I_Q02 = ? ,I_Q03 = ? ,I_Q04 = ? ,I_Q05 = ? ,I_Q06 = ? ,I_Q07 = ? ,I_Q08 = ? ,I_Q09 = ? ,I_Q10 = ? ,I_Q11 = ? ,I_Q12 = ? ,I_Q13 = ? ,I_Q14 = ? ,I_Q15 = ? ,I_Q16 = ? ,I_ST01 = ? ,I_ST02 = ? ,I_ST03 = ? ,I_ST04 = ? ,I_ST05 = ? ,I_ST06 = ? ,I_ST07 = ? ,I_ST08 = ? ,I_ST09 = ? ,I_ST10 = ? ,I_ST11 = ? ,I_ST12 = ? ,I_ST13 = ? ,I_ST14 = ? ,I_ST15 = ? ,I_ST16 = ? ,R_Inv01 = ? ,R_Inv02 = ? ,R_Inv03 = ? ,R_Inv04 = ? ,R_Inv05 = ? ,R_Inv06 = ? ,R_Inv07 = ? ,R_Inv08 = ? ,R_Inv09 = ? ,R_Inv10 = ? ,R_Inv11 = ? ,R_Inv12 = ? ,R_Inv13 = ? ,R_Inv14 = ? ,R_Inv15 = ? ,R_Inv16 = ? ,R_Inv17 = ? ,R_Inv18 = ? ,R_Inv19 = ? ,R_Inv20 = ? ,R_Inv21 = ? ,R_Inv22 = ? ,R_Inv23 = ? ,R_Inv24 = ? ,Mem_Updt_Person = ? WHERE Mem_ID = ?";
                     OleDbCommand updtComm = new OleDbCommand(query, this.conn);
                     updtComm.Parameters.AddWithValue("@R_InvTK", this.textBox90.Text.Trim());
                     updtComm.Parameters.AddWithValue("@C_InvTK", this.label10.Text.Trim());
@@ -2040,16 +2095,16 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string updateQuery = "UPDATE MarketMemos SET Mem_Del_Person = ? WHERE Mem_ID = ?";
+                string updateQuery = $"UPDATE MarketMemos SET Mem_Del_Person = ? WHERE Mem_ID = ?";
                 OleDbCommand commandUpdtPerson = new OleDbCommand(updateQuery, this.conn);
                 commandUpdtPerson.Parameters.AddWithValue("@Mem_Del_Person", this.label249.Text.Trim());
                 commandUpdtPerson.Parameters.AddWithValue("@Mem_ID", this.label224.Text.Trim());
                 commandUpdtPerson.ExecuteNonQuery();
-                string insertQuery = "INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = ?";
+                string insertQuery = $"INSERT INTO MarketMemosDel SELECT * FROM MarketMemos WHERE Mem_ID = ?";
                 OleDbCommand sendData = new OleDbCommand(insertQuery, this.conn);
                 sendData.Parameters.AddWithValue("@Mem_ID", this.label224.Text.Trim());
                 sendData.ExecuteNonQuery();
-                string deleteQuery = "DELETE FROM MarketMemos WHERE Mem_ID = ?";
+                string deleteQuery = $"DELETE FROM MarketMemos WHERE Mem_ID = ?";
                 OleDbCommand sendDData = new OleDbCommand(deleteQuery, this.conn);
                 sendDData.Parameters.AddWithValue("@Mem_ID", this.label224.Text.Trim());
                 sendDData.ExecuteNonQuery();
@@ -2081,7 +2136,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "INSERT INTO BikeInfo (B_ID, B_Chng_Date, B_KM_ODO, B_Mobile_Go, B_Next_ODO, B_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?)";
+                    string query = $"INSERT INTO BikeInfo (B_ID, B_Chng_Date, B_KM_ODO, B_Mobile_Go, B_Next_ODO, B_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?)";
                     using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                     {
                         cmd.Parameters.AddWithValue("@B_ID", this.textBox98.Text.Trim());
@@ -2130,7 +2185,7 @@ namespace CT_App
                 pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat); ;//(ms, pictureBox1.Image.RawFormat);   (ms, System.Drawing.Imaging.ImageFormat.Png);
                 byte[] imageBytes = ms.ToArray();
                 this.conn.Open();
-                string query = "INSERT INTO Images (img_ID, ImageData) VALUES (?, ?)";
+                string query = $"INSERT INTO Images (img_ID, ImageData) VALUES (?, ?)";
                 using (OleDbCommand sendData = new OleDbCommand(query, this.conn))
                 {
                     sendData.Parameters.AddWithValue("@img_ID", this.DltDate); // Assuming this.DltDate is the image ID
@@ -2176,7 +2231,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO DailyAnt (DA_ID, DA_Date, DA_FPAmount, DA_SPAmount, NotTaken, DA_Data, DA_Insrt_Person) VALUES (?, ?, ?, ?, ?, 'NTKN', ?)";
+                        string query = $"INSERT INTO DailyAnt (DA_ID, DA_Date, DA_FPAmount, DA_SPAmount, NotTaken, DA_Data, DA_Insrt_Person) VALUES (?, ?, ?, ?, ?, 'NTKN', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, conn))
                         {
                             cmd.Parameters.AddWithValue("@DA_ID", textBox132.Text.Trim());
@@ -2208,7 +2263,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE DailyAnt SET DA_FPAmount = ?, DA_SPAmount = ?, NotTaken = ?, DA_Date = ?, DA_Updt_Person = ? WHERE DA_ID = ?";
+                    string query = $"UPDATE DailyAnt SET DA_FPAmount = ?, DA_SPAmount = ?, NotTaken = ?, DA_Date = ?, DA_Updt_Person = ? WHERE DA_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@DA_FPAmount", textBox133.Text.Trim());
@@ -2243,7 +2298,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "UPDATE DailyAnt SET DA_Data = 'TKN', TakenDate = ?, DA_Del_Person = ? WHERE DA_ID = ?";
+                string query = $"UPDATE DailyAnt SET DA_Data = 'TKN', TakenDate = ?, DA_Del_Person = ? WHERE DA_ID = ?";
                 using (OleDbCommand command = new OleDbCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@TakenDate", DltDate);
@@ -2282,7 +2337,7 @@ namespace CT_App
             try
             {
                 this.conn.Open();
-                string query = "DELETE FROM DailyAnt WHERE DA_ID = ?";
+                string query = $"DELETE FROM DailyAnt WHERE DA_ID = ?";
                 using (OleDbCommand command = new OleDbCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@DA_ID", label268.Text.Trim());
@@ -2327,7 +2382,7 @@ namespace CT_App
                     try
                     {
                         this.conn.Open();
-                        string query = "INSERT INTO DailySaving (DS_ID, DS_Date, DS_FPAmount, DS_SPAmount, DS_TPAmount, NotTaken, DS_Data, DS_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NTKN', ?)";
+                        string query = $"INSERT INTO DailySaving (DS_ID, DS_Date, DS_FPAmount, DS_SPAmount, DS_TPAmount, NotTaken, DS_Data, DS_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NTKN', ?)";
                         using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
                         {
                             cmd.Parameters.AddWithValue("@DS_ID", this.textBox137.Text.Trim());
@@ -2360,7 +2415,7 @@ namespace CT_App
                 try
                 {
                     this.conn.Open();
-                    string query = "UPDATE DailySaving SET DS_FPAmount = ?, DS_Date = ?, DS_SPAmount = ?, DS_TPAmount = ?, NotTaken = ?, DS_Updt_Person = ? WHERE DS_ID = ?";
+                    string query = $"UPDATE DailySaving SET DS_FPAmount = ?, DS_Date = ?, DS_SPAmount = ?, DS_TPAmount = ?, NotTaken = ?, DS_Updt_Person = ? WHERE DS_ID = ?";
                     using (OleDbCommand command = new OleDbCommand(query, this.conn))
                     {
                         command.Parameters.AddWithValue("@DS_FPAmount", this.textBox131.Text.Trim());
@@ -2410,6 +2465,11 @@ namespace CT_App
             this.expenseSync();
             this.savingSync();
             this.unratedSync();
+            this.givenUpdtSync();
+            this.tekenUpdtSync();
+            this.expenseUpdtSync();
+            this.savingUpdtSync();
+            this.unratedUpdtSync();
         }
         private void button29_Click(object sender, EventArgs e)
         {
@@ -2422,7 +2482,7 @@ namespace CT_App
             try
             {
                 string insCom = "BEGIN " +
-                                "DELETE FROM BikeInfo; DELETE FROM Daily; DELETE FROM DailyAnt; DELETE FROM DailyCut; DELETE FROM DailySaving; DELETE FROM TariffAmt; DELETE FROM Given; DELETE FROM Images; DELETE FROM Installment; DELETE FROM Market; DELETE FROM MarketMemos; DELETE FROM MarketMemosDel; DELETE FROM Saving; DELETE FROM Teken; DELETE FROM Unrated; " +
+                                    $"DELETE FROM BikeInfo; DELETE FROM Daily; DELETE FROM DailyAnt; DELETE FROM DailyCut; DELETE FROM DailySaving; DELETE FROM TariffAmt; DELETE FROM Given; DELETE FROM Images; DELETE FROM Installment; DELETE FROM Market; DELETE FROM MarketMemos; DELETE FROM MarketMemosDel; DELETE FROM Saving; DELETE FROM Teken; DELETE FROM Unrated; " +
                                 "END;";
                 using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                 {
@@ -2545,11 +2605,9 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Market WHERE M_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Market (M_ID,M_Date,M_Amount,M_Insrt_Person,M_Updt_Person,M_Del_Person) VALUES (?, ?, ?, ?, ?, ?) " +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Market WHERE M_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Market (M_ID,M_Date,M_Amount,M_Insrt_Person,M_Updt_Person,M_Del_Person) VALUES (?, ?, ?, ?, ?, ?) " +
                                 "END ";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2560,6 +2618,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Market') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Market (M_ID nvarchar(250) NULL, M_Date datetime NULL, M_Amount float, M_Insrt_Person nvarchar(250), M_Updt_Person nvarchar(250), M_Del_Person nvarchar(250)) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -2588,12 +2654,10 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM MarketMemos WHERE Mem_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO MarketMemos (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
-                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM MarketMemos WHERE Mem_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO MarketMemos (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
+                                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
                                 "END ";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2604,6 +2668,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'MarketMemos') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE MarketMemos (Mem_ID nvarchar](250) NULL,Mem_Date datetime NULL,R_InvTK float NULL,C_InvTK float NULL,Giv_TK float NULL,Ret_TK float NULL,I_N01 nvarchar(250) NULL,I_N02 nvarchar(250) NULL,I_N03 nvarchar(250) NULL,I_N04 nvarchar(250) NULL,I_N05 nvarchar(250) NULL,I_N06 nvarchar(250) NULL,I_N07 nvarchar(250) NULL,I_N08 nvarchar(250) NULL,I_N09 nvarchar(250) NULL,I_N10 nvarchar(250) NULL,I_N11 nvarchar(250) NULL,I_N12 nvarchar(250) NULL,I_N13 nvarchar(250) NULL,I_N14 nvarchar(250) NULL,I_N15 nvarchar(250) NULL,I_N16 nvarchar(250) NULL,I_P01 float NULL,I_P02 float NULL,I_P03 float NULL,I_P04 float NULL,I_P05 float NULL,I_P06 float NULL,I_P07 float NULL,I_P08 float NULL,I_P09 float NULL,I_P10 float NULL,I_P11 float NULL,I_P12 float NULL,I_P13 float NULL,I_P14 float NULL,I_P15 float NULL,I_P16 float NULL,I_Q01 float NULL,I_Q02 float NULL,I_Q03 float NULL,I_Q04 float NULL,I_Q05 float NULL,I_Q06 float NULL,I_Q07 float NULL,I_Q08 float NULL,I_Q09 float NULL,I_Q10 float NULL,I_Q11 float NULL,I_Q12 float NULL,I_Q13 float NULL,I_Q14 float NULL,I_Q15 float NULL,I_Q16 float NULL,I_ST01 float NULL,I_ST02 float NULL,I_ST03 float NULL,I_ST04 float NULL,I_ST05 float NULL,I_ST06 float NULL,I_ST07 float NULL,I_ST08 float NULL,I_ST09 float NULL,I_ST10 float NULL,I_ST11 float NULL,I_ST12 float NULL,I_ST13 float NULL,I_ST14 float NULL,I_ST15 float NULL,I_ST16 float NULL,R_Inv01 float NULL,R_Inv02 float NULL,R_Inv03 float NULL,R_Inv04 float NULL,R_Inv05 float NULL,R_Inv06 float NULL,R_Inv07 float NULL,R_Inv08 float NULL,R_Inv09 float NULL,R_Inv10 float NULL,R_Inv11 float NULL,R_Inv12 float NULL,R_Inv13 float NULL,R_Inv14 float NULL,R_Inv15 float NULL,R_Inv16 float NULL,R_Inv17 float NULL,R_Inv18 float NULL,R_Inv19 float NULL,R_Inv20 float NULL,R_Inv21 float NULL,R_Inv22 float NULL,R_Inv23 float NULL,R_Inv24 float NULL,Mem_Insrt_Person nvarchar(250) NULL,Mem_Updt_Person nvarchar(250) NULL,Mem_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -2723,12 +2795,10 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM MarketMemosDel WHERE Mem_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO MarketMemosDel (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
-                                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM MarketMemosDel WHERE Mem_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO MarketMemosDel (Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person,Mem_Updt_Person,Mem_Del_Person) " +
+                                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
                                 "END ";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2739,6 +2809,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'MarketMemosDel') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE MarketMemosDel (Mem_ID nvarchar](250) NULL,Mem_Date datetime NULL,R_InvTK float NULL,C_InvTK float NULL,Giv_TK float NULL,Ret_TK float NULL,I_N01 nvarchar(250) NULL,I_N02 nvarchar(250) NULL,I_N03 nvarchar(250) NULL,I_N04 nvarchar(250) NULL,I_N05 nvarchar(250) NULL,I_N06 nvarchar(250) NULL,I_N07 nvarchar(250) NULL,I_N08 nvarchar(250) NULL,I_N09 nvarchar(250) NULL,I_N10 nvarchar(250) NULL,I_N11 nvarchar(250) NULL,I_N12 nvarchar(250) NULL,I_N13 nvarchar(250) NULL,I_N14 nvarchar(250) NULL,I_N15 nvarchar(250) NULL,I_N16 nvarchar(250) NULL,I_P01 float NULL,I_P02 float NULL,I_P03 float NULL,I_P04 float NULL,I_P05 float NULL,I_P06 float NULL,I_P07 float NULL,I_P08 float NULL,I_P09 float NULL,I_P10 float NULL,I_P11 float NULL,I_P12 float NULL,I_P13 float NULL,I_P14 float NULL,I_P15 float NULL,I_P16 float NULL,I_Q01 float NULL,I_Q02 float NULL,I_Q03 float NULL,I_Q04 float NULL,I_Q05 float NULL,I_Q06 float NULL,I_Q07 float NULL,I_Q08 float NULL,I_Q09 float NULL,I_Q10 float NULL,I_Q11 float NULL,I_Q12 float NULL,I_Q13 float NULL,I_Q14 float NULL,I_Q15 float NULL,I_Q16 float NULL,I_ST01 float NULL,I_ST02 float NULL,I_ST03 float NULL,I_ST04 float NULL,I_ST05 float NULL,I_ST06 float NULL,I_ST07 float NULL,I_ST08 float NULL,I_ST09 float NULL,I_ST10 float NULL,I_ST11 float NULL,I_ST12 float NULL,I_ST13 float NULL,I_ST14 float NULL,I_ST15 float NULL,I_ST16 float NULL,R_Inv01 float NULL,R_Inv02 float NULL,R_Inv03 float NULL,R_Inv04 float NULL,R_Inv05 float NULL,R_Inv06 float NULL,R_Inv07 float NULL,R_Inv08 float NULL,R_Inv09 float NULL,R_Inv10 float NULL,R_Inv11 float NULL,R_Inv12 float NULL,R_Inv13 float NULL,R_Inv14 float NULL,R_Inv15 float NULL,R_Inv16 float NULL,R_Inv17 float NULL,R_Inv18 float NULL,R_Inv19 float NULL,R_Inv20 float NULL,R_Inv21 float NULL,R_Inv22 float NULL,R_Inv23 float NULL,R_Inv24 float NULL,Mem_Insrt_Person nvarchar(250) NULL,Mem_Updt_Person nvarchar(250) NULL,Mem_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -2854,16 +2932,13 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
-
         private void dailySavingSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM DailySaving WHERE DS_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO DailySaving (DS_ID,DS_Date,DS_FPAmount,DS_SPAmount,DS_TPAmount,NotTaken,DS_Data,DS_InBankDate,DS_Insrt_Person,DS_Updt_Person,DS_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM DailySaving WHERE DS_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO DailySaving (DS_ID,DS_Date,DS_FPAmount,DS_SPAmount,DS_TPAmount,NotTaken,DS_Data,DS_InBankDate,DS_Insrt_Person,DS_Updt_Person,DS_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2874,6 +2949,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'DailySaving') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE DailySaving (DS_ID nvarchar(250) NULL,DS_Date datetime NULL,DS_FPAmount float NULL,DS_SPAmount float NULL,DS_TPAmount float NULL,NotTaken nvarchar(250) NULL,DS_Data nvarchar(250) NULL,DS_InBankDate datetime NULL,DS_Insrt_Person nvarchar(250) NULL,DS_Updt_Person nvarchar(250) NULL,DS_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -2907,11 +2990,9 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Installment WHERE I_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Installment (I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,Take_Data,InsPerMonth,PerMonthPay,InsPay,InsPay_Date,I_Insrt_Person,I_Updt_Person,I_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Installment WHERE I_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Installment (I_ID,I_Date,Take_Total,Take_Anot,Take_Mine,Take_Data,InsPerMonth,PerMonthPay,InsPay,InsPay_Date,I_Insrt_Person,I_Updt_Person,I_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2922,6 +3003,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Installment') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Installment (I_ID nvarchar(250) NULL,I_Date datetime NULL,Take_Total float NULL,Take_Anot float NULL,Take_Mine float NULL,Take_Data nvarchar(250) NULL,InsPerMonth float NULL,PerMonthPay float NULL,InsPay float NULL,InsPay_Date datetime NULL,I_Insrt_Person nvarchar(250) NULL,I_Updt_Person nvarchar(250) NULL,I_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -2968,11 +3057,9 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM BikeInfo WHERE B_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO BikeInfo (B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person,B_Updt_Person) VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM BikeInfo WHERE B_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO BikeInfo (B_ID,B_Chng_Date,B_KM_ODO,B_Mobile_Go,B_Next_ODO,B_Insrt_Person,B_Updt_Person) VALUES (?, ?, ?, ?, ?, ?, ?) " +
                                 "END ";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -2983,6 +3070,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'BikeInfo') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE BikeInfo (B_ID nvarchar(250) NULL,B_Chng_Date datetime NULL,B_KM_ODO nvarchar(250) NULL,B_Mobile_Go nvarchar(250) NULL,B_Next_ODO nvarchar(250) NULL,B_Insrt_Person nvarchar(250) NULL,B_Updt_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3008,16 +3103,13 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
-
         private void givenSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Given WHERE InGiven = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Given (InGiven,Total_Given,Given_To,ThroughBy,Given_Date,Remarks_Given,GDT_V,GDT_V_Date,DDT_V_Date,G_Insrt_Person,G_Updt_Person,G_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Given WHERE InGiven = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Given (InGiven,Total_Given,Given_To,ThroughBy_Given,Given_Date,Remarks_Given,GDT_V,GDT_V_Date,DDT_V_Date,G_Insrt_Person,G_Updt_Person,G_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3028,6 +3120,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Given') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Given (InGiven nvarchar(250) NULL,Total_Given float NULL,Given_To nvarchar(250) NULL,ThroughBy_Given nvarchar(250) NULL,Given_Date datetime NULL,Remarks_Given nvarchar(250) NULL,GDT_V nvarchar(250) NULL,GDT_V_Date datetime NULL,DDT_V_Date datetime NULL,G_Insrt_Person nvarchar(250) NULL,G_Updt_Person nvarchar(250) NULL,G_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3036,7 +3136,7 @@ namespace CT_App
                                 sqlInsComm.Parameters.AddWithValue("?", reader["InGiven"]); // For IF NOT EXISTS
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Total_Given"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Given_To"]);
-                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy_Given"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Given_Date"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Given"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["GDT_V"]);
@@ -3058,15 +3158,63 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
+        private void givenUpdtSync()
+        {
+            try
+            {
+                string insCom = "IF NOT EXISTS (SELECT * FROM GivenUpdt WHERE InGiven = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO GivenUpdt (InGiven,Was_Given,Now_Given,Total_Given,Given_To,GDT_V_Date) VALUES (?,?,?,?,?,?)" +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM GivenUpdt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                    {
+                        sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'GivenUpdt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE GivenUpdt (InGiven nvarchar(250) NULL,Was_Given float NULL,Now_Given float NULL,Total_Given float NULL,Given_To nvarchar(250) NULL,GDT_V_Date datetime NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InGiven"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InGiven"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Was_Given"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Now_Given"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Total_Given"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Given_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["GDT_V_Date"]);
+                                
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
         private void tekenSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Teken WHERE InTake = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Teken (InTake,Total_Take,Take_To,ThroughBy,Take_Date,Remarks_Take,TDT_V,TDT_V_Date,DDT_V_Date,T_Insrt_Person,T_Updt_Person,T_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Teken WHERE InTake = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Teken (InTake,Total_Take,Take_To,ThroughBy_Take,Take_Date,Remarks_Take,TDT_V,TDT_V_Date,DDT_V_Date,T_Insrt_Person,T_Updt_Person,T_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3077,6 +3225,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Teken') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Teken (InTake nvarchar(250) NULL,Total_Take float NULL,Take_To nvarchar(250) NULL,ThroughBy_Take nvarchar(250) NULL,Take_Date datetime NULL,Remarks_Take nvarchar(250) NULL,TDT_V nvarchar(250) NULL,TDT_V_Date datetime NULL,DDT_V_Date datetime NULL,T_Insrt_Person nvarchar(250) NULL,T_Updt_Person nvarchar(250) NULL,T_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3085,7 +3241,7 @@ namespace CT_App
                                 sqlInsComm.Parameters.AddWithValue("?", reader["InTake"]); // For IF NOT EXISTS
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Total_Take"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Take_To"]);
-                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy_Take"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Take_Date"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Take"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["TDT_V"]);
@@ -3107,15 +3263,62 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
+        private void tekenUpdtSync()
+        {
+            try
+            {
+                string insCom = "IF NOT EXISTS (SELECT * FROM TekenUpdt WHERE InTake = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO TekenUpdt (InTake,Was_Take,Now_Take,Total_Take,Take_To,TDT_V_Date) VALUES (?,?,?,?,?,?)" +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM TekenUpdt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                    {
+                        sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TekenUpdt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE TekenUpdt (InTake nvarchar(250) NULL,Was_Take float NULL,Now_Take float NULL,Total_Take float NULL,Take_To nvarchar(250) NULL,TDT_V_Date datetime NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InTake"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InTake"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Was_Take"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Now_Take"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Total_Take"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Take_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["TDT_V_Date"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
         private void expenseSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM TariffAmt WHERE InExpense = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO TariffAmt (InExpense,Expense_Amount,Expense_To,ThroughBy,Expense_Date,Remarks_Expense,EDT_V,EDT_V_Date,DDT_V_Date,E_Insrt_Person,E_Updt_Person,E_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM TariffAmt WHERE InExpense = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO TariffAmt (InExpense,Expense_Amount,Expense_To,ThroughBy_Expense,Expense_Date,Remarks_Expense,EDT_V,EDT_V_Date,DDT_V_Date,E_Insrt_Person,E_Updt_Person,E_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3126,6 +3329,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TariffAmt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE TariffAmt (InExpense nvarchar(250) NULL,Expense_Amount float NULL,Expense_To nvarchar(250) NULL,ThroughBy_Expense nvarchar(250) NULL,Expense_Date datetime NULL,Remarks_Expense nvarchar(250) NULL,EDT_V nvarchar(250) NULL,EDT_V_Date datetime NULL,DDT_V_Date datetime NULL,E_Insrt_Person nvarchar(250) NULL,E_Updt_Person nvarchar(250) NULL,E_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3134,7 +3345,7 @@ namespace CT_App
                                 sqlInsComm.Parameters.AddWithValue("?", reader["InExpense"]); // For IF NOT EXISTS
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Expense_Amount"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Expense_To"]);
-                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy_Expense"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Expense_Date"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Expense"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["EDT_V"]);
@@ -3156,15 +3367,62 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
+        private void expenseUpdtSync()
+        {
+            try
+            {
+                string insCom = "IF NOT EXISTS (SELECT * FROM TariffAmtUpdt WHERE InExpense = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO TariffAmtUpdt (InExpense,Was_Expense,Now_Expense,Expense_Amount,Expense_To,EDT_V_Date) VALUES (?,?,?,?,?,?)" +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM TariffAmtUpdt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                    {
+                        sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TariffAmtUpdt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE TariffAmtUpdt (InExpense nvarchar(250) NULL,Was_Expense float NULL,Now_Expense float NULL,Expense_Amount float NULL,Expense_To nvarchar(250) NULL,EDT_V_Date datetime NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InExpense"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InExpense"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Was_Expense"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Now_Expense"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Expense_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Expense_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["EDT_V_Date"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
         private void savingSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Saving WHERE InSaving = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Saving (InSaving,Saving_Amount,Saving_To,ThroughBy,Saving_Date,Remarks_Saving,SDT_V,SDT_V_Date,DDT_V_Date,Saving_Bank,S_Insrt_Person,S_Updt_Person,S_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Saving WHERE InSaving = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Saving (InSaving,Saving_Amount,Saving_To,ThroughBy_Saving,Saving_Date,Remarks_Saving,SDT_V,SDT_V_Date,DDT_V_Date,Saving_Bank,S_Insrt_Person,S_Updt_Person,S_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3175,6 +3433,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Saving') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Saving (InSaving nvarchar(250) NULL,Saving_Amount float NULL,Saving_To nvarchar(250) NULL,ThroughBy_Saving nvarchar(250) NULL,Saving_Date datetime NULL,Remarks_Saving nvarchar(250) NULL,SDT_V nvarchar(250) NULL,SDT_V_Date datetime NULL,DDT_V_Date datetime NULL,Saving_Bank nvarchar(250) NULL,S_Insrt_Person nvarchar(250) NULL,S_Updt_Person nvarchar(250) NULL,S_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3183,7 +3449,7 @@ namespace CT_App
                                 sqlInsComm.Parameters.AddWithValue("?", reader["InSaving"]); // For IF NOT EXISTS
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Amount"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Saving_To"]);
-                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy_Saving"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Date"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Saving"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["SDT_V"]);
@@ -3206,15 +3472,62 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
+        private void savingUpdtSync()
+        {
+            try
+            {
+                string insCom = "IF NOT EXISTS (SELECT * FROM SavingUpdt WHERE InSaving = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO SavingUpdt (InSaving,Was_Saving,Now_Saving,Saving_Amount,Saving_To,SDT_V_Date) VALUES (?,?,?,?,?,?)" +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM SavingUpdt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                    {
+                        sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'SavingUpdt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE SavingUpdt (InSaving nvarchar(250) NULL,Was_Saving float NULL,Now_Saving float NULL,Saving_Amount float NULL,Saving_To nvarchar(250) NULL,SDT_V_Date datetime NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InSaving"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InSaving"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Was_Saving"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Now_Saving"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Saving_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["SDT_V_Date"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
         private void unratedSync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Unrated WHERE InUnrated = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Unrated (InUnrated,Unrated_Amount,Unrated_To,ThroughBy,Unrated_Date,Remarks_Unrated,UDT_V,UDT_V_Date,DDT_V_Date,U_Insrt_Person,U_Updt_Person,U_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Unrated WHERE InUnrated = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Unrated (InUnrated,Unrated_Amount,Unrated_To,ThroughBy_Unrated,Unrated_Date,Remarks_Unrated,UDT_V,UDT_V_Date,DDT_V_Date,U_Insrt_Person,U_Updt_Person,U_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3225,6 +3538,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Unrated') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Unrated (InUnrated nvarchar(250) NULL,Unrated_Amount float NULL,Unrated_To nvarchar(250) NULL,ThroughBy_Unrated nvarchar(250) NULL,Unrated_Date datetime NULL,Remarks_Unrated nvarchar(250) NULL,UDT_V nvarchar(250) NULL,UDT_V_Date datetime NULL,DDT_V_Date datetime NULL,U_Insrt_Person nvarchar(250) NULL,U_Updt_Person nvarchar(250) NULL,U_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3233,7 +3554,7 @@ namespace CT_App
                                 sqlInsComm.Parameters.AddWithValue("?", reader["InUnrated"]); // For IF NOT EXISTS
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_Amount"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_To"]);
-                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["ThroughBy_Unrated"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_Date"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["Remarks_Unrated"]);
                                 sqlInsComm.Parameters.AddWithValue("?", reader["UDT_V"]);
@@ -3255,16 +3576,62 @@ namespace CT_App
                 MessageBox.Show($"ERROR: {ex.Message}");
             }
         }
-
+        private void unratedUpdtSync()
+        {
+            try
+            {
+                string insCom = "IF NOT EXISTS (SELECT * FROM UnratedUpdt WHERE InUnrated = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO UnratedUpdt (InUnrated,Was_Unrated,Now_Unrated,Unrated_Amount,Unrated_To,UDT_V_Date) VALUES (?,?,?,?,?,?)" +
+                                "END";
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    string selCom = "SELECT * FROM UnratedUpdt";
+                    OleDbCommand command = new OleDbCommand(selCom, accConn);
+                    OleDbDataReader reader = command.ExecuteReader();
+                    using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                    {
+                        sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'UnratedUpdt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE UnratedUpdt (InUnrated nvarchar(250) NULL,Was_Unrated float NULL,Now_Unrated float NULL,Unrated_Amount float NULL,Unrated_To nvarchar(250) NULL,UDT_V_Date datetime NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
+                        while (reader.Read())
+                        {
+                            using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                            {
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InUnrated"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["InUnrated"]); // For IF NOT EXISTS
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Was_Unrated"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Now_Unrated"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_Amount"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["Unrated_To"]);
+                                sqlInsComm.Parameters.AddWithValue("?", reader["UDT_V_Date"]);
+                                sqlInsComm.ExecuteNonQuery();
+                            }
+                        }
+                        sqlConn.Close();
+                    }
+                    accConn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: {ex.Message}");
+            }
+        }
         private void dailySync()
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM Daily WHERE D_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO Daily (D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,TakenDate,D_Insrt_Person,D_Updt_Person,D_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM Daily WHERE D_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Daily (D_ID,D_Date,D_FPAmount,D_SPAmount,NotTaken,D_Data,TakenDate,D_Insrt_Person,D_Updt_Person,D_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3275,6 +3642,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Daily') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE Daily (D_ID nvarchar(250) NULL,D_Date datetime NULL,D_FPAmount float NULL,D_SPAmount float NULL,NotTaken float NULL,D_Data nvarchar(250) NULL,TakenDate datetime NULL,D_Insrt_Person nvarchar(250) NULL,D_Updt_Person nvarchar(250) NULL,D_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3307,11 +3682,9 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM DailyCut WHERE C_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO DailyCut (C_ID,C_Date,C_Amount,C_Insrt_Person,C_Updt_Person,C_Del_Person) VALUES (?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM DailyCut WHERE C_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO DailyCut (C_ID,C_Date,C_Amount,C_Insrt_Person,C_Updt_Person,C_Del_Person) VALUES (?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3322,6 +3695,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'DailyCut') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE DailyCut (C_ID nvarchar(250) NULL,C_Date datetime NULL,C_Amount float NULL,C_Insrt_Person nvarchar(250) NULL,C_Updt_Person nvarchar(250) NULL,C_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3350,11 +3731,9 @@ namespace CT_App
         {
             try
             {
-                string insCom = "BEGIN " +
-                                "IF NOT EXISTS (SELECT * FROM DailyAnt WHERE DA_ID = ?) " +
-                                    "BEGIN " +
-                                        "INSERT INTO DailyAnt (DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,TakenDate,DA_Insrt_Person,DA_Updt_Person,DA_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?)" +
-                                    "END " +
+                string insCom = "IF NOT EXISTS (SELECT * FROM DailyAnt WHERE DA_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO DailyAnt (DA_ID,DA_Date,DA_FPAmount,DA_SPAmount,NotTaken,DA_Data,TakenDate,DA_Insrt_Person,DA_Updt_Person,DA_Del_Person) VALUES (?,?,?,?,?,?,?,?,?,?)" +
                                 "END";
                 using (OleDbConnection accConn = new OleDbConnection(connAcc))
                 {
@@ -3365,6 +3744,14 @@ namespace CT_App
                     using (OdbcConnection sqlConn = new OdbcConnection(connSql))
                     {
                         sqlConn.Open();
+                        string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'DailyAnt') " +
+                                                 "BEGIN " +
+                                                    $"CREATE TABLE DailyAnt (DA_ID nvarchar(250) NULL,DA_Date datetime NULL,DA_FPAmount float NULL,DA_SPAmount float NULL,NotTaken float NULL,DA_Data nvarchar(250) NULL,TakenDate datetime NULL,DA_Insrt_Person nvarchar(250) NULL,DA_Updt_Person nvarchar(250) NULL,DA_Del_Person nvarchar(250) NULL) " +
+                                                 "END";
+                        using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                        {
+                            checkTableCommand.ExecuteNonQuery();
+                        }
                         while (reader.Read())
                         {
                             using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
@@ -3395,7 +3782,7 @@ namespace CT_App
         }
         private void imagesSync()
         {
-
+            //Do it later
         }
 
         //-----------------------------------------------------------------------
@@ -3682,7 +4069,7 @@ namespace CT_App
                         this.textBox48.Text = dataTable.Rows[0][5].ToString();
                         this.textBox49.Text = dataTable.Rows[0][6].ToString();
                         this.textBox122.Text = dataTable.Rows[0][8].ToString();
-                        this.label243.Text = dataTable.Rows[0][9].ToString();
+                        this.label243.Text = dataTable.Rows[0][10].ToString();
                         this.button7.Visible = true;
                         this.button7.Text = "Delete S.";
                         this.textBox116.Focus();
@@ -4117,7 +4504,7 @@ namespace CT_App
                     }
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string querygv = "SELECT TOP 500 Given_To as Name, Total_Given as GAmount, Given_Date as GDate, ThroughBy as GUsing, GDT_V_Date as LUpDT, Remarks_Given as Remarks FROM Given WHERE Given_To LIKE ? AND GDT_V = 'NDV' ORDER BY Given_Date DESC";
+                    string querygv = "SELECT TOP 500 Given_To as Name, Total_Given as GAmount, Given_Date as GDate, ThroughBy_Given as GUsing, GDT_V_Date as LUpDT, Remarks_Given as Remarks FROM Given WHERE Given_To LIKE ? AND GDT_V = 'NDV' ORDER BY Given_Date DESC";
                     using (OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(querygv, this.conn))
                     {
                         dataAdaptergv.SelectCommand.Parameters.AddWithValue("@GivenTo", "%" + this.textBox107.Text.Trim() + "%");
@@ -4163,7 +4550,7 @@ namespace CT_App
                     }
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string querygv = "SELECT TOP 500 Take_To as Name, Total_Take as TAmount, Take_Date as TDate, ThroughBy as TUsing, TDT_V_Date as LUpDT, Remarks_Take as Remarks FROM Teken WHERE Take_To LIKE ? AND TDT_V = 'NDV' ORDER BY Take_Date DESC";
+                    string querygv = "SELECT TOP 500 Take_To as Name, Total_Take as TAmount, Take_Date as TDate, ThroughBy_Take as TUsing, TDT_V_Date as LUpDT, Remarks_Take as Remarks FROM Teken WHERE Take_To LIKE ? AND TDT_V = 'NDV' ORDER BY Take_Date DESC";
                     using (OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(querygv, this.conn))
                     {
                         dataAdaptergv.SelectCommand.Parameters.AddWithValue("@TakeTo", "%" + this.textBox124.Text.Trim() + "%");
@@ -4209,7 +4596,7 @@ namespace CT_App
                     }
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string querygv = "SELECT TOP 500 Expense_To as Name, Expense_Amount as EAmount, Expense_Date as EDate, ThroughBy as EUsing, EDT_V_Date as LUpDT, Remarks_Expense as Remarks FROM TariffAmt WHERE Expense_To LIKE ? AND EDT_V = 'NDV' ORDER BY Expense_Date DESC";
+                    string querygv = "SELECT TOP 500 Expense_To as Name, Expense_Amount as EAmount, Expense_Date as EDate, ThroughBy_Expense as EUsing, EDT_V_Date as LUpDT, Remarks_Expense as Remarks FROM TariffAmt WHERE Expense_To LIKE ? AND EDT_V = 'NDV' ORDER BY Expense_Date DESC";
                     using (OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(querygv, this.conn))
                     {
                         dataAdaptergv.SelectCommand.Parameters.AddWithValue("@ExpenseTo", "%" + this.textBox130.Text.Trim() + "%");
@@ -4255,7 +4642,7 @@ namespace CT_App
                     }
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string querygv = "SELECT TOP 500 Saving_To as Name, Saving_Amount as SAmount, Saving_Date as SDate, ThroughBy as SUsing, SDT_V_Date as LUpDT, Remarks_Saving as Remarks FROM Saving WHERE Saving_To LIKE ? AND SDT_V = 'NDV' ORDER BY Saving_Date DESC";
+                    string querygv = "SELECT TOP 500 Saving_To as Name, Saving_Amount as SAmount, Saving_Date as SDate, ThroughBy_Saving as SUsing, SDT_V_Date as LUpDT, Remarks_Saving as Remarks FROM Saving WHERE Saving_To LIKE ? AND SDT_V = 'NDV' ORDER BY Saving_Date DESC";
                     using (OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(querygv, this.conn))
                     {
                         dataAdaptergv.SelectCommand.Parameters.AddWithValue("@SavingTo", "%" + this.textBox125.Text.Trim() + "%");
@@ -4301,7 +4688,7 @@ namespace CT_App
                     }
                     this.dataGridView13.Visible = true;
                     DataTable dataTablegv = new DataTable();
-                    string querygv = "SELECT TOP 500 Unrated_To as Name, Unrated_Amount as UAmount, Unrated_Date as UDate, ThroughBy as TUsing, UDT_V_Date as LUpDT, Remarks_Unrated as Remarks FROM Unrated WHERE Unrated_To LIKE ? AND UDT_V = 'NDV' ORDER BY Unrated_Date DESC";
+                    string querygv = "SELECT TOP 500 Unrated_To as Name, Unrated_Amount as UAmount, Unrated_Date as UDate, ThroughBy_Unrated as TUsing, UDT_V_Date as LUpDT, Remarks_Unrated as Remarks FROM Unrated WHERE Unrated_To LIKE ? AND UDT_V = 'NDV' ORDER BY Unrated_Date DESC";
                     using (OleDbDataAdapter dataAdaptergv = new OleDbDataAdapter(querygv, this.conn))
                     {
                         dataAdaptergv.SelectCommand.Parameters.AddWithValue("@UnratedTo", "%" + this.textBox126.Text.Trim() + "%");
