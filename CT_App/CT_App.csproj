@@ -61,7 +61,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>xing.ico</ApplicationIcon>
+    <ApplicationIcon>Images\xing.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>AD5B6C1DF50073C2391F00D34C597CDA9A5EC779</ManifestCertificateThumbprint>
@@ -89,15 +89,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CT_Mine.cs">
+    <Compile Include="CT_BLL\BLLayer.cs" />
+    <Compile Include="CT_DLL\DLLayer.cs" />
+    <Compile Include="Models\BikeInfo.cs" />
+    <Compile Include="Models\Daily.cs" />
+    <Compile Include="Models\DailyAnt.cs" />
+    <Compile Include="Models\DailyCut.cs" />
+    <Compile Include="Models\DailySaving.cs" />
+    <Compile Include="Models\Given.cs" />
+    <Compile Include="Models\Images.cs" />
+    <Compile Include="Models\Installment.cs" />
+    <Compile Include="Models\Market.cs" />
+    <Compile Include="Models\MarketMemos.cs" />
+    <Compile Include="Models\Saving.cs" />
+    <Compile Include="Models\TariffAmt.cs" />
+    <Compile Include="Models\Teken.cs" />
+    <Compile Include="Models\Unrated.cs" />
+    <Compile Include="UI\CT_Mine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CT_Mine.Designer.cs">
+    <Compile Include="UI\CT_Mine.Designer.cs">
       <DependentUpon>CT_Mine.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CT_Mine.resx">
+    <EmbeddedResource Include="UI\CT_Mine.resx">
       <DependentUpon>CT_Mine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -125,7 +141,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="xing.ico" />
+    <Content Include="Images\xing.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -138,5 +154,6 @@
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.11.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.11.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
