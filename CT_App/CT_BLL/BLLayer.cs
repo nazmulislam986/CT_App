@@ -272,6 +272,25 @@ namespace CT_App.CT_BLL
             return _dLLayer.delReDailyAnt(dailyAnt);
         }
 
+        //---------------------------------- Monthly ------------------------------
+        //-------------------------------------------------------------------------
+        public List<DataTable> RetrieveMonthlyData()
+        {
+            return _dLLayer.GetMonthlyData();
+        }
+        public bool InsMonthlyTake(MonthlyTake monthlyTake)
+        {
+            return _dLLayer.insrtMonthlyTake(monthlyTake);
+        }
+        public bool UpdtMonthlyTake(MonthlyTake monthlyTake)
+        {
+            return _dLLayer.updtMonthlyTake(monthlyTake);
+        }
+        public DataTable GetMonthDataById(string mntTknId)
+        {
+            return _dLLayer.GetMonthTakeData(mntTknId);
+        }
+
         //------------------------------ Sync Data to SQL -------------------------
         //-------------------------------------------------------------------------
         public void SynchronizeData()
@@ -294,6 +313,10 @@ namespace CT_App.CT_BLL
         public void SynchronizeDailyAchiveData()
         {
             _dLLayer.SyncDailyAchiveData();
+        }
+        public void SynchronizeMonthlyData()
+        {
+            _dLLayer.SyncMonthlyData();
         }
 
         //------------------------------DataGridView Events----------------------

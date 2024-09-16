@@ -4,17 +4,17 @@
   <description asmv2:publisher="CT_Main" co.v1:suiteName="CT_Main" asmv2:product="CT_App" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="CT_App.exe.manifest" size="3945">
+    <dependentAssembly dependencyType="install" codebase="CT_App.exe.manifest" size="6707">
       <assemblyIdentity name="CT_App.exe" version="3.11.315.2025" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/9rAdL1mLQ1fjOJepK0Pnd58mjQsiFe1xaffrhUxY/o=</dsig:DigestValue>
+        <dsig:DigestValue>sjzci8XB6+M3JrLDfgy9Xb+KVTqGRgJG4n89kYWtd80=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

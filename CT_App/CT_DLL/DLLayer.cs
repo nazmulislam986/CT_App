@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CT_App.Models;
+using MySql.Data.MySqlClient;
 
 namespace CT_App.CT_DLL
 {
@@ -16,9 +17,9 @@ namespace CT_App.CT_DLL
         OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
         OdbcConnection conne = new OdbcConnection(@"Dsn=RETAILMasterSHOPS;uid=sa;Pwd=Ajwahana$@$;");
         private string connAcc = (@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
-        private string connSql = (@"Dsn=RETAILMasterSHOPS;uid=sa;Pwd=Ajwahana$@$;");
+        private string connSql = (@"Dsn=RETAILMasterSHOPS;uid=sa;pwd=Ajwahana$@$;");
+        private string connMySql = (@"Server=127.0.0.1;Database=ct_db;Uid=root;Pwd=Ajwahana$@$;port=3306;Connection Timeout=30;");
         #endregion
-
 
         //------------------------------ Market / Mamo --------------------------
         //----------------------------------------------------------------------- 
@@ -1332,6 +1333,263 @@ namespace CT_App.CT_DLL
             }
         }
 
+        //---------------------------------- Monthly ------------------------------
+        //-------------------------------------------------------------------------
+        public List<DataTable> GetMonthlyData()
+        {
+            string[] queries = {
+                $"SELECT MT_ID as [ID],MT_Date as [Date],MT_TotalTK as [TotalTK],MT_Giv_TK as [GivenTK],MT_LS_TK as [G/T] FROM MonthlyTaken"
+                //$"SELECT MT_ID,MT_Date,MT_TotalTK,MT_Giv_TK,MT_LS_TK,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69,T70,T71,T72,T73,T74,T75,T76,T77,T78,T79,T80,T81,T82,T83,T84,T85,T86,T87,T88,T89,T90,T91,T92,T93,T94,T95,T96,T97,T98,T99,T100,T101,T102,T103,T104,T105,T106,T107,T108,T109,T110,T111,T112,T113,T114,T115,T116,T117,T118,T119,T120,MTDT_V,MT_Insrt_Person,MT_Updt_Person,MT_Del_Person FROM MonthlyTaken"
+            };
+            var dataTables = new List<DataTable>();
+            foreach (var query in queries)
+            {
+                DataTable dataTable = new DataTable();
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
+                {
+                    adapter.Fill(dataTable);
+                }
+                dataTables.Add(dataTable);
+            }
+            return dataTables;
+        }
+        public bool insrtMonthlyTake(MonthlyTake monthlyTake)
+        {
+            string query = $"INSERT INTO MonthlyTaken(MT_ID,MT_Date,MT_TotalTK,MT_Giv_TK,MT_LS_TK,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69,T70,T71,T72,T73,T74,T75,T76,T77,T78,T79,T80,T81,T82,T83,T84,T85,T86,T87,T88,T89,T90,T91,T92,T93,T94,T95,T96,T97,T98,T99,T100,MTDT_V,MT_Insrt_Person) " +
+                            "VALUES (@MT_ID,@MT_Date,@MT_TotalTK,@MT_Giv_TK,@MT_LS_TK,@T01,@T02,@T03,@T04,@T05,@T06,@T07,@T08,@T09,@T10,@T11,@T12,@T13,@T14,@T15,@T16,@T17,@T18,@T19,@T20,@T21,@T22,@T23,@T24,@T25,@T26,@T27,@T28,@T29,@T30,@T31,@T32,@T33,@T34,@T35,@T36,@T37,@T38,@T39,@T40,@T41,@T42,@T43,@T44,@T45,@T46,@T47,@T48,@T49,@T50,@T51,@T52,@T53,@T54,@T55,@T56,@T57,@T58,@T59,@T60,@T61,@T62,@T63,@T64,@T65,@T66,@T67,@T68,@T69,@T70,@T71,@T72,@T73,@T74,@T75,@T76,@T77,@T78,@T79,@T80,@T81,@T82,@T83,@T84,@T85,@T86,@T87,@T88,@T89,@T90,@T91,@T92,@T93,@T94,@T95,@T96,@T97,@T98,@T99,@T100,@MTDT_V,@MT_Insrt_Person)";
+            using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
+            {
+                cmd.Parameters.AddWithValue("@MT_ID", monthlyTake.MT_ID);
+                cmd.Parameters.AddWithValue("@MT_Date", monthlyTake.MT_Date);
+                cmd.Parameters.AddWithValue("@MT_TotalTK", monthlyTake.MT_TotalTK);
+                cmd.Parameters.AddWithValue("@MT_Giv_TK", monthlyTake.MT_Giv_TK);
+                cmd.Parameters.AddWithValue("@MT_LS_TK", monthlyTake.MT_LS_TK);
+                cmd.Parameters.AddWithValue("@T01", monthlyTake.T01);
+                cmd.Parameters.AddWithValue("@T02", monthlyTake.T02);
+                cmd.Parameters.AddWithValue("@T03", monthlyTake.T03);
+                cmd.Parameters.AddWithValue("@T04", monthlyTake.T04);
+                cmd.Parameters.AddWithValue("@T05", monthlyTake.T05);
+                cmd.Parameters.AddWithValue("@T06", monthlyTake.T06);
+                cmd.Parameters.AddWithValue("@T07", monthlyTake.T07);
+                cmd.Parameters.AddWithValue("@T08", monthlyTake.T08);
+                cmd.Parameters.AddWithValue("@T09", monthlyTake.T09);
+                cmd.Parameters.AddWithValue("@T10", monthlyTake.T10);
+                cmd.Parameters.AddWithValue("@T11", monthlyTake.T11);
+                cmd.Parameters.AddWithValue("@T12", monthlyTake.T12);
+                cmd.Parameters.AddWithValue("@T13", monthlyTake.T13);
+                cmd.Parameters.AddWithValue("@T14", monthlyTake.T14);
+                cmd.Parameters.AddWithValue("@T15", monthlyTake.T15);
+                cmd.Parameters.AddWithValue("@T16", monthlyTake.T16);
+                cmd.Parameters.AddWithValue("@T17", monthlyTake.T17);
+                cmd.Parameters.AddWithValue("@T18", monthlyTake.T18);
+                cmd.Parameters.AddWithValue("@T19", monthlyTake.T19);
+                cmd.Parameters.AddWithValue("@T20", monthlyTake.T20);
+                cmd.Parameters.AddWithValue("@T21", monthlyTake.T21);
+                cmd.Parameters.AddWithValue("@T22", monthlyTake.T22);
+                cmd.Parameters.AddWithValue("@T23", monthlyTake.T23);
+                cmd.Parameters.AddWithValue("@T24", monthlyTake.T24);
+                cmd.Parameters.AddWithValue("@T25", monthlyTake.T25);
+                cmd.Parameters.AddWithValue("@T26", monthlyTake.T26);
+                cmd.Parameters.AddWithValue("@T27", monthlyTake.T27);
+                cmd.Parameters.AddWithValue("@T28", monthlyTake.T28);
+                cmd.Parameters.AddWithValue("@T29", monthlyTake.T29);
+                cmd.Parameters.AddWithValue("@T30", monthlyTake.T30);
+                cmd.Parameters.AddWithValue("@T31", monthlyTake.T31);
+                cmd.Parameters.AddWithValue("@T32", monthlyTake.T32);
+                cmd.Parameters.AddWithValue("@T33", monthlyTake.T33);
+                cmd.Parameters.AddWithValue("@T34", monthlyTake.T34);
+                cmd.Parameters.AddWithValue("@T35", monthlyTake.T35);
+                cmd.Parameters.AddWithValue("@T36", monthlyTake.T36);
+                cmd.Parameters.AddWithValue("@T37", monthlyTake.T37);
+                cmd.Parameters.AddWithValue("@T38", monthlyTake.T38);
+                cmd.Parameters.AddWithValue("@T39", monthlyTake.T39);
+                cmd.Parameters.AddWithValue("@T40", monthlyTake.T40);
+                cmd.Parameters.AddWithValue("@T41", monthlyTake.T41);
+                cmd.Parameters.AddWithValue("@T42", monthlyTake.T42);
+                cmd.Parameters.AddWithValue("@T43", monthlyTake.T43);
+                cmd.Parameters.AddWithValue("@T44", monthlyTake.T44);
+                cmd.Parameters.AddWithValue("@T45", monthlyTake.T45);
+                cmd.Parameters.AddWithValue("@T46", monthlyTake.T46);
+                cmd.Parameters.AddWithValue("@T47", monthlyTake.T47);
+                cmd.Parameters.AddWithValue("@T48", monthlyTake.T48);
+                cmd.Parameters.AddWithValue("@T49", monthlyTake.T49);
+                cmd.Parameters.AddWithValue("@T50", monthlyTake.T50);
+                cmd.Parameters.AddWithValue("@T51", monthlyTake.T51);
+                cmd.Parameters.AddWithValue("@T52", monthlyTake.T52);
+                cmd.Parameters.AddWithValue("@T53", monthlyTake.T53);
+                cmd.Parameters.AddWithValue("@T54", monthlyTake.T54);
+                cmd.Parameters.AddWithValue("@T55", monthlyTake.T55);
+                cmd.Parameters.AddWithValue("@T56", monthlyTake.T56);
+                cmd.Parameters.AddWithValue("@T57", monthlyTake.T57);
+                cmd.Parameters.AddWithValue("@T58", monthlyTake.T58);
+                cmd.Parameters.AddWithValue("@T59", monthlyTake.T59);
+                cmd.Parameters.AddWithValue("@T60", monthlyTake.T60);
+                cmd.Parameters.AddWithValue("@T61", monthlyTake.T61);
+                cmd.Parameters.AddWithValue("@T62", monthlyTake.T62);
+                cmd.Parameters.AddWithValue("@T63", monthlyTake.T63);
+                cmd.Parameters.AddWithValue("@T64", monthlyTake.T64);
+                cmd.Parameters.AddWithValue("@T65", monthlyTake.T65);
+                cmd.Parameters.AddWithValue("@T66", monthlyTake.T66);
+                cmd.Parameters.AddWithValue("@T67", monthlyTake.T67);
+                cmd.Parameters.AddWithValue("@T68", monthlyTake.T68);
+                cmd.Parameters.AddWithValue("@T69", monthlyTake.T69);
+                cmd.Parameters.AddWithValue("@T70", monthlyTake.T70);
+                cmd.Parameters.AddWithValue("@T71", monthlyTake.T71);
+                cmd.Parameters.AddWithValue("@T72", monthlyTake.T72);
+                cmd.Parameters.AddWithValue("@T73", monthlyTake.T73);
+                cmd.Parameters.AddWithValue("@T74", monthlyTake.T74);
+                cmd.Parameters.AddWithValue("@T75", monthlyTake.T75);
+                cmd.Parameters.AddWithValue("@T76", monthlyTake.T76);
+                cmd.Parameters.AddWithValue("@T77", monthlyTake.T77);
+                cmd.Parameters.AddWithValue("@T78", monthlyTake.T78);
+                cmd.Parameters.AddWithValue("@T79", monthlyTake.T79);
+                cmd.Parameters.AddWithValue("@T80", monthlyTake.T80);
+                cmd.Parameters.AddWithValue("@T81", monthlyTake.T81);
+                cmd.Parameters.AddWithValue("@T82", monthlyTake.T82);
+                cmd.Parameters.AddWithValue("@T83", monthlyTake.T83);
+                cmd.Parameters.AddWithValue("@T84", monthlyTake.T84);
+                cmd.Parameters.AddWithValue("@T85", monthlyTake.T85);
+                cmd.Parameters.AddWithValue("@T86", monthlyTake.T86);
+                cmd.Parameters.AddWithValue("@T87", monthlyTake.T87);
+                cmd.Parameters.AddWithValue("@T88", monthlyTake.T88);
+                cmd.Parameters.AddWithValue("@T89", monthlyTake.T89);
+                cmd.Parameters.AddWithValue("@T90", monthlyTake.T90);
+                cmd.Parameters.AddWithValue("@T91", monthlyTake.T91);
+                cmd.Parameters.AddWithValue("@T92", monthlyTake.T92);
+                cmd.Parameters.AddWithValue("@T93", monthlyTake.T93);
+                cmd.Parameters.AddWithValue("@T94", monthlyTake.T94);
+                cmd.Parameters.AddWithValue("@T95", monthlyTake.T95);
+                cmd.Parameters.AddWithValue("@T96", monthlyTake.T96);
+                cmd.Parameters.AddWithValue("@T97", monthlyTake.T97);
+                cmd.Parameters.AddWithValue("@T98", monthlyTake.T98);
+                cmd.Parameters.AddWithValue("@T99", monthlyTake.T99);
+                cmd.Parameters.AddWithValue("@T100", monthlyTake.T100);
+                cmd.Parameters.AddWithValue("@MTDT_V", monthlyTake.MTDT_V);
+                cmd.Parameters.AddWithValue("@MT_Insrt_Person", monthlyTake.MT_Insrt_Person);
+                this.conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                this.conn.Close();
+                return rowsAffected > 0;
+            }
+        }
+        public bool updtMonthlyTake(MonthlyTake monthlyTake)
+        {
+            string query = $"UPDATE MonthlyTaken SET MT_TotalTK = ?,MT_Giv_TK = ?,MT_LS_TK = ?,T01 = ?,T02 = ?,T03 = ?,T04 = ?,T05 = ?,T06 = ?,T07 = ?,T08 = ?,T09 = ?,T10 = ?,T11 = ?,T12 = ?,T13 = ?,T14 = ?,T15 = ?,T16 = ?,T17 = ?,T18 = ?,T19 = ?,T20 = ?,T21 = ?,T22 = ?,T23 = ?,T24 = ?,T25 = ?,T26 = ?,T27 = ?,T28 = ?,T29 = ?,T30 = ?,T31 = ?,T32 = ?,T33 = ?,T34 = ?,T35 = ?,T36 = ?,T37 = ?,T38 = ?,T39 = ?,T40 = ?,T41 = ?,T42 = ?,T43 = ?,T44 = ?,T45 = ?,T46 = ?,T47 = ?,T48 = ?,T49 = ?,T50 = ?,T51 = ?,T52 = ?,T53 = ?,T54 = ?,T55 = ?,T56 = ?,T57 = ?,T58 = ?,T59 = ?,T60 = ?,T61 = ?,T62 = ?,T63 = ?,T64 = ?,T65 = ?,T66 = ?,T67 = ?,T68 = ?,T69 = ?,T70 = ?,T71 = ?,T72 = ?,T73 = ?,T74 = ?,T75 = ?,T76 = ?,T77 = ?,T78 = ?,T79 = ?,T80 = ?,T81 = ?,T82 = ?,T83 = ?,T84 = ?,T85 = ?,T86 = ?,T87 = ?,T88 = ?,T89 = ?,T90 = ?,T91 = ?,T92 = ?,T93 = ?,T94 = ?,T95 = ?,T96 = ?,T97 = ?,T98 = ?,T99 = ?,T100 = ?,MTDT_V = ?,MT_Updt_Person = ? WHERE MT_ID = ?";
+            using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
+            {;
+                cmd.Parameters.AddWithValue("@MT_TotalTK", monthlyTake.MT_TotalTK);
+                cmd.Parameters.AddWithValue("@MT_Giv_TK", monthlyTake.MT_Giv_TK);
+                cmd.Parameters.AddWithValue("@MT_LS_TK", monthlyTake.MT_LS_TK);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T01);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T02);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T03);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T04);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T05);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T06);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T07);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T08);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T09);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T10);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T11);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T12);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T13);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T14);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T15);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T16);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T17);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T18);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T19);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T20);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T21);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T22);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T23);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T24);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T25);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T26);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T27);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T28);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T29);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T30);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T31);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T32);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T33);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T34);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T35);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T36);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T37);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T38);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T39);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T40);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T41);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T42);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T43);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T44);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T45);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T46);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T47);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T48);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T49);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T50);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T51);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T52);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T53);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T54);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T55);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T56);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T57);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T58);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T59);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T60);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T61);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T62);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T63);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T64);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T65);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T66);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T67);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T68);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T69);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T70);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T71);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T72);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T73);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T74);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T75);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T76);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T77);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T78);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T79);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T80);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T81);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T82);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T83);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T84);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T85);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T86);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T87);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T88);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T89);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T90);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T91);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T92);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T93);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T94);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T95);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T96);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T97);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T98);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T99);
+                cmd.Parameters.AddWithValue("?", monthlyTake.T100);
+                cmd.Parameters.AddWithValue("?", monthlyTake.MTDT_V);
+                cmd.Parameters.AddWithValue("?", monthlyTake.MT_Updt_Person);
+                cmd.Parameters.AddWithValue("?", monthlyTake.MT_ID);
+                this.conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                this.conn.Close();
+                return rowsAffected > 0;
+            }
+        }
+
         //------------------------------ Sync Data to SQL -------------------------
         //-------------------------------------------------------------------------
         public void DeleteAllDataInSQL()
@@ -1356,6 +1614,7 @@ namespace CT_App.CT_DLL
                     this.marketSync();
                     this.marketMemosSync();
                     this.marketMemosDelSync();
+                    //this.imagesSync();
                     this.dailySavingSync();
                     this.installmentSync();
                     this.installmentPaySync();
@@ -1368,6 +1627,24 @@ namespace CT_App.CT_DLL
                     this.dailySync();
                     this.dailyAntSync();
                     this.dailyCutSync();
+                    this.sp_marketSync();
+                    this.sp_marketMemosSync();
+                    this.sp_marketMemosDelSync();
+                    //this.sp_imagesSync();
+                    this.sp_dailySavingSync();
+                    this.sp_installmentSync();
+                    this.sp_installmentPaySync();
+                    this.sp_bikeInfoSync();
+                    this.sp_givenSync();
+                    this.sp_tekenSync();
+                    this.sp_expenseSync();
+                    this.sp_savingSync();
+                    this.sp_unratedSync();
+                    this.sp_givenUpdtSync();
+                    this.sp_tekenUpdtSync();
+                    this.sp_expenseUpdtSync();
+                    this.sp_savingUpdtSync();
+                    this.sp_unratedUpdtSync();
                     accConn.Close();
                 }
                 sqlConn.Close();
@@ -1386,6 +1663,10 @@ namespace CT_App.CT_DLL
                     this.marketMemosSync();
                     this.marketMemosDelSync();
                     //this.imagesSync();
+                    this.sp_marketSync();
+                    this.sp_marketMemosSync();
+                    this.sp_marketMemosDelSync();
+                    this.sp_imagesSync();
                     accConn.Close();
                 }
                 sqlConn.Close();
@@ -1403,6 +1684,10 @@ namespace CT_App.CT_DLL
                     this.installmentSync();
                     this.installmentPaySync();
                     this.bikeInfoSync();
+                    this.sp_dailySavingSync();
+                    this.sp_installmentSync();
+                    this.sp_installmentPaySync();
+                    this.sp_bikeInfoSync();
                     accConn.Close();
                 }
                 sqlConn.Close();
@@ -1426,6 +1711,16 @@ namespace CT_App.CT_DLL
                     this.expenseUpdtSync();
                     this.savingUpdtSync();
                     this.unratedUpdtSync();
+                    this.sp_givenSync();
+                    this.sp_tekenSync();
+                    this.sp_expenseSync();
+                    this.sp_savingSync();
+                    this.sp_unratedSync();
+                    this.sp_givenUpdtSync();
+                    this.sp_tekenUpdtSync();
+                    this.sp_expenseUpdtSync();
+                    this.sp_savingUpdtSync();
+                    this.sp_unratedUpdtSync();
                     accConn.Close();
                 }
                 sqlConn.Close();
@@ -1442,12 +1737,29 @@ namespace CT_App.CT_DLL
                     this.dailySync();
                     this.dailyAntSync();
                     this.dailyCutSync();
+                    this.sp_dailySync();
+                    this.sp_dailyAntSync();
+                    this.sp_dailyCutSync();
                     accConn.Close();
                 }
                 sqlConn.Close();
             }
         }
-
+        public void SyncMonthlyData()
+        {
+            using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+            {
+                sqlConn.Open();
+                using (OleDbConnection accConn = new OleDbConnection(connAcc))
+                {
+                    accConn.Open();
+                    this.monthlySync();
+                    this.sp_monthlySync();
+                    accConn.Close();
+                }
+                sqlConn.Close();
+            }
+        }
 
         //----------------Access to SQL Data Insert Event Work-------------------
         //-----------------------------------------------------------------------
@@ -2492,7 +2804,1179 @@ namespace CT_App.CT_DLL
         }
         private void imagesSync()
         {
-            //Do it later
+            string insCom = "IF NOT EXISTS (SELECT * FROM Images WHERE Img_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO Images (Img_ID,ImageData) VALUES (?,?)" +
+                                "END";
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Images";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                {
+                    sqlConn.Open();
+                    string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Images') " +
+                                             "BEGIN " +
+                                                $"CREATE TABLE Images (Img_ID nvarchar(250) NULL,ImageData nvarchar(250) NULL) " +
+                                             "END";
+                    using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                    {
+                        checkTableCommand.ExecuteNonQuery();
+                    }
+                    while (reader.Read())
+                    {
+                        using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                        {
+                            sqlInsComm.Parameters.AddWithValue("?", reader["Img_ID"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["Img_ID"]); // For IF NOT EXISTS
+                            sqlInsComm.Parameters.AddWithValue("?", reader["ImageData"]);
+                            sqlInsComm.ExecuteNonQuery();
+                        }
+                    }
+                    sqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void monthlySync()
+        {
+            string insCom = "IF NOT EXISTS (SELECT * FROM MonthlyTaken WHERE MT_ID = ?) " +
+                                "BEGIN " +
+                                    $"INSERT INTO MonthlyTaken (MT_ID,MT_Date,MT_TotalTK,MT_Giv_TK,MT_LS_TK,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69,T70,T71,T72,T73,T74,T75,T76,T77,T78,T79,T80,T81,T82,T83,T84,T85,T86,T87,T88,T89,T90,T91,T92,T93,T94,T95,T96,T97,T98,T99,T100,T101,T102,T103,T104,T105,T106,T107,T108,T109,T110,T111,T112,T113,T114,T115,T116,T117,T118,T119,T120,MTDT_V,MT_Insrt_Person,MT_Updt_Person,MT_Del_Person) " +
+                                    $"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" +
+                                "END";
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM MonthlyTaken";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (OdbcConnection sqlConn = new OdbcConnection(connSql))
+                {
+                    sqlConn.Open();
+                    string checkTableQuery = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'MonthlyTaken') " +
+                                             "BEGIN " +
+                                                $"CREATE TABLE MonthlyTaken (MT_ID nvarchar(250) NULL,MT_Date datetime NULL,MT_TotalTK float NULL,MT_Giv_TK float NULL,MT_LS_TK float NULL,T01 float NULL,T02 float NULL,T03 float NULL,T04 float NULL,T05 float NULL,T06 float NULL,T07 float NULL,T08 float NULL,T09 float NULL,T10 float NULL,T11 float NULL,T12 float NULL,T13 float NULL,T14 float NULL,T15 float NULL,T16 float NULL,T17 float NULL,T18 float NULL,T19 float NULL,T20 float NULL,T21 float NULL,T22 float NULL,T23 float NULL,T24 float NULL,T25 float NULL,T26 float NULL,T27 float NULL,T28 float NULL,T29 float NULL,T30 float NULL,T31 float NULL,T32 float NULL,T33 float NULL,T34 float NULL,T35 float NULL,T36 float NULL,T37 float NULL,T38 float NULL,T39 float NULL,T40 float NULL,T41 float NULL,T42 float NULL,T43 float NULL,T44 float NULL,T45 float NULL,T46 float NULL,T47 float NULL,T48 float NULL,T49 float NULL,T50 float NULL,T51 float NULL,T52 float NULL,T53 float NULL,T54 float NULL,T55 float NULL,T56 float NULL,T57 float NULL,T58 float NULL,T59 float NULL,T60 float NULL,T61 float NULL,T62 float NULL,T63 float NULL,T64 float NULL,T65 float NULL,T66 float NULL,T67 float NULL,T68 float NULL,T69 float NULL,T70 float NULL,T71 float NULL,T72 float NULL,T73 float NULL,T74 float NULL,T75 float NULL,T76 float NULL,T77 float NULL,T78 float NULL,T79 float NULL,T80 float NULL,T81 float NULL,T82 float NULL,T83 float NULL,T84 float NULL,T85 float NULL,T86 float NULL,T87 float NULL,T88 float NULL,T89 float NULL,T90 float NULL,T91 float NULL,T92 float NULL,T93 float NULL,T94 float NULL,T95 float NULL,T96 float NULL,T97 float NULL,T98 float NULL,T99 float NULL,T100 float NULL,T101 float NULL,T102 float NULL,T103 float NULL,T104 float NULL,T105 float NULL,T106 float NULL,T107 float NULL,T108 float NULL,T109 float NULL,T110 float NULL,T111 float NULL,T112 float NULL,T113 float NULL,T114 float NULL,T115 float NULL,T116 float NULL,T117 float NULL,T118 float NULL,T119 float NULL,T120 float NULL,MTDT_V nvarchar(250) NULL,MT_Insrt_Person nvarchar(250) NULL,MT_Updt_Person nvarchar(250) NULL,MT_Del_Person nvarchar(250) NULL) " +
+                                             "END";
+                    using (OdbcCommand checkTableCommand = new OdbcCommand(checkTableQuery, sqlConn))
+                    {
+                        checkTableCommand.ExecuteNonQuery();
+                    }
+                    while (reader.Read())
+                    {
+                        using (OdbcCommand sqlInsComm = new OdbcCommand(insCom, sqlConn))
+                        {
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_ID"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_Date"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_TotalTK"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_Giv_TK"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_LS_TK"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T01"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T02"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T03"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T04"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T05"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T06"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T07"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T08"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T09"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T10"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T11"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T12"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T13"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T14"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T15"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T16"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T17"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T18"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T19"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T20"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T21"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T22"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T23"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T24"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T25"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T26"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T27"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T28"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T29"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T30"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T31"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T32"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T33"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T34"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T35"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T36"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T37"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T38"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T39"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T40"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T41"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T42"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T43"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T44"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T45"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T46"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T47"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T48"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T49"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T50"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T51"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T52"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T53"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T54"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T55"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T56"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T57"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T58"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T59"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T60"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T61"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T62"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T63"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T64"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T65"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T66"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T67"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T68"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T69"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T70"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T71"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T72"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T73"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T74"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T75"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T76"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T77"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T78"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T79"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T80"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T81"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T82"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T83"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T84"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T85"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T86"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T87"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T88"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T89"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T90"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T91"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T92"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T93"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T94"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T95"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T96"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T97"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T98"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T99"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T100"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T101"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T102"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T103"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T104"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T105"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T106"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T107"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T108"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T109"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T110"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T111"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T112"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T113"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T114"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T115"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T116"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T117"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T118"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T119"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["T120"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MTDT_V"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_Insrt_Person"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_Updt_Person"]);
+                            sqlInsComm.Parameters.AddWithValue("?", reader["MT_Del_Person"]);
+                            sqlInsComm.ExecuteNonQuery();
+                        }
+                    }
+                    sqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+
+        //----------------Access to MySQL Data Insert Event Work-----------------
+        //-----------------------------------------------------------------------
+        private void sp_marketSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Market";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_marketSync", mysqlConn))
+                        {
+                            sqlCmd.CommandType = CommandType.StoredProcedure;
+                            sqlCmd.Parameters.AddWithValue("p_M_ID", reader["M_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_M_Date", reader["M_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_M_Amount", reader["M_Amount"]);
+                            sqlCmd.Parameters.AddWithValue("p_M_Insrt_Person", reader["M_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_M_Updt_Person", reader["M_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_M_Del_Person", reader["M_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_marketMemosSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM MarketMemos";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_marketMemosSync", mysqlConn))
+                        {
+                            sqlCmd.CommandType = CommandType.StoredProcedure;
+                            sqlCmd.Parameters.AddWithValue("p_Mem_ID", reader["Mem_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Date", reader["Mem_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_InvTK", reader["R_InvTK"]);
+                            sqlCmd.Parameters.AddWithValue("p_C_InvTK", reader["C_InvTK"]);
+                            sqlCmd.Parameters.AddWithValue("p_Giv_TK", reader["Giv_TK"]);
+                            sqlCmd.Parameters.AddWithValue("p_Ret_TK", reader["Ret_TK"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N01", reader["I_N01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N02", reader["I_N02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N03", reader["I_N03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N04", reader["I_N04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N05", reader["I_N05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N06", reader["I_N06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N07", reader["I_N07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N08", reader["I_N08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N09", reader["I_N09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N10", reader["I_N10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N11", reader["I_N11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N12", reader["I_N12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N13", reader["I_N13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N14", reader["I_N14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N15", reader["I_N15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N16", reader["I_N16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P01", reader["I_P01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P02", reader["I_P02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P03", reader["I_P03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P04", reader["I_P04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P05", reader["I_P05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P06", reader["I_P06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P07", reader["I_P07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P08", reader["I_P08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P09", reader["I_P09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P10", reader["I_P10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P11", reader["I_P11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P12", reader["I_P12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P13", reader["I_P13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P14", reader["I_P14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P15", reader["I_P15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P16", reader["I_P16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q01", reader["I_Q01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q02", reader["I_Q02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q03", reader["I_Q03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q04", reader["I_Q04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q05", reader["I_Q05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q06", reader["I_Q06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q07", reader["I_Q07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q08", reader["I_Q08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q09", reader["I_Q09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q10", reader["I_Q10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q11", reader["I_Q11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q12", reader["I_Q12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q13", reader["I_Q13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q14", reader["I_Q14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q15", reader["I_Q15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q16", reader["I_Q16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST01", reader["I_ST01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST02", reader["I_ST02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST03", reader["I_ST03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST04", reader["I_ST04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST05", reader["I_ST05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST06", reader["I_ST06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST07", reader["I_ST07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST08", reader["I_ST08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST09", reader["I_ST09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST10", reader["I_ST10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST11", reader["I_ST11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST12", reader["I_ST12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST13", reader["I_ST13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST14", reader["I_ST14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST15", reader["I_ST15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST16", reader["I_ST16"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv01", reader["R_Inv01"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv02", reader["R_Inv02"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv03", reader["R_Inv03"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv04", reader["R_Inv04"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv05", reader["R_Inv05"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv06", reader["R_Inv06"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv07", reader["R_Inv07"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv08", reader["R_Inv08"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv09", reader["R_Inv09"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv10", reader["R_Inv10"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv11", reader["R_Inv11"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv12", reader["R_Inv12"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv13", reader["R_Inv13"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv14", reader["R_Inv14"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv15", reader["R_Inv15"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv16", reader["R_Inv16"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv17", reader["R_Inv17"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv18", reader["R_Inv18"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv19", reader["R_Inv19"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv20", reader["R_Inv20"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv21", reader["R_Inv21"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv22", reader["R_Inv22"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv23", reader["R_Inv23"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv24", reader["R_Inv24"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Insrt_Person", reader["Mem_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Updt_Person", reader["Mem_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Del_Person", reader["Mem_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_marketMemosDelSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM MarketMemosDel";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_marketMemosDelSync", mysqlConn))
+                        {
+                            sqlCmd.CommandType = CommandType.StoredProcedure;
+                            sqlCmd.Parameters.AddWithValue("p_Mem_ID", reader["Mem_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Date", reader["Mem_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_InvTK", reader["R_InvTK"]);
+                            sqlCmd.Parameters.AddWithValue("p_C_InvTK", reader["C_InvTK"]);
+                            sqlCmd.Parameters.AddWithValue("p_Giv_TK", reader["Giv_TK"]);
+                            sqlCmd.Parameters.AddWithValue("p_Ret_TK", reader["Ret_TK"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N01", reader["I_N01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N02", reader["I_N02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N03", reader["I_N03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N04", reader["I_N04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N05", reader["I_N05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N06", reader["I_N06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N07", reader["I_N07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N08", reader["I_N08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N09", reader["I_N09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N10", reader["I_N10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N11", reader["I_N11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N12", reader["I_N12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N13", reader["I_N13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N14", reader["I_N14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N15", reader["I_N15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_N16", reader["I_N16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P01", reader["I_P01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P02", reader["I_P02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P03", reader["I_P03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P04", reader["I_P04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P05", reader["I_P05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P06", reader["I_P06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P07", reader["I_P07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P08", reader["I_P08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P09", reader["I_P09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P10", reader["I_P10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P11", reader["I_P11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P12", reader["I_P12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P13", reader["I_P13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P14", reader["I_P14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P15", reader["I_P15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_P16", reader["I_P16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q01", reader["I_Q01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q02", reader["I_Q02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q03", reader["I_Q03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q04", reader["I_Q04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q05", reader["I_Q05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q06", reader["I_Q06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q07", reader["I_Q07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q08", reader["I_Q08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q09", reader["I_Q09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q10", reader["I_Q10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q11", reader["I_Q11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q12", reader["I_Q12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q13", reader["I_Q13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q14", reader["I_Q14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q15", reader["I_Q15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Q16", reader["I_Q16"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST01", reader["I_ST01"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST02", reader["I_ST02"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST03", reader["I_ST03"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST04", reader["I_ST04"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST05", reader["I_ST05"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST06", reader["I_ST06"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST07", reader["I_ST07"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST08", reader["I_ST08"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST09", reader["I_ST09"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST10", reader["I_ST10"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST11", reader["I_ST11"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST12", reader["I_ST12"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST13", reader["I_ST13"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST14", reader["I_ST14"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST15", reader["I_ST15"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_ST16", reader["I_ST16"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv01", reader["R_Inv01"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv02", reader["R_Inv02"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv03", reader["R_Inv03"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv04", reader["R_Inv04"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv05", reader["R_Inv05"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv06", reader["R_Inv06"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv07", reader["R_Inv07"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv08", reader["R_Inv08"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv09", reader["R_Inv09"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv10", reader["R_Inv10"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv11", reader["R_Inv11"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv12", reader["R_Inv12"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv13", reader["R_Inv13"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv14", reader["R_Inv14"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv15", reader["R_Inv15"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv16", reader["R_Inv16"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv17", reader["R_Inv17"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv18", reader["R_Inv18"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv19", reader["R_Inv19"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv20", reader["R_Inv20"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv21", reader["R_Inv21"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv22", reader["R_Inv22"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv23", reader["R_Inv23"]);
+                            sqlCmd.Parameters.AddWithValue("p_R_Inv24", reader["R_Inv24"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Insrt_Person", reader["Mem_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Updt_Person", reader["Mem_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_Mem_Del_Person", reader["Mem_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_dailySavingSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM DailySaving";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_dailySavingSync", mysqlConn))
+                        {
+                            sqlCmd.Parameters.AddWithValue("p_DS_ID", reader["DS_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Date", reader["DS_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_FPAmount", reader["DS_FPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_SPAmount", reader["DS_SPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_TPAmount", reader["DS_TPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_NotTaken", reader["NotTaken"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Data", reader["DS_Data"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_InBankDate", reader["DS_InBankDate"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Insrt_Person", reader["DS_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Updt_Person", reader["DS_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Del_Person", reader["DS_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_installmentSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Installment";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_installmentSync", mysqlConn))
+                        {
+                            sqlCmd.Parameters.AddWithValue("p_I_ID, ", reader["I_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Date, ", reader["I_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_Take_Total,", reader["Take_Total"]);
+                            sqlCmd.Parameters.AddWithValue("p_Take_Anot,", reader["Take_Anot"]);
+                            sqlCmd.Parameters.AddWithValue("p_Take_Mine,", reader["Take_Mine"]);
+                            sqlCmd.Parameters.AddWithValue("p_Take_Data,", reader["Take_Data"]);
+                            sqlCmd.Parameters.AddWithValue("p_InsPerMonth,", reader["InsPerMonth"]);
+                            sqlCmd.Parameters.AddWithValue("p_PerMonthPay,", reader["PerMonthPay"]);
+                            sqlCmd.Parameters.AddWithValue("p_InsPay,", reader["InsPay"]);
+                            sqlCmd.Parameters.AddWithValue("p_InsPay_Date,", reader["InsPay_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Insrt_Person,", reader["I_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Updt_Person,", reader["I_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_I_Del_Person", reader["I_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_installmentPaySync()
+        {
+            //Work Later
+        }
+        private void sp_bikeInfoSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM BikeInfo";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_bikeInfoSync", mysqlConn))
+                        {
+                            mysqlCmd.CommandType = CommandType.StoredProcedure;
+                            mysqlCmd.Parameters.AddWithValue("p_B_ID", reader["B_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_Chng_Date", reader["B_Chng_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_KM_ODO", reader["B_KM_ODO"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_Mobile_Go", reader["B_Mobile_Go"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_Next_ODO", reader["B_Next_ODO"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_Insrt_Person", reader["B_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_B_Updt_Person", reader["B_Updt_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_givenSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Given";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_givenSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InGiven", reader["InGiven"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Total_Given", reader["Total_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Given_To", reader["Given_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ThroughBy_Give", reader["ThroughBy_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Given_Date", reader["Given_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Remarks_Given", reader["Remarks_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_GDT_V", reader["GDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_GDT_V_Date", reader["GDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DDT_V_Date", reader["DDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_G_Insrt_Person", reader["G_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_G_Updt_Person", reader["G_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_G_Del_Person", reader["G_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_givenUpdtSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM GivenUpdt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_givenupdtSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InGiven", reader["InGiven"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Was_Given", reader["Was_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Now_Given", reader["Now_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Total_Given", reader["Total_Given"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Given_To", reader["Given_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_GDT_V_Date", reader["GDT_V_Date"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_tekenSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Teken";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_takenSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InTake", reader["InTake"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Total_Take", reader["Total_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Take_To", reader["Take_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ThroughBy_Take", reader["ThroughBy_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Take_Date", reader["Take_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Remarks_Take", reader["Remarks_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_TDT_V", reader["TDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_TDT_V_Date", reader["TDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DDT_V_Date", reader["DDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T_Insrt_Person", reader["T_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T_Updt_Person", reader["T_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T_Del_Person", reader["T_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_tekenUpdtSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM TekenUpdt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_takenUpdt", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InTake", reader["InTake"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Was_Take", reader["Was_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Now_Take", reader["Now_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Total_Take", reader["Total_Take"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Take_To", reader["Take_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_TDT_V_Date", reader["TDT_V_Date"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_expenseSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM TariffAmt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_tariffAmtSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InExpense", reader["InExpense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Expense_Amount", reader["Expense_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Expense_To", reader["Expense_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ThroughBy_Expense", reader["ThroughBy_Expense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Expense_Date", reader["Expense_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Remarks_Expense", reader["Remarks_Expense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_EDT_V", reader["EDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_EDT_V_Date", reader["EDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DDT_V_Date", reader["DDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_E_Insrt_Person", reader["E_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_E_Updt_Person", reader["E_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_E_Del_Person", reader["E_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_expenseUpdtSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM TariffAmtUpdt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_tariffAmtUpdtSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InExpense", reader["InExpense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Was_Expense", reader["Was_Expense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Now_Expense", reader["Now_Expense"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Expense_Amount", reader["Expense_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Expense_To", reader["Expense_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_EDT_V_Date", reader["EDT_V_Date"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_savingSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Saving";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_savingSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InSaving", reader["InSaving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_Amount", reader["Saving_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_To", reader["Saving_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ThroughBy_Saving", reader["ThroughBy_Saving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_Date", reader["Saving_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Remarks_Saving", reader["Remarks_Saving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_SDT_V", reader["SDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_SDT_V_Date", reader["SDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DDT_V_Date", reader["DDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_Bank", reader["Saving_Bank"]);
+                            mysqlCmd.Parameters.AddWithValue("p_S_Insrt_Person", reader["S_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_S_Updt_Person", reader["S_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_S_Del_Person", reader["S_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_savingUpdtSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM SavingUpdt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_savingUpdtSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InSaving", reader["InSaving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Was_Saving", reader["Was_Saving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Now_Saving", reader["Now_Saving"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_Amount", reader["Saving_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Saving_To", reader["Saving_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_SDT_V_Date", reader["SDT_V_Date"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_unratedSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Unrated";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_unratedSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InUnrated", reader["InUnrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Unrated_Amount", reader["Unrated_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Unrated_To", reader["Unrated_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ThroughBy_Unrated", reader["ThroughBy_Unrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Unrated_Date", reader["Unrated_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Remarks_Unrated", reader["Remarks_Unrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_UDT_V", reader["UDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_UDT_V_Date", reader["UDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DDT_V_Date", reader["DDT_V_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_U_Insrt_Person", reader["U_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_U_Updt_Person", reader["U_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_U_Del_Person", reader["U_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_unratedUpdtSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM UnratedUpdt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_unratedUpdtSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_InUnrated", reader["InUnrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Was_Unrated", reader["Was_Unrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Now_Unrated", reader["Now_Unrated"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Unrated_Amount", reader["Unrated_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_Unrated_To", reader["Unrated_To"]);
+                            mysqlCmd.Parameters.AddWithValue("p_UDT_V_Date", reader["UDT_V_Date"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_dailySync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Daily";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_dailySync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_D_ID", reader["D_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_Date", reader["D_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_FPAmount", reader["D_FPAmount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_SPAmount", reader["D_SPAmount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_NotTaken", reader["NotTaken"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_Data", reader["D_Data"]);
+                            mysqlCmd.Parameters.AddWithValue("p_TakenDate", reader["TakenDate"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_Insrt_Person", reader["D_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_Updt_Person", reader["D_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_D_Del_Person", reader["D_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_dailyCutSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM DailyCut";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_dailyCutSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_C_ID", reader["C_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_C_Date", reader["C_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_C_Amount", reader["C_Amount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_C_Insrt_Person", reader["C_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_C_Updt_Person", reader["C_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_C_Del_Person", reader["C_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_dailyAntSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM DailyAnt";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_dailyantSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_DA_ID", reader["DA_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_Date", reader["DA_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_FPAmount", reader["DA_FPAmount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_SPAmount", reader["DA_SPAmount"]);
+                            mysqlCmd.Parameters.AddWithValue("p_NotTaken", reader["NotTaken"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_Data", reader["DA_Data"]);
+                            mysqlCmd.Parameters.AddWithValue("p_TakenDate", reader["TakenDate"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_Insrt_Person", reader["DA_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_Updt_Person", reader["DA_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_DA_Del_Person", reader["DA_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_monthlySync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM MonthlyTaken";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_monthlyTakenSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_MT_ID", reader["MT_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_Date", reader["MT_Date"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_TotalTK", reader["MT_TotalTK"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_Giv_TK", reader["MT_Giv_TK"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_LS_TK", reader["MT_LS_TK"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T01", reader["T01"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T02", reader["T02"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T03", reader["T03"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T04", reader["T04"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T05", reader["T05"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T06", reader["T06"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T07", reader["T07"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T08", reader["T08"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T09", reader["T09"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T10", reader["T10"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T11", reader["T11"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T12", reader["T12"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T13", reader["T13"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T14", reader["T14"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T15", reader["T15"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T16", reader["T16"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T17", reader["T17"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T18", reader["T18"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T19", reader["T19"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T20", reader["T20"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T21", reader["T21"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T22", reader["T22"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T23", reader["T23"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T24", reader["T24"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T25", reader["T25"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T26", reader["T26"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T27", reader["T27"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T28", reader["T28"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T29", reader["T29"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T30", reader["T30"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T31", reader["T31"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T32", reader["T32"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T33", reader["T33"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T34", reader["T34"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T35", reader["T35"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T36", reader["T36"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T37", reader["T37"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T38", reader["T38"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T39", reader["T39"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T40", reader["T40"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T41", reader["T41"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T42", reader["T42"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T43", reader["T43"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T44", reader["T44"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T45", reader["T45"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T46", reader["T46"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T47", reader["T47"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T48", reader["T48"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T49", reader["T49"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T50", reader["T50"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T51", reader["T51"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T52", reader["T52"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T53", reader["T53"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T54", reader["T54"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T55", reader["T55"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T56", reader["T56"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T57", reader["T57"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T58", reader["T58"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T59", reader["T59"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T60", reader["T60"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T61", reader["T61"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T62", reader["T62"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T63", reader["T63"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T64", reader["T64"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T65", reader["T65"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T66", reader["T66"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T67", reader["T67"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T68", reader["T68"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T69", reader["T69"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T70", reader["T70"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T71", reader["T71"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T72", reader["T72"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T73", reader["T73"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T74", reader["T74"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T75", reader["T75"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T76", reader["T76"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T77", reader["T77"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T78", reader["T78"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T79", reader["T79"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T80", reader["T80"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T81", reader["T81"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T82", reader["T82"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T83", reader["T83"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T84", reader["T84"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T85", reader["T85"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T86", reader["T86"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T87", reader["T87"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T88", reader["T88"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T89", reader["T89"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T90", reader["T90"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T91", reader["T91"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T92", reader["T92"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T93", reader["T93"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T94", reader["T94"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T95", reader["T95"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T96", reader["T96"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T97", reader["T97"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T98", reader["T98"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T99", reader["T99"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T100", reader["T100"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T101", reader["T101"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T102", reader["T102"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T103", reader["T103"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T104", reader["T104"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T105", reader["T105"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T106", reader["T106"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T107", reader["T107"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T108", reader["T108"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T109", reader["T109"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T110", reader["T110"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T111", reader["T111"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T112", reader["T112"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T113", reader["T113"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T114", reader["T114"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T115", reader["T115"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T116", reader["T116"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T117", reader["T117"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T118", reader["T118"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T119", reader["T119"]);
+                            mysqlCmd.Parameters.AddWithValue("p_T120", reader["T120"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MTDT_V", reader["MTDT_V"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_Insrt_Person", reader["MT_Insrt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_Updt_Person", reader["MT_Updt_Person"]);
+                            mysqlCmd.Parameters.AddWithValue("p_MT_Del_Person", reader["MT_Del_Person"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
+        private void sp_imagesSync()
+        {
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM Images";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand mysqlCmd = new MySqlCommand("sp_imagesSync", mysqlConn))
+                        {
+                            mysqlCmd.Parameters.AddWithValue("p_Img_ID", reader["Img_ID"]);
+                            mysqlCmd.Parameters.AddWithValue("p_ImageData", reader["ImageData"]);
+                            mysqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
         }
 
         //--------------------------All DataGridView Events----------------------
@@ -2729,6 +4213,22 @@ namespace CT_App.CT_DLL
                 string query = "SELECT Img_ID as [ID] FROM Images";
                 using (OleDbDataAdapter oleDbDatadt = new OleDbDataAdapter(query, conn))
                 {
+                    DataTable dataTable = new DataTable();
+                    oleDbDatadt.Fill(dataTable);
+                    conn.Close();
+                    return dataTable;
+                }
+            }
+        }
+        public DataTable GetMonthTakeData(string mntTknId)
+        {
+            using (OleDbConnection conn = new OleDbConnection(this.conn.ConnectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM MonthlyTaken WHERE MT_ID = ?";
+                using (OleDbDataAdapter oleDbDatadt = new OleDbDataAdapter(query, conn))
+                {
+                    oleDbDatadt.SelectCommand.Parameters.AddWithValue("?", mntTknId);
                     DataTable dataTable = new DataTable();
                     oleDbDatadt.Fill(dataTable);
                     conn.Close();

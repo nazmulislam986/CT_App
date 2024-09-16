@@ -42,6 +42,8 @@ namespace CT_App
             this.fillImageData();
             this.BalankFld();
             this.DailySavin();
+            this.BalankFldMonthly();
+            this.fillyMonthlyData();
             this.textBox1.ReadOnly = true;
             this.textBox39.ReadOnly = true;
             this.textBox33.ReadOnly = true;
@@ -65,6 +67,7 @@ namespace CT_App
             this.panel10.Visible = false;
             this.panel11.Visible = false;
             this.panel30.Visible = false;
+            this.panel39.Visible = false;
             this.button21.Visible = false;
             this.button22.Visible = false;
             this.button33.Visible = false;
@@ -399,10 +402,7 @@ namespace CT_App
             try
             {
                 Label[] labels = {
-                    label179, label172, label171, label170, label169, label168,
-                    label167, label166, label165, label164, label163, label162,
-                    label161, label160, label159, label158, label157, label156,
-                    label155, label154, label153, label152, label151, label150
+                    label179, label172, label171, label170, label169, label168, label167, label166, label165, label164, label163, label162, label161, label160, label159, label158, label157, label156, label155, label154, label153, label152, label151, label150
                 };
                 int sumNums = 0;
                 foreach (var label in labels)
@@ -416,7 +416,37 @@ namespace CT_App
                         MessageBox.Show($"Error parsing value from {label.Name}: {label.Text}");
                     }
                 }
-                textBox90.Text = sumNums.ToString();
+                this.textBox90.Text = sumNums.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void AllTakenAdd()
+        {
+            try
+            {
+                Label[] labels = {
+                      label426 ,label418 ,label410 ,label422 ,label414 ,label406 ,label425 ,label417 ,label409 ,label421 ,label413 ,label402 ,label424 ,label416 ,label408 ,label420 ,label412 ,label401 ,label423 ,label415 
+                     ,label407 ,label419 ,label411 ,label400 ,label399, label434 ,label442 ,label430 ,label438 ,label446 ,label427 ,label435 ,label443 ,label431 ,label439 ,label447 ,label428 ,label436 ,label444 ,label432 
+                     ,label440 ,label448 ,label429 ,label437 ,label445 ,label433 ,label441 ,label449 ,label473 ,label465 ,label457 ,label469 ,label461 ,label453 ,label472 ,label464 ,label456 ,label468 ,label460 ,label452 
+                     ,label471 ,label463 ,label455 ,label467 ,label459 ,label451 ,label470 ,label462 ,label454 ,label466 ,label458 ,label450 ,label497 ,label489 ,label481 ,label493 ,label485 ,label477 ,label496 ,label488 
+                     ,label480 ,label492 ,label484 ,label476 ,label495 ,label487 ,label479 ,label494 ,label483 ,label475 ,label494 ,label486 ,label478 ,label490 ,label482 ,label474 ,label521 ,label513 ,label505 ,label517
+                };
+                int sumNums = 0;
+                foreach (var label in labels)
+                {
+                    if (int.TryParse(label.Text.Trim(), out int value))
+                    {
+                        sumNums += value;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error parsing value from {label.Name}: {label.Text}");
+                    }
+                }
+                this.textBox163.Text = sumNums.ToString();
             }
             catch (Exception ex)
             {
@@ -466,6 +496,128 @@ namespace CT_App
             this.checkBox3.Checked = false;
             this.checkBox4.Checked = false;
             this.checkBox5.Checked = false;
+        }
+        private void fillyMonthlyData()
+        {
+            try
+            {
+                List<DataTable> dataTables = _bLLayer.RetrieveMonthlyData();
+                DataGridView[] dataGridViews = { dataGridView15 };
+                for (int i = 0; i < dataGridViews.Length; i++)
+                {
+                    dataGridViews[i].DataSource = dataTables[i].DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void BalankFldMonthly()
+        {
+            this.textBox163.Text = "0";
+            this.textBox162.Text = "0";
+            this.label294.Text = "0";
+            this.textBox146.Text = "0";
+            this.textBox145.Text = "0";
+            this.textBox144.Text = "0";
+            this.textBox143.Text = "0";
+            this.textBox142.Text = "0";
+            this.textBox141.Text = "0";
+            this.textBox140.Text = "0";
+            this.textBox139.Text = "0";
+            this.textBox138.Text = "0";
+            this.textBox161.Text = "0";
+            this.textBox160.Text = "0";
+            this.textBox159.Text = "0";
+            this.textBox158.Text = "0";
+            this.textBox157.Text = "0";
+            this.textBox156.Text = "0";
+            this.textBox155.Text = "0";
+            this.textBox154.Text = "0";
+            this.textBox153.Text = "0";
+            this.textBox152.Text = "0";
+            this.textBox151.Text = "0";
+            this.textBox172.Text = "0";
+            this.textBox173.Text = "0";
+            this.textBox174.Text = "0";
+            this.textBox175.Text = "0";
+            this.textBox176.Text = "0";
+            this.textBox177.Text = "0";
+            this.textBox178.Text = "0";
+            this.textBox179.Text = "0";
+            this.textBox180.Text = "0";
+            this.textBox148.Text = "0";
+            this.textBox149.Text = "0";
+            this.textBox150.Text = "0";
+            this.textBox164.Text = "0";
+            this.textBox165.Text = "0";
+            this.textBox166.Text = "0";
+            this.textBox167.Text = "0";
+            this.textBox168.Text = "0";
+            this.textBox169.Text = "0";
+            this.textBox170.Text = "0";
+            this.textBox171.Text = "0";
+            this.textBox192.Text = "0";
+            this.textBox193.Text = "0";
+            this.textBox194.Text = "0";
+            this.textBox195.Text = "0";
+            this.textBox196.Text = "0";
+            this.textBox197.Text = "0";
+            this.textBox198.Text = "0";
+            this.textBox199.Text = "0";
+            this.textBox200.Text = "0";
+            this.textBox181.Text = "0";
+            this.textBox182.Text = "0";
+            this.textBox183.Text = "0";
+            this.textBox184.Text = "0";
+            this.textBox185.Text = "0";
+            this.textBox186.Text = "0";
+            this.textBox187.Text = "0";
+            this.textBox188.Text = "0";
+            this.textBox189.Text = "0";
+            this.textBox190.Text = "0";
+            this.textBox191.Text = "0";
+            this.textBox212.Text = "0";
+            this.textBox213.Text = "0";
+            this.textBox214.Text = "0";
+            this.textBox215.Text = "0";
+            this.textBox216.Text = "0";
+            this.textBox217.Text = "0";
+            this.textBox218.Text = "0";
+            this.textBox219.Text = "0";
+            this.textBox220.Text = "0";
+            this.textBox201.Text = "0";
+            this.textBox202.Text = "0";
+            this.textBox203.Text = "0";
+            this.textBox204.Text = "0";
+            this.textBox205.Text = "0";
+            this.textBox206.Text = "0";
+            this.textBox207.Text = "0";
+            this.textBox208.Text = "0";
+            this.textBox209.Text = "0";
+            this.textBox210.Text = "0";
+            this.textBox211.Text = "0";
+            this.textBox232.Text = "0";
+            this.textBox233.Text = "0";
+            this.textBox234.Text = "0";
+            this.textBox235.Text = "0";
+            this.textBox236.Text = "0";
+            this.textBox237.Text = "0";
+            this.textBox238.Text = "0";
+            this.textBox239.Text = "0";
+            this.textBox240.Text = "0";
+            this.textBox221.Text = "0";
+            this.textBox222.Text = "0";
+            this.textBox223.Text = "0";
+            this.textBox224.Text = "0";
+            this.textBox225.Text = "0";
+            this.textBox226.Text = "0";
+            this.textBox227.Text = "0";
+            this.textBox228.Text = "0";
+            this.textBox229.Text = "0";
+            this.textBox230.Text = "0";
+            this.textBox231.Text = "0";
         }
 
         //------------------------------All Button Work--------------------------
@@ -1313,7 +1465,7 @@ namespace CT_App
                 if (isUpdated)
                 {
                     MessageBox.Show($"Successfull Deleted - [{this.label284.Text}]");
-                    this.fillDailyData();
+                    this.DailySavin();
                     this.button24.Visible = false;
                 }
             }
@@ -2185,6 +2337,17 @@ namespace CT_App
                 MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void button34_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _bLLayer.SynchronizeMonthlyData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void button28_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
@@ -2262,7 +2425,270 @@ namespace CT_App
             }
 
         }
-        
+        private void button38_Click(object sender, EventArgs e)
+        {
+            if (this.button38.Text == "Add")
+            {
+                this.textBox162.ReadOnly = false;
+                this.textBox146.Focus();
+                TextBox textBox = this.textBox241;
+                string[] strArrays = new string[] { "MT", null, null, null, null };
+                int date = DateTime.Now.Day;
+                int month = DateTime.Now.Month;
+                int millis = DateTime.Now.Millisecond;
+                strArrays[2] = date.ToString();
+                strArrays[3] = month.ToString();
+                strArrays[4] = millis.ToString();
+                textBox.Text = string.Concat(strArrays);
+                this.button38.Text = "Save";
+                this.BalankFldMonthly();
+            }
+            else if (this.button38.Text == "Save")
+            {
+                MonthlyTake monthlyTake = new MonthlyTake();
+                monthlyTake.MT_ID = this.textBox241.Text;
+                monthlyTake.MT_Date = Convert.ToDateTime(this.dateTimePicker9.Text);
+                monthlyTake.MT_TotalTK = Convert.ToSingle(this.textBox163.Text);
+                monthlyTake.MT_Giv_TK = Convert.ToSingle(this.textBox162.Text);
+                monthlyTake.MT_LS_TK = Convert.ToSingle(this.label294.Text);
+                monthlyTake.T01 = Convert.ToSingle(this.textBox146.Text.Trim());
+                monthlyTake.T02 = Convert.ToSingle(this.textBox145.Text.Trim());
+                monthlyTake.T03 = Convert.ToSingle(this.textBox144.Text.Trim());
+                monthlyTake.T04 = Convert.ToSingle(this.textBox143.Text.Trim());
+                monthlyTake.T05 = Convert.ToSingle(this.textBox142.Text.Trim());
+                monthlyTake.T06 = Convert.ToSingle(this.textBox141.Text.Trim());
+                monthlyTake.T07 = Convert.ToSingle(this.textBox140.Text.Trim());
+                monthlyTake.T08 = Convert.ToSingle(this.textBox139.Text.Trim());
+                monthlyTake.T09 = Convert.ToSingle(this.textBox138.Text.Trim());
+                monthlyTake.T10 = Convert.ToSingle(this.textBox161.Text.Trim());
+                monthlyTake.T11 = Convert.ToSingle(this.textBox160.Text.Trim());
+                monthlyTake.T12 = Convert.ToSingle(this.textBox159.Text.Trim());
+                monthlyTake.T13 = Convert.ToSingle(this.textBox158.Text.Trim());
+                monthlyTake.T14 = Convert.ToSingle(this.textBox157.Text.Trim());
+                monthlyTake.T15 = Convert.ToSingle(this.textBox156.Text.Trim());
+                monthlyTake.T16 = Convert.ToSingle(this.textBox155.Text.Trim());
+                monthlyTake.T17 = Convert.ToSingle(this.textBox154.Text.Trim());
+                monthlyTake.T18 = Convert.ToSingle(this.textBox153.Text.Trim());
+                monthlyTake.T19 = Convert.ToSingle(this.textBox152.Text.Trim());
+                monthlyTake.T20 = Convert.ToSingle(this.textBox151.Text.Trim());
+                monthlyTake.T21 = Convert.ToSingle(this.textBox172.Text.Trim());
+                monthlyTake.T22 = Convert.ToSingle(this.textBox173.Text.Trim());
+                monthlyTake.T23 = Convert.ToSingle(this.textBox174.Text.Trim());
+                monthlyTake.T24 = Convert.ToSingle(this.textBox175.Text.Trim());
+                monthlyTake.T25 = Convert.ToSingle(this.textBox176.Text.Trim());
+                monthlyTake.T26 = Convert.ToSingle(this.textBox177.Text.Trim());
+                monthlyTake.T27 = Convert.ToSingle(this.textBox178.Text.Trim());
+                monthlyTake.T28 = Convert.ToSingle(this.textBox179.Text.Trim());
+                monthlyTake.T29 = Convert.ToSingle(this.textBox180.Text.Trim());
+                monthlyTake.T30 = Convert.ToSingle(this.textBox148.Text.Trim());
+                monthlyTake.T31 = Convert.ToSingle(this.textBox149.Text.Trim());
+                monthlyTake.T32 = Convert.ToSingle(this.textBox150.Text.Trim());
+                monthlyTake.T33 = Convert.ToSingle(this.textBox164.Text.Trim());
+                monthlyTake.T34 = Convert.ToSingle(this.textBox165.Text.Trim());
+                monthlyTake.T35 = Convert.ToSingle(this.textBox166.Text.Trim());
+                monthlyTake.T36 = Convert.ToSingle(this.textBox167.Text.Trim());
+                monthlyTake.T37 = Convert.ToSingle(this.textBox168.Text.Trim());
+                monthlyTake.T38 = Convert.ToSingle(this.textBox169.Text.Trim());
+                monthlyTake.T39 = Convert.ToSingle(this.textBox170.Text.Trim());
+                monthlyTake.T40 = Convert.ToSingle(this.textBox171.Text.Trim());
+                monthlyTake.T41 = Convert.ToSingle(this.textBox192.Text.Trim());
+                monthlyTake.T42 = Convert.ToSingle(this.textBox193.Text.Trim());
+                monthlyTake.T43 = Convert.ToSingle(this.textBox194.Text.Trim());
+                monthlyTake.T44 = Convert.ToSingle(this.textBox195.Text.Trim());
+                monthlyTake.T45 = Convert.ToSingle(this.textBox196.Text.Trim());
+                monthlyTake.T46 = Convert.ToSingle(this.textBox197.Text.Trim());
+                monthlyTake.T47 = Convert.ToSingle(this.textBox198.Text.Trim());
+                monthlyTake.T48 = Convert.ToSingle(this.textBox199.Text.Trim());
+                monthlyTake.T49 = Convert.ToSingle(this.textBox200.Text.Trim());
+                monthlyTake.T50 = Convert.ToSingle(this.textBox181.Text.Trim());
+                monthlyTake.T51 = Convert.ToSingle(this.textBox182.Text.Trim());
+                monthlyTake.T52 = Convert.ToSingle(this.textBox183.Text.Trim());
+                monthlyTake.T53 = Convert.ToSingle(this.textBox184.Text.Trim());
+                monthlyTake.T54 = Convert.ToSingle(this.textBox185.Text.Trim());
+                monthlyTake.T55 = Convert.ToSingle(this.textBox186.Text.Trim());
+                monthlyTake.T56 = Convert.ToSingle(this.textBox187.Text.Trim());
+                monthlyTake.T57 = Convert.ToSingle(this.textBox188.Text.Trim());
+                monthlyTake.T58 = Convert.ToSingle(this.textBox189.Text.Trim());
+                monthlyTake.T59 = Convert.ToSingle(this.textBox190.Text.Trim());
+                monthlyTake.T60 = Convert.ToSingle(this.textBox191.Text.Trim());
+                monthlyTake.T61 = Convert.ToSingle(this.textBox212.Text.Trim());
+                monthlyTake.T62 = Convert.ToSingle(this.textBox213.Text.Trim());
+                monthlyTake.T63 = Convert.ToSingle(this.textBox214.Text.Trim());
+                monthlyTake.T64 = Convert.ToSingle(this.textBox215.Text.Trim());
+                monthlyTake.T65 = Convert.ToSingle(this.textBox216.Text.Trim());
+                monthlyTake.T66 = Convert.ToSingle(this.textBox217.Text.Trim());
+                monthlyTake.T67 = Convert.ToSingle(this.textBox218.Text.Trim());
+                monthlyTake.T68 = Convert.ToSingle(this.textBox219.Text.Trim());
+                monthlyTake.T69 = Convert.ToSingle(this.textBox220.Text.Trim());
+                monthlyTake.T70 = Convert.ToSingle(this.textBox201.Text.Trim());
+                monthlyTake.T71 = Convert.ToSingle(this.textBox202.Text.Trim());
+                monthlyTake.T72 = Convert.ToSingle(this.textBox203.Text.Trim());
+                monthlyTake.T73 = Convert.ToSingle(this.textBox204.Text.Trim());
+                monthlyTake.T74 = Convert.ToSingle(this.textBox205.Text.Trim());
+                monthlyTake.T75 = Convert.ToSingle(this.textBox206.Text.Trim());
+                monthlyTake.T76 = Convert.ToSingle(this.textBox207.Text.Trim());
+                monthlyTake.T77 = Convert.ToSingle(this.textBox208.Text.Trim());
+                monthlyTake.T78 = Convert.ToSingle(this.textBox209.Text.Trim());
+                monthlyTake.T79 = Convert.ToSingle(this.textBox210.Text.Trim());
+                monthlyTake.T80 = Convert.ToSingle(this.textBox211.Text.Trim());
+                monthlyTake.T81 = Convert.ToSingle(this.textBox232.Text.Trim());
+                monthlyTake.T82 = Convert.ToSingle(this.textBox233.Text.Trim());
+                monthlyTake.T83 = Convert.ToSingle(this.textBox234.Text.Trim());
+                monthlyTake.T84 = Convert.ToSingle(this.textBox235.Text.Trim());
+                monthlyTake.T85 = Convert.ToSingle(this.textBox236.Text.Trim());
+                monthlyTake.T86 = Convert.ToSingle(this.textBox237.Text.Trim());
+                monthlyTake.T87 = Convert.ToSingle(this.textBox238.Text.Trim());
+                monthlyTake.T88 = Convert.ToSingle(this.textBox239.Text.Trim());
+                monthlyTake.T89 = Convert.ToSingle(this.textBox240.Text.Trim());
+                monthlyTake.T90 = Convert.ToSingle(this.textBox221.Text.Trim());
+                monthlyTake.T91 = Convert.ToSingle(this.textBox222.Text.Trim());
+                monthlyTake.T92 = Convert.ToSingle(this.textBox223.Text.Trim());
+                monthlyTake.T93 = Convert.ToSingle(this.textBox224.Text.Trim());
+                monthlyTake.T94 = Convert.ToSingle(this.textBox225.Text.Trim());
+                monthlyTake.T95 = Convert.ToSingle(this.textBox226.Text.Trim());
+                monthlyTake.T96 = Convert.ToSingle(this.textBox227.Text.Trim());
+                monthlyTake.T97 = Convert.ToSingle(this.textBox228.Text.Trim());
+                monthlyTake.T98 = Convert.ToSingle(this.textBox229.Text.Trim());
+                monthlyTake.T99 = Convert.ToSingle(this.textBox230.Text.Trim());
+                monthlyTake.T100 = Convert.ToSingle(this.textBox231.Text.Trim());
+                monthlyTake.MTDT_V = "NTKN";
+                monthlyTake.MT_Insrt_Person = this.label249.Text.Trim();
+                bool isInserted = _bLLayer.InsMonthlyTake(monthlyTake);
+                if (isInserted)
+                {
+                    MessageBox.Show(string.Concat("Successfull Monthly Take Added"));
+                    this.fillyMonthlyData();
+                    this.textBox162.ReadOnly = true;
+                    this.button38.Text = "Add";
+                }
+            }
+            else if (this.button38.Text == "Updt")
+            {
+                MonthlyTake monthlyTake = new MonthlyTake();
+                monthlyTake.MT_TotalTK = Convert.ToSingle(this.textBox163.Text);
+                monthlyTake.MT_Giv_TK = Convert.ToSingle(this.textBox162.Text);
+                monthlyTake.MT_LS_TK = Convert.ToSingle(this.label294.Text);
+                monthlyTake.T01 = Convert.ToSingle(this.textBox146.Text.Trim());
+                monthlyTake.T02 = Convert.ToSingle(this.textBox145.Text.Trim());
+                monthlyTake.T03 = Convert.ToSingle(this.textBox144.Text.Trim());
+                monthlyTake.T04 = Convert.ToSingle(this.textBox143.Text.Trim());
+                monthlyTake.T05 = Convert.ToSingle(this.textBox142.Text.Trim());
+                monthlyTake.T06 = Convert.ToSingle(this.textBox141.Text.Trim());
+                monthlyTake.T07 = Convert.ToSingle(this.textBox140.Text.Trim());
+                monthlyTake.T08 = Convert.ToSingle(this.textBox139.Text.Trim());
+                monthlyTake.T09 = Convert.ToSingle(this.textBox138.Text.Trim());
+                monthlyTake.T10 = Convert.ToSingle(this.textBox161.Text.Trim());
+                monthlyTake.T11 = Convert.ToSingle(this.textBox160.Text.Trim());
+                monthlyTake.T12 = Convert.ToSingle(this.textBox159.Text.Trim());
+                monthlyTake.T13 = Convert.ToSingle(this.textBox158.Text.Trim());
+                monthlyTake.T14 = Convert.ToSingle(this.textBox157.Text.Trim());
+                monthlyTake.T15 = Convert.ToSingle(this.textBox156.Text.Trim());
+                monthlyTake.T16 = Convert.ToSingle(this.textBox155.Text.Trim());
+                monthlyTake.T17 = Convert.ToSingle(this.textBox154.Text.Trim());
+                monthlyTake.T18 = Convert.ToSingle(this.textBox153.Text.Trim());
+                monthlyTake.T19 = Convert.ToSingle(this.textBox152.Text.Trim());
+                monthlyTake.T20 = Convert.ToSingle(this.textBox151.Text.Trim());
+                monthlyTake.T21 = Convert.ToSingle(this.textBox172.Text.Trim());
+                monthlyTake.T22 = Convert.ToSingle(this.textBox173.Text.Trim());
+                monthlyTake.T23 = Convert.ToSingle(this.textBox174.Text.Trim());
+                monthlyTake.T24 = Convert.ToSingle(this.textBox175.Text.Trim());
+                monthlyTake.T25 = Convert.ToSingle(this.textBox176.Text.Trim());
+                monthlyTake.T26 = Convert.ToSingle(this.textBox177.Text.Trim());
+                monthlyTake.T27 = Convert.ToSingle(this.textBox178.Text.Trim());
+                monthlyTake.T28 = Convert.ToSingle(this.textBox179.Text.Trim());
+                monthlyTake.T29 = Convert.ToSingle(this.textBox180.Text.Trim());
+                monthlyTake.T30 = Convert.ToSingle(this.textBox148.Text.Trim());
+                monthlyTake.T31 = Convert.ToSingle(this.textBox149.Text.Trim());
+                monthlyTake.T32 = Convert.ToSingle(this.textBox150.Text.Trim());
+                monthlyTake.T33 = Convert.ToSingle(this.textBox164.Text.Trim());
+                monthlyTake.T34 = Convert.ToSingle(this.textBox165.Text.Trim());
+                monthlyTake.T35 = Convert.ToSingle(this.textBox166.Text.Trim());
+                monthlyTake.T36 = Convert.ToSingle(this.textBox167.Text.Trim());
+                monthlyTake.T37 = Convert.ToSingle(this.textBox168.Text.Trim());
+                monthlyTake.T38 = Convert.ToSingle(this.textBox169.Text.Trim());
+                monthlyTake.T39 = Convert.ToSingle(this.textBox170.Text.Trim());
+                monthlyTake.T40 = Convert.ToSingle(this.textBox171.Text.Trim());
+                monthlyTake.T41 = Convert.ToSingle(this.textBox192.Text.Trim());
+                monthlyTake.T42 = Convert.ToSingle(this.textBox193.Text.Trim());
+                monthlyTake.T43 = Convert.ToSingle(this.textBox194.Text.Trim());
+                monthlyTake.T44 = Convert.ToSingle(this.textBox195.Text.Trim());
+                monthlyTake.T45 = Convert.ToSingle(this.textBox196.Text.Trim());
+                monthlyTake.T46 = Convert.ToSingle(this.textBox197.Text.Trim());
+                monthlyTake.T47 = Convert.ToSingle(this.textBox198.Text.Trim());
+                monthlyTake.T48 = Convert.ToSingle(this.textBox199.Text.Trim());
+                monthlyTake.T49 = Convert.ToSingle(this.textBox200.Text.Trim());
+                monthlyTake.T50 = Convert.ToSingle(this.textBox181.Text.Trim());
+                monthlyTake.T51 = Convert.ToSingle(this.textBox182.Text.Trim());
+                monthlyTake.T52 = Convert.ToSingle(this.textBox183.Text.Trim());
+                monthlyTake.T53 = Convert.ToSingle(this.textBox184.Text.Trim());
+                monthlyTake.T54 = Convert.ToSingle(this.textBox185.Text.Trim());
+                monthlyTake.T55 = Convert.ToSingle(this.textBox186.Text.Trim());
+                monthlyTake.T56 = Convert.ToSingle(this.textBox187.Text.Trim());
+                monthlyTake.T57 = Convert.ToSingle(this.textBox188.Text.Trim());
+                monthlyTake.T58 = Convert.ToSingle(this.textBox189.Text.Trim());
+                monthlyTake.T59 = Convert.ToSingle(this.textBox190.Text.Trim());
+                monthlyTake.T60 = Convert.ToSingle(this.textBox191.Text.Trim());
+                monthlyTake.T61 = Convert.ToSingle(this.textBox212.Text.Trim());
+                monthlyTake.T62 = Convert.ToSingle(this.textBox213.Text.Trim());
+                monthlyTake.T63 = Convert.ToSingle(this.textBox214.Text.Trim());
+                monthlyTake.T64 = Convert.ToSingle(this.textBox215.Text.Trim());
+                monthlyTake.T65 = Convert.ToSingle(this.textBox216.Text.Trim());
+                monthlyTake.T66 = Convert.ToSingle(this.textBox217.Text.Trim());
+                monthlyTake.T67 = Convert.ToSingle(this.textBox218.Text.Trim());
+                monthlyTake.T68 = Convert.ToSingle(this.textBox219.Text.Trim());
+                monthlyTake.T69 = Convert.ToSingle(this.textBox220.Text.Trim());
+                monthlyTake.T70 = Convert.ToSingle(this.textBox201.Text.Trim());
+                monthlyTake.T71 = Convert.ToSingle(this.textBox202.Text.Trim());
+                monthlyTake.T72 = Convert.ToSingle(this.textBox203.Text.Trim());
+                monthlyTake.T73 = Convert.ToSingle(this.textBox204.Text.Trim());
+                monthlyTake.T74 = Convert.ToSingle(this.textBox205.Text.Trim());
+                monthlyTake.T75 = Convert.ToSingle(this.textBox206.Text.Trim());
+                monthlyTake.T76 = Convert.ToSingle(this.textBox207.Text.Trim());
+                monthlyTake.T77 = Convert.ToSingle(this.textBox208.Text.Trim());
+                monthlyTake.T78 = Convert.ToSingle(this.textBox209.Text.Trim());
+                monthlyTake.T79 = Convert.ToSingle(this.textBox210.Text.Trim());
+                monthlyTake.T80 = Convert.ToSingle(this.textBox211.Text.Trim());
+                monthlyTake.T81 = Convert.ToSingle(this.textBox232.Text.Trim());
+                monthlyTake.T82 = Convert.ToSingle(this.textBox233.Text.Trim());
+                monthlyTake.T83 = Convert.ToSingle(this.textBox234.Text.Trim());
+                monthlyTake.T84 = Convert.ToSingle(this.textBox235.Text.Trim());
+                monthlyTake.T85 = Convert.ToSingle(this.textBox236.Text.Trim());
+                monthlyTake.T86 = Convert.ToSingle(this.textBox237.Text.Trim());
+                monthlyTake.T87 = Convert.ToSingle(this.textBox238.Text.Trim());
+                monthlyTake.T88 = Convert.ToSingle(this.textBox239.Text.Trim());
+                monthlyTake.T89 = Convert.ToSingle(this.textBox240.Text.Trim());
+                monthlyTake.T90 = Convert.ToSingle(this.textBox221.Text.Trim());
+                monthlyTake.T91 = Convert.ToSingle(this.textBox222.Text.Trim());
+                monthlyTake.T92 = Convert.ToSingle(this.textBox223.Text.Trim());
+                monthlyTake.T93 = Convert.ToSingle(this.textBox224.Text.Trim());
+                monthlyTake.T94 = Convert.ToSingle(this.textBox225.Text.Trim());
+                monthlyTake.T95 = Convert.ToSingle(this.textBox226.Text.Trim());
+                monthlyTake.T96 = Convert.ToSingle(this.textBox227.Text.Trim());
+                monthlyTake.T97 = Convert.ToSingle(this.textBox228.Text.Trim());
+                monthlyTake.T98 = Convert.ToSingle(this.textBox229.Text.Trim());
+                monthlyTake.T99 = Convert.ToSingle(this.textBox230.Text.Trim());
+                monthlyTake.T100 = Convert.ToSingle(this.textBox231.Text.Trim());
+                monthlyTake.MTDT_V = "TKN";
+                monthlyTake.MT_Updt_Person = this.label249.Text.Trim();
+                monthlyTake.MT_ID = this.label404.Text.Trim();
+                bool isInserted = _bLLayer.UpdtMonthlyTake(monthlyTake);
+                if (isInserted)
+                {
+                    MessageBox.Show(string.Concat($"Successfull Updated - {this.label404.Text.Trim()}"));
+                    this.fillyMonthlyData();
+                    this.textBox163.Text = "";
+                    this.textBox162.Text = "";
+                    this.textBox162.ReadOnly = true;
+                    this.button38.Text = "Add";
+                }
+            }
+        }
+        private void button37_Click(object sender, EventArgs e)
+        {
+            this.BalankFldMonthly();
+            this.button38.Text = "Add";
+        }
+
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
         private void timer1_Tick(object sender, EventArgs e)
@@ -2741,6 +3167,134 @@ namespace CT_App
                 }
                 this.conn.Close();
                 */
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
+        private void dataGridView15_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.textBox162.ReadOnly = false;
+                string mntTknId = this.dataGridView15.SelectedRows[0].Cells[0].Value.ToString();  
+                DataTable dataTable = _bLLayer.GetMonthDataById(mntTknId);
+                if (dataTable.Rows.Count > 0)
+                {
+                    DataRow row = dataTable.Rows[0];
+                    this.label404.Text = row[0].ToString();
+
+                    this.textBox163.Text = row[2].ToString();
+                    this.textBox162.Text = row[3].ToString();
+
+                    this.label10.Text = row[4].ToString();
+                    this.textBox146.Text = row[5].ToString();
+                    this.textBox145.Text = row[6].ToString();
+                    this.textBox144.Text = row[7].ToString();
+                    this.textBox143.Text = row[8].ToString();
+                    this.textBox142.Text = row[9].ToString();
+                    this.textBox141.Text = row[10].ToString();
+                    this.textBox140.Text = row[11].ToString();
+                    this.textBox139.Text = row[12].ToString();
+                    this.textBox138.Text = row[13].ToString();
+                    this.textBox161.Text = row[14].ToString();
+                    this.textBox160.Text = row[15].ToString();
+                    this.textBox159.Text = row[16].ToString();
+                    this.textBox158.Text = row[17].ToString();
+                    this.textBox157.Text = row[18].ToString();
+                    this.textBox156.Text = row[19].ToString();
+                    this.textBox155.Text = row[20].ToString();
+                    this.textBox154.Text = row[21].ToString();
+                    this.textBox153.Text = row[22].ToString();
+                    this.textBox152.Text = row[23].ToString();
+                    this.textBox151.Text = row[24].ToString();
+                    this.textBox172.Text = row[25].ToString();
+                    this.textBox173.Text = row[26].ToString();
+                    this.textBox174.Text = row[27].ToString();
+                    this.textBox175.Text = row[28].ToString();
+                    this.textBox176.Text = row[29].ToString();
+                    this.textBox177.Text = row[30].ToString();
+                    this.textBox178.Text = row[31].ToString();
+                    this.textBox179.Text = row[32].ToString();
+                    this.textBox180.Text = row[33].ToString();
+                    this.textBox148.Text = row[34].ToString();
+                    this.textBox149.Text = row[35].ToString();
+                    this.textBox150.Text = row[36].ToString();
+                    this.textBox164.Text = row[37].ToString();
+                    this.textBox165.Text = row[38].ToString();
+                    this.textBox166.Text = row[39].ToString();
+                    this.textBox167.Text = row[40].ToString();
+                    this.textBox168.Text = row[41].ToString();
+                    this.textBox169.Text = row[42].ToString();
+                    this.textBox170.Text = row[43].ToString();
+                    this.textBox171.Text = row[44].ToString();
+                    this.textBox192.Text = row[45].ToString();
+                    this.textBox193.Text = row[46].ToString();
+                    this.textBox194.Text = row[47].ToString();
+                    this.textBox195.Text = row[48].ToString();
+                    this.textBox196.Text = row[49].ToString();
+                    this.textBox197.Text = row[50].ToString();
+                    this.textBox198.Text = row[51].ToString();
+                    this.textBox199.Text = row[52].ToString();
+                    this.textBox200.Text = row[53].ToString();
+                    this.textBox181.Text = row[54].ToString();
+                    this.textBox182.Text = row[55].ToString();
+                    this.textBox183.Text = row[56].ToString();
+                    this.textBox184.Text = row[57].ToString();
+                    this.textBox185.Text = row[58].ToString();
+                    this.textBox186.Text = row[59].ToString();
+                    this.textBox187.Text = row[60].ToString();
+                    this.textBox188.Text = row[61].ToString();
+                    this.textBox189.Text = row[62].ToString();
+                    this.textBox190.Text = row[63].ToString();
+                    this.textBox191.Text = row[64].ToString();
+                    this.textBox212.Text = row[65].ToString();
+                    this.textBox213.Text = row[66].ToString();
+                    this.textBox214.Text = row[67].ToString();
+                    this.textBox215.Text = row[68].ToString();
+                    this.textBox216.Text = row[69].ToString();
+                    this.textBox217.Text = row[70].ToString();
+                    this.textBox218.Text = row[71].ToString();
+                    this.textBox219.Text = row[72].ToString();
+                    this.textBox220.Text = row[73].ToString();
+                    this.textBox201.Text = row[74].ToString();
+                    this.textBox202.Text = row[75].ToString();
+                    this.textBox203.Text = row[76].ToString();
+                    this.textBox204.Text = row[77].ToString();
+                    this.textBox205.Text = row[78].ToString();
+                    this.textBox206.Text = row[79].ToString();
+                    this.textBox207.Text = row[80].ToString();
+                    this.textBox208.Text = row[81].ToString();
+                    this.textBox209.Text = row[82].ToString();
+                    this.textBox210.Text = row[83].ToString();
+                    this.textBox211.Text = row[84].ToString();
+                    this.textBox232.Text = row[85].ToString();
+                    this.textBox233.Text = row[86].ToString();
+                    this.textBox234.Text = row[87].ToString();
+                    this.textBox235.Text = row[88].ToString();
+                    this.textBox236.Text = row[89].ToString();
+                    this.textBox237.Text = row[90].ToString();
+                    this.textBox238.Text = row[91].ToString();
+                    this.textBox239.Text = row[92].ToString();
+                    this.textBox240.Text = row[93].ToString();
+                    this.textBox221.Text = row[94].ToString();
+                    this.textBox222.Text = row[95].ToString();
+                    this.textBox223.Text = row[96].ToString();
+                    this.textBox224.Text = row[97].ToString();
+                    this.textBox225.Text = row[98].ToString();
+                    this.textBox226.Text = row[99].ToString();
+                    this.textBox227.Text = row[100].ToString();
+                    this.textBox228.Text = row[101].ToString();
+                    this.textBox229.Text = row[102].ToString();
+                    this.textBox230.Text = row[103].ToString();
+                    this.textBox231.Text = row[104].ToString();
+                }
+                else
+                {
+                    this.button38.Text = "Add";
+                }
+                this.button38.Text = "Updt";
             }
             catch (Exception ex)
             {
@@ -5307,9 +5861,2923 @@ namespace CT_App
         {
             this.textBox117.Focus();
         }
-
+        private void textBox146_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox146.Text.Trim() != ""))
+                    {
+                        this.textBox146.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox146.Focus();
+                        }
+                        else
+                        {
+                            this.label426.Text = this.textBox146.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox145.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox145_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox145.Text.Trim() != ""))
+                    {
+                        this.textBox145.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox145.Focus();
+                        }
+                        else
+                        {
+                            this.label418.Text = this.textBox145.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox144.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox144_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox144.Text.Trim() != ""))
+                    {
+                        this.textBox144.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox144.Focus();
+                        }
+                        else
+                        {
+                            this.label410.Text = this.textBox144.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox143.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox143_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox143.Text.Trim() != ""))
+                    {
+                        this.textBox143.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox143.Focus();
+                        }
+                        else
+                        {
+                            this.label422.Text = this.textBox143.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox142.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox142_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox142.Text.Trim() != ""))
+                    {
+                        this.textBox142.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox142.Focus();
+                        }
+                        else
+                        {
+                            this.label414.Text = this.textBox142.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox141.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox141_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox141.Text.Trim() != ""))
+                    {
+                        this.textBox141.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox141.Focus();
+                        }
+                        else
+                        {
+                            this.label406.Text = this.textBox141.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox140.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox140_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox140.Text.Trim() != ""))
+                    {
+                        this.textBox140.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox140.Focus();
+                        }
+                        else
+                        {
+                            this.label425.Text = this.textBox140.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox139.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox139_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox139.Text.Trim() != ""))
+                    {
+                        this.textBox139.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox139.Focus();
+                        }
+                        else
+                        {
+                            this.label417.Text = this.textBox139.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox138.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox138_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox138.Text.Trim() != ""))
+                    {
+                        this.textBox138.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox138.Focus();
+                        }
+                        else
+                        {
+                            this.label409.Text = this.textBox138.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox161.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox161_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox161.Text.Trim() != ""))
+                    {
+                        this.textBox161.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox161.Focus();
+                        }
+                        else
+                        {
+                            this.label421.Text = this.textBox161.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox160.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox160_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox160.Text.Trim() != ""))
+                    {
+                        this.textBox160.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox160.Focus();
+                        }
+                        else
+                        {
+                            this.label413.Text = this.textBox160.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox159.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox159_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox159.Text.Trim() != ""))
+                    {
+                        this.textBox159.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox159.Focus();
+                        }
+                        else
+                        {
+                            this.label402.Text = this.textBox159.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox158.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox158_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox158.Text.Trim() != ""))
+                    {
+                        this.textBox158.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox158.Focus();
+                        }
+                        else
+                        {
+                            this.label424.Text = this.textBox158.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox157.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox157_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox157.Text.Trim() != ""))
+                    {
+                        this.textBox157.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox157.Focus();
+                        }
+                        else
+                        {
+                            this.label416.Text = this.textBox157.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox156.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox156_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox156.Text.Trim() != ""))
+                    {
+                        this.textBox156.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox156.Focus();
+                        }
+                        else
+                        {
+                            this.label408.Text = this.textBox156.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox155.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox155_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox155.Text.Trim() != ""))
+                    {
+                        this.textBox155.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox155.Focus();
+                        }
+                        else
+                        {
+                            this.label420.Text = this.textBox155.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox154.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox154_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox154.Text.Trim() != ""))
+                    {
+                        this.textBox154.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox154.Focus();
+                        }
+                        else
+                        {
+                            this.label412.Text = this.textBox154.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox153.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox153_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox153.Text.Trim() != ""))
+                    {
+                        this.textBox153.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox153.Focus();
+                        }
+                        else
+                        {
+                            this.label401.Text = this.textBox153.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox152.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox152_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox152.Text.Trim() != ""))
+                    {
+                        this.textBox152.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox152.Focus();
+                        }
+                        else
+                        {
+                            this.label423.Text = this.textBox152.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox151.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox151_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox151.Text.Trim() != ""))
+                    {
+                        this.textBox151.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox151.Focus();
+                        }
+                        else
+                        {
+                            this.label415.Text = this.textBox151.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox172.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox172_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox172.Text.Trim() != ""))
+                    {
+                        this.textBox172.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox172.Focus();
+                        }
+                        else
+                        {
+                            this.label407.Text = this.textBox172.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox173.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox173_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox173.Text.Trim() != ""))
+                    {
+                        this.textBox173.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox173.Focus();
+                        }
+                        else
+                        {
+                            this.label419.Text = this.textBox173.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox174.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox174_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox174.Text.Trim() != ""))
+                    {
+                        this.textBox174.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox174.Focus();
+                        }
+                        else
+                        {
+                            this.label411.Text = this.textBox174.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox175.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox175_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox175.Text.Trim() != ""))
+                    {
+                        this.textBox175.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox175.Focus();
+                        }
+                        else
+                        {
+                            this.label400.Text = this.textBox175.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox176.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox176_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox176.Text.Trim() != ""))
+                    {
+                        this.textBox176.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox176.Focus();
+                        }
+                        else
+                        {
+                            this.label399.Text = this.textBox176.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox177.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox177_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox177.Text.Trim() != ""))
+                    {
+                        this.textBox177.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox177.Focus();
+                        }
+                        else
+                        {
+                            this.label434.Text = this.textBox177.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox178.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox178_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox178.Text.Trim() != ""))
+                    {
+                        this.textBox178.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox178.Focus();
+                        }
+                        else
+                        {
+                            this.label442.Text = this.textBox178.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox179.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox179_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox179.Text.Trim() != ""))
+                    {
+                        this.textBox179.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox179.Focus();
+                        }
+                        else
+                        {
+                            this.label430.Text = this.textBox179.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox180.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox180_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox180.Text.Trim() != ""))
+                    {
+                        this.textBox180.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox180.Focus();
+                        }
+                        else
+                        {
+                            this.label438.Text = this.textBox180.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox148.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox148_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox148.Text.Trim() != ""))
+                    {
+                        this.textBox148.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox148.Focus();
+                        }
+                        else
+                        {
+                            this.label446.Text = this.textBox148.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox149.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox149_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox149.Text.Trim() != ""))
+                    {
+                        this.textBox149.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox149.Focus();
+                        }
+                        else
+                        {
+                            this.label427.Text = this.textBox149.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox150.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox150_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox150.Text.Trim() != ""))
+                    {
+                        this.textBox150.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox150.Focus();
+                        }
+                        else
+                        {
+                            this.label435.Text = this.textBox150.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox164.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox164_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox164.Text.Trim() != ""))
+                    {
+                        this.textBox164.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox164.Focus();
+                        }
+                        else
+                        {
+                            this.label443.Text = this.textBox164.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox165.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox165_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox165.Text.Trim() != ""))
+                    {
+                        this.textBox165.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox165.Focus();
+                        }
+                        else
+                        {
+                            this.label431.Text = this.textBox165.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox166.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox166_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox166.Text.Trim() != ""))
+                    {
+                        this.textBox166.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox166.Focus();
+                        }
+                        else
+                        {
+                            this.label439.Text = this.textBox166.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox167.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox167_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox167.Text.Trim() != ""))
+                    {
+                        this.textBox167.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox167.Focus();
+                        }
+                        else
+                        {
+                            this.label447.Text = this.textBox167.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox168.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox168_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox168.Text.Trim() != ""))
+                    {
+                        this.textBox168.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox168.Focus();
+                        }
+                        else
+                        {
+                            this.label428.Text = this.textBox168.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox169.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox169_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox169.Text.Trim() != ""))
+                    {
+                        this.textBox169.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox169.Focus();
+                        }
+                        else
+                        {
+                            this.label436.Text = this.textBox169.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox170.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox170_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox170.Text.Trim() != ""))
+                    {
+                        this.textBox170.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox170.Focus();
+                        }
+                        else
+                        {
+                            this.label444.Text = this.textBox170.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox171.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox171_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox171.Text.Trim() != ""))
+                    {
+                        this.textBox171.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox171.Focus();
+                        }
+                        else
+                        {
+                            this.label432.Text = this.textBox171.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox192.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox192_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox192.Text.Trim() != ""))
+                    {
+                        this.textBox192.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox192.Focus();
+                        }
+                        else
+                        {
+                            this.label440.Text = this.textBox192.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox193.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox193_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox193.Text.Trim() != ""))
+                    {
+                        this.textBox193.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox193.Focus();
+                        }
+                        else
+                        {
+                            this.label448.Text = this.textBox193.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox194.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox194_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox194.Text.Trim() != ""))
+                    {
+                        this.textBox194.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox194.Focus();
+                        }
+                        else
+                        {
+                            this.label429.Text = this.textBox194.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox195.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox195_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox195.Text.Trim() != ""))
+                    {
+                        this.textBox195.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox195.Focus();
+                        }
+                        else
+                        {
+                            this.label437.Text = this.textBox195.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox196.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox196_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox196.Text.Trim() != ""))
+                    {
+                        this.textBox196.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox196.Focus();
+                        }
+                        else
+                        {
+                            this.label445.Text = this.textBox196.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox197.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox197_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox197.Text.Trim() != ""))
+                    {
+                        this.textBox197.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox197.Focus();
+                        }
+                        else
+                        {
+                            this.label433.Text = this.textBox197.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox198.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox198_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox198.Text.Trim() != ""))
+                    {
+                        this.textBox198.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox198.Focus();
+                        }
+                        else
+                        {
+                            this.label441.Text = this.textBox198.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox199.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox199_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox199.Text.Trim() != ""))
+                    {
+                        this.textBox199.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox199.Focus();
+                        }
+                        else
+                        {
+                            this.label449.Text = this.textBox199.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox200.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox200_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox200.Text.Trim() != ""))
+                    {
+                        this.textBox200.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox200.Focus();
+                        }
+                        else
+                        {
+                            this.label473.Text = this.textBox200.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox181.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox181_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox181.Text.Trim() != ""))
+                    {
+                        this.textBox181.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox181.Focus();
+                        }
+                        else
+                        {
+                            this.label465.Text = this.textBox181.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox182.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox182_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox182.Text.Trim() != ""))
+                    {
+                        this.textBox182.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox182.Focus();
+                        }
+                        else
+                        {
+                            this.label457.Text = this.textBox182.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox183.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox183_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox183.Text.Trim() != ""))
+                    {
+                        this.textBox183.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox183.Focus();
+                        }
+                        else
+                        {
+                            this.label469.Text = this.textBox183.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox184.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox184_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox184.Text.Trim() != ""))
+                    {
+                        this.textBox184.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox184.Focus();
+                        }
+                        else
+                        {
+                            this.label461.Text = this.textBox184.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox185.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox185_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox185.Text.Trim() != ""))
+                    {
+                        this.textBox185.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox185.Focus();
+                        }
+                        else
+                        {
+                            this.label453.Text = this.textBox185.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox186.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox186_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox186.Text.Trim() != ""))
+                    {
+                        this.textBox186.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox186.Focus();
+                        }
+                        else
+                        {
+                            this.label472.Text = this.textBox186.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox187.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox187_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox187.Text.Trim() != ""))
+                    {
+                        this.textBox187.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox187.Focus();
+                        }
+                        else
+                        {
+                            this.label464.Text = this.textBox187.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox188.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox188_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox188.Text.Trim() != ""))
+                    {
+                        this.textBox188.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox188.Focus();
+                        }
+                        else
+                        {
+                            this.label456.Text = this.textBox188.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox189.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox189_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox189.Text.Trim() != ""))
+                    {
+                        this.textBox189.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox189.Focus();
+                        }
+                        else
+                        {
+                            this.label468.Text = this.textBox189.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox190.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox190_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox190.Text.Trim() != ""))
+                    {
+                        this.textBox190.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox190.Focus();
+                        }
+                        else
+                        {
+                            this.label460.Text = this.textBox190.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox191.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox191_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox191.Text.Trim() != ""))
+                    {
+                        this.textBox191.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox191.Focus();
+                        }
+                        else
+                        {
+                            this.label452.Text = this.textBox191.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox212.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox212_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox212.Text.Trim() != ""))
+                    {
+                        this.textBox212.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox212.Focus();
+                        }
+                        else
+                        {
+                            this.label471.Text = this.textBox212.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox213.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox213_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox213.Text.Trim() != ""))
+                    {
+                        this.textBox213.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox213.Focus();
+                        }
+                        else
+                        {
+                            this.label463.Text = this.textBox213.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox214.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox214_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox214.Text.Trim() != ""))
+                    {
+                        this.textBox214.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox214.Focus();
+                        }
+                        else
+                        {
+                            this.label455.Text = this.textBox214.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox215.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox215_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox215.Text.Trim() != ""))
+                    {
+                        this.textBox215.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox215.Focus();
+                        }
+                        else
+                        {
+                            this.label467.Text = this.textBox215.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox216.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox216_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox216.Text.Trim() != ""))
+                    {
+                        this.textBox216.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox216.Focus();
+                        }
+                        else
+                        {
+                            this.label459.Text = this.textBox216.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox217.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox217_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox217.Text.Trim() != ""))
+                    {
+                        this.textBox217.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox217.Focus();
+                        }
+                        else
+                        {
+                            this.label451.Text = this.textBox217.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox218.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox218_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox218.Text.Trim() != ""))
+                    {
+                        this.textBox218.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox218.Focus();
+                        }
+                        else
+                        {
+                            this.label470.Text = this.textBox218.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox219.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox219_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox219.Text.Trim() != ""))
+                    {
+                        this.textBox219.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox219.Focus();
+                        }
+                        else
+                        {
+                            this.label462.Text = this.textBox219.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox220.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox220_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox220.Text.Trim() != ""))
+                    {
+                        this.textBox220.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox220.Focus();
+                        }
+                        else
+                        {
+                            this.label454.Text = this.textBox220.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox201.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox201_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox201.Text.Trim() != ""))
+                    {
+                        this.textBox201.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox201.Focus();
+                        }
+                        else
+                        {
+                            this.label466.Text = this.textBox201.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox202.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox202_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox202.Text.Trim() != ""))
+                    {
+                        this.textBox202.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox202.Focus();
+                        }
+                        else
+                        {
+                            this.label458.Text = this.textBox202.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox203.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox203_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox203.Text.Trim() != ""))
+                    {
+                        this.textBox203.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox203.Focus();
+                        }
+                        else
+                        {
+                            this.label450.Text = this.textBox203.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox204.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox204_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox204.Text.Trim() != ""))
+                    {
+                        this.textBox204.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox204.Focus();
+                        }
+                        else
+                        {
+                            this.label497.Text = this.textBox204.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox205.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox205_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox205.Text.Trim() != ""))
+                    {
+                        this.textBox205.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox205.Focus();
+                        }
+                        else
+                        {
+                            this.label489.Text = this.textBox205.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox206.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox206_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox206.Text.Trim() != ""))
+                    {
+                        this.textBox206.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox206.Focus();
+                        }
+                        else
+                        {
+                            this.label481.Text = this.textBox206.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox207.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox207_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox207.Text.Trim() != ""))
+                    {
+                        this.textBox207.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox207.Focus();
+                        }
+                        else
+                        {
+                            this.label493.Text = this.textBox207.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox208.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox208_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox208.Text.Trim() != ""))
+                    {
+                        this.textBox208.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox208.Focus();
+                        }
+                        else
+                        {
+                            this.label485.Text = this.textBox208.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox209.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox209_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox209.Text.Trim() != ""))
+                    {
+                        this.textBox209.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox209.Focus();
+                        }
+                        else
+                        {
+                            this.label477.Text = this.textBox209.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox210.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox210_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox210.Text.Trim() != ""))
+                    {
+                        this.textBox210.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox210.Focus();
+                        }
+                        else
+                        {
+                            this.label496.Text = this.textBox210.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox211.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox211_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox211.Text.Trim() != ""))
+                    {
+                        this.textBox211.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox211.Focus();
+                        }
+                        else
+                        {
+                            this.label488.Text = this.textBox211.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox232.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox232_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox232.Text.Trim() != ""))
+                    {
+                        this.textBox232.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox232.Focus();
+                        }
+                        else
+                        {
+                            this.label480.Text = this.textBox232.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox233.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox233_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox233.Text.Trim() != ""))
+                    {
+                        this.textBox233.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox233.Focus();
+                        }
+                        else
+                        {
+                            this.label492.Text = this.textBox233.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox234.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox234_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox234.Text.Trim() != ""))
+                    {
+                        this.textBox234.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox234.Focus();
+                        }
+                        else
+                        {
+                            this.label484.Text = this.textBox234.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox235.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox235_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox235.Text.Trim() != ""))
+                    {
+                        this.textBox235.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox235.Focus();
+                        }
+                        else
+                        {
+                            this.label476.Text = this.textBox235.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox236.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox236_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox236.Text.Trim() != ""))
+                    {
+                        this.textBox236.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox236.Focus();
+                        }
+                        else
+                        {
+                            this.label495.Text = this.textBox236.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox237.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox237_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox237.Text.Trim() != ""))
+                    {
+                        this.textBox237.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox237.Focus();
+                        }
+                        else
+                        {
+                            this.label487.Text = this.textBox237.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox238.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox238_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox238.Text.Trim() != ""))
+                    {
+                        this.textBox238.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox238.Focus();
+                        }
+                        else
+                        {
+                            this.label479.Text = this.textBox238.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox239.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox239_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox239.Text.Trim() != ""))
+                    {
+                        this.textBox239.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox239.Focus();
+                        }
+                        else
+                        {
+                            this.label494.Text = this.textBox239.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox240.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox240_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox240.Text.Trim() != ""))
+                    {
+                        this.textBox240.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox240.Focus();
+                        }
+                        else
+                        {
+                            this.label483.Text = this.textBox240.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox221.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox221_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox221.Text.Trim() != ""))
+                    {
+                        this.textBox221.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox221.Focus();
+                        }
+                        else
+                        {
+                            this.label475.Text = this.textBox221.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox222.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox222_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox222.Text.Trim() != ""))
+                    {
+                        this.textBox222.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox222.Focus();
+                        }
+                        else
+                        {
+                            this.label494.Text = this.textBox222.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox223.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox223_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox223.Text.Trim() != ""))
+                    {
+                        this.textBox223.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox223.Focus();
+                        }
+                        else
+                        {
+                            this.label486.Text = this.textBox223.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox224.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox224_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox224.Text.Trim() != ""))
+                    {
+                        this.textBox224.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox224.Focus();
+                        }
+                        else
+                        {
+                            this.label478.Text = this.textBox224.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox225.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox225_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox225.Text.Trim() != ""))
+                    {
+                        this.textBox225.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox225.Focus();
+                        }
+                        else
+                        {
+                            this.label490.Text = this.textBox225.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox226.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox226_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox226.Text.Trim() != ""))
+                    {
+                        this.textBox226.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox226.Focus();
+                        }
+                        else
+                        {
+                            this.label482.Text = this.textBox226.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox227.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox227_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox227.Text.Trim() != ""))
+                    {
+                        this.textBox227.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox227.Focus();
+                        }
+                        else
+                        {
+                            this.label474.Text = this.textBox227.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox229.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox229_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox229.Text.Trim() != ""))
+                    {
+                        this.textBox229.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox229.Focus();
+                        }
+                        else
+                        {
+                            this.label521.Text = this.textBox229.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox230.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox230_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox230.Text.Trim() != ""))
+                    {
+                        this.textBox230.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox230.Focus();
+                        }
+                        else
+                        {
+                            this.label513.Text = this.textBox230.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox231.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox231_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox231.Text.Trim() != ""))
+                    {
+                        this.textBox231.Focus();
+                    }
+                    else
+                    {
+                        if (this.button38.Text == "Add")
+                        {
+                            MessageBox.Show(string.Concat("Please Press Add Button"));
+                            this.textBox231.Focus();
+                        }
+                        else
+                        {
+                            this.label505.Text = this.textBox231.Text.Trim();
+                            this.AllTakenAdd();
+                            this.textBox162.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        private void textBox162_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox162.Text.Trim() != ""))
+                    {
+                        this.textBox162.Focus();
+                    }
+                    else
+                    {
+                        this.button38.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox162_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.textBox162.Text.Trim() != "")
+                {
+                    double num = double.Parse(this.textBox162.Text.Trim());
+                    double num1 = double.Parse(this.textBox163.Text.Trim());
+                    double num3 = num - num1;
+                    decimal num2 = Convert.ToDecimal(num3.ToString());
+                    Label str1 = this.label294;
+                    decimal num4 = Math.Round(num2, 4);
+                    num3 = double.Parse(num4.ToString());
+                    str1.Text = num3.ToString();
+                }
+                else
+                {
+                    this.label294.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
         #endregion
-        
+
         //------------------------------If Query Needed--------------------------
         //-----------------------------------------------------------------------
     }

@@ -90,3 +90,9 @@ D:\MVS_2019_Project\CT_App\CT_App\obj\Debug\CT_App.exe.manifest
 D:\MVS_2019_Project\CT_App\CT_App\obj\Debug\CT_App.application
 D:\MVS_2019_Project\CT_App\CT_App\obj\Debug\CT_App.exe
 D:\MVS_2019_Project\CT_App\CT_App\obj\Debug\CT_App.pdb
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\bin\Debug\MySql.Data.dll
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\bin\Debug\System.Memory.dll
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\bin\Debug\System.Buffers.dll
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\bin\Debug\MySql.Data.xml
+D:\MVS_2019_Project\TeamProject\CT_App\CT_App\CT_App\obj\Debug\CT_App.csproj.CopyComplete
