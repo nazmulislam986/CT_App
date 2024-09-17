@@ -404,6 +404,5 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.GetUnratedDetailData(unratedTo);
         }
-
     }
 }

@@ -517,7 +517,7 @@ namespace CT_App
         {
             this.textBox163.Text = "0";
             this.textBox162.Text = "0";
-            this.label294.Text = "0";
+            this.label294.Text   = "0";
             this.textBox146.Text = "0";
             this.textBox145.Text = "0";
             this.textBox144.Text = "0";
@@ -3188,7 +3188,7 @@ namespace CT_App
                     this.textBox163.Text = row[2].ToString();
                     this.textBox162.Text = row[3].ToString();
 
-                    this.label10.Text = row[4].ToString();
+                    this.label294.Text = row[4].ToString();
                     this.textBox146.Text = row[5].ToString();
                     this.textBox145.Text = row[6].ToString();
                     this.textBox144.Text = row[7].ToString();
