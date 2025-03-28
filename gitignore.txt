@@ -1,0 +1,47 @@
+# Ignore all build results except the Debug folder
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]eploy/
+[Dd]ebug-x64/
+[Dd]ebug-x86/
+[Dd]ist-x64/
+[Dd]ist-x86/
+bin/
+obj/
+
+# Allow Debug folder (un-ignore it)
+!Debug/
+
+# User-specific files
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+
+# Windows Installer XML files
+*.wixproj
+
+# Ignore JetBrains Rider config folder
+.idea/
+
+# Ignore the NuGet package directory
+packages/
+
+# Ignore the project dependency folder for some package managers
+project.lock.json
+project.fragment.lock.json
+
+# Ignore .rar files
+*.rar
+
+# Do not ignore db.lock file
+!db.lock
