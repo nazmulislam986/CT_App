@@ -84,6 +84,8 @@ namespace CT_App
             this.label268.Text = "";
             this.label252.Visible = false;
             this.dataGridView13.Visible = false;
+            this.pictureBox1.Visible = false;
+            this.button40.Visible = false;
         }
 
         //------------------------------All Classes------------------------------
@@ -373,9 +375,7 @@ namespace CT_App
             try
             {
                 Label[] labels = {
-                    label9, label13, label17, label24, label28, label32,
-                    label36, label40, label44, label48, label52, label56,
-                    label60, label64, label68, label76
+                    label9, label13, label17, label24, label28, label32, label36, label40, label44, label48, label52, label56, label60, label64, label68, label76
                 };
                 int totalItemSum = 0;
                 foreach (var label in labels)
@@ -428,11 +428,7 @@ namespace CT_App
             try
             {
                 Label[] labels = {
-                      label426 ,label418 ,label410 ,label422 ,label414 ,label406 ,label425 ,label417 ,label409 ,label421 ,label413 ,label402 ,label424 ,label416 ,label408 ,label420 ,label412 ,label401 ,label423 ,label415 
-                     ,label407 ,label419 ,label411 ,label400 ,label399, label434 ,label442 ,label430 ,label438 ,label446 ,label427 ,label435 ,label443 ,label431 ,label439 ,label447 ,label428 ,label436 ,label444 ,label432 
-                     ,label440 ,label448 ,label429 ,label437 ,label445 ,label433 ,label441 ,label449 ,label473 ,label465 ,label457 ,label469 ,label461 ,label453 ,label472 ,label464 ,label456 ,label468 ,label460 ,label452 
-                     ,label471 ,label463 ,label455 ,label467 ,label459 ,label451 ,label470 ,label462 ,label454 ,label466 ,label458 ,label450 ,label497 ,label489 ,label481 ,label493 ,label485 ,label477 ,label496 ,label488 
-                     ,label480 ,label492 ,label484 ,label476 ,label495 ,label487 ,label479 ,label494 ,label483 ,label475 ,label494 ,label486 ,label478 ,label490 ,label482 ,label474 ,label521 ,label513 ,label505 ,label517
+                      label426 ,label418 ,label410 ,label422 ,label414 ,label406 ,label425 ,label417 ,label409 ,label421 ,label413 ,label402 ,label424 ,label416 ,label408 ,label420 ,label412 ,label401 ,label423 ,label415, label407 ,label419 ,label411 ,label400 ,label399, label434 ,label442 ,label430 ,label438 ,label446 ,label427 ,label435 ,label443 ,label431 ,label439 ,label447 ,label428 ,label436 ,label444 ,label432 ,label440 ,label448 ,label429 ,label437 ,label445 ,label433 ,label441 ,label449 ,label473 ,label465 ,label457 ,label469 ,label461 ,label453 ,label472 ,label464 ,label456 ,label468 ,label460 ,label452, label471 ,label463 ,label455 ,label467 ,label459 ,label451 ,label470 ,label462 ,label454 ,label466 ,label458 ,label450 ,label497 ,label489 ,label481 ,label493 ,label485 ,label477 ,label496 ,label488 ,label480 ,label492 ,label484 ,label476 ,label495 ,label487 ,label479 ,label494 ,label483 ,label475 ,label494 ,label486 ,label478 ,label490 ,label482 ,label474 ,label521 ,label513 ,label505 ,label517
                 };
                 int sumNums = 0;
                 foreach (var label in labels)
@@ -461,7 +457,7 @@ namespace CT_App
                 this.label94.Text = totalDaily.ToString();
 
                 float totalDailyCut = _bLLayer.GetTtlDailyCut();
-                this.label121.Text = totalDailyCut.ToString();
+                this.label121.Text = totalDailyCut.ToString("0.0");
 
                 float totalDailyAnt = _bLLayer.GetTtlDailyAnt();
                 this.label263.Text = totalDailyAnt.ToString();
@@ -1482,6 +1478,8 @@ namespace CT_App
             this.label185.Text = "0";
             this.label187.Text = "0";
             this.label189.Text = "0";
+            this.label247.Text = "0";
+            this.textBox242.Text = "";
             this.button10.Text = "Add";
         }
         private void buttonS25_Click(object sender, EventArgs e)
@@ -1502,6 +1500,8 @@ namespace CT_App
             this.label279.Text = "0";
             this.label278.Text = "0";
             this.label276.Text = "0";
+            this.label268.Text = "0";
+            this.button22.Visible = false;
             this.button31.Text = "Add";
         }
         private void button9_Click(object sender, EventArgs e)
@@ -1510,6 +1510,8 @@ namespace CT_App
             this.textBox50.Text = "";
             this.label182.Text = "0";
             this.label191.Text = "0";
+            this.label248.Text = "0";
+            this.button22.Visible = false;
             this.button14.Text = "Add";
         }
         private void button4_Click(object sender, EventArgs e)
@@ -2293,55 +2295,65 @@ namespace CT_App
                 }
             }
         }
-        private void button26_Click(object sender, EventArgs e)
+        private async void button26_Click(object sender, EventArgs e)
         {
             try
             {
-                _bLLayer.SynchronizeMarkMemData();
+                this.pictureBox1.Visible = true;
+                await Task.Run(() => _bLLayer.SynchronizeMarkMemData());
+                this.pictureBox1.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void button27_Click(object sender, EventArgs e)
+        private async void button27_Click(object sender, EventArgs e)
         {
             try
             {
-                _bLLayer.SynchronizeInstallData();
+                this.pictureBox1.Visible = true;
+                await Task.Run(() => _bLLayer.SynchronizeInstallData());
+                this.pictureBox1.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void button36_Click(object sender, EventArgs e)
+        private async void button36_Click(object sender, EventArgs e)
         {
             try
             {
-                _bLLayer.SynchronizeCrCardData();
+                this.pictureBox1.Visible = true;
+                await Task.Run(() => _bLLayer.SynchronizeCrCardData());
+                this.pictureBox1.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void button29_Click(object sender, EventArgs e)
+        private async void button29_Click(object sender, EventArgs e)
         {
             try
             {
-                _bLLayer.SynchronizeDailyAchiveData();
+                this.pictureBox1.Visible = true;
+                await Task.Run(() => _bLLayer.SynchronizeDailyAchiveData());
+                this.pictureBox1.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An Error Data Synchronization {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void button34_Click(object sender, EventArgs e)
+        private async void button34_Click(object sender, EventArgs e)
         {
             try
             {
-                _bLLayer.SynchronizeMonthlyData();
+                this.pictureBox1.Visible = true;
+                await Task.Run(() => _bLLayer.SynchronizeMonthlyData());
+                this.pictureBox1.Visible = false;
             }
             catch (Exception ex)
             {
@@ -2688,6 +2700,34 @@ namespace CT_App
             this.BalankFldMonthly();
             this.button38.Text = "Add";
         }
+        private void button40_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Daily updtdaily = new Daily();
+                updtdaily.NotTaken = Convert.ToSingle(this.textBox242.Text.Trim());
+                updtdaily.D_ID = this.label182.Text.Trim();
+                bool isUpdated = _bLLayer.UpdtNTDaily(updtdaily);
+                if (isUpdated)
+                {
+                    MessageBox.Show(string.Concat("Update Successfull Daily Data"));
+                    this.fillDailyData();
+                    this.totalDailyData();
+                    this.textBox37.ReadOnly = true;
+                    this.textBox37.Text = "";
+                    this.label182.Text = "0";
+                    this.label185.Text = "0";
+                    this.label187.Text = "0";
+                    this.label189.Text = "0";
+                    this.textBox242.Text = "";
+                    this.button10.Text = "Add";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+        }
 
         //------------------------------Time Event Work--------------------------
         //-----------------------------------------------------------------------
@@ -2770,7 +2810,10 @@ namespace CT_App
             try
             {
                 this.button12.Visible = true;
-                this.button22.Visible = true;
+                if (this.label247.Text == "0" && this.label248.Text == "0")
+                {
+                    this.button22.Visible = true;
+                }
                 this.button10.Text = "Updt";
                 string dailyId = this.dataGridView5.SelectedRows[0].Cells[0].Value.ToString();
                 DataTable dataTable = _bLLayer.GetDailyDataById(dailyId);
@@ -2782,6 +2825,7 @@ namespace CT_App
                     this.label187.Text = dataTable.Rows[0][2].ToString();
                     this.label189.Text = dataTable.Rows[0][3].ToString();
                     this.textBox37.Text = dataTable.Rows[0][4].ToString();
+                    this.textBox242.Text = dataTable.Rows[0][4].ToString();
                     this.textBox37.ReadOnly = false;
                     this.textBox37.Focus();
                 }
@@ -8676,58 +8720,65 @@ namespace CT_App
         }
         private void textBox230_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char keyChar = e.KeyChar;
-            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                if (e.KeyChar != (char)Keys.Enter)
+                {
+                    e.Handled = true;
+                }
+            }
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                if (e.KeyChar == '\r')
+
+                if (string.IsNullOrWhiteSpace(this.textBox230.Text))
                 {
-                    if (!(this.textBox230.Text.Trim() != ""))
+                    this.textBox230.Focus();
+                }
+                else
+                {
+                    if (this.button38.Text == "Add")
                     {
+                        MessageBox.Show("Please Press Add Button");
                         this.textBox230.Focus();
                     }
                     else
                     {
-                        if (this.button38.Text == "Add")
-                        {
-                            MessageBox.Show(string.Concat("Please Press Add Button"));
-                            this.textBox230.Focus();
-                        }
-                        else
-                        {
-                            this.label513.Text = this.textBox230.Text.Trim();
-                            this.AllTakenAdd();
-                            this.textBox231.Focus();
-                        }
+                        this.label513.Text = this.textBox230.Text.Trim();
+                        this.AllTakenAdd();
+                        this.textBox231.Focus();
                     }
                 }
             }
         }
         private void textBox231_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char keyChar = e.KeyChar;
-            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                if (e.KeyChar != (char)Keys.Enter)
+                {
+                    e.Handled = true;
+                }
+            }
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                if (e.KeyChar == '\r')
+                if (string.IsNullOrWhiteSpace(this.textBox231.Text))
                 {
-                    if (!(this.textBox231.Text.Trim() != ""))
+                    this.textBox231.Focus();
+                }
+                else
+                {
+                    if (this.button38.Text == "Add")
                     {
+                        MessageBox.Show("Please Press Add Button");
                         this.textBox231.Focus();
                     }
                     else
                     {
-                        if (this.button38.Text == "Add")
-                        {
-                            MessageBox.Show(string.Concat("Please Press Add Button"));
-                            this.textBox231.Focus();
-                        }
-                        else
-                        {
-                            this.label505.Text = this.textBox231.Text.Trim();
-                            this.AllTakenAdd();
-                            this.textBox162.Focus();
-                        }
+                        this.label505.Text = this.textBox231.Text.Trim();
+                        this.AllTakenAdd();
+                        this.textBox162.Focus();
                     }
                 }
             }
@@ -8753,29 +8804,47 @@ namespace CT_App
         }
         private void textBox162_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(this.textBox162.Text) || string.IsNullOrWhiteSpace(this.textBox163.Text))
             {
-                if (this.textBox162.Text.Trim() != "")
-                {
-                    double num = double.Parse(this.textBox162.Text.Trim());
-                    double num1 = double.Parse(this.textBox163.Text.Trim());
-                    double num3 = num - num1;
-                    decimal num2 = Convert.ToDecimal(num3.ToString());
-                    Label str1 = this.label294;
-                    decimal num4 = Math.Round(num2, 4);
-                    num3 = double.Parse(num4.ToString());
-                    str1.Text = num3.ToString();
-                }
-                else
-                {
-                    this.label294.Text = "0";
-                }
+                this.label294.Text = "0";
+                return;
             }
-            catch (Exception ex)
+            if (double.TryParse(this.textBox162.Text.Trim(), out double num) && double.TryParse(this.textBox163.Text.Trim(), out double num1))
             {
-                MessageBox.Show("Error : " + ex.Message);
+                double num3 = Math.Round(num - num1, 4);
+                this.label294.Text = num3.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Invalid input. Please enter numeric values.");
+                this.label294.Text = "0";
             }
         }
+        private void textBox242_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char keyChar = e.KeyChar;
+            if ((char.IsDigit(keyChar) || keyChar == 0 || keyChar == '\b' ? false : keyChar != '.'))
+            {
+                e.Handled = true;
+                if (e.KeyChar == '\r')
+                {
+                    if (!(this.textBox242.Text.Trim() != ""))
+                    {
+                        this.textBox242.Focus();
+                    }
+                    else
+                    {
+                        this.button40.Focus();
+                    }
+                }
+            }
+        }
+        private void textBox242_TextChanged(object sender, EventArgs e)
+        {
+            this.button40.Visible = !string.IsNullOrWhiteSpace(this.textBox242.Text);
+        }
+
+
         #endregion
 
         //------------------------------If Query Needed--------------------------

@@ -19,11 +19,11 @@ namespace CT_App.CT_DLL
 		private string connAcc = (@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CT_DB.accdb;Jet OLEDB:Database Password=*3455*00;");
 		private string connSql = (@"Dsn=RETAILMasterSHOPS;uid=sa;pwd=Ajwahana$@$;");
 		private string connMySql = (@"Server=127.0.0.1;Database=ct_db;Uid=root;Pwd=Ajwahana$@$;port=3306;Connection Timeout=30;");
-		#endregion
+        #endregion
 
-		//------------------------------ Market / Mamo --------------------------
-		//----------------------------------------------------------------------- 
-		public List<DataTable> GetMarketData()
+        //------------------------------ Market / Mamo --------------------------
+        //----------------------------------------------------------------------- 
+        public List<DataTable> GetMarketData()
 		{
 			string[] queries = {
 				$"SELECT M_ID AS [ID], M_Date AS [Date], M_Amount AS [Amount] FROM Market ORDER BY M_Date DESC",
@@ -121,7 +121,7 @@ namespace CT_App.CT_DLL
 		public float GetTotalForDail()
 		{
 			float totalForDail = 0;
-			string query = $"SELECT SUM(NotTaken) FROM Daily WHERE [D_Data]='NTKN'";
+			string query = $"SELECT SUM(NotTaken) FROM Daily WHERE [D_Data] = 'NTKN'";
 			using (OleDbConnection conn = new OleDbConnection(this.conn.ConnectionString))
 			{
 				using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
@@ -157,7 +157,7 @@ namespace CT_App.CT_DLL
 		public float GetTotalForDailAnt()
 		{
 			float totalForDailAnt = 0;
-			string query = $"SELECT SUM(NotTaken) FROM DailyAnt WHERE [DA_Data]='NTKN'";
+			string query = $"SELECT SUM(NotTaken) FROM DailyAnt WHERE [DA_Data] = 'NTKN'";
 			using (OleDbConnection conn = new OleDbConnection(this.conn.ConnectionString))
 			{
 				using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
@@ -175,7 +175,7 @@ namespace CT_App.CT_DLL
 		public float GetTotalForDailySav()
 		{
 			float totalForDailySav = 0;
-			string query = $"SELECT SUM(NotTaken) FROM DailySaving WHERE [DS_Data]='NTKN'";
+			string query = $"SELECT SUM(NotTaken) FROM DailySaving WHERE [DS_Data] = 'NTKN'";
 			using (OleDbConnection conn = new OleDbConnection(this.conn.ConnectionString))
 			{
 				using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
@@ -421,10 +421,9 @@ namespace CT_App.CT_DLL
 
 			}
 		}
-
-		public bool insrtMrktMemos(MarketMemos marketMemos)
+        public bool insrtMrktMemos(MarketMemos marketMemos)
 		{
-			string query = $"INSERT INTO MarketMemos(Mem_ID,Mem_Date,R_InvTK,C_InvTK,Giv_TK,Ret_TK,I_N01,I_N02,I_N03,I_N04,I_N05,I_N06,I_N07,I_N08,I_N09,I_N10,I_N11,I_N12,I_N13,I_N14,I_N15,I_N16,I_P01,I_P02,I_P03,I_P04,I_P05,I_P06,I_P07,I_P08,I_P09,I_P10,I_P11,I_P12,I_P13,I_P14,I_P15,I_P16,I_Q01,I_Q02,I_Q03,I_Q04,I_Q05,I_Q06,I_Q07,I_Q08,I_Q09,I_Q10,I_Q11,I_Q12,I_Q13,I_Q14,I_Q15,I_Q16,I_ST01,I_ST02,I_ST03,I_ST04,I_ST05,I_ST06,I_ST07,I_ST08,I_ST09,I_ST10,I_ST11,I_ST12,I_ST13,I_ST14,I_ST15,I_ST16,R_Inv01,R_Inv02,R_Inv03,R_Inv04,R_Inv05,R_Inv06,R_Inv07,R_Inv08,R_Inv09,R_Inv10,R_Inv11,R_Inv12,R_Inv13,R_Inv14,R_Inv15,R_Inv16,R_Inv17,R_Inv18,R_Inv19,R_Inv20,R_Inv21,R_Inv22,R_Inv23,R_Inv24,Mem_Insrt_Person) " +
+			string query = $"INSERT INTO MarketMemos(Mem_ID, Mem_Date, R_InvTK, C_InvTK, Giv_TK, Ret_TK, I_N01, I_N02, I_N03, I_N04, I_N05, I_N06, I_N07, I_N08, I_N09, I_N10, I_N11, I_N12, I_N13, I_N14, I_N15, I_N16, I_P01, I_P02, I_P03, I_P04, I_P05, I_P06, I_P07, I_P08, I_P09, I_P10, I_P11, I_P12, I_P13, I_P14, I_P15, I_P16, I_Q01, I_Q02, I_Q03, I_Q04, I_Q05, I_Q06, I_Q07, I_Q08, I_Q09, I_Q10, I_Q11, I_Q12, I_Q13, I_Q14, I_Q15, I_Q16, I_ST01, I_ST02, I_ST03, I_ST04, I_ST05, I_ST06, I_ST07, I_ST08, I_ST09, I_ST10, I_ST11, I_ST12, I_ST13, I_ST14, I_ST15, I_ST16, R_Inv01, R_Inv02, R_Inv03, R_Inv04, R_Inv05, R_Inv06, R_Inv07, R_Inv08, R_Inv09, R_Inv10, R_Inv11, R_Inv12, R_Inv13, R_Inv14, R_Inv15, R_Inv16, R_Inv17, R_Inv18, R_Inv19, R_Inv20, R_Inv21, R_Inv22, R_Inv23, R_Inv24, Mem_Insrt_Person) " +
 							"VALUES (@Mem_ID, @Mem_Date, @R_InvTK, @C_InvTK, @Giv_TK, @Ret_TK, @I_N01, @I_N02, @I_N03, @I_N04, @I_N05, @I_N06, @I_N07, @I_N08, @I_N09, @I_N10, @I_N11, @I_N12, @I_N13, @I_N14, @I_N15, @I_N16, @I_P01, @I_P02, @I_P03, @I_P04, @I_P05, @I_P06, @I_P07, @I_P08, @I_P09, @I_P10, @I_P11, @I_P12, @I_P13, @I_P14, @I_P15, @I_P16, @I_Q01, @I_Q02, @I_Q03, @I_Q04, @I_Q05, @I_Q06, @I_Q07, @I_Q08, @I_Q09, @I_Q10, @I_Q11, @I_Q12, @I_Q13, @I_Q14, @I_Q15, @I_Q16, @I_ST01, @I_ST02, @I_ST03, @I_ST04, @I_ST05, @I_ST06, @I_ST07, @I_ST08, @I_ST09, @I_ST10, @I_ST11, @I_ST12, @I_ST13, @I_ST14, @I_ST15, @I_ST16, @R_Inv01, @R_Inv02, @R_Inv03, @R_Inv04, @R_Inv05, @R_Inv06, @R_Inv07, @R_Inv08, @R_Inv09, @R_Inv10, @R_Inv11, @R_Inv12, @R_Inv13, @R_Inv14, @R_Inv15, @R_Inv16, @R_Inv17, @R_Inv18, @R_Inv19, @R_Inv20, @R_Inv21, @R_Inv22, @R_Inv23, @R_Inv24, @Mem_Insrt_Person)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
 			{
@@ -745,8 +744,7 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-
-		public bool insrtInstallment(Installment installment) //Details Work On When Take Loan & it's Payment.
+        public bool insrtInstallment(Installment installment) //Details Work On When Take Loan & it's Payment.
 		{
 			string query = $"INSERT INTO Installment (I_ID, InsPay_Date, InsPay, Take_Data, I_Insrt_Person) VALUES (?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -776,8 +774,7 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-
-		public bool insrInstallment(Installment installment) //Details Work On When Take Loan & it's Payment.
+        public bool insrInstallment(Installment installment) //Details Work On When Take Loan & it's Payment.
 		{
 			string query = $"INSERT INTO Installment (I_ID, I_Date, Take_Total, Take_Anot, Take_Mine, InsPerMonth, PerMonthPay, Take_Data) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -809,8 +806,7 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-
-		public bool insrtBikeInfo(BikeInfo bikeInfo)
+        public bool insrtBikeInfo(BikeInfo bikeInfo)
 		{
 			string query = $"INSERT INTO BikeInfo (B_ID, B_Chng_Date, B_KM_ODO, B_Mobile_Go, B_Next_ODO, B_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -889,7 +885,7 @@ namespace CT_App.CT_DLL
 		}
 		public bool insrtSaving(Saving saving)
 		{
-			string query = $"INSERT INTO Saving (InSaving, Saving_Amount, Saving_To, ThroughBy_Saving, Saving_Date, Remarks_Saving, SDT_V, Saving_Bank, S_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?, ?)";
+			string query = $"INSERT INTO Saving (InSaving, Saving_Amount, Saving_To, ThroughBy_Saving, Saving_Date, Remarks_Saving, SDT_V, Saving_Bank, S_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
 			{
 				cmd.Parameters.AddWithValue("?", saving.InSaving);
@@ -909,7 +905,7 @@ namespace CT_App.CT_DLL
 		}
 		public bool insrtUnrated(Unrated unrated)
 		{
-			string query = $"INSERT INTO Unrated (InUnrated, Unrated_Amount, Unrated_To, ThroughBy_Unrated, Unrated_Date, Remarks_Unrated, UDT_V, U_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, 'NDV', ?)";
+			string query = $"INSERT INTO Unrated (InUnrated, Unrated_Amount, Unrated_To, ThroughBy_Unrated, Unrated_Date, Remarks_Unrated, UDT_V, U_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
 			{
 				cmd.Parameters.AddWithValue("?", unrated.InUnrated);
@@ -926,11 +922,10 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-
-		public bool insrtupdtGiven(Given given)
+        public bool insrtupdtGiven(Given given)
 		{
 			string query1 = $"UPDATE Given SET Total_Given = ?, GDT_V_Date = ?, G_Updt_Person = ? WHERE InGiven = ?";
-			string query2 = $"INSERT INTO GivenUpdt(InGiven, Was_Given, Now_Given, Total_Given, Given_To, GDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+			string query2 = $"INSERT INTO GivenUpdt (InGiven, Was_Given, Now_Given, Total_Given, Given_To, GDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbConnection connect = new OleDbConnection(this.conn.ConnectionString))
 			{
 				connect.Open();
@@ -961,7 +956,7 @@ namespace CT_App.CT_DLL
 		public bool insrtupdtTeken(Teken teken)
 		{
 			string query1 = $"UPDATE Teken SET Total_Take = ?, TDT_V_Date = ?, T_Updt_Person = ? WHERE InTake = ?";
-			string query2 = $"INSERT INTO TekenUpdt(InTake ,Was_Take ,Now_Take ,Total_Take ,Take_To ,TDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+			string query2 = $"INSERT INTO TekenUpdt (InTake ,Was_Take ,Now_Take ,Total_Take ,Take_To ,TDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbConnection connect = new OleDbConnection(this.conn.ConnectionString))
 			{
 				connect.Open();
@@ -992,7 +987,7 @@ namespace CT_App.CT_DLL
 		public bool insrtupdtTariffAmt(TariffAmt tariff)
 		{
 			string query1 = $"UPDATE TariffAmt SET Expense_Amount = ?, EDT_V_Date = ?, E_Updt_Person = ? WHERE InExpense = ?";
-			string query2 = $"INSERT INTO TariffAmtUpdt(InExpense ,Was_Expense ,Now_Expense ,Expense_Amount ,Expense_To ,EDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+			string query2 = $"INSERT INTO TariffAmtUpdt (InExpense ,Was_Expense ,Now_Expense ,Expense_Amount ,Expense_To ,EDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbConnection connect = new OleDbConnection(this.conn.ConnectionString))
 			{
 				connect.Open();
@@ -1023,7 +1018,7 @@ namespace CT_App.CT_DLL
 		public bool insrtupdtSaving(Saving saving)
 		{
 			string query1 = $"UPDATE Saving SET Saving_Amount = ?, SDT_V_Date = ?, S_Updt_Person = ? WHERE InSaving = ?";
-			string query2 = $"INSERT INTO SavingUpdt(InSaving, Was_Saving, Now_Saving, Saving_Amount, Saving_To, SDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+			string query2 = $"INSERT INTO SavingUpdt (InSaving, Was_Saving, Now_Saving, Saving_Amount, Saving_To, SDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbConnection connect = new OleDbConnection(this.conn.ConnectionString))
 			{
 				connect.Open();
@@ -1054,7 +1049,7 @@ namespace CT_App.CT_DLL
 		public bool insrtupdtUnrated(Unrated unrated)
 		{
 			string query1 = $"UPDATE Unrated SET Unrated_Amount = ?, UDT_V_Date = ?, U_Updt_Person = ? WHERE InUnrated = ?";
-			string query2 = $"INSERT INTO UnratedUpdt(InUnrated, Was_Unrated, Now_Unrated, Unrated_Amount, Unrated_To, UDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
+			string query2 = $"INSERT INTO UnratedUpdt (InUnrated, Was_Unrated, Now_Unrated, Unrated_Amount, Unrated_To, UDT_V_Date) VALUES (?, ?, ?, ?, ?, ?)";
 			using (OleDbConnection connect = new OleDbConnection(this.conn.ConnectionString))
 			{
 				connect.Open();
@@ -1082,8 +1077,7 @@ namespace CT_App.CT_DLL
 			}
 			return true;
 		}
-
-		internal bool delGiven(Given given)
+        internal bool delGiven(Given given)
 		{
 			string query = $"UPDATE Given SET GDT_V = ?, DDT_V_Date = ?, G_Del_Person = ? WHERE InGiven = ?";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -1196,7 +1190,20 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-		public bool delDaily(Daily daily)
+        public bool updtNTDaily(Daily daily)
+        {
+            string query = $"UPDATE Daily SET NotTaken = ? WHERE D_ID = ?";
+            using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
+            {
+                cmd.Parameters.AddWithValue("?", daily.NotTaken);
+                cmd.Parameters.AddWithValue("?", daily.D_ID);
+                this.conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                this.conn.Close();
+                return rowsAffected > 0;
+            }
+        }
+        public bool delDaily(Daily daily)
 		{
 			string query = $"UPDATE Daily SET D_Data = ?, TakenDate = ?, D_Del_Person = ? WHERE D_ID = ?";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -1211,8 +1218,7 @@ namespace CT_App.CT_DLL
 				return rowsAffected > 0;
 			}
 		}
-
-		public bool InsertDailyCut(DailyCut dailyCut)
+        public bool InsertDailyCut(DailyCut dailyCut)
 		{
 			string query = $"INSERT INTO DailyCut (C_ID, C_Date, C_Amount, C_Insrt_Person) VALUES (?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -1269,8 +1275,7 @@ namespace CT_App.CT_DLL
 				}
 			}
 		}
-
-		public bool insrtDailyAnt(DailyAnt dailyAnt)
+        public bool insrtDailyAnt(DailyAnt dailyAnt)
 		{
 			string query = $"INSERT INTO DailyAnt (DA_ID, DA_Date, DA_FPAmount, DA_SPAmount, NotTaken, DA_Data, DA_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
@@ -1338,7 +1343,7 @@ namespace CT_App.CT_DLL
 		public List<DataTable> GetMonthlyData()
 		{
 			string[] queries = {
-				$"SELECT MT_ID as [ID],MT_Date as [Date],MT_TotalTK as [TotalTK],MT_Giv_TK as [GivenTK],MT_LS_TK as [G/T] FROM MonthlyTaken"
+				$"SELECT MT_ID as [ID],MT_Date as [Date],MT_TotalTK as [TotalTK],MT_Giv_TK as [GivenTK],MT_LS_TK as [G/T] FROM MonthlyTaken ORDER by MT_Date DESC"
 				//$"SELECT MT_ID,MT_Date,MT_TotalTK,MT_Giv_TK,MT_LS_TK,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69,T70,T71,T72,T73,T74,T75,T76,T77,T78,T79,T80,T81,T82,T83,T84,T85,T86,T87,T88,T89,T90,T91,T92,T93,T94,T95,T96,T97,T98,T99,T100,T101,T102,T103,T104,T105,T106,T107,T108,T109,T110,T111,T112,T113,T114,T115,T116,T117,T118,T119,T120,MTDT_V,MT_Insrt_Person,MT_Updt_Person,MT_Del_Person FROM MonthlyTaken"
 			};
 			var dataTables = new List<DataTable>();
@@ -1595,8 +1600,8 @@ namespace CT_App.CT_DLL
 		public void DeleteAllDataInSQL()
 		{
 			string insCom = "BEGIN " +
-									$"DELETE FROM BikeInfo; DELETE FROM Daily; DELETE FROM DailyAnt; DELETE FROM DailyCut; DELETE FROM DailySaving; DELETE FROM TariffAmt; DELETE FROM Given; DELETE FROM Images; DELETE FROM Installment; DELETE FROM Market; DELETE FROM MarketMemos; DELETE FROM MarketMemosDel; DELETE FROM Saving; DELETE FROM Teken; DELETE FROM Unrated; " +
-								"END;";
+								$"DELETE FROM BikeInfo; DELETE FROM Daily; DELETE FROM DailyAnt; DELETE FROM DailyCut; DELETE FROM DailySaving; DELETE FROM TariffAmt; DELETE FROM Given; DELETE FROM Images; DELETE FROM Installment; DELETE FROM Market; DELETE FROM MarketMemos; DELETE FROM MarketMemosDel; DELETE FROM Saving; DELETE FROM Teken; DELETE FROM Unrated; " +
+							"END;";
 			using (OdbcConnection sqlConn = new OdbcConnection(connSql))
 			{
 				sqlConn.Open();
@@ -1650,8 +1655,7 @@ namespace CT_App.CT_DLL
 				sqlConn.Close();
 			}
 		}
-
-		public void SyncMarkMemData()
+        public void SyncMarkMemData()
 		{
 			using (OdbcConnection sqlConn = new OdbcConnection(connSql))
 			{
@@ -3019,7 +3023,7 @@ namespace CT_App.CT_DLL
 				using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
 				{
 					mysqlConn.Open();
-					string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_marketSync ( IN p_M_ID VARCHAR(250), IN p_M_Amount FLOAT, IN p_M_Insrt_Person VARCHAR(250), IN p_M_Updt_Person VARCHAR(250), IN p_M_Del_Person VARCHAR(250) )
+					string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_marketSync ( IN p_M_ID VARCHAR(250), IN p_M_Date DATE, IN p_M_Amount FLOAT, IN p_M_Insrt_Person VARCHAR(250), IN p_M_Updt_Person VARCHAR(250), IN p_M_Del_Person VARCHAR(250) )
 										BEGIN
 											IF NOT EXISTS (
 													SELECT * FROM information_schema.tables WHERE table_name = 'Market'
@@ -3342,16 +3346,16 @@ namespace CT_App.CT_DLL
 		}
 		private void sp_dailySavingSync()
 		{
-			using (OleDbConnection accConn = new OleDbConnection(connAcc))
-			{
-				accConn.Open();
-				string selCom = "SELECT * FROM DailySaving";
-				OleDbCommand command = new OleDbCommand(selCom, accConn);
-				OleDbDataReader reader = command.ExecuteReader();
-				using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
-				{
-					mysqlConn.Open();
-					string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_dailySavingSync ( IN p_DS_ID VARCHAR(250), IN p_DS_Date DATE, IN p_DS_FPAmount FLOAT, IN p_DS_SPAmount FLOAT, IN p_DS_TPAmount FLOAT, IN p_NotTaken FLOAT, IN p_DS_Data VARCHAR(250), IN p_DS_InBankDate VARCHAR(250), IN p_DS_Insrt_Person VARCHAR(250), IN p_DS_Updt_Person VARCHAR(250), IN p_DS_Del_Person VARCHAR(250) )
+            using (OleDbConnection accConn = new OleDbConnection(connAcc))
+            {
+                accConn.Open();
+                string selCom = "SELECT * FROM DailySaving";
+                OleDbCommand command = new OleDbCommand(selCom, accConn);
+                OleDbDataReader reader = command.ExecuteReader();
+                using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
+                {
+                    mysqlConn.Open();
+                    string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_dailySavingSync ( IN p_DS_ID VARCHAR(250), IN p_DS_Date DATE, IN p_DS_FPAmount FLOAT, IN p_DS_SPAmount FLOAT, IN p_DS_TPAmount FLOAT, IN p_NotTaken FLOAT, IN p_DS_Data VARCHAR(250), IN p_DS_InBankDate VARCHAR(250), IN p_DS_Insrt_Person VARCHAR(250), IN p_DS_Updt_Person VARCHAR(250), IN p_DS_Del_Person VARCHAR(250) )
 										BEGIN
 											IF NOT EXISTS (
 													SELECT * FROM information_schema.tables WHERE table_name = 'DailySaving'
@@ -3367,33 +3371,33 @@ namespace CT_App.CT_DLL
 													UPDATE DailySaving SET DS_ID = p_DS_ID, DS_Date = p_DS_Date, DS_FPAmount = p_DS_FPAmount, DS_SPAmount = p_DS_SPAmount, DS_TPAmount = p_DS_TPAmount, NotTaken = p_NotTaken, DS_Data = p_DS_Data, DS_InBankDate = p_DS_InBankDate, DS_Insrt_Person = p_DS_Insrt_Person, DS_Updt_Person = p_DS_Updt_Person, DS_Del_Person = p_DS_Del_Person;
 											END IF;
 										END";
-					using (MySqlCommand procCmd = new MySqlCommand(crtProc, mysqlConn))
-					{
-						procCmd.ExecuteNonQuery();
-					}
-					while (reader.Read())
-					{
-						using (MySqlCommand sqlCmd = new MySqlCommand("sp_dailySavingSync", mysqlConn))
-						{
-							sqlCmd.Parameters.AddWithValue("p_DS_ID", reader["DS_ID"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_Date", reader["DS_Date"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_FPAmount", reader["DS_FPAmount"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_SPAmount", reader["DS_SPAmount"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_TPAmount", reader["DS_TPAmount"]);
-							sqlCmd.Parameters.AddWithValue("p_NotTaken", reader["NotTaken"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_Data", reader["DS_Data"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_InBankDate", reader["DS_InBankDate"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_Insrt_Person", reader["DS_Insrt_Person"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_Updt_Person", reader["DS_Updt_Person"]);
-							sqlCmd.Parameters.AddWithValue("p_DS_Del_Person", reader["DS_Del_Person"]);
-							sqlCmd.ExecuteNonQuery();
-						}
-					}
-					mysqlConn.Close();
-				}
-				accConn.Close();
-			}
-		}
+                    using (MySqlCommand procCmd = new MySqlCommand(crtProc, mysqlConn))
+                    {
+                        procCmd.ExecuteNonQuery();
+                    }
+                    while (reader.Read())
+                    {
+                        using (MySqlCommand sqlCmd = new MySqlCommand("sp_dailySavingSync", mysqlConn))
+                        {
+                            sqlCmd.Parameters.AddWithValue("p_DS_ID", reader["DS_ID"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Date", reader["DS_Date"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_FPAmount", reader["DS_FPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_SPAmount", reader["DS_SPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_TPAmount", reader["DS_TPAmount"]);
+                            sqlCmd.Parameters.AddWithValue("p_NotTaken", reader["NotTaken"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Data", reader["DS_Data"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_InBankDate", reader["DS_InBankDate"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Insrt_Person", reader["DS_Insrt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Updt_Person", reader["DS_Updt_Person"]);
+                            sqlCmd.Parameters.AddWithValue("p_DS_Del_Person", reader["DS_Del_Person"]);
+                            sqlCmd.ExecuteNonQuery();
+                        }
+                    }
+                    mysqlConn.Close();
+                }
+                accConn.Close();
+            }
+        }
 		private void sp_installmentSync()
 		{
 			using (OleDbConnection accConn = new OleDbConnection(connAcc))
@@ -3828,7 +3832,7 @@ namespace CT_App.CT_DLL
 				using (MySqlConnection mysqlConn = new MySqlConnection(connMySql))
 				{
 					mysqlConn.Open();
-					string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_givenUpdtSync ( IN p_Saving_Amount float, IN p_Saving_To varchar(250), IN p_ThroughBy_Saving varchar(250), IN p_Saving_Date datetime, IN p_Remarks_Saving varchar(250), IN p_SDT_V varchar(250), IN p_SDT_V_Date datetime, IN p_DDT_V_Date datetime, IN p_Saving_Bank varchar(250), IN p_S_Insrt_Person varchar(250), IN p_S_Updt_Person varchar(250), IN p_S_Del_Person varchar(250) )
+					string crtProc = @"CREATE PROCEDURE IF NOT EXISTS sp_savingSync ( IN p_Saving_Amount float, IN p_Saving_To varchar(250), IN p_ThroughBy_Saving varchar(250), IN p_Saving_Date datetime, IN p_Remarks_Saving varchar(250), IN p_SDT_V varchar(250), IN p_SDT_V_Date datetime, IN p_DDT_V_Date datetime, IN p_Saving_Bank varchar(250), IN p_S_Insrt_Person varchar(250), IN p_S_Updt_Person varchar(250), IN p_S_Del_Person varchar(250) )
 										BEGIN
 											IF NOT EXISTS (
 													SELECT * FROM information_schema.tables WHERE table_name = 'Saving'

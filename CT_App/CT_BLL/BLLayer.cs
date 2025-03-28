@@ -106,7 +106,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.insrtUtoM(market);
         }
-
         public bool InsMarketMemos(MarketMemos marketMemos)
         {
             return _dLLayer.insrtMrktMemos(marketMemos);
@@ -138,7 +137,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.delReDailySaving(dailySaving);
         }
-
         public bool InsInstallment(Installment installment)
         {
             return _dLLayer.insrtInstallment(installment);
@@ -147,7 +145,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.updtInstallment(installment);
         }
-
         public bool InsrInstallment(Installment installment)
         {
             return _dLLayer.insrInstallment(installment);
@@ -156,7 +153,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.udtInstallment(installment);
         }
-
         public bool InsBikeInfo(BikeInfo bikeInfo)
         {
             return _dLLayer.insrtBikeInfo(bikeInfo);
@@ -184,7 +180,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.insrtUnrated(unrated);
         }
-        
         public bool InsUpdtGiven(Given given)
         {
             return _dLLayer.insrtupdtGiven(given);
@@ -205,7 +200,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.insrtupdtUnrated(unrated);
         }
-
         public bool DelGiven(Given given)
         {
             return _dLLayer.delGiven(given);
@@ -237,11 +231,14 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.updtDaily(daily);
         }
+        public bool UpdtNTDaily(Daily daily)
+        {
+            return _dLLayer.updtNTDaily(daily);
+        }
         public bool DelDaily(Daily daily)
         {
             return _dLLayer.delDaily(daily);
         }
-
         public bool AddDailyCut(DailyCut dailyCut)
         {
             return _dLLayer.InsertDailyCut(dailyCut);
@@ -254,7 +251,6 @@ namespace CT_App.CT_BLL
         {
             return _dLLayer.deleteDailyCut(D_ID, C_ID, deldailyCut);
         }
-
         public bool InsDailyAnt(DailyAnt dailyAnt)
         {
             return _dLLayer.insrtDailyAnt(dailyAnt);
@@ -297,7 +293,6 @@ namespace CT_App.CT_BLL
         {
             _dLLayer.DeleteAllDataInSQL();
         }
-
         public void SynchronizeMarkMemData()
         {
             _dLLayer.SyncMarkMemData();

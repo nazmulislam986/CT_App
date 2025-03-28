@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,19 +13,28 @@ namespace CT_App
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        private const int SW_RESTORE = 9;
+
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            string processName = Process.GetCurrentProcess().ProcessName;
-            if (Process.GetProcesses().Count<Process>((Process p) => p.ProcessName == processName) <= 1)
+            var proc = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).FirstOrDefault(p => p.Id != Process.GetCurrentProcess().Id);
+            if (proc == null)
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new CT_Mine());
             }
-            else
+            else if (proc.MainWindowHandle == IntPtr.Zero && MessageBox.Show("App Running in Background, Exit?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Already Opened, See Below The Task Bar");
+                Application.Exit();
+            }
+            else if (proc.MainWindowHandle != IntPtr.Zero)
+            {
+                ShowWindow(proc.MainWindowHandle, SW_RESTORE);
+                SetForegroundWindow(proc.MainWindowHandle);
             }
         }
     }
