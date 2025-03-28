@@ -49,3 +49,4 @@ project.fragment.lock.json
 # Ignore the db.lock file specifically
 .vs/CT_App/v16/Server/sqlite3/db.lock
 
+/.vs/CT_App/v16/Server/sqlite3
