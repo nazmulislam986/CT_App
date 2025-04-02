@@ -632,15 +632,11 @@ namespace CT_App
             {
                 this.textBox1.ReadOnly = false;
                 this.textBox1.Focus();
-                TextBox textBox = this.textBox101;
-                string[] strArrays = new string[] { "ME", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 2)}";
+                this.textBox101.Text = uniqueCode;
                 this.button1.Text = "Save";
                 this.BalankFldMarMem();
             }
@@ -1192,15 +1188,11 @@ namespace CT_App
             {
                 this.textBox37.ReadOnly = false;
                 this.textBox37.Focus();
-                TextBox textBox = this.textBox92;
-                string[] strArrays = new string[] { "D", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"D{day}{month}{millis.Substring(0, 3)}";
+                this.textBox92.Text = uniqueCode;
                 this.button10.Text = "Save";
             }
             else if (this.button10.Text == "Save")
@@ -1277,15 +1269,11 @@ namespace CT_App
             {
                 this.textBox50.ReadOnly = false;
                 this.textBox50.Focus();
-                TextBox textBox = this.textBox92;
-                string[] strArrays = new string[] { "C", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"C{day}{month}{millis.Substring(0, 3)}";
+                this.textBox92.Text = uniqueCode;
                 this.button14.Text = "Add Amt";
             }
             else if (this.button14.Text == "Add Amt")
@@ -1520,15 +1508,11 @@ namespace CT_App
             {
                 this.textBox32.ReadOnly = false;
                 this.textBox32.Focus();
-                TextBox textBox = this.textBox98;
-                string[] strArrays = new string[] { "I", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"I{day}{month}{millis.Substring(0, 3)}";
+                this.textBox98.Text = uniqueCode;
                 this.button4.Text = "Save";
             }
             else if (this.button4.Text == "Save")
@@ -1601,15 +1585,11 @@ namespace CT_App
                 this.textBox97.ReadOnly = false;
                 this.textBox97.Text = "";
                 this.label195.Text = "0";
-                TextBox textBox = this.textBox99;
-                string[] strArrays = new string[] { "IS", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"IS{day}{month}{millis.Substring(0, 2)}";
+                this.textBox99.Text = uniqueCode;
                 this.button13.Text = "Insert";
                 this.textBox94.Focus();
             }
@@ -1711,15 +1691,11 @@ namespace CT_App
             if (this.button15.Text == "New")
             {
                 this.BalankFldMarMem();
-                TextBox textBox = this.textBox108;
-                string[] strArrays = new string[] { "ME", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 2)}";
+                this.textBox108.Text = uniqueCode;
                 this.button15.Text = "Save";
                 this.button1.Text = "U to M";
                 this.textBox72.Focus();
@@ -2075,15 +2051,11 @@ namespace CT_App
             {
                 this.textBox133.ReadOnly = false;
                 this.textBox133.Focus();
-                TextBox textBox = this.textBox132;
-                string[] strArrays = new string[] { "DA", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"DA{day}{month}{millis.Substring(0, 2)}";
+                this.textBox132.Text = uniqueCode;
                 this.button31.Text = "Save";
             }
             else if (this.button31.Text == "Save")
@@ -2216,15 +2188,11 @@ namespace CT_App
             {
                 this.textBox131.ReadOnly = false;
                 this.textBox131.Focus();
-                TextBox textBox = this.textBox137;
-                string[] strArrays = new string[] { "DS", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"DS{day}{month}{millis.Substring(0, 2)}";
+                this.textBox137.Text = uniqueCode;
                 this.buttonS24.Text = "Add Amt";
             }
             else if (this.buttonS24.Text == "Add Amt")
@@ -2443,15 +2411,11 @@ namespace CT_App
             {
                 this.textBox162.ReadOnly = false;
                 this.textBox146.Focus();
-                TextBox textBox = this.textBox241;
-                string[] strArrays = new string[] { "MT", null, null, null, null };
-                int date = DateTime.Now.Day;
-                int month = DateTime.Now.Month;
-                int millis = DateTime.Now.Millisecond;
-                strArrays[2] = date.ToString();
-                strArrays[3] = month.ToString();
-                strArrays[4] = millis.ToString();
-                textBox.Text = string.Concat(strArrays);
+                string day = DateTime.Now.Day.ToString("00");
+                string month = DateTime.Now.Month.ToString("00");
+                string millis = DateTime.Now.Millisecond.ToString("000");
+                string uniqueCode = $"MT{day}{month}{millis.Substring(0, 2)}";
+                this.textBox241.Text = uniqueCode;
                 this.button38.Text = "Save";
                 this.BalankFldMonthly();
             }
@@ -8843,8 +8807,6 @@ namespace CT_App
         {
             this.button40.Visible = !string.IsNullOrWhiteSpace(this.textBox242.Text);
         }
-
-
         #endregion
 
         //------------------------------If Query Needed--------------------------

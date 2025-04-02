@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.OleDb;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CT_App.Models;
 using MySql.Data.MySqlClient;
 
@@ -372,7 +375,7 @@ namespace CT_App.CT_DLL
 			return takenDate;
 		}
 
-		//------------------------------ Market / Mamo --------------------------
+        //------------------------------ Market / Mamo --------------------------
 		//-----------------------------------------------------------------------
 		public bool insrtMarket(Market market)
 		{
@@ -677,9 +680,9 @@ namespace CT_App.CT_DLL
 			return true;
 		}
 
-		//------------------------------- Installment ---------------------------
-		//-----------------------------------------------------------------------
-		public bool insrtDailySaving(DailySaving dailySaving)
+        //------------------------------- Installment ---------------------------
+        //-----------------------------------------------------------------------
+        public bool insrtDailySaving(DailySaving dailySaving)
 		{
 			string query = $"INSERT INTO DailySaving (DS_ID, DS_Date, DS_FPAmount, DS_SPAmount, DS_TPAmount, NotTaken, DS_Data, DS_Insrt_Person) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			using (OleDbCommand cmd = new OleDbCommand(query, this.conn))
