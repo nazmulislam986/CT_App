@@ -6,6 +6,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -21,9 +22,9 @@ namespace CT_App
     {
         #region Comments
         private BLLayer _bLLayer = new BLLayer();
-        private string DltDate;
         private string tableName = "ImagesTable";
         private string selectedImagePath;
+        private DateTime parsedDate;
         #endregion
         public CT_Mine()
         {
@@ -31,7 +32,7 @@ namespace CT_App
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = string.Concat("T Mine - " + String.Format(this.lblVer.Text, version.Major, version.Minor, version.Build, version.Revision));
             this.tabControl1.Visible = false;
-            this.DltDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+            DateTime parsedDate = DateTime.ParseExact(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"), "MM-dd-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             this.fillData();
             this.AmtDataView();
             this.fillDataBike();
@@ -635,7 +636,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 3)}";
                 this.textBox101.Text = uniqueCode;
                 this.button1.Text = "Save";
                 this.BalankFldMarMem();
@@ -756,7 +757,7 @@ namespace CT_App
                         insGiven.Total_Given = Convert.ToSingle(this.textBox39.Text.Trim());
                         insGiven.Given_To = this.textBox33.Text.Trim();
                         insGiven.ThroughBy_Given = this.comboBox1.Text.Trim();
-                        insGiven.Given_Date = Convert.ToDateTime(this.dateTimePicker3.Text.Trim());
+                        insGiven.Given_Date = this.dateTimePicker3.Value;
                         insGiven.Remarks_Given = this.textBox34.Text.Trim();
                         insGiven.GDT_V = "NDV";
                         insGiven.G_Insrt_Person = this.label249.Text.Trim();
@@ -783,7 +784,7 @@ namespace CT_App
                         insTeken.Total_Take = Convert.ToSingle(this.textBox39.Text.Trim());
                         insTeken.Take_To = this.textBox33.Text.Trim();
                         insTeken.ThroughBy_Take = this.comboBox1.Text.Trim();
-                        insTeken.Take_Date = Convert.ToDateTime(this.dateTimePicker3.Text.Trim());
+                        insTeken.Take_Date = this.dateTimePicker3.Value;
                         insTeken.Remarks_Take = this.textBox34.Text.Trim();
                         insTeken.TDT_V = "NDV";
                         insTeken.T_Insrt_Person = this.label249.Text.Trim();
@@ -810,7 +811,7 @@ namespace CT_App
                         instariff.Expense_Amount = Convert.ToSingle(this.textBox39.Text.Trim());
                         instariff.Expense_To = this.textBox33.Text.Trim();
                         instariff.ThroughBy_Expense = this.comboBox1.Text.Trim();
-                        instariff.Expense_Date = Convert.ToDateTime(this.dateTimePicker3.Text.Trim());
+                        instariff.Expense_Date = this.dateTimePicker3.Value;
                         instariff.Remarks_Expense = this.textBox34.Text.Trim();
                         instariff.EDT_V = "NDV";
                         instariff.E_Insrt_Person = this.label249.Text.Trim();
@@ -837,7 +838,7 @@ namespace CT_App
                         saving.Saving_Amount = Convert.ToSingle(this.textBox39.Text.Trim());
                         saving.Saving_To = this.textBox33.Text.Trim();
                         saving.ThroughBy_Saving = this.comboBox1.Text.Trim();
-                        saving.Saving_Date = Convert.ToDateTime(this.dateTimePicker3.Text.Trim());
+                        saving.Saving_Date = this.dateTimePicker3.Value;
                         saving.Remarks_Saving = this.textBox34.Text.Trim();
                         saving.SDT_V = "NDV";
                         saving.Saving_Bank = this.comboBox1.Text.Trim();
@@ -865,7 +866,7 @@ namespace CT_App
                         unrated.Unrated_Amount = Convert.ToSingle(this.textBox39.Text.Trim());
                         unrated.Unrated_To = this.textBox33.Text.Trim();
                         unrated.ThroughBy_Unrated = this.comboBox1.Text.Trim();
-                        unrated.Unrated_Date = Convert.ToDateTime(this.dateTimePicker3.Text.Trim());
+                        unrated.Unrated_Date = this.dateTimePicker3.Value;
                         unrated.Remarks_Unrated = this.textBox34.Text.Trim();
                         unrated.UDT_V = "NDV";
                         unrated.U_Insrt_Person = this.label249.Text.Trim();
@@ -891,7 +892,7 @@ namespace CT_App
             {
                 Given insGiven = new Given();
                 insGiven.Total_Given = Convert.ToSingle(this.textBox40.Text.Trim());
-                insGiven.GDT_V_Date = Convert.ToDateTime(this.DltDate);
+                insGiven.GDT_V_Date = parsedDate;
                 insGiven.G_Updt_Person = this.label249.Text.Trim();
                 insGiven.InGiven = this.label117.Text.Trim();
                 insGiven.InGiven = this.label117.Text.Trim();
@@ -899,7 +900,7 @@ namespace CT_App
                 insGiven.Now_Given_UD = Convert.ToSingle(this.textBox119.Text.Trim());
                 insGiven.Total_Given_UD = Convert.ToSingle(this.textBox40.Text.Trim());
                 insGiven.Given_To_UD = this.textBox36.Text.Trim();
-                insGiven.GDT_V_Date_UD = Convert.ToDateTime(this.DltDate);
+                insGiven.GDT_V_Date_UD = parsedDate;
                 bool isInserted = _bLLayer.InsUpdtGiven(insGiven);
                 if (isInserted)
                 {
@@ -922,7 +923,7 @@ namespace CT_App
             {
                 Teken insTeken = new Teken();
                 insTeken.Total_Take = Convert.ToSingle(this.textBox45.Text.Trim());
-                insTeken.TDT_V_Date = Convert.ToDateTime(this.DltDate);
+                insTeken.TDT_V_Date = parsedDate;
                 insTeken.T_Updt_Person = this.label249.Text.Trim();
                 insTeken.InTake = this.label117.Text.Trim();
                 insTeken.InTake = this.label117.Text.Trim();
@@ -930,7 +931,7 @@ namespace CT_App
                 insTeken.Now_Take_UD = Convert.ToSingle(this.textBox120.Text.Trim());
                 insTeken.Total_Take_UD = Convert.ToSingle(this.textBox45.Text.Trim());
                 insTeken.Take_To_UD = this.textBox44.Text.Trim();
-                insTeken.TDT_V_Date_UD = Convert.ToDateTime(this.DltDate);
+                insTeken.TDT_V_Date_UD = parsedDate;
                 bool isInserted = _bLLayer.InsUpdtTeken(insTeken);
                 if (isInserted)
                 {
@@ -953,7 +954,7 @@ namespace CT_App
             {
                 TariffAmt insTariff = new TariffAmt();
                 insTariff.Expense_Amount = Convert.ToSingle(this.textBox103.Text.Trim());
-                insTariff.EDT_V_Date = Convert.ToDateTime(this.DltDate);
+                insTariff.EDT_V_Date = parsedDate;
                 insTariff.E_Updt_Person = this.label249.Text.Trim();
                 insTariff.InExpense = this.label117.Text.Trim();
                 insTariff.InExpense = this.label117.Text.Trim();
@@ -961,7 +962,7 @@ namespace CT_App
                 insTariff.Now_Expense_UD = Convert.ToSingle(this.textBox109.Text.Trim());
                 insTariff.Expense_Amount_UD = Convert.ToSingle(this.textBox103.Text.Trim());
                 insTariff.Expense_To_UD = this.textBox104.Text.Trim();
-                insTariff.EDT_V_Date_UD = Convert.ToDateTime(this.DltDate);
+                insTariff.EDT_V_Date_UD = parsedDate;
                 bool isInserted = _bLLayer.InsUpdtTariffAmt(insTariff);
                 if (isInserted)
                 {
@@ -985,7 +986,7 @@ namespace CT_App
             {
                 Saving insSaving = new Saving();
                 insSaving.Saving_Amount = Convert.ToSingle(this.textBox43.Text.Trim());
-                insSaving.SDT_V_Date = Convert.ToDateTime(this.DltDate);
+                insSaving.SDT_V_Date = parsedDate;
                 insSaving.S_Updt_Person = this.label249.Text.Trim();
                 insSaving.InSaving = this.label117.Text.Trim();
                 insSaving.InSaving = this.label117.Text.Trim();
@@ -993,7 +994,7 @@ namespace CT_App
                 insSaving.Now_Saving_UD = Convert.ToSingle(this.textBox116.Text.Trim());
                 insSaving.Saving_Amount_UD = Convert.ToSingle(this.textBox43.Text.Trim());
                 insSaving.Saving_To_UD = this.textBox105.Text.Trim();
-                insSaving.SDT_V_Date_UD = Convert.ToDateTime(this.DltDate);
+                insSaving.SDT_V_Date_UD = parsedDate;
                 bool isInserted = _bLLayer.InsUpdtSaving(insSaving);
                 if (isInserted)
                 {
@@ -1017,7 +1018,7 @@ namespace CT_App
             {
                 Unrated insUnrated = new Unrated();
                 insUnrated.Unrated_Amount = Convert.ToSingle(this.textBox51.Text.Trim());
-                insUnrated.UDT_V_Date = Convert.ToDateTime(this.DltDate);
+                insUnrated.UDT_V_Date = parsedDate;
                 insUnrated.U_Updt_Person = this.label249.Text.Trim();
                 insUnrated.InUnrated = this.label117.Text.Trim();
                 insUnrated.InUnrated = this.label117.Text.Trim();
@@ -1025,7 +1026,7 @@ namespace CT_App
                 insUnrated.Now_Unrated_UD = Convert.ToSingle(this.textBox117.Text.Trim());
                 insUnrated.Unrated_Amount_UD = Convert.ToSingle(this.textBox51.Text.Trim());
                 insUnrated.Unrated_To_UD = this.textBox106.Text.Trim();
-                insUnrated.UDT_V_Date_UD = Convert.ToDateTime(this.DltDate);
+                insUnrated.UDT_V_Date_UD = parsedDate;
                 bool isInserted = _bLLayer.InsUpdtUnrated(insUnrated);
                 if (isInserted)
                 {
@@ -1067,7 +1068,7 @@ namespace CT_App
                 {
                     Given delGiven = new Given();
                     delGiven.GDT_V = "DDV";
-                    delGiven.DDT_V_Date = Convert.ToDateTime(this.DltDate);
+                    delGiven.DDT_V_Date = this.parsedDate;
                     delGiven.G_Del_Person = this.label249.Text.Trim();
                     delGiven.InGiven = this.label117.Text.Trim();
                     bool isInserted = _bLLayer.DelGiven(delGiven);
@@ -1091,7 +1092,7 @@ namespace CT_App
                 {
                     Teken delTeken = new Teken();
                     delTeken.TDT_V = "DDV";
-                    delTeken.DDT_V_Date = Convert.ToDateTime(this.DltDate);
+                    delTeken.DDT_V_Date = this.parsedDate;
                     delTeken.T_Del_Person = this.label249.Text.Trim();
                     delTeken.InTake = this.label117.Text.Trim();
                     bool isInserted = _bLLayer.DelTeken(delTeken);
@@ -1115,7 +1116,7 @@ namespace CT_App
                 {
                     TariffAmt delTariff = new TariffAmt();
                     delTariff.EDT_V = "DDV";
-                    delTariff.DDT_V_Date = Convert.ToDateTime(this.DltDate);
+                    delTariff.DDT_V_Date = this.parsedDate;
                     delTariff.E_Del_Person = this.label249.Text.Trim();
                     delTariff.InExpense = this.label117.Text.Trim();
                     bool isInserted = _bLLayer.DelTariffAmt(delTariff);
@@ -1139,7 +1140,7 @@ namespace CT_App
                 {
                     Saving delSaving = new Saving();
                     delSaving.SDT_V = "DDV";
-                    delSaving.DDT_V_Date = Convert.ToDateTime(this.DltDate);
+                    delSaving.DDT_V_Date = this.parsedDate;
                     delSaving.S_Del_Person = this.label249.Text.Trim();
                     delSaving.InSaving = this.label117.Text.Trim();
                     bool isInserted = _bLLayer.DelSaving(delSaving);
@@ -1163,7 +1164,7 @@ namespace CT_App
                 {
                     Unrated delUnrated = new Unrated();
                     delUnrated.UDT_V = "DDV";
-                    delUnrated.DDT_V_Date = Convert.ToDateTime(this.DltDate);
+                    delUnrated.DDT_V_Date = this.parsedDate;
                     delUnrated.U_Del_Person = this.label249.Text.Trim();
                     delUnrated.InUnrated = this.label117.Text.Trim();
                     bool isInserted = _bLLayer.DelUnrated(delUnrated);
@@ -1343,7 +1344,7 @@ namespace CT_App
             {
                 Daily deldaily = new Daily();
                 deldaily.D_Data = "TKN";
-                deldaily.D_Date = Convert.ToDateTime(this.DltDate);
+                deldaily.D_Date = this.parsedDate;
                 deldaily.D_Insrt_Person = this.label249.Text.Trim();
                 deldaily.D_ID = this.label182.Text.Trim();
                 bool isDeleted = _bLLayer.DelDaily(deldaily);
@@ -1381,7 +1382,7 @@ namespace CT_App
             {
                 DailySaving deldailySav = new DailySaving();
                 deldailySav.DS_Data = "TKN";
-                deldailySav.DS_InBankDate = Convert.ToDateTime(this.DltDate);
+                deldailySav.DS_InBankDate = this.parsedDate;
                 deldailySav.DS_Del_Person = this.label249.Text.Trim();
                 deldailySav.DS_ID = this.label292.Text.Trim();
                 bool isUpdated = _bLLayer.DelDailySaving(deldailySav);
@@ -1588,7 +1589,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"IS{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"IS{day}{month}{millis.Substring(0, 3)}";
                 this.textBox99.Text = uniqueCode;
                 this.button13.Text = "Insert";
                 this.textBox94.Focus();
@@ -1605,7 +1606,7 @@ namespace CT_App
                     {
                         Installment insinstalSav = new Installment();
                         insinstalSav.I_ID = this.textBox99.Text.Trim();
-                        insinstalSav.I_Date = Convert.ToDateTime(this.DltDate);
+                        insinstalSav.I_Date = this.parsedDate;
                         insinstalSav.Take_Total = Convert.ToSingle(this.textBox94.Text.Trim());
                         insinstalSav.Take_Anot = Convert.ToSingle(this.textBox96.Text.Trim());
                         insinstalSav.Take_Mine = Convert.ToSingle(this.textBox97.Text.Trim());
@@ -1694,7 +1695,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"ME{day}{month}{millis.Substring(0, 3)}";
                 this.textBox108.Text = uniqueCode;
                 this.button15.Text = "Save";
                 this.button1.Text = "U to M";
@@ -1706,7 +1707,7 @@ namespace CT_App
                 {
                     MarketMemos marketMemos = new MarketMemos();
                     marketMemos.Mem_ID = this.textBox108.Text.Trim();
-                    marketMemos.Mem_Date = Convert.ToDateTime(this.DltDate);
+                    marketMemos.Mem_Date = this.parsedDate;
                     marketMemos.R_InvTK = Convert.ToSingle(this.textBox90.Text.Trim());
                     marketMemos.C_InvTK = Convert.ToSingle(this.label10.Text.Trim());
                     marketMemos.Giv_TK = Convert.ToSingle(this.textBox55.Text.Trim());
@@ -2054,7 +2055,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"DA{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"DA{day}{month}{millis.Substring(0, 3)}";
                 this.textBox132.Text = uniqueCode;
                 this.button31.Text = "Save";
             }
@@ -2132,7 +2133,7 @@ namespace CT_App
             {
                 DailyAnt dailyAnt = new DailyAnt();
                 dailyAnt.DA_Data = "TKN";
-                dailyAnt.TakenDate = Convert.ToDateTime(this.DltDate);
+                dailyAnt.TakenDate = this.parsedDate;
                 dailyAnt.DA_Del_Person = this.label249.Text.Trim();
                 dailyAnt.DA_ID = this.label277.Text.Trim();
                 bool isDeleted = _bLLayer.delDailyAnt(dailyAnt);
@@ -2191,7 +2192,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"DS{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"DS{day}{month}{millis.Substring(0, 3)}";
                 this.textBox137.Text = uniqueCode;
                 this.buttonS24.Text = "Add Amt";
             }
@@ -2414,7 +2415,7 @@ namespace CT_App
                 string day = DateTime.Now.Day.ToString("00");
                 string month = DateTime.Now.Month.ToString("00");
                 string millis = DateTime.Now.Millisecond.ToString("000");
-                string uniqueCode = $"MT{day}{month}{millis.Substring(0, 2)}";
+                string uniqueCode = $"MT{day}{month}{millis.Substring(0, 3)}";
                 this.textBox241.Text = uniqueCode;
                 this.button38.Text = "Save";
                 this.BalankFldMonthly();
@@ -2697,7 +2698,7 @@ namespace CT_App
         //-----------------------------------------------------------------------
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.label4.Text = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
+            this.label4.Text = DateTime.Now.ToString("MM-dd-yyyy hh:mm:ss tt");
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

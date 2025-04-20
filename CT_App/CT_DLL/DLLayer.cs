@@ -838,7 +838,7 @@ namespace CT_App.CT_DLL
 				cmd.Parameters.AddWithValue("?", given.Total_Given);
 				cmd.Parameters.AddWithValue("?", given.Given_To);
 				cmd.Parameters.AddWithValue("?", given.ThroughBy_Given);
-				cmd.Parameters.AddWithValue("?", given.Given_Date);
+				cmd.Parameters.AddWithValue("?", given.Given_Date.ToString("MM-dd-yyyy HH:mm:ss"));
 				cmd.Parameters.AddWithValue("?", given.Remarks_Given);
 				cmd.Parameters.AddWithValue("?", given.GDT_V);
 				cmd.Parameters.AddWithValue("?", given.G_Insrt_Person);
@@ -857,8 +857,8 @@ namespace CT_App.CT_DLL
 				cmd.Parameters.AddWithValue("?", teken.Total_Take);
 				cmd.Parameters.AddWithValue("?", teken.Take_To);
 				cmd.Parameters.AddWithValue("?", teken.ThroughBy_Take);
-				cmd.Parameters.AddWithValue("?", teken.Take_Date);
-				cmd.Parameters.AddWithValue("?", teken.Remarks_Take);
+				cmd.Parameters.AddWithValue("?", teken.Take_Date.ToString("MM-dd-yyyy HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?", teken.Remarks_Take);
 				cmd.Parameters.AddWithValue("?", teken.TDT_V);
 				cmd.Parameters.AddWithValue("?", teken.T_Insrt_Person);
 				this.conn.Open();
@@ -876,8 +876,8 @@ namespace CT_App.CT_DLL
 				cmd.Parameters.AddWithValue("?", tariff.Expense_Amount);
 				cmd.Parameters.AddWithValue("?", tariff.Expense_To);
 				cmd.Parameters.AddWithValue("?", tariff.ThroughBy_Expense);
-				cmd.Parameters.AddWithValue("?", tariff.Expense_Date);
-				cmd.Parameters.AddWithValue("?", tariff.Remarks_Expense);
+				cmd.Parameters.AddWithValue("?", tariff.Expense_Date.ToString("MM-dd-yyyy HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?", tariff.Remarks_Expense);
 				cmd.Parameters.AddWithValue("?", tariff.EDT_V);
 				cmd.Parameters.AddWithValue("?", tariff.E_Insrt_Person);
 				this.conn.Open();
@@ -895,8 +895,8 @@ namespace CT_App.CT_DLL
 				cmd.Parameters.AddWithValue("?", saving.Saving_Amount);
 				cmd.Parameters.AddWithValue("?", saving.Saving_To);
 				cmd.Parameters.AddWithValue("?", saving.ThroughBy_Saving);
-				cmd.Parameters.AddWithValue("?", saving.Saving_Date);
-				cmd.Parameters.AddWithValue("?", saving.Remarks_Saving);
+				cmd.Parameters.AddWithValue("?", saving.Saving_Date.ToString("MM-dd-yyyy HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?", saving.Remarks_Saving);
 				cmd.Parameters.AddWithValue("?", saving.SDT_V);
 				cmd.Parameters.AddWithValue("?", saving.Saving_Bank);
 				cmd.Parameters.AddWithValue("?", saving.S_Insrt_Person);
@@ -915,8 +915,8 @@ namespace CT_App.CT_DLL
 				cmd.Parameters.AddWithValue("?", unrated.Unrated_Amount);
 				cmd.Parameters.AddWithValue("?", unrated.Unrated_To);
 				cmd.Parameters.AddWithValue("?", unrated.ThroughBy_Unrated);
-				cmd.Parameters.AddWithValue("?", unrated.Unrated_Date);
-				cmd.Parameters.AddWithValue("?", unrated.Remarks_Unrated);
+				cmd.Parameters.AddWithValue("?", unrated.Unrated_Date.ToString("MM-dd-yyyy HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?", unrated.Remarks_Unrated);
 				cmd.Parameters.AddWithValue("?", unrated.UDT_V);
 				cmd.Parameters.AddWithValue("?", unrated.U_Insrt_Person);
 				this.conn.Open();
